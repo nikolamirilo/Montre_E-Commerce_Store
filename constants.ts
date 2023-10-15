@@ -1,1 +1,0 @@
-export const base_url = process.env.WEB_APP_URL;

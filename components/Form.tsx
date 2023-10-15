@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import logo from "../public/logo.png";
 import { CloudinaryResponse } from "@/typescript/interfaces";
-import { revalidateData } from "@/utils/helpers";
+import { revalidateData } from "@/helpers";
 
 const Form: React.FC = () => {
   const [displayImage, setDisplayImage] = useState("");
@@ -68,30 +68,31 @@ const Form: React.FC = () => {
     };
 
     console.log(uploadData);
-    await fetch("/api/posts/create-post", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(uploadData),
-    }).then((response) => {
-      console.log(response);
+    //Replace with Mongo DB API
+    // await fetch("/api/posts/create-post", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(uploadData),
+    // }).then((response) => {
+    //   console.log(response);
 
-      //Set Initial data
-      usernameInput.current!.value = "";
-      locationInput.current!.value = "";
-      titleInput.current!.value = "";
-      descriptionInput.current!.value = "";
-      setDisplayImage("");
+    //   //Set Initial data
+    //   usernameInput.current!.value = "";
+    //   locationInput.current!.value = "";
+    //   titleInput.current!.value = "";
+    //   descriptionInput.current!.value = "";
+    //   setDisplayImage("");
 
-      if (response.ok) {
-        revalidateData();
-        alert("Vas odgovor je zabelezen");
-      } else {
-        console.log(response.statusText);
-      }
-    });
+    //   if (response.ok) {
+    //     revalidateData();
+    //     alert("Vas odgovor je zabelezen");
+    //   } else {
+    //     console.log(response.statusText);
+    //   }
+    // });
   };
 
   return (

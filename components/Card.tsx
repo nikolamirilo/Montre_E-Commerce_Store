@@ -7,7 +7,7 @@ import { BiBookmark } from "react-icons/bi";
 import { Post } from "@/typescript/interfaces";
 import Image from "next/image";
 import { BsTrash3 } from "react-icons/bs";
-import { revalidateData } from "@/utils/helpers";
+import { revalidateData } from "@/helpers";
 
 const Card: React.FC<Post> = ({
   _id,
@@ -22,46 +22,48 @@ const Card: React.FC<Post> = ({
   const [currentLikes, setCurrentLikes] = useState<number>(likes);
 
   async function handleLikeClick() {
-    if (isClicked) {
-      setIsClicked(false);
-      setCurrentLikes((prevLikes) => prevLikes - 1);
-    } else {
-      setIsClicked(true);
-      setCurrentLikes((prevLikes) => prevLikes + 1);
-      try {
-        const res = await fetch(`/api/posts/${_id}`, {
-          method: "PUT",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Cache-Control": "no-cache, no-store",
-          },
-          body: JSON.stringify({
-            likes: currentLikes + 1,
-          }),
-        });
-        console.log(res);
-      } catch (error) {
-        console.log(error as Error);
-      }
-    }
+    //Replace with Mongo DB API
+    // if (isClicked) {
+    //   setIsClicked(false);
+    //   setCurrentLikes((prevLikes) => prevLikes - 1);
+    // } else {
+    //   setIsClicked(true);
+    //   setCurrentLikes((prevLikes) => prevLikes + 1);
+    //   try {
+    //     const res = await fetch(`/api/posts/${_id}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //         "Cache-Control": "no-cache, no-store",
+    //       },
+    //       body: JSON.stringify({
+    //         likes: currentLikes + 1,
+    //       }),
+    //     });
+    //     console.log(res);
+    //   } catch (error) {
+    //     console.log(error as Error);
+    //   }
+    // }
   }
 
   const handleDeletePost = async () => {
-    try {
-      const res = await fetch(`/api/posts/${_id}`, {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache, no-store",
-        },
-      });
-      console.log(res);
-      revalidateData();
-    } catch (error) {
-      console.log(error as Error);
-    }
+    //Replace with Mongo DB API
+    // try {
+    //   const res = await fetch(`/api/posts/${_id}`, {
+    //     method: "DELETE",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       "Cache-Control": "no-cache, no-store",
+    //     },
+    //   });
+    //   console.log(res);
+    //   revalidateData();
+    // } catch (error) {
+    //   console.log(error as Error);
+    // }
   };
 
   useEffect(() => {

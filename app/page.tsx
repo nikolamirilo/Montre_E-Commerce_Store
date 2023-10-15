@@ -1,5 +1,4 @@
 import Card from "@/components/Card";
-import { base_url } from "@/constants";
 import { Post } from "@/typescript/interfaces";
 
 export const revalidate = 0;
