@@ -1,12 +1,17 @@
-export interface Post {
+export interface User {
+    _id?: string;
+    full_name: string;
+    image: string;
+}
+
+export interface Product {
     _id: string;
-    username: string;
-    authorImage?: string;
+    author: User;
     location: string;
     title: string;
     description: string;
-    image: string;
-    likes: number;
+    images: string[];
+    price: number;
 }
 
 export interface CloudinaryResponse {

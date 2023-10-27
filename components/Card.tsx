@@ -4,22 +4,32 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import { BiBookmark } from "react-icons/bi";
-import { Post } from "@/typescript/interfaces";
 import Image from "next/image";
 import { BsTrash3 } from "react-icons/bs";
-import { revalidateData } from "@/helpers";
 
-const Card: React.FC<Post> = ({
-  _id,
+export interface CardProps {
+  _id?: string;
+  username: string;
+  location: string;
+  title: string;
+  description: string;
+  images: string[];
+  price: number;
+  user_image: string;
+}
+
+const Card: React.FC<CardProps> = ({
   username,
+  user_image,
   location,
   title,
   description,
-  image,
-  likes,
+  images,
+  price,
 }) => {
+  const [mounted, setMounted] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [currentLikes, setCurrentLikes] = useState<number>(likes);
+  const [currentLikes, setCurrentLikes] = useState<number>(price);
 
   async function handleLikeClick() {
     //Replace with Mongo DB API
@@ -30,7 +40,7 @@ const Card: React.FC<Post> = ({
     //   setIsClicked(true);
     //   setCurrentLikes((prevLikes) => prevLikes + 1);
     //   try {
-    //     const res = await fetch(`/api/posts/${_id}`, {
+    //     const res = await fetch(`/api/Products/${_id}`, {
     //       method: "PUT",
     //       headers: {
     //         Accept: "application/json",
@@ -48,10 +58,10 @@ const Card: React.FC<Post> = ({
     // }
   }
 
-  const handleDeletePost = async () => {
+  const handleDeleteProduct = async () => {
     //Replace with Mongo DB API
     // try {
-    //   const res = await fetch(`/api/posts/${_id}`, {
+    //   const res = await fetch(`/api/Products/${_id}`, {
     //     method: "DELETE",
     //     headers: {
     //       Accept: "application/json",
@@ -67,24 +77,25 @@ const Card: React.FC<Post> = ({
   };
 
   useEffect(() => {
-    setCurrentLikes(likes);
+    // setCurrentLikes(price);
+    setMounted(true);
   }, []);
 
+  if (!mounted) {
+    return null;
+  }
   return (
     <div className="p-4">
       <div className="bg-white border rounded-md max-w-md relative">
         <button
           id="delete"
           className="absolute right-2 p-2 rounded-full hover:bg-red-500 top-2"
-          onClick={handleDeletePost}
+          onClick={handleDeleteProduct}
         >
           <BsTrash3 size={25} className="hover:fill-white" />
         </button>
         <div className="flex items-center px-4 py-3">
-          <img
-            className="h-8 w-8 rounded-full"
-            src="https://th.bing.com/th/id/OIP.uypTEU9uX7OgNlOI9dp-NwHaHa?pid=ImgDet&rs=1"
-          />
+          <img className="h-8 w-8 rounded-full" src={user_image} />
           <div className="ml-3 ">
             <span className="text-sm font-semibold antialiased block leading-tight">
               {username}
@@ -101,7 +112,13 @@ const Card: React.FC<Post> = ({
             backgroundPosition: "center",
           }}
         >
-          <Image src={image} fill style={{ objectFit: "cover" }} alt={title} />
+          <Image
+            src={images[0]}
+            fill
+            style={{ objectFit: "cover" }}
+            alt={title}
+            priority
+          />
         </div>
         <div className="flex items-center justify-between mx-4 mt-3 mb-2">
           <div className="flex gap-5">

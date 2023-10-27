@@ -4,7 +4,7 @@ const nextConfig = {
     serverActions: true
   },
     images: {
-        domains: ['res.cloudinary.com',"www.androidcentral.com"]
+        domains: ['res.cloudinary.com',"www.androidcentral.com", "th.bing.com", "media.licdn.com"]
       },
 }
 module.exports = nextConfig
