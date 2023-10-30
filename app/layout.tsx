@@ -20,7 +20,7 @@ export default function RootLayout({
   const cld = new Cloudinary({ cloud: { cloudName: "montre-cloudinary" } });
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-stone-50`}>
+      <body className={`${inter.className} bg-white`}>
         <Sidebar />
         {children}
         <Footer />

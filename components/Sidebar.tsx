@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { RiMenu3Line } from "react-icons/ri";
 import { AiFillCloseCircle } from "react-icons/ai";
-import logo from "../public/logo.png";
+import logo from "../public/MontreLogoTransparent.png";
 import { TfiVideoClapper } from "react-icons/tfi";
 import { TiMessages } from "react-icons/ti";
 import { BsBookmarkStar } from "react-icons/bs";
@@ -24,13 +24,15 @@ const Sidebar = () => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 text-white text-4xl flex flex-row justify-end cursor-pointer w-full py-3 z-50 ${
+        className={`fixed top-0 text-white text-4xl flex flex-row justify-end cursor-pointer w-full h-fit lg:p-3 p-5 z-50 ${
           isOpen && "hidden"
         }`}
         id="navbar"
-        onClick={handleSidebar}
       >
-        <button className="font-xxl text-white rounded-3xl lg:mr-20 mr-6 flex flex-col gap-0">
+        <button
+          className="font-xxl text-white rounded-3xl lg:mr-20 mr-6"
+          onClick={handleSidebar}
+        >
           <RiMenu3Line size={35} />
         </button>
       </div>
@@ -42,11 +44,8 @@ const Sidebar = () => {
       >
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex flex-row items-center justify-between">
-            <div className="heading flex flex-row-reverse items-center gap-1 justify-start">
-              <h1 className="font-bold text-gray-200 text-md ml-3">
-                Instagram
-              </h1>
-              <Image src={logo} alt="Logo" width={50} height={50} />
+            <div className="heading flex items-center justify-center">
+              <Image src={logo} alt="Logo" width={300} height={200} />
             </div>
 
             <button
@@ -76,7 +75,7 @@ const Sidebar = () => {
             onClick={() => {
               setIsOpen(false);
             }}
-            href="/create-post"
+            href="/create-product"
             className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
           >
             <LuPlusSquare size={30} />

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import logo from "../public/logo.png";
+import logo from "../public/MontreLogo.jpeg";
 import { CloudinaryResponse } from "@/typescript/interfaces";
 import { revalidateData } from "@/helpers";
 

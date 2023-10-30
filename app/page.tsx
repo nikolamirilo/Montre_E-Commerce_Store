@@ -1,5 +1,6 @@
 import { getAllProducts } from "@/actions/products";
 import Card from "@/components/Card";
+import Hero from "@/components/Hero";
 import { Product, User } from "@/typescript/interfaces";
 
 export const revalidate = 0;
@@ -9,12 +10,13 @@ export default async function Home() {
   const products = await getAllProducts();
   return (
     <main
-      className="flex w-full flex-col justify-center items-center py-20 min-h-screen"
+      className="flex w-full flex-col justify-center items-center"
       id="home"
     >
+      <Hero />
       <section
         id="cards-container"
-        className="flex flex-wrap w-fit justify-center items-center"
+        className="flex flex-wrap w-fit justify-center items-center min-h-screen"
       >
         {products?.documents?.map((product: Product) => {
           return (
