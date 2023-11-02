@@ -25,7 +25,7 @@ const config: Config = {
       height: {
         '88': '22rem',
         '80': '20rem'
-      }
+      },
   
   },
   plugins: [],

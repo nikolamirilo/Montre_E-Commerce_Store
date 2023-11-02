@@ -2,7 +2,7 @@ import React from "react";
 
 const Filters = () => {
   return (
-    <div className="flex flex-row flex-wrap justify-center items-center gap-3 w-full">
+    <div className="flex flex-row flex-wrap justify-center items-center gap-3 w-full text-lg">
       <div className="flex flex-col">
         <label htmlFor="brand">Brend:</label>
         <select
