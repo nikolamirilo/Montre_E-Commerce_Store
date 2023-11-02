@@ -2,11 +2,15 @@ export interface User {
     _id?: string;
     full_name: string;
     image: string;
+    orders: Object[];
+    user_group: string; //admin OR customer
+    address: string;
+    city:string;
+    postal_code:number;
 }
 
 export interface Product {
     _id: string;
-    author: User;
     location: string;
     title: string;
     description: string;

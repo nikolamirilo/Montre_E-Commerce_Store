@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const CreatePost = () => {
   return (
-    <main id="create-post" className="py-20">
+    <main id="create-post">
       <Form />
     </main>
   );

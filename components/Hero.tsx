@@ -1,12 +1,10 @@
-import Image from "next/image";
 import React from "react";
-import { GoPackageDependencies } from "react-icons/go";
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineMessage } from "react-icons/md";
+import HeroNavigation from "@/sub-components/HeroNavigation";
+import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative pt-40 pb-20 lg:pt-44 dark:bg-gray-900 w-full">
+    <section className="relative md:pt-20 pt-10 dark:bg-gray-900 w-full">
       <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
         <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl dark:text-white">
           Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />{" "}
@@ -24,23 +22,10 @@ const Hero = () => {
             <span className="block italic text-gray-800 dark:text-gray-400 text-xl">
               "Elegancija koja se meri sekundama"
             </span>
-            <div className="grid grid-cols-3 space-x-4 md:space-x-6 md:flex md:justify-center lg:justify-start">
-              <button className="bg-white p-4 border border-gray-200 text-gray-900 font-bold py-2 px-4 rounded-2xl inline-flex items-center gap-2 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-600/20 dark:hover:border-amber-300/30">
-                <BsInfoCircle size={30} />
-                <span>O Nama</span>
-              </button>
-              <button className="bg-white p-4 border border-gray-200 text-gray-900 font-bold py-2 px-4 rounded-2xl inline-flex items-center gap-2 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-600/20 dark:hover:border-amber-300/30">
-                <MdOutlineMessage size={30} />
-                <span>Kontaktiraj Nas</span>
-              </button>
-              <button className="bg-white p-4 border border-gray-200 text-gray-900 font-bold py-2 px-4 rounded-2xl inline-flex items-center gap-2 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-600/20 dark:hover:border-amber-300/30">
-                <GoPackageDependencies size={30} />
-                <span>Poruči Sat</span>
-              </button>
-            </div>
+            <HeroNavigation />
 
             <div className="dark:text-gray-300 text-xl">
-              🔥🌟Poruci i ti svoj sat preko naseg sajta u dva klika!
+              🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
             </div>
 
             <div className="pt-10 flex flex-row justify-center align-middle flex-wrap gap-8">
@@ -80,15 +65,15 @@ const Hero = () => {
             <div className="relative w-full">
               <div
                 aria-hidden="true"
-                className="absolute scale-75 md:scale-110 inset-0 m-auto w-full h-full md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
+                className="absolute scale-75 inset-0 md:scale-110 m-auto w-full h-full md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
               ></div>
-              <img
+              <Image
                 src="/CurrenHero.png"
-                className="relative w-full"
+                className="relative"
+                width={350}
+                height={200}
+                priority
                 alt="wath illustration"
-                loading="lazy"
-                width="320"
-                height="280"
               />
             </div>
           </div>

@@ -1,19 +1,12 @@
 "use client";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React from "react";
 
 const Admin = () => {
-  const router = useRouter();
   return (
-    <div className="h-screen w-full flex flex-column justify-center align-middle z-10 text-black">
-      <button
-        onClick={() => {
-          router.push("/admin/create-product");
-        }}
-      >
-        Create Product
-      </button>
-    </div>
+    <main className="h-screen w-full flex flex-column justify-center align-middle z-10 text-black">
+      <Link href="/admin/create-product">Create Product</Link>
+    </main>
   );
 };
 

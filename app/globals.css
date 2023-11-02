@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 #navbar, #sidebar, #footer, footer,#submit-button{
   /* background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); */
   background-color: #181823;
+}
+main{
+  min-height: 100vh;
+  padding-top: 5rem;
 }
