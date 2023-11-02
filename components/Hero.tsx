@@ -65,7 +65,7 @@ const Hero = () => {
             <div className="relative w-full">
               <div
                 aria-hidden="true"
-                className="absolute scale-75 inset-0 md:scale-110 m-auto w-full h-full md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
+                className="absolute scale-75 inset-0 m-auto w-80 h-88 md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
               ></div>
               <Image
                 src="/CurrenHero.png"

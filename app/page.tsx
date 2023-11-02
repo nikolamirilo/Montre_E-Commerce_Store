@@ -15,7 +15,6 @@ export default async function Home() {
       id="home"
     >
       <Hero />
-
       <section
         id="cards-container"
         className="flex flex-col justify-center items-center min-h-screen md:p-20 gap-10"

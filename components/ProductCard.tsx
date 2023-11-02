@@ -79,10 +79,10 @@ const ProductCard: React.FC<CardProps> = ({
     return null;
   }
   return (
-    <div className="md:max-w-xl max-w-xl">
-      <div className="bg-white shadow-xl rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-xl">
+      <div className="bg-white shadow-xl rounded-lg max-w-lg dark:bg-gray-800 dark:border-gray-700">
         <div
-          className="relative w-96 h-96 cursor-pointer"
+          className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer"
           onClick={() => {
             router.push(`/products/${_id}`);
           }}
@@ -94,7 +94,7 @@ const ProductCard: React.FC<CardProps> = ({
             alt="product image"
           />
         </div>
-        <div className="px-5 pb-5">
+        <div className="px-3 md:px-5 pb-5">
           <a href="#">
             <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
               {title}
