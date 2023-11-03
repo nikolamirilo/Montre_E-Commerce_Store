@@ -1,14 +1,13 @@
-import { getAllProducts } from "@/actions/products";
 import Hero from "@/components/Hero";
-import ProductCard from "@/components/ProductCard";
+import Loader from "@/components/Loader";
 import Search from "@/sub-components/Search";
-import { Product, User } from "@/typescript/interfaces";
+import dynamic from "next/dynamic";
 
-export const revalidate = 0;
-export const dynamic = "force-dynamic";
+const DynamicProducts = dynamic(() => import("@/components/Products"), {
+  loading: () => <Loader />,
+});
 
 export default async function Home() {
-  const products = await getAllProducts();
   return (
     <main
       className="flex w-full flex-col justify-center items-center gap-20"
@@ -23,20 +22,7 @@ export default async function Home() {
           Svi modeli satova
         </h3>
         <Search />
-        <div className="flex flex-wrap w-full justify-center items-center gap-5">
-          {products?.documents?.map((product: Product) => {
-            return (
-              <ProductCard
-                key={product._id}
-                _id={product._id}
-                title={product.title}
-                category="Lux"
-                images={product.images}
-                price={product.price}
-              />
-            );
-          })}
-        </div>
+        <DynamicProducts />
       </section>
     </main>
   );

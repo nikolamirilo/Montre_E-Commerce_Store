@@ -4,10 +4,13 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative md:pt-20 pt-10 dark:bg-gray-900 w-full">
+    <section
+      className="relative md:pt-20 pt-10 dark:bg-gray-900 w-full"
+      id="hero"
+    >
       <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
         <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl dark:text-white">
-          Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />{" "}
+          Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />
           <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400 dark:from-blue-400 dark:to-cyan-300">
             po tvojoj meri!
           </span>
@@ -29,35 +32,47 @@ const Hero = () => {
             </div>
 
             <div className="pt-10 flex flex-row justify-center align-middle flex-wrap gap-8">
-              <img
-                style={{ height: "30px", width: "auto" }}
+              <Image
                 src="/brands/curren_logo.png"
+                className="h-8 w-auto"
+                width={300}
+                height={150}
                 alt="Curren"
               />
-              <img
-                style={{ height: "50px", width: "auto" }}
+              <Image
                 src="/brands/lige_logo.png"
                 alt="Lige"
+                className="h-12 w-auto"
+                width={300}
+                height={150}
               />
-              <img
-                style={{ height: "50px", width: "auto" }}
+              <Image
                 src="/brands/naviforce_logo.png"
                 alt="Naviforce"
+                className="h-12 w-auto"
+                width={300}
+                height={150}
               />
-              <img
-                style={{ height: "60px", width: "auto" }}
+              <Image
                 src="/brands/benyar_logo.jpg"
                 alt="Benyar"
+                className="h-12 w-auto"
+                width={300}
+                height={150}
               />
-              <img
-                style={{ height: "40px", width: "auto" }}
+              <Image
                 src="/brands/geneva_logo.png"
                 alt="Geneva"
+                className="h-10 w-auto"
+                width={300}
+                height={150}
               />
-              <img
-                style={{ height: "30px", width: "auto" }}
+              <Image
                 src="/brands/hannah_martin_logo.png"
                 alt="Hannah Martin"
+                className="h-8 w-auto"
+                width={300}
+                height={150}
               />
             </div>
           </div>
