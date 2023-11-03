@@ -20,10 +20,11 @@ main{
   opacity: 0;
   animation: fade 1000ms ease-in-out 0ms forwards;
 }
-#sidebar, #navbar, #filters{
+#sidebar, #navbar, #filters, img{
   opacity: 0;
   animation: fade 400ms ease-in-out 0ms forwards;
 }
+
 
 /*KEY FRAMES*/
 @keyframes fade {
