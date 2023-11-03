@@ -62,10 +62,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="mt-12 md:mt-0 lg:absolute -right-10 lg:w-3/12">
-            <div className="relative w-full">
+            <div className="relative w-full flex justify-center items-center">
               <div
                 aria-hidden="true"
-                className="absolute scale-75 inset-0 m-auto w-80 h-88 md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
+                className="absolute scale-75 inset-0 m-auto w-80 h-80 md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
               ></div>
               <Image
                 src="/CurrenHero.png"

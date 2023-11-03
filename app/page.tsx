@@ -11,7 +11,7 @@ export default async function Home() {
   const products = await getAllProducts();
   return (
     <main
-      className="flex w-full flex-col justify-center items-center gap-8"
+      className="flex w-full flex-col justify-center items-center gap-20"
       id="home"
     >
       <Hero />
@@ -19,7 +19,7 @@ export default async function Home() {
         id="cards-container"
         className="flex flex-col justify-center items-center min-h-screen md:p-20 gap-10"
       >
-        <h3 className="text-gray-800 font-semibold text-4xl tracking-tight dark:text-white text-center">
+        <h3 className="text-gray-800 font-semibold text-4xl tracking-tight dark:text-white text-center uppercase">
           Svi modeli satova
         </h3>
         <Search />
