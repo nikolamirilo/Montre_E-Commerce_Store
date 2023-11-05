@@ -112,7 +112,7 @@ const Sidebar = () => {
             <span>Akcije</span>
           </Link>
         </div>
-        <div className={`p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <Link
             onClick={handleSidebar}
             href="/"
