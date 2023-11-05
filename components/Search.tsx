@@ -5,9 +5,9 @@ import Filters from "./Filters";
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <form className="flex flex-col justify-center items-center gap-5">
-      <div className="flex flex-col gap-5 md:flex-row items-center justify-center">
-        <div className="flex flex-row">
+    <form className="flex flex-col justify-center items-center gap-5 w-full">
+      <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
+        <div className="flex flex-row items-center justify-center w-fit">
           <input
             type="text"
             placeholder="Pretraži satove"
@@ -15,7 +15,7 @@ const Search = () => {
           />
           <button
             type="submit"
-            className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 py-0 md:py-1  hover:bg-amber-500 text-lg"
+            className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
           >
             Search
           </button>
@@ -32,6 +32,12 @@ const Search = () => {
         </button>
       </div>
       {isOpen ? <Filters /> : null}
+      <button
+        type="submit"
+        className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
+      >
+        Primeni
+      </button>
     </form>
   );
 };
