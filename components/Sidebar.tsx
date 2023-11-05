@@ -62,7 +62,7 @@ const Sidebar = () => {
         </div>
       <div>
         <div id="offer-section">
-        <div className="p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <button
             onClick={handleMenu}
             className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
@@ -72,7 +72,7 @@ const Sidebar = () => {
             {isOfferOpen ? <MdKeyboardArrowDown size={30} className="relative bottom-[1px]"/> : <MdKeyboardArrowRight size={30} className="relative bottom-[1px]"/>}
           </button>
         </div>
-        <div className={`relative left-5 p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
           <Link
             onClick={handleSidebar}
             href="/"
@@ -82,7 +82,7 @@ const Sidebar = () => {
             <span>Svi</span>
           </Link>
         </div>
-        <div className={`relative left-5 p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
           <Link
             onClick={handleSidebar}
             href="/"
@@ -92,7 +92,7 @@ const Sidebar = () => {
             <span>Muški</span>
           </Link>
         </div>
-        <div className={`relative left-5 p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
           <Link
             onClick={handleSidebar}
             href="/"
@@ -102,7 +102,7 @@ const Sidebar = () => {
             <span>Ženski</span>
           </Link>
         </div>
-        <div className={`relative left-5 p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
           <Link
             onClick={handleSidebar}
             href="/"
@@ -112,7 +112,7 @@ const Sidebar = () => {
             <span>Akcije</span>
           </Link>
         </div>
-        <div className={`p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
+        <div className={`p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
           <Link
             onClick={handleSidebar}
             href="/"
@@ -124,7 +124,7 @@ const Sidebar = () => {
         </div>
         </div>
         <div className="my-4 bg-stone-50 h-[1px]"></div>
-        <div className="p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <div className="flex justify-between w-full items-center">
             <Link
               onClick={handleSidebar}
@@ -136,7 +136,7 @@ const Sidebar = () => {
             </Link>
           </div>
         </div>
-        <div className="p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <div className="flex justify-between w-full items-center">
             <Link
               onClick={handleSidebar}
@@ -148,7 +148,7 @@ const Sidebar = () => {
             </Link>
           </div>
         </div>
-        <div className="p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <Link
             onClick={handleSidebar}
             href="/"
@@ -160,7 +160,7 @@ const Sidebar = () => {
         </div>
         <div className="my-4 bg-stone-50 h-[1px]"></div>
         
-        <div className="p-1.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
           <Link
             onClick={handleSidebar}
             href="/create-product"
