@@ -80,7 +80,7 @@ const ProductCard: React.FC<CardProps> = ({
   }
   return (
     <div className="max-w-xl">
-      <div className="bg-white shadow-xl rounded-lg max-w-lg dark:bg-gray-800 dark:border-gray-700">
+      <div className="bg-white shadow-xl rounded-lg max-w-lg">
         <div
           className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer"
           onClick={() => {
@@ -96,17 +96,17 @@ const ProductCard: React.FC<CardProps> = ({
         </div>
         <div className="px-3 md:px-5 pb-5">
           <a href="#">
-            <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
+            <h3 className="text-gray-900 font-semibold text-xl tracking-tight">
               {title}
             </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="rounded-xl border-2  border-gray-500 py-1 px-5">
-              #{category}
+            <span className="rounded-xl border-2 border-gray-800 py-1 px-5">
+              {category}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold text-gray-900 dark:text-white">
+            <span className="text-3xl font-bold text-gray-900">
               ${price}
             </span>
             <a

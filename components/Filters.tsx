@@ -11,7 +11,7 @@ const Filters = () => {
         <select
           id="brand"
           name="brand"
-          className="w-full h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
+          className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
         >
           <option value="Curren">Curren</option>
           <option value="Lige">Lige</option>
@@ -26,7 +26,7 @@ const Filters = () => {
         <select
           id="type"
           name="type"
-          className="w-full h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
+          className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
         >
           <option value="Man">Muški</option>
           <option value="Woman">Ženski</option>
@@ -37,7 +37,7 @@ const Filters = () => {
         <select
           id="category"
           name="category"
-          className="w-full h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
+          className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
         >
           <option value="Lux">Lux</option>
           <option value="Mid">Mid</option>
@@ -52,7 +52,7 @@ const Filters = () => {
           name="max-price"
           type="text"
           placeholder="RSD"
-          className="w-full h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
+          className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
         />
       </div>
       <div className="flex flex-col">
@@ -62,7 +62,7 @@ const Filters = () => {
           name="max-price"
           placeholder="RSD"
           type="text"
-          className="w-full h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
+          className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
         />
       </div>
     </div>

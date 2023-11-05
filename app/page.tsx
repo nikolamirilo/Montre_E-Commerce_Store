@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Loader from "@/components/Loader";
-import Search from "@/sub-components/Search";
+import Search from "@/components/Search";
 import dynamic from "next/dynamic";
 
 const DynamicProducts = dynamic(() => import("@/components/Products"), {
@@ -18,7 +18,7 @@ export default async function Home() {
         id="cards-container"
         className="flex flex-col justify-center items-center min-h-screen md:p-20 gap-10"
       >
-        <h3 className="text-gray-800 font-semibold text-4xl tracking-tight dark:text-white text-center uppercase">
+        <h3 className="text-gray-800 font-semibold text-4xl tracking-tight  text-center uppercase">
           Svi modeli satova
         </h3>
         <Search />

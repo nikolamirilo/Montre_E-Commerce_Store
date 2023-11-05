@@ -1,33 +1,33 @@
 import React from "react";
-import HeroNavigation from "@/sub-components/HeroNavigation";
+import HeroNavigation from "@/components/HeroNavigation";
 import Image from "next/image";
 
 const Hero = () => {
   return (
     <section
-      className="relative md:pt-20 pt-10 dark:bg-gray-900 w-full"
+      className="relative md:pt-20 pt-10 w-full"
       id="hero"
     >
       <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
-        <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl dark:text-white">
+        <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
           Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />
-          <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400 dark:from-blue-400 dark:to-cyan-300">
+          <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
             po tvojoj meri!
           </span>
         </h1>
         <div className="lg:flex">
           <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
-            <p className="sm:text-lg text-gray-800 dark:text-gray-300 lg:w-11/12">
+            <p className="sm:text-lg text-gray-800 lg:w-11/12">
               Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima
               koji kombinuju neopisivu eleganciju sa nesavladivom preciznošću,
               čineći svaki trenutak vrednim pamćenja.
             </p>
-            <span className="block italic text-gray-800 dark:text-gray-400 text-xl">
+            <span className="block italic text-gray-800 text-xl">
               "Elegancija koja se meri sekundama"
             </span>
             <HeroNavigation />
 
-            <div className="dark:text-gray-300 text-xl">
+            <div className="text-xl">
               🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
             </div>
 

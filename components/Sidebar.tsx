@@ -23,18 +23,19 @@ const Sidebar = () => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 text-white text-4xl flex flex-row justify-end cursor-pointer h-fit lg:p-3 p-5 z-50 ${
+        className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-50 lg:px-20 px-6 ${
           isOpen && "hidden"
         }`}
-        style={{ width: "100%" }}
         id="navbar"
       >
+        <Image src="/MontreLogoTransparentLetters.png" width={150} height={90} alt="Montre"/>
         <button
-          className="font-xxl text-white rounded-3xl lg:mr-20 mr-6"
+          className="font-xxl text-white rounded-3xl"
           onClick={handleSidebar}
         >
           <RiMenu3Line size={35} />
         </button>
+   
       </div>
       <div
         className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center z-50 ${
@@ -44,8 +45,8 @@ const Sidebar = () => {
       >
         <div className="text-gray-100 text-xl relative">
           <div className="p-2.5 mt-1 flex flex-row items-center justify-between">
-            <div className="heading flex items-center justify-center">
-              <Image src={logo} alt="Logo" width={300} height={200} />
+            <div className="heading flex items-center justify-center w-full">
+              <Image src={logo} alt="Logo" width={120} height={80} />
             </div>
 
             <button

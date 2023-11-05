@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "./ProductCard";
+import Card from "./Card";
 import { Product } from "@/typescript/interfaces";
 import { getAllProducts } from "@/actions/products";
 
@@ -12,7 +12,7 @@ const Products = async () => {
     <div className="flex flex-wrap w-full justify-center items-center gap-5">
       {products?.documents?.map((product: Product) => {
         return (
-          <ProductCard
+          <Card
             key={product._id}
             _id={product._id}
             title={product.title}
