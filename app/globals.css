@@ -9,12 +9,12 @@
   box-sizing: border-box;
 }
 #navbar, #sidebar, #footer, footer,#submit-button, #loader{
-  /* background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); */
   background-color: #181823;
 }
 main{
   min-height: 100vh;
   padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 #hero{
   opacity: 0;

@@ -1,14 +1,13 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import logo from "../public/MontreLogo.jpeg";
+import logo from "../public/MontreLogoTransparent.png";
 import { CloudinaryResponse } from "@/typescript/interfaces";
-import { revalidateData } from "@/helpers";
 
 const Form: React.FC = () => {
   const [displayImage, setDisplayImage] = useState("");
-  const usernameInput = useRef<HTMLInputElement>(null);
-  const locationInput = useRef<HTMLInputElement>(null);
+  const categoryInput = useRef<HTMLInputElement>(null);
+  const priceInput = useRef<HTMLInputElement>(null);
   const titleInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -59,8 +58,8 @@ const Form: React.FC = () => {
     }
 
     const uploadData = {
-      username: usernameInput.current!.value,
-      location: locationInput.current!.value,
+      category: categoryInput.current!.value,
+      price: priceInput.current!.value,
       title: titleInput.current!.value,
       description: descriptionInput.current!.value,
       likes: 0,
@@ -80,8 +79,8 @@ const Form: React.FC = () => {
     //   console.log(response);
 
     //   //Set Initial data
-    //   usernameInput.current!.value = "";
-    //   locationInput.current!.value = "";
+    //   categoryInput.current!.value = "";
+    //   priceInput.current!.value = "";
     //   titleInput.current!.value = "";
     //   descriptionInput.current!.value = "";
     //   setDisplayImage("");
@@ -96,18 +95,18 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center lg:py-8 px-2 sm:px-16 lg:px-52 pb-8 w-full bg-white">
+    <div className="flex justify-center lg:py-8 px-2 sm:px-16 lg:px-52 pb-8 w-full">
       <div className="lg:w-8/12 w-full bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="text-center">
           <Image
             className="mx-auto"
             src={logo}
             alt="Leafs"
-            width={100}
-            height={100}
+            width={120}
+            height={120}
           />
           <h2 className="mt-6 text-2xl font-bold text-gray-900">
-            Create a new Instagram Post!
+            Dodaj novi proizvod
           </h2>
         </div>
 
@@ -119,56 +118,58 @@ const Form: React.FC = () => {
         >
           <div>
             <label
-              htmlFor="username"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
-              Username:
-            </label>
-            <div className="mt-1">
-              <input
-                ref={usernameInput}
-                placeholder="e.g. @john.doe"
-                id="username"
-                name="username"
-                type="text"
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-purple-400 sm:text-sm"
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              htmlFor="location"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
-              Location:
-            </label>
-            <div className="mt-1">
-              <input
-                ref={locationInput}
-                id="location"
-                name="location"
-                placeholder="e.g. Budapest, Hungary"
-                type="text"
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-purple-400 sm:text-sm"
-              />
-            </div>
-          </div>
-          <div>
-            <label
               htmlFor="title"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Post Title:
+              Naslov proizvoda:
             </label>
             <div className="mt-1">
               <input
                 ref={titleInput}
                 id="title"
                 name="title"
-                placeholder="e.g. My First Post on Instagram!"
+                placeholder="e.g. Curren TNG 876!"
                 type="text"
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-purple-400 sm:text-sm"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
               />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="price"
+              className="block text-sm font-medium leading-5 text-gray-700"
+            >
+             Cena proizvoda:
+            </label>
+            <div className="mt-1">
+              <input
+                ref={priceInput}
+                id="price"
+                name="price"
+                placeholder="e.g. Budapest, Hungary"
+                type="text"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="category"
+              className="block text-sm font-medium leading-5 text-gray-700"
+            >
+              Kategorija proizvoda:
+            </label>
+            <div className="mt-1">
+            <select
+          id="category"
+          name="category"
+          className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 text-gray-900"
+        >
+          <option value="Premium">Premium</option>
+          <option value="Mid">Mid</option>
+          <option value="Casual">Casual</option>
+          <option value="Sport">Sport</option>
+        </select>
             </div>
           </div>
           <div>
@@ -176,16 +177,16 @@ const Form: React.FC = () => {
               htmlFor="description"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Post Description:
+              Opis proizvoda:
             </label>
             <div className="mt-1">
               <textarea
                 ref={descriptionInput}
-                placeholder="e.g. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                placeholder="e.g. Čelični sat sa kožnom narukvicom..."
                 id="description"
                 name="description"
                 rows={4}
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-purple-400 sm:text-sm"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
               />
             </div>
           </div>
@@ -194,13 +195,13 @@ const Form: React.FC = () => {
               htmlFor="image-upload"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Post Image:
+              Slike proizvoda:
             </label>
             <div className="mt-2">
               <div className="flex items-center justify-center w-full">
                 <label
                   htmlFor="image-input"
-                  className="flex relative flex-col items-center justify-center bg-center bg-cover w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:border-purple-400"
+                  className="flex relative flex-col items-center justify-center bg-center bg-cover w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:border-amber-500"
                 >
                   {displayImage !== "" ? (
                     <Image
@@ -255,7 +256,7 @@ const Form: React.FC = () => {
             <button
               type="submit"
               id="submit-button"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-purple-400"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-amber-500 focus:border-2"
               onClick={(e: any) => {
                 handleFormSubmit(e);
               }}

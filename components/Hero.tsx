@@ -26,7 +26,6 @@ const Hero = () => {
               "Elegancija koja se meri sekundama"
             </span>
             <HeroNavigation />
-
             <div className="text-xl">
               🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
             </div>

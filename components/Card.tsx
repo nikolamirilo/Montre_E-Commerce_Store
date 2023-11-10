@@ -24,6 +24,7 @@ const ProductCard: React.FC<CardProps> = ({
   const [mounted, setMounted] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState(false);
   const [currentLikes, setCurrentLikes] = useState<number>(price);
+  const [isHovered, setIsHovered] = useState(false)
 
   async function handleLikeClick() {
     //Replace with Mongo DB API
@@ -101,7 +102,7 @@ const ProductCard: React.FC<CardProps> = ({
             </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="rounded-xl border-2 border-gray-800 py-1 px-5">
+            <span className="rounded-xl border-2 bg-gray-800 border-gray-800 py-1 px-5 shadow-lg text-white text-bold uppercase">
               {category}
             </span>
           </div>

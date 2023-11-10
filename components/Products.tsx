@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { Product } from "@/typescript/interfaces";
 import { getAllProducts } from "@/actions/products";
+import Search from "./Search";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
@@ -16,7 +17,7 @@ const Products = async () => {
             key={product._id}
             _id={product._id}
             title={product.title}
-            category="Lux"
+            category="Premium"
             images={product.images}
             price={product.price}
           />

@@ -7,17 +7,17 @@ const Search = () => {
   return (
     <form className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
-        <div className="flex flex-row items-center justify-center w-fit">
+        <div className="flex flex-row items-center justify-center w-full  md:w-3/5 lg:w-2/5">
           <input
             type="text"
             placeholder="Pretraži satove"
-            className="w-full md:w-80 md:px-4 md:py-2 px-4 py-2 h-10 rounded-lg border-2 border-amber-500 focus:outline-none text-lg"
+            className="w-4/5 md:px-4 md:py-2 px-4 py-2 h-10 rounded-lg border-2 border-amber-500 focus:outline-none text-lg relative left-1.5"
           />
           <button
             type="submit"
-            className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
+            className="w-1/5 bg-amber-500 text-white rounded-lg relative right-1.5 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
           >
-            Search
+           Pretraži
           </button>
         </div>
 
@@ -31,13 +31,18 @@ const Search = () => {
           {isOpen ? "Isključi filtere" : "Uključi filtere"}
         </button>
       </div>
-      {isOpen ? <Filters /> : null}
-      <button
+      {isOpen ? (
+      <>
+        <Filters />
+        <button
         type="submit"
-        className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
-      >
+        className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg">
         Primeni
-      </button>
+        </button>
+      </>
+      )
+      : null}
+
     </form>
   );
 };
