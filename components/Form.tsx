@@ -2,8 +2,8 @@
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import logo from "../public/MontreLogoTransparent.png";
-import { CloudinaryResponse } from "@/typescript/interfaces";
 import { revalidateData } from "@/helpers";
+import { uploadImagesToCloudinary } from "@/actions/products";
 
 const Form: React.FC = () => {
   const [displayImage, setDisplayImage] = useState("");
@@ -12,8 +12,9 @@ const Form: React.FC = () => {
   const titleInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
-  const images: any = [];
+  const images: string[] = [];
   //Display different image every time new image is changed
+
   const handleInputImageChange = (e: any) => {
     const file = e?.target?.files?.[0];
     if (file) {
@@ -32,33 +33,7 @@ const Form: React.FC = () => {
       console.error("No file selected.");
       return;
     }
-    const formData = new FormData();
-
-    for (let i = 0; i <= files.length; i++) {
-      formData.append("file", files[i]);
-      formData.append("upload_preset", "products");
-      try {
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/montre-cloudinary/image/upload",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`Image upload failed: ${response.statusText}`);
-        }
-
-        // Now, extract and parse the JSON response correctly
-        const uploadImage: CloudinaryResponse = await response.json();
-        await images.push(uploadImage.url);
-        formData.delete("file");
-        // Rest of your code here, if needed
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
+    await uploadImagesToCloudinary(files, images);
     const uploadData = {
       title: titleInput.current!.value,
       price: priceInput.current!.value,
@@ -67,23 +42,26 @@ const Form: React.FC = () => {
       images: images,
     };
     console.log(uploadData);
+
+    const uploadObject = JSON.stringify({
+      dataSource: "MainCluster",
+      database: "Store",
+      collection: "products",
+      document: uploadData,
+    });
     if (uploadData) {
       await fetch(
         "https://eu-central-1.aws.data.mongodb-api.com/app/data-eagdn/endpoint/data/v1/action/insertOne",
         {
           method: "POST",
+          mode: "cors",
           headers: {
             "api-key":
               "QZCIcGQluFrPOHPAMvvrk9taEjiMifFAtrjGnmlM2efolfQjELuTbLdJTWhbhuYQ",
             "Content-Type": "application/json",
-            "Access-Control-Request-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({
-            dataSource: "MainCluster",
-            database: "Store",
-            collection: "products",
-            document: uploadData,
-          }),
+          body: uploadObject,
         }
       ).then((response) => {
         console.log(response);
