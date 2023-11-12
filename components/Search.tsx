@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <form className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
-        <div className="flex flex-row items-center justify-center w-full  md:w-3/5 lg:w-2/5">
+        <div className="flex flex-row items-center justify-center w-full  md:w-3/5 lg:w-4/12">
           <input
             type="text"
             placeholder="Pretraži satove"
@@ -17,7 +17,7 @@ const Search = () => {
             type="submit"
             className="w-1/5 bg-amber-500 text-white rounded-lg relative right-1.5 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
           >
-           Pretraži
+            Pretraži
           </button>
         </div>
 
@@ -32,17 +32,16 @@ const Search = () => {
         </button>
       </div>
       {isOpen ? (
-      <>
-        <Filters />
-        <button
-        type="submit"
-        className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg">
-        Primeni
-        </button>
-      </>
-      )
-      : null}
-
+        <>
+          <Filters />
+          <button
+            type="submit"
+            className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg"
+          >
+            Primeni
+          </button>
+        </>
+      ) : null}
     </form>
   );
 };

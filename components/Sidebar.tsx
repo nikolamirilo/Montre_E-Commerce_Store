@@ -2,23 +2,32 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { RiMenu3Line } from "react-icons/ri";
-import { AiFillCloseCircle, AiOutlineMan, AiOutlineWoman } from "react-icons/ai";
+import {
+  AiFillCloseCircle,
+  AiOutlineMan,
+  AiOutlineWoman,
+} from "react-icons/ai";
 import logo from "../public/MontreLogoTransparent.png";
 import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs";
-import { MdOutlineMessage, MdOutlineLocalOffer, MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md";
+import {
+  MdOutlineMessage,
+  MdOutlineLocalOffer,
+  MdKeyboardArrowRight,
+  MdKeyboardArrowDown,
+} from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { LuPlusSquare } from "react-icons/lu";
-import { TbDiscount2} from "react-icons/tb"
+import { TbDiscount2 } from "react-icons/tb";
 import Link from "next/link";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isOfferOpen, setIsOfferOpen] = useState(false);
   function handleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen)
+    setIsSidebarOpen(!isSidebarOpen);
   }
   function handleMenu() {
-    setIsOfferOpen(!isOfferOpen)
+    setIsOfferOpen(!isOfferOpen);
   }
 
   return (
@@ -29,14 +38,19 @@ const Sidebar = () => {
         }`}
         id="navbar"
       >
-        <Image src="/MontreLogoTransparentLetters.png" width={150} height={90} alt="Montre"/>
+        <Image
+          src="/MontreLogoTransparentLetters.png"
+          width={150}
+          height={90}
+          alt="Montre"
+          priority
+        />
         <button
           className="font-xxl text-white rounded-3xl"
           onClick={handleSidebar}
         >
           <RiMenu3Line size={35} />
         </button>
-   
       </div>
       <div
         className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-50 ${
@@ -55,122 +69,148 @@ const Sidebar = () => {
               onClick={handleSidebar}
               className="absolute top-3 right-2"
             >
-              <AiFillCloseCircle size={30}/>
+              <AiFillCloseCircle size={30} />
             </button>
           </div>
           <div className="my-2 bg-stone-50 h-[1px]"></div>
         </div>
-      <div>
-        <div id="offer-section">
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <button
-            onClick={handleMenu}
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <BsWatch size={30}/>
-            <span>Ponuda satova</span>
-            {isOfferOpen ? <MdKeyboardArrowDown size={30} className="relative bottom-[1px]"/> : <MdKeyboardArrowRight size={30} className="relative bottom-[1px]"/>}
-          </button>
-        </div>
-        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <MdOutlineLocalOffer size={30}/>
-            <span>Svi</span>
-          </Link>
-        </div>
-        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <AiOutlineMan size={30}/>
-            <span>Muški</span>
-          </Link>
-        </div>
-        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <AiOutlineWoman size={30}/>
-            <span>Ženski</span>
-          </Link>
-        </div>
-        <div className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"}`}>
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <TbDiscount2 size={30}/>
-            <span>Akcije</span>
-          </Link>
-        </div>
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <BsCart3 size={30}/>
-            <span>Korpa</span>
-          </Link>
-        </div>
-        </div>
-        <div className="my-4 bg-stone-50 h-[1px]"></div>
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <div className="flex justify-between w-full items-center">
+        <div>
+          <div id="offer-section">
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <button
+                onClick={handleMenu}
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <BsWatch size={30} />
+                <span>Ponuda satova</span>
+                {isOfferOpen ? (
+                  <MdKeyboardArrowDown
+                    size={30}
+                    className="relative bottom-[1px]"
+                  />
+                ) : (
+                  <MdKeyboardArrowRight
+                    size={30}
+                    className="relative bottom-[1px]"
+                  />
+                )}
+              </button>
+            </div>
+            <div
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}
+            >
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <MdOutlineLocalOffer size={30} />
+                <span>Svi</span>
+              </Link>
+            </div>
+            <div
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}
+            >
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <AiOutlineMan size={30} />
+                <span>Muški</span>
+              </Link>
+            </div>
+            <div
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}
+            >
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <AiOutlineWoman size={30} />
+                <span>Ženski</span>
+              </Link>
+            </div>
+            <div
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}
+            >
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <TbDiscount2 size={30} />
+                <span>Akcije</span>
+              </Link>
+            </div>
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <BsCart3 size={30} />
+                <span>Korpa</span>
+              </Link>
+            </div>
+          </div>
+          <div className="my-4 bg-stone-50 h-[1px]"></div>
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            <div className="flex justify-between w-full items-center">
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <BsInfoCircle size={30} />
+                <span>O Nama</span>
+              </Link>
+            </div>
+          </div>
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            <div className="flex justify-between w-full items-center">
+              <Link
+                onClick={handleSidebar}
+                href="/contact"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <MdOutlineMessage size={30} />
+                <span>Kontaktiraj Nas</span>
+              </Link>
+            </div>
+          </div>
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
             <Link
               onClick={handleSidebar}
               href="/"
               className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
             >
-              <BsInfoCircle size={30}/>
-              <span>O Nama</span>
+              <FiLogOut size={30} />
+              <span>Odjavi se</span>
             </Link>
           </div>
-        </div>
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <div className="flex justify-between w-full items-center">
+          <div className="my-4 bg-stone-50 h-[1px]"></div>
+
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
             <Link
               onClick={handleSidebar}
-              href="/contact"
+              href="/create-product"
               className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
             >
-              <MdOutlineMessage size={30}/>
-              <span>Kontaktiraj Nas</span>
+              <LuPlusSquare size={30} />
+              <span>Dodaj Novi Proizvod</span>
             </Link>
           </div>
         </div>
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <Link
-            onClick={handleSidebar}
-            href="/"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <FiLogOut size={30}/>
-            <span>Odjavi se</span>
-          </Link>
-        </div>
-        <div className="my-4 bg-stone-50 h-[1px]"></div>
-        
-        <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-          <Link
-            onClick={handleSidebar}
-            href="/create-product"
-            className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-          >
-            <LuPlusSquare size={30}/>
-            <span>Dodaj Novi Proizvod</span>
-          </Link>
-        </div>
-      </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import { Product } from "@/typescript/interfaces";
-import { getAllProducts } from "@/actions/products";
+import { getAllProducts } from "@/actions/server/products";
 import Search from "./Search";
 
 export const revalidate = 0;
@@ -12,16 +12,24 @@ const Products = async () => {
   return (
     <div className="flex flex-wrap w-full justify-center items-center gap-5">
       {products?.documents?.map((product: Product) => {
-        return (
-          <Card
-            key={product._id}
-            _id={product._id}
-            title={product.title}
-            category="Premium"
-            images={product.images}
-            price={product.price}
-          />
-        );
+        if (
+          product.title &&
+          product.images.length > 0 &&
+          product.price &&
+          product.category &&
+          product.isPublic == true
+        ) {
+          return (
+            <Card
+              key={product._id}
+              _id={product._id}
+              title={product.title}
+              category={product.category}
+              images={product.images}
+              price={product.price}
+            />
+          );
+        }
       })}
     </div>
   );

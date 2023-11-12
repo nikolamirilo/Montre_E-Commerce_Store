@@ -16,7 +16,7 @@ export default async function Home() {
       <Hero />
       <section
         id="cards-container"
-        className="flex flex-col justify-center items-center min-h-screen md:p-20 gap-10"
+        className="flex flex-col justify-center items-center min-h-screen md:p-20 gap-10 w-full"
       >
         <h3 className="text-gray-800 font-semibold text-4xl tracking-tight  text-center uppercase">
           Svi modeli satova

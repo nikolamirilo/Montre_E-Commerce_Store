@@ -11,7 +11,9 @@ export interface User {
 
 export interface Product {
     _id: string;
+    isPublic: boolean;
     location: string;
+    category:string;
     title: string;
     description: string;
     images: string[];

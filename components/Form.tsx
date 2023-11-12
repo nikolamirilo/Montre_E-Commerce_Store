@@ -3,19 +3,19 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import logo from "../public/MontreLogoTransparent.png";
 import { revalidateData } from "@/helpers";
-import { uploadImagesToCloudinary } from "@/actions/products";
+import { uploadImagesToCloudinary } from "@/actions/client/products";
 
 const Form: React.FC = () => {
   const [displayImage, setDisplayImage] = useState("");
   const categoryInput = useRef<HTMLSelectElement>(null);
   const priceInput = useRef<HTMLInputElement>(null);
   const titleInput = useRef<HTMLInputElement>(null);
+  const isPublicInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
-  const images: string[] = [];
-  //Display different image every time new image is changed
+  var images: string[] = [];
 
-  const handleInputImageChange = (e: any) => {
+  const handleInputImageChange = async (e: any) => {
     const file = e?.target?.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -26,64 +26,52 @@ const Form: React.FC = () => {
     }
   };
 
-  const handleFormSubmit = async (e: any) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const files = await imagesInput?.current?.files;
-    if (!files) {
-      console.error("No file selected.");
-      return;
-    }
-    await uploadImagesToCloudinary(files, images);
-    const uploadData = {
-      title: titleInput.current!.value,
-      price: priceInput.current!.value,
-      category: categoryInput.current!.value,
-      description: descriptionInput.current!.value,
-      images: images,
-    };
-    console.log(uploadData);
 
-    const uploadObject = JSON.stringify({
-      dataSource: "MainCluster",
-      database: "Store",
-      collection: "products",
-      document: uploadData,
-    });
-    if (uploadData) {
-      await fetch(
-        "https://eu-central-1.aws.data.mongodb-api.com/app/data-eagdn/endpoint/data/v1/action/insertOne",
-        {
+    try {
+      const files = imagesInput?.current?.files;
+      if (!files) {
+        console.error("No file selected.");
+        return;
+      }
+
+      // Upload images to Cloudinary and update the images array
+      await uploadImagesToCloudinary(files, images);
+
+      const uploadData = {
+        title: titleInput.current!.value,
+        price: priceInput.current!.value,
+        category: categoryInput.current!.value,
+        description: descriptionInput.current!.value,
+        isPublic: isPublicInput.current?.checked,
+        images: images,
+      };
+
+      if (images.length > 0) {
+        const response = await fetch(`/api/create-product`, {
           method: "POST",
-          mode: "cors",
-          headers: {
-            "api-key":
-              "QZCIcGQluFrPOHPAMvvrk9taEjiMifFAtrjGnmlM2efolfQjELuTbLdJTWhbhuYQ",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: uploadObject,
-        }
-      ).then((response) => {
-        console.log(response);
-        //Set Initial data
-        categoryInput.current!.value = "";
-        priceInput.current!.value = "";
-        titleInput.current!.value = "";
-        descriptionInput.current!.value = "";
-        setDisplayImage("");
+          body: JSON.stringify(uploadData),
+        });
+
         if (response.ok) {
           revalidateData();
-          alert("Vas odgovor je zabelezen");
+          window.location.reload();
+          alert("Vaš odgovor je zabeležen");
         } else {
           console.log(response.statusText);
         }
-      });
+      } else {
+        alert("Dodaj bar jednu sliku!");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <div className="flex justify-center lg:py-8 px-2 sm:px-16 lg:px-52 pb-8 w-full">
-      <div className="lg:w-8/12 w-full bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+      <div className="lg:w-7/12 w-full bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="text-center">
           <Image
             className="mx-auto"
@@ -100,8 +88,8 @@ const Form: React.FC = () => {
         <form
           className="mt-8 space-y-6"
           encType="multipart/form-data"
-          name="Form"
           method="POST"
+          onSubmit={handleFormSubmit}
         >
           <div>
             <label
@@ -115,7 +103,7 @@ const Form: React.FC = () => {
                 ref={titleInput}
                 id="title"
                 name="title"
-                placeholder="e.g. Curren TNG 876!"
+                placeholder="e.g. Curren TNG 876"
                 type="text"
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
               />
@@ -133,7 +121,7 @@ const Form: React.FC = () => {
                 ref={priceInput}
                 id="price"
                 name="price"
-                placeholder="e.g. Budapest, Hungary"
+                placeholder="e.g. 50"
                 type="text"
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
               />
@@ -160,6 +148,7 @@ const Form: React.FC = () => {
               </select>
             </div>
           </div>
+
           <div>
             <label
               htmlFor="description"
@@ -189,7 +178,7 @@ const Form: React.FC = () => {
               <div className="flex items-center justify-center w-full">
                 <label
                   htmlFor="image-input"
-                  className="flex relative flex-col items-center justify-center bg-center bg-cover w-full h-96 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:border-amber-500"
+                  className="flex relative flex-col items-center justify-center bg-center bg-cover w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:border-amber-500"
                 >
                   {displayImage !== "" ? (
                     <Image
@@ -241,14 +230,25 @@ const Form: React.FC = () => {
               </div>
             </div>
           </div>
+          <div className="flex items-center relative left-1">
+            <input
+              ref={isPublicInput}
+              id="is-public"
+              type="checkbox"
+              className="w-4 h-4  text-blue-600 rounded cursor-pointer"
+            />
+            <label
+              htmlFor="link-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900"
+            >
+              Proizvod je javno dostupan
+            </label>
+          </div>
           <div>
             <button
               type="submit"
               id="submit-button"
               className="uppercase w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-amber-500 focus:border-2"
-              onClick={(e: any) => {
-                handleFormSubmit(e);
-              }}
             >
               Dodaj proizvod
             </button>
