@@ -6,6 +6,7 @@ import {
   AiFillCloseCircle,
   AiOutlineMan,
   AiOutlineWoman,
+  AiOutlineLogin,
 } from "react-icons/ai";
 import logo from "../public/MontreLogoTransparent.png";
 import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs";
@@ -29,6 +30,9 @@ const Sidebar = () => {
   function handleMenu() {
     setIsOfferOpen(!isOfferOpen);
   }
+
+  //user doesnt exists
+  const user = null;
 
   return (
     <div className="w-full">
@@ -155,7 +159,7 @@ const Sidebar = () => {
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/cart"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <BsCart3 size={30} />
@@ -168,7 +172,7 @@ const Sidebar = () => {
             <div className="flex justify-between w-full items-center">
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/about"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <BsInfoCircle size={30} />
@@ -188,16 +192,30 @@ const Sidebar = () => {
               </Link>
             </div>
           </div>
-          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-            <Link
-              onClick={handleSidebar}
-              href="/"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-            >
-              <FiLogOut size={30} />
-              <span>Odjavi se</span>
-            </Link>
-          </div>
+          {user ? (
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <Link
+                onClick={handleSidebar}
+                href="/"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <FiLogOut size={30} />
+                <span>Odjavi se</span>
+              </Link>
+            </div>
+          ) : (
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <Link
+                onClick={handleSidebar}
+                href="/login"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+              >
+                <AiOutlineLogin size={30} />
+                <span>Prijavi se</span>
+              </Link>
+            </div>
+          )}
+
           <div className="my-4 bg-stone-50 h-[1px]"></div>
 
           <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">

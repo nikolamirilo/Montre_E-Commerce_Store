@@ -1,12 +1,13 @@
+import { getSingleProduct } from "@/actions/server/products";
 import { useParams } from "next/navigation";
 import React from "react";
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  console.log(id);
-  //   const product = await getSingleProduct(id)
+  const product = await getSingleProduct(id);
+  console.log(product);
   return (
-    <main className="md:flex items-start justify-center 2xl:px-20 md:px-6 px-4">
+    <main className="md:flex items-start mt-10 justify-center 2xl:px-20 md:px-6 px-4">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
         <img
           className="w-full"
@@ -110,7 +111,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </svg>
           </div>
         </div>
-        <button className="dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-none text-white bg-gray-800 w-full py-4 hover:bg-gray-700 focus:outline-none">
+        <button className="dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-none text-white bg-gray-800 w-full py-4 hover:bg-gray-700 focus:outline-none">
           <svg
             className="mr-3 text-white dark:text-gray-900"
             width="16"

@@ -1,4 +1,6 @@
 "use server"
+import { Product } from "@/typescript/interfaces";
+
 export async function getAllProducts() {
     try {
       const res = await fetch(`${process.env.MONGO_DB_URL!}/action/find`, {
@@ -24,6 +26,9 @@ export async function getAllProducts() {
     }
   }
   export async function getSingleProduct(id:string){
+    const products = await getAllProducts()
+    const singleProduct = products?.documents?.find((product: Product)=> product._id == id)
+    return singleProduct
   }
   export async function isPublicUpdate (id:string) {
   }
