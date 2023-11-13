@@ -23,9 +23,11 @@ export async function getAllProducts() {
       throw error;
     }
   }
-  export async function isPublicUpdate () {
+  export async function getSingleProduct(id:string){
   }
-  export async function updateProduct(){
+  export async function isPublicUpdate (id:string) {
   }
-  export async function deleteProduct(){
+  export async function updateProduct(id:string){
+  }
+  export async function deleteProduct(id:string){
   }

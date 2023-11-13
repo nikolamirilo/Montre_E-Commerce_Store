@@ -3,12 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request:NextRequest) {
     const uploadData = await request.json()
     const res = await fetch(
-        `https://eu-central-1.aws.data.mongodb-api.com/app/data-eagdn/endpoint/data/v1/action/insertOne`,
+        `${process.env.MONGO_DB_URL!}/action/insertOne`,
         {
           method: "POST",
           headers: {
-            "api-key":
-              "QZCIcGQluFrPOHPAMvvrk9taEjiMifFAtrjGnmlM2efolfQjELuTbLdJTWhbhuYQ",
+            "api-key": process.env.MONGO_DB_API_KEY!,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -21,4 +20,4 @@ export async function POST(request:NextRequest) {
       );
     const data = await res.json()
     return NextResponse.json({ data })
-  }
+}

@@ -8,9 +8,6 @@ const nextConfig = {
           {hostname:"media.licdn.com"},
           {hostname:"cdn.shopify.com"},
         ]
-      },
-      serverActions: {
-        bodySizeLimit: '5mb',
-      },
+      }
 }
 module.exports = nextConfig
