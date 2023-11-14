@@ -7,6 +7,7 @@ export async function POST(request:NextRequest) {
     const productsCount = await products?.documents?.length
     const fourDigitRandom = Math.floor(1000 + Math.random() * 9000)
     const id = `${uploadData.title.substr(0,2).toUpperCase()}${productsCount}${fourDigitRandom}`
+    const body = {uploadData, id:id}
     const res = await fetch(
         `${process.env.MONGO_DB_URL!}/action/insertOne`,
         {
@@ -19,7 +20,7 @@ export async function POST(request:NextRequest) {
             dataSource: "MainCluster",
             database: "Store",
             collection: "products",
-            document: {...uploadData, id},
+            document: body,
           }),
         }
       );

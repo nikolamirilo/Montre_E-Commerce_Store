@@ -30,9 +30,55 @@ export async function getAllProducts() {
     const singleProduct = products?.documents?.find((product: Product)=> product._id == id)
     return singleProduct
   }
-  export async function isPublicUpdate (id:string) {
+  export async function isPublicUpdate (id:string, isPublic: boolean) {
+    try {
+      const res = await fetch(`${process.env.MONGO_DB_URL!}/action/updateOne`, {
+        method: "POST",
+        headers: {
+          "api-key": process.env.MONGO_DB_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          dataSource: "MainCluster",
+          database: "Store",
+          collection: "products",
+          filter: { id: id },
+          update: { $set: { isPublic: isPublic  } }
+
+        }),
+      });
+      if (!res.ok) {
+        console.log(res);
+      }
+      return res.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   }
   export async function updateProduct(id:string){
   }
-  export async function deleteProduct(id:string){
+  export async function deleteAllProducts(){
+        try {
+      const res = await fetch(`${process.env.MONGO_DB_URL!}/action/deleteMany`, {
+        method: "POST",
+        headers: {
+          "api-key": process.env.MONGO_DB_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          dataSource: "MainCluster",
+          database: "Store",
+          collection: "products",
+          filter: {}
+        }),
+      });
+      if (!res.ok) {
+        console.log(res);
+      }
+      return res.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   }
