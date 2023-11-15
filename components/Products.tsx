@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 import { Product } from "@/typescript/interfaces";
 import { getAllProducts } from "@/actions/server/products";
-import Search from "./Search";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
