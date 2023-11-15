@@ -10,7 +10,7 @@ const Products = async () => {
   const products = await getAllProducts();
   return (
     <div className="flex flex-wrap w-full justify-center items-center gap-5">
-      {products?.documents?.map((product: Product) => {
+      {products?.map((product: Product) => {
         if (
           product.title &&
           product.images.length > 0 &&
@@ -20,8 +20,8 @@ const Products = async () => {
         ) {
           return (
             <Card
-              key={product._id}
-              _id={product._id}
+              key={product?.id}
+              _id={product?.id}
               title={product.title}
               category={product.category}
               images={product.images}
