@@ -1,28 +1,12 @@
-import { getAllProducts } from "@/actions/server/products";
+import { createProduct, getAllProducts } from "@/actions/server/products";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request:NextRequest) {
-    const uploadData = await request.json()
-    const products = await getAllProducts()
-    const productsCount = await products?.documents?.length
-    const fourDigitRandom = Math.floor(1000 + Math.random() * 9000)
-    const id = `${uploadData.title.substr(0,2).toUpperCase()}${productsCount}${fourDigitRandom}`
-    const res = await fetch(
-        `${process.env.MONGO_DB_URL!}/action/insertOne`,
-        {
-          method: "POST",
-          headers: {
-            "api-key": process.env.MONGO_DB_API_KEY!,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            dataSource: "MainCluster",
-            database: "Store",
-            collection: "products",
-            document: {...uploadData, id},
-          }),
-        }
-      );
-    const data = await res.json()
-    return NextResponse.json({ data, id })
+    try {
+      const newProduct = await request.json();
+      await createProduct(newProduct);
+      return NextResponse.json({message:"Post Added Successully"},{status:200});
+    } catch (error) {
+      return new NextResponse((error as Error).message);
+    }
 }

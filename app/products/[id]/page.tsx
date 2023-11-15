@@ -5,7 +5,6 @@ import React from "react";
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
   const product = await getSingleProduct(id);
-  console.log(product);
   return (
     <main className="md:flex items-start mt-10 justify-center 2xl:px-20 md:px-6 px-4">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">

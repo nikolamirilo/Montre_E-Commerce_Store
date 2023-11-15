@@ -65,7 +65,7 @@ const Sidebar = () => {
         <div className="text-gray-100 text-xl relative">
           <div className="p-1.5 mt-1 flex flex-row items-center justify-between">
             <div className="heading flex items-center justify-center w-full">
-              <Image src={logo} alt="Logo" width={120} height={80} />
+              <Image src={logo} alt="Logo" width={120} height={80} priority />
             </div>
 
             <button

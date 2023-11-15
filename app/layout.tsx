@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import { Cloudinary } from "@cloudinary/url-gen";
+import MainContextProvider from "@/context/MainContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white`}>
-        <Sidebar />
-        {children}
-        <Footer />
+        <MainContextProvider>
+          <Sidebar />
+          {children}
+          <Footer />
+        </MainContextProvider>
       </body>
     </html>
   );

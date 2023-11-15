@@ -10,7 +10,8 @@ export interface User {
 }
 
 export interface Product {
-    id: string;
+    id?: string;
+    _id?:string;
     isPublic: boolean;
     location: string;
     category:string;

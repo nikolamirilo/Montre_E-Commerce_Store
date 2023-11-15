@@ -1,16 +1,19 @@
 "use client";
 import React, { createContext, useContext } from "react";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 
-export const AuthContextProvider = ({
+export default function AuthContextProvider({
   children,
 }: {
   children: React.ReactNode;
-}) => {
-  return <AuthContext.Provider value={null}>{children}</AuthContext.Provider>;
-};
+}) {
+  const user: string = "Nikola Mirilo";
+  return (
+    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+  );
+}
