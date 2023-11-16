@@ -107,7 +107,7 @@ const Sidebar = () => {
             >
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/products/watches"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <MdOutlineLocalOffer size={30} />
@@ -121,7 +121,7 @@ const Sidebar = () => {
             >
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/products/watches/man"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <AiOutlineMan size={30} />
@@ -135,7 +135,7 @@ const Sidebar = () => {
             >
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/products/watches/woman"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <AiOutlineWoman size={30} />
@@ -149,7 +149,7 @@ const Sidebar = () => {
             >
               <Link
                 onClick={handleSidebar}
-                href="/"
+                href="/products/watches/super-deals"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
                 <TbDiscount2 size={30} />

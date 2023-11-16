@@ -1,7 +1,6 @@
 "use client";
 import { deleteSingleProduct } from "@/actions/server/products";
-import { useAuthContext } from "@/context/AuthContext";
-import { useMainContext } from "@/context/MainContext";
+import { MdOutlineModeEditOutline } from "react-icons/md";
 import { revalidateData } from "@/helpers";
 import Image from "next/image";
 import Link from "next/link";
@@ -75,19 +74,28 @@ const ProductCard: React.FC<CardProps> = ({
     <div className="max-w-xl">
       <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
         {user == "admin" && (
-          <button
-            id="delete"
-            className="absolute right-0 z-10 p-1 rounded-full hover:bg-red-500 top-0"
-            onClick={handleDeleteProduct}
-          >
-            <BsTrash3 size={25} className="hover:fill-white" />
-          </button>
+          <div className="admin-buttons -top-2 -right-1 z-10 flex flex-row gap-1 absolute">
+            <button
+              id="delete"
+              className="p-1 rounded-full hover:bg-amber-500 hover:text-white"
+              onClick={handleDeleteProduct}
+            >
+              <MdOutlineModeEditOutline size={30} />
+            </button>
+            <button
+              id="delete"
+              className="p-1 rounded-full hover:bg-red-500 hover:text-white"
+              onClick={handleDeleteProduct}
+            >
+              <BsTrash3 size={25} />
+            </button>
+          </div>
         )}
 
         <div
           className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer"
           onClick={() => {
-            router.push(`/products/${_id}`);
+            router.push(`/products/watches/${_id}`);
           }}
         >
           <Image

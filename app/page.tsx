@@ -1,10 +1,4 @@
 import Hero from "@/components/Hero";
-import Loader from "@/components/Loader";
-import dynamic from "next/dynamic";
-
-const DynamicProducts = dynamic(() => import("@/components/Products"), {
-  loading: () => <Loader />,
-});
 
 export default async function Home() {
   return (
@@ -13,7 +7,6 @@ export default async function Home() {
       id="home"
     >
       <Hero />
-      <DynamicProducts />
     </main>
   );
 }
