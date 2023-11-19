@@ -1,6 +1,6 @@
 import Loader from "@/components/Loader";
 import dynamic from "next/dynamic";
-import React, { Suspense } from "react";
+import React from "react";
 const DynamicProducts = dynamic(() => import("@/components/Products"), {
   loading: () => <Loader />,
 });
