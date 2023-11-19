@@ -7,13 +7,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 #navbar, #sidebar, #footer, footer,#submit-button, #loader{
   background-color: #181823;
 }
 main{
   min-height: 100vh;
-  padding-top: 5rem;
+  padding-top: 3rem;
   padding-bottom: 5rem;
 }
 #hero{

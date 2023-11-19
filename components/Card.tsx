@@ -1,5 +1,8 @@
 "use client";
-import { deleteSingleProduct } from "@/actions/server/products";
+import {
+  deleteSingleProduct,
+  getSingleProduct,
+} from "@/actions/server/products";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { revalidateData } from "@/helpers";
 import Image from "next/image";
@@ -8,6 +11,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { BsCart3, BsTrash3 } from "react-icons/bs";
 import Form from "./Form";
+import { FormInitialData } from "@/typescript/interfaces";
 
 export interface CardProps {
   _id?: string;
@@ -25,7 +29,19 @@ const ProductCard: React.FC<CardProps> = ({
   category,
 }) => {
   const router = useRouter();
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [initialData, setInitialData] = useState<FormInitialData>({
+    title: "Title",
+    price: "50",
+    category: "Casual",
+    type: "woman",
+    description: "desc",
+    brand: "Curren",
+    isPublic: true,
+    images: [
+      "http://res.cloudinary.com/montre-cloudinary/image/upload/v1700395939/products/3_mu4ldn.jpg",
+      "http://res.cloudinary.com/montre-cloudinary/image/upload/v1700395941/products/4_c892pc.jpg",
+    ],
+  });
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
   // const { user } = useAuthContext();
   const user = "admin";
@@ -39,14 +55,6 @@ const ProductCard: React.FC<CardProps> = ({
     revalidateData();
   }
 
-  useEffect(() => {
-    setMounted(true);
-    console.log(user);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
   return (
     <>
       <div
@@ -54,7 +62,7 @@ const ProductCard: React.FC<CardProps> = ({
           !isFormOpen && "hidden"
         }`}
       >
-        <Form />
+        <Form initialData={initialData} />
       </div>
       <div className="max-w-xl">
         <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
@@ -78,13 +86,13 @@ const ProductCard: React.FC<CardProps> = ({
           )}
 
           <div
-            className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer"
+            className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer rounded-xl"
             onClick={() => {
               router.push(`/products/watches/${_id}`);
             }}
           >
             <Image
-              className="rounded-t-lg p-8 object-cover object-center"
+              className="p-8 object-cover object-center"
               priority
               fill
               src={images[0]}

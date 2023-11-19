@@ -21,6 +21,17 @@ export interface Product {
     price: number;
 }
 
+export interface FormInitialData {
+    title: string;
+    price: string;
+    category: string;
+    type: string;
+    brand: string;
+    description: string;
+    isPublic: boolean;
+    images: string[];
+}
+
 export interface CloudinaryResponse {
     asset_id: string,
     public_id: string,

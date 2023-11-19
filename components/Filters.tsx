@@ -22,7 +22,7 @@ const Filters = () => {
         </select>
       </div>
       <div className="flex flex-col">
-        <label htmlFor="brand">Tip:</label>
+        <label htmlFor="type">Tip:</label>
         <select
           id="type"
           name="type"

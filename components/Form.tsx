@@ -1,32 +1,46 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import logo from "../public/MontreLogoTransparent.png";
 import { revalidateData } from "@/helpers";
 import { uploadImagesToCloudinary } from "@/actions/client/products";
+import { FormInitialData } from "@/typescript/interfaces";
+import { BsTrash3 } from "react-icons/bs";
 
-const Form: React.FC = () => {
-  const [displayImage, setDisplayImage] = useState("");
-  const categoryInput = useRef<HTMLSelectElement>(null);
-  const priceInput = useRef<HTMLInputElement>(null);
+const Form = ({ initialData }: { initialData?: FormInitialData }) => {
+  const [displayImages, setDisplayImages] = useState<string[]>([]);
   const titleInput = useRef<HTMLInputElement>(null);
-  const isPublicInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
+  const priceCategoryInput = useRef<HTMLSelectElement>(null);
+  const typeInput = useRef<HTMLSelectElement>(null);
+  const brandInput = useRef<HTMLSelectElement>(null);
+  const priceInput = useRef<HTMLInputElement>(null);
+  const isPublicInput = useRef<HTMLInputElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
   var images: string[] = [];
 
-  const handleInputImageChange = async (e: any) => {
-    const file = e?.target?.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setDisplayImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  async function handleInputImageChange() {
+    const files = imagesInput?.current?.files;
+    console.log(files);
+    if (files) {
+      const newImages = await Promise.all(
+        Array.from(files).map((file) => {
+          return new Promise<string>((resolve) => {
+            const reader = new FileReader();
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+            reader.onload = () => {
+              resolve(reader.result as string);
+            };
+
+            reader.readAsDataURL(file);
+          });
+        })
+      );
+
+      setDisplayImages((prevImages) => [...prevImages, ...newImages]);
+    }
+  }
+  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
@@ -36,20 +50,20 @@ const Form: React.FC = () => {
         return;
       }
 
-      // Upload images to Cloudinary and update the images array
       await uploadImagesToCloudinary(files, images);
 
       const uploadData = {
         title: titleInput.current!.value,
         price: priceInput.current!.value,
-        category: categoryInput.current!.value,
+        category: priceCategoryInput.current!.value,
         description: descriptionInput.current!.value,
         isPublic: isPublicInput.current?.checked,
+        brand: brandInput.current?.value,
         images: images,
       };
 
       if (images.length > 0) {
-        const response = await fetch(`/api/create-product`, {
+        const response = await fetch(`/api/products/create`, {
           method: "POST",
           body: JSON.stringify(uploadData),
         });
@@ -67,11 +81,41 @@ const Form: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+  function handleDeleteImage(index: number) {
+    setDisplayImages((prevImages) => {
+      const newImages = [...prevImages];
+      newImages.splice(index, 1);
+      return newImages;
+    });
+  }
+  //Set initial Values in case I want to edit product
+  useEffect(() => {
+    if (initialData) {
+      titleInput.current!.value = initialData.title;
+      priceInput.current!.value = initialData.price;
+      priceCategoryInput.current!.value = initialData.category;
+      typeInput.current!.value = initialData.type;
+      descriptionInput.current!.value = initialData.description;
+      isPublicInput.current!.checked = initialData.isPublic;
+      brandInput.current!.value = initialData.brand;
+      images = initialData.images;
+      setDisplayImages(initialData.images);
+    } else {
+      titleInput.current!.value = "";
+      priceInput.current!.value = "";
+      priceCategoryInput.current!.value = "Premium";
+      typeInput.current!.value = "man";
+      brandInput.current!.value = "Curren";
+      descriptionInput.current!.value = "";
+      isPublicInput.current!.checked = false;
+      images = [];
+    }
+  }, []);
 
   return (
-    <div className="flex justify-center lg:py-8 px-2 sm:px-16 lg:px-52 pb-8 w-full">
-      <div className="md:w-9/12 xl:7/12 w-full bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+    <div className="flex justify-center items-center lg:py-10 w-full">
+      <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="text-center">
           <Image
             className="mx-auto"
@@ -80,13 +124,13 @@ const Form: React.FC = () => {
             width={120}
             height={120}
           />
-          <h2 className="mt-6 text-2xl font-bold text-gray-900">
+          <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">
             Dodaj novi proizvod
           </h2>
         </div>
 
         <form
-          className="mt-8 space-y-6"
+          className="mt-8 flex flex-col w-full gap-2"
           encType="multipart/form-data"
           method="POST"
           onSubmit={handleFormSubmit}
@@ -100,6 +144,7 @@ const Form: React.FC = () => {
             </label>
             <div className="mt-1">
               <input
+                required
                 ref={titleInput}
                 id="title"
                 name="title"
@@ -118,6 +163,7 @@ const Form: React.FC = () => {
             </label>
             <div className="mt-1">
               <input
+                required
                 ref={priceInput}
                 id="price"
                 name="price"
@@ -129,22 +175,67 @@ const Form: React.FC = () => {
           </div>
           <div>
             <label
-              htmlFor="category"
+              htmlFor="category-price"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Kategorija proizvoda:
+              Kategorije proizvoda:
             </label>
             <div className="mt-1">
               <select
-                ref={categoryInput}
+                required
+                ref={priceCategoryInput}
                 id="category"
                 name="category"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 text-gray-900"
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
               >
                 <option value="Premium">Premium</option>
                 <option value="Mid">Mid</option>
                 <option value="Casual">Casual</option>
                 <option value="Sport">Sport</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="type"
+              className="block text-sm font-medium leading-5 text-gray-700"
+            >
+              Tip:
+            </label>
+            <div className="mt-1">
+              <select
+                required
+                ref={typeInput}
+                id="type"
+                name="type"
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
+              >
+                <option value="man">Muški</option>
+                <option value="woman">Ženski</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="brand"
+              className="block text-sm font-medium leading-5 text-gray-700"
+            >
+              Brend:
+            </label>
+            <div className="mt-1">
+              <select
+                required
+                ref={brandInput}
+                id="brand"
+                name="brand"
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
+              >
+                <option value="Curren">Curren</option>
+                <option value="Lige">Lige</option>
+                <option value="Naviforce">Naviforce</option>
+                <option value="Benyar">Benyar</option>
+                <option value="Hannah Martin">Hannah Martin</option>
+                <option value="Geneva">Geneva</option>
               </select>
             </div>
           </div>
@@ -158,6 +249,7 @@ const Form: React.FC = () => {
             </label>
             <div className="mt-1">
               <textarea
+                required
                 ref={descriptionInput}
                 placeholder="e.g. Čelični sat sa kožnom narukvicom..."
                 id="description"
@@ -175,48 +267,21 @@ const Form: React.FC = () => {
               Slike proizvoda:
             </label>
             <div className="mt-2">
-              <div className="flex items-center justify-center w-full">
-                <label
-                  htmlFor="image-input"
-                  className="flex relative flex-col items-center justify-center bg-center bg-cover w-full h-80 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:border-amber-500"
-                >
-                  {displayImage !== "" ? (
-                    <Image
-                      src={displayImage}
-                      fill
-                      className="object-cover object-center"
-                      priority
-                      alt="Background"
-                    />
-                  ) : null}
-                  <div
-                    className={`flex flex-col items-center justify-center pt-5 pb-6 ${
-                      displayImage == "" ? "" : "hidden"
-                    }`}
-                  >
-                    <svg
-                      className="w-10 h-10 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+              <div className="flex flex-col w-full gap-2">
+                <div id="add-image">
+                  <div className="flex flex-row justify-start items-center gap-2 border border-gray-300 focus:border-amber-500 rounded-md p-2">
+                    <label
+                      htmlFor="image-input"
+                      className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center cursor-pointer"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      />
-                    </svg>
-                    <p className="mt-2 text-sm text-gray-500">
-                      <span className="font-semibold">Click to upload</span> or
-                      drag and drop
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                    </p>
+                      Dodaj slike
+                    </label>
+                    Broj dodatih slika: {displayImages.length}
                   </div>
                   <input
+                    className="hidden"
+                    aria-describedby="file_input_help"
+                    required
                     onChange={handleInputImageChange}
                     multiple={true}
                     id="image-input"
@@ -224,18 +289,52 @@ const Form: React.FC = () => {
                     name="image-input"
                     type="file"
                     accept="image/*"
-                    className="hidden"
                   />
-                </label>
+                </div>
+                <div
+                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[25rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${
+                    displayImages.length !== 0 ? "flex" : "hidden"
+                  }`}
+                >
+                  {displayImages.length !== 0
+                    ? displayImages.map((image, idx) => {
+                        console.log(displayImages);
+                        return (
+                          <div
+                            className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
+                            key={idx}
+                          >
+                            <button
+                              id="delete"
+                              className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
+                              onClick={() => {
+                                handleDeleteImage(idx);
+                              }}
+                            >
+                              <BsTrash3 size={25} />
+                            </button>
+                            <Image
+                              src={image}
+                              fill
+                              priority
+                              className="object-cover object-center"
+                              alt="Input Picture"
+                            />
+                          </div>
+                        );
+                      })
+                    : null}
+                </div>
               </div>
             </div>
           </div>
           <div className="flex items-center relative left-1">
             <input
+              required
               ref={isPublicInput}
               id="is-public"
               type="checkbox"
-              className="w-4 h-4  text-blue-600 rounded cursor-pointer"
+              className="w-4 h-4 rounded cursor-pointer"
             />
             <label
               htmlFor="link-checkbox"
@@ -244,11 +343,11 @@ const Form: React.FC = () => {
               Proizvod je javno dostupan
             </label>
           </div>
-          <div>
+          <div className="mt-2">
             <button
               type="submit"
               id="submit-button"
-              className="uppercase w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-amber-500 focus:border-2"
+              className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md"
             >
               Dodaj proizvod
             </button>

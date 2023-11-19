@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative md:pt-20 pt-7 w-full" id="hero">
+    <section className="relative h-screen py-10 w-full bg-black" id="hero">
       <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6">
         <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 w-full font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
           Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const CreatePost = () => {
   return (
-    <main id="create-post">
+    <main id="create-post" className="flex items-center justify-center">
       <Form />
     </main>
   );

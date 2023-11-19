@@ -1,6 +1,5 @@
 "use server"
 import { storeDatabaseConnection } from "@/connections/mongodb/connections";
-import { Product } from "@/typescript/interfaces";
 import { ObjectId } from "mongodb";
 
 export const getAllProducts = async () => {

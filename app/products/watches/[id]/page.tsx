@@ -6,47 +6,18 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
   const product = await getSingleProduct(id);
   return (
-    <main className="md:flex items-start mt-10 justify-center 2xl:px-20 md:px-6 px-4">
+    <main className="md:flex items-start mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
+        {/* {product?.images?.map((image: string) => {
+          return (
+            <img className="w-full" alt="image of a girl posing" src={image} />
+          );
+        })} */}
         <img
           className="w-full"
           alt="image of a girl posing"
-          src="https://i.ibb.co/QMdWfzX/component-image-one.png"
+          src={product.images[0]}
         />
-        <img
-          className="mt-6 w-full"
-          alt="image of a girl posing"
-          src="https://i.ibb.co/qxkRXSq/component-image-two.png"
-        />
-      </div>
-      <div className="md:hidden">
-        <img
-          className="w-full"
-          alt="image of a girl posing"
-          src="https://i.ibb.co/QMdWfzX/component-image-one.png"
-        />
-        <div className="flex items-center justify-between mt-3 space-x-4 md:space-x-0">
-          <img
-            alt="image-tag-one"
-            className="md:w-48 md:h-48 w-full"
-            src="https://i.ibb.co/cYDrVGh/Rectangle-245.png"
-          />
-          <img
-            alt="image-tag-one"
-            className="md:w-48 md:h-48 w-full"
-            src="https://i.ibb.co/f17NXrW/Rectangle-244.png"
-          />
-          <img
-            alt="image-tag-one"
-            className="md:w-48 md:h-48 w-full"
-            src="https://i.ibb.co/cYDrVGh/Rectangle-245.png"
-          />
-          <img
-            alt="image-tag-one"
-            className="md:w-48 md:h-48 w-full"
-            src="https://i.ibb.co/f17NXrW/Rectangle-244.png"
-          />
-        </div>
       </div>
       <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
         <div className="border-b border-gray-200 pb-6">
