@@ -1,4 +1,4 @@
-# This is clone of Instagram developed for S2S workshop
+# This Montre E-Commerce store
 
 ## To run application do the following:
 

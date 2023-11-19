@@ -1,14 +1,10 @@
 "use client";
-import {
-  deleteSingleProduct,
-  getSingleProduct,
-} from "@/actions/server/products";
+import { deleteSingleProduct } from "@/actions/server/products";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { revalidateData } from "@/helpers";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsCart3, BsTrash3 } from "react-icons/bs";
 import Form from "./Form";
 import { FormInitialData } from "@/typescript/interfaces";
@@ -32,11 +28,13 @@ const ProductCard: React.FC<CardProps> = ({
   const [initialData, setInitialData] = useState<FormInitialData>({
     title: "Title",
     price: "50",
-    category: "Casual",
-    type: "woman",
+    class: "Casual",
+    category: "woman",
     description: "desc",
     brand: "Curren",
     isPublic: true,
+    // discount: true;
+    // isOutOfStock:false;
     images: [
       "http://res.cloudinary.com/montre-cloudinary/image/upload/v1700395939/products/3_mu4ldn.jpg",
       "http://res.cloudinary.com/montre-cloudinary/image/upload/v1700395941/products/4_c892pc.jpg",
@@ -67,7 +65,7 @@ const ProductCard: React.FC<CardProps> = ({
       <div className="max-w-xl">
         <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
           {user == "admin" && (
-            <div className="admin-buttons -top-2 -right-1 z-10 flex flex-row gap-1 absolute">
+            <div className="admin-buttons -top-[6px] right-1 z-10 flex flex-row gap-1 absolute">
               <button
                 id="edit"
                 className="p-1 rounded-full hover:bg-amber-500 hover:text-white"
@@ -106,7 +104,7 @@ const ProductCard: React.FC<CardProps> = ({
               </h3>
             </a>
             <div className="flex items-center mt-2.5 mb-5">
-              <span className="rounded-xl border-2 bg-gray-800 border-gray-800 py-1 px-5 shadow-lg text-white text-bold uppercase">
+              <span className="rounded-xl border-2 bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg text-white text-bold uppercase">
                 {category}
               </span>
             </div>

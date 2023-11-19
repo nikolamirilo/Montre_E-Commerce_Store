@@ -14,7 +14,7 @@ const Products = async () => {
   return (
     <section
       id="cards-container"
-      className="flex flex-col justify-center items-center h-fit md:p-20 gap-10 w-full"
+      className="flex flex-col justify-center items-center h-fit md:p-20 gap-10 w-full pt-12"
     >
       <h3 className="text-gray-800 font-semibold text-4xl tracking-tight text-center uppercase">
         Svi modeli satova

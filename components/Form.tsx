@@ -11,8 +11,8 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([]);
   const titleInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
-  const priceCategoryInput = useRef<HTMLSelectElement>(null);
-  const typeInput = useRef<HTMLSelectElement>(null);
+  const classInput = useRef<HTMLSelectElement>(null);
+  const categoryInput = useRef<HTMLSelectElement>(null);
   const brandInput = useRef<HTMLSelectElement>(null);
   const priceInput = useRef<HTMLInputElement>(null);
   const isPublicInput = useRef<HTMLInputElement>(null);
@@ -55,10 +55,11 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       const uploadData = {
         title: titleInput.current!.value,
         price: priceInput.current!.value,
-        category: priceCategoryInput.current!.value,
+        class: classInput.current!.value,
+        category: categoryInput.current!.value,
+        brand: brandInput.current?.value,
         description: descriptionInput.current!.value,
         isPublic: isPublicInput.current?.checked,
-        brand: brandInput.current?.value,
         images: images,
       };
 
@@ -94,8 +95,8 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
     if (initialData) {
       titleInput.current!.value = initialData.title;
       priceInput.current!.value = initialData.price;
-      priceCategoryInput.current!.value = initialData.category;
-      typeInput.current!.value = initialData.type;
+      classInput.current!.value = initialData.class;
+      categoryInput.current!.value = initialData.category;
       descriptionInput.current!.value = initialData.description;
       isPublicInput.current!.checked = initialData.isPublic;
       brandInput.current!.value = initialData.brand;
@@ -104,14 +105,14 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
     } else {
       titleInput.current!.value = "";
       priceInput.current!.value = "";
-      priceCategoryInput.current!.value = "Premium";
-      typeInput.current!.value = "man";
+      classInput.current!.value = "Premium";
+      categoryInput.current!.value = "man";
       brandInput.current!.value = "Curren";
       descriptionInput.current!.value = "";
       isPublicInput.current!.checked = false;
       images = [];
     }
-  }, []);
+  }, [initialData]);
 
   return (
     <div className="flex justify-center items-center lg:py-10 w-full">
@@ -178,14 +179,14 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
               htmlFor="category-price"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Kategorije proizvoda:
+              Klasa proizvoda:
             </label>
             <div className="mt-1">
               <select
                 required
-                ref={priceCategoryInput}
-                id="category"
-                name="category"
+                ref={classInput}
+                id="class"
+                name="class"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
               >
                 <option value="Premium">Premium</option>
@@ -197,17 +198,17 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
           </div>
           <div>
             <label
-              htmlFor="type"
+              htmlFor="category"
               className="block text-sm font-medium leading-5 text-gray-700"
             >
-              Tip:
+              Kategorija proizvoda:
             </label>
             <div className="mt-1">
               <select
                 required
-                ref={typeInput}
-                id="type"
-                name="type"
+                ref={categoryInput}
+                id="category"
+                name="category"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
               >
                 <option value="man">Muški</option>

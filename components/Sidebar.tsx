@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { RiMenu3Line } from "react-icons/ri";
+import { RiMenu3Line, RiContactsLine } from "react-icons/ri";
 import {
   AiFillCloseCircle,
   AiOutlineMan,
@@ -11,7 +11,6 @@ import {
 import logo from "../public/MontreLogoTransparent.png";
 import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs";
 import {
-  MdOutlineMessage,
   MdOutlineLocalOffer,
   MdKeyboardArrowRight,
   MdKeyboardArrowDown,
@@ -20,6 +19,7 @@ import { FiLogOut } from "react-icons/fi";
 import { LuPlusSquare } from "react-icons/lu";
 import { TbDiscount2 } from "react-icons/tb";
 import Link from "next/link";
+import { IoHomeOutline } from "react-icons/io5";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -79,6 +79,16 @@ const Sidebar = () => {
           <div className="my-2 bg-stone-50 h-[1px]"></div>
         </div>
         <div>
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            <Link
+              onClick={handleSidebar}
+              href="/"
+              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+            >
+              <IoHomeOutline size={30} />
+              <span>Početna</span>
+            </Link>
+          </div>
           <div id="offer-section">
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <button
@@ -187,7 +197,7 @@ const Sidebar = () => {
                 href="/contact"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
               >
-                <MdOutlineMessage size={30} />
+                <RiContactsLine size={30} />
                 <span>Kontaktiraj Nas</span>
               </Link>
             </div>

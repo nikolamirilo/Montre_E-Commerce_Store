@@ -25,7 +25,7 @@ export interface FormInitialData {
     title: string;
     price: string;
     category: string;
-    type: string;
+    class: string;
     brand: string;
     description: string;
     isPublic: boolean;

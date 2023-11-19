@@ -10,12 +10,12 @@
   
 }
 #navbar, #sidebar, #footer, footer,#submit-button, #loader{
-  background-color: #181823;
+  background-color: #0c0502;;
 }
 main{
   min-height: 100vh;
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 #hero{
   opacity: 0;

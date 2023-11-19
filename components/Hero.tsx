@@ -4,7 +4,10 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen py-10 w-full bg-black" id="hero">
+    <section
+      className="relative min-h-screen h-fit w-full pt-10 lg:pt-16"
+      id="hero"
+    >
       <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6">
         <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 w-full font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
           Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />
@@ -23,10 +26,9 @@ const Hero = () => {
               "Elegancija koja se meri sekundama"
             </span>
             <HeroNavigation />
-            <div className="text-xl">
+            <div className="text-xl text-black">
               🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
             </div>
-
             <div className="pt-10 flex flex-row justify-center align-middle flex-wrap gap-8">
               <Image
                 src="/brands/curren_logo.png"
