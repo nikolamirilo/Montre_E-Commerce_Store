@@ -7,7 +7,13 @@ import { uploadImagesToCloudinary } from "@/actions/client/products";
 import { FormInitialData } from "@/typescript/interfaces";
 import { BsTrash3 } from "react-icons/bs";
 
-const Form = ({ initialData }: { initialData?: FormInitialData }) => {
+const Form = ({
+  initialData,
+  action,
+}: {
+  initialData?: FormInitialData;
+  action: string;
+}) => {
   const [displayImages, setDisplayImages] = useState<string[]>([]);
   const titleInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLTextAreaElement>(null);
@@ -17,11 +23,11 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
   const priceInput = useRef<HTMLInputElement>(null);
   const isPublicInput = useRef<HTMLInputElement>(null);
   const imagesInput = useRef<HTMLInputElement>(null);
+  const [id, setId] = useState<string>("");
   var images: string[] = [];
 
   async function handleInputImageChange() {
     const files = imagesInput?.current?.files;
-    console.log(files);
     if (files) {
       const newImages = await Promise.all(
         Array.from(files).map((file) => {
@@ -31,7 +37,6 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
             reader.onload = () => {
               resolve(reader.result as string);
             };
-
             reader.readAsDataURL(file);
           });
         })
@@ -40,6 +45,7 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       setDisplayImages((prevImages) => [...prevImages, ...newImages]);
     }
   }
+
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -53,6 +59,7 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       await uploadImagesToCloudinary(files, images);
 
       const uploadData = {
+        _id: id,
         title: titleInput.current!.value,
         price: priceInput.current!.value,
         class: classInput.current!.value,
@@ -64,8 +71,8 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       };
 
       if (images.length > 0) {
-        const response = await fetch(`/api/products/create`, {
-          method: "POST",
+        const response = await fetch(`/api/products/${action}`, {
+          method: action == "create" ? "POST" : "PUT",
           body: JSON.stringify(uploadData),
         });
 
@@ -90,9 +97,11 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       return newImages;
     });
   }
+
   //Set initial Values in case I want to edit product
   useEffect(() => {
     if (initialData) {
+      setId(initialData._id);
       titleInput.current!.value = initialData.title;
       priceInput.current!.value = initialData.price;
       classInput.current!.value = initialData.class;
@@ -102,15 +111,6 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
       brandInput.current!.value = initialData.brand;
       images = initialData.images;
       setDisplayImages(initialData.images);
-    } else {
-      titleInput.current!.value = "";
-      priceInput.current!.value = "";
-      classInput.current!.value = "Premium";
-      categoryInput.current!.value = "man";
-      brandInput.current!.value = "Curren";
-      descriptionInput.current!.value = "";
-      isPublicInput.current!.checked = false;
-      images = [];
     }
   }, [initialData]);
 
@@ -126,14 +126,13 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
             height={120}
           />
           <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">
-            Dodaj novi proizvod
+            {action == "create" ? "Dodaj novi proizvod" : "Ažuriraj proizvod"}
           </h2>
         </div>
 
         <form
           className="mt-8 flex flex-col w-full gap-2"
           encType="multipart/form-data"
-          method="POST"
           onSubmit={handleFormSubmit}
         >
           <div>
@@ -299,7 +298,6 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
                 >
                   {displayImages.length !== 0
                     ? displayImages.map((image, idx) => {
-                        console.log(displayImages);
                         return (
                           <div
                             className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
@@ -331,7 +329,6 @@ const Form = ({ initialData }: { initialData?: FormInitialData }) => {
           </div>
           <div className="flex items-center relative left-1">
             <input
-              required
               ref={isPublicInput}
               id="is-public"
               type="checkbox"

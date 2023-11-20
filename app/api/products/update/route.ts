@@ -1,7 +1,7 @@
 import {  updateProduct } from "@/actions/server/products";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request:NextRequest) {
+export async function PUT(request:NextRequest) {
     try {
       const body = await request.json();
       await updateProduct(body);

@@ -10,7 +10,6 @@ export interface User {
 }
 
 export interface Product {
-    id?: string;
     _id?:string;
     isPublic: boolean;
     location: string;
@@ -19,9 +18,11 @@ export interface Product {
     description: string;
     images: string[];
     price: number;
+    class: string;
 }
 
 export interface FormInitialData {
+    _id:string;
     title: string;
     price: string;
     category: string;

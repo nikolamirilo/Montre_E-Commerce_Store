@@ -55,7 +55,9 @@ export const updateProduct = async ( body: any) => {
           title: body.title,
           description: body.description,
           images: body.images,
-          price: body.price
+          price: body.price,
+          class:body.class,
+          brand: body.brand
         },
       }
     );

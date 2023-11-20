@@ -13,10 +13,9 @@ export const metadata: Metadata = {
   description: "Montre online shop",
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   const cld = new Cloudinary({ cloud: { cloudName: "montre-cloudinary" } });
   return (
@@ -24,7 +23,8 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white`}>
         <MainContextProvider>
           <Sidebar />
-          {children}
+          {props.children}
+          {props.modal}
           <Footer />
         </MainContextProvider>
       </body>

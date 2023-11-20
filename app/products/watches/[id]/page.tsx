@@ -8,13 +8,8 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   return (
     <main className="md:flex items-start mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-        {/* {product?.images?.map((image: string) => {
-          return (
-            <img className="w-full" alt="image of a girl posing" src={image} />
-          );
-        })} */}
         <img
-          className="w-full"
+          className="w-2/3"
           alt="image of a girl posing"
           src={product.images[0]}
         />
