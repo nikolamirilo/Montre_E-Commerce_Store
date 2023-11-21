@@ -1,11 +1,12 @@
-export async function uploadImagesToCloudinary(files: any, images: any) {
+export async function uploadImagesToCloudinary(files: any, images: any, displayImages: any) {
+    const cldImages =  await displayImages.filter((element:any) => element.includes("res.cloudinary.com"));
+    console.log(cldImages)
+    images = cldImages
     const formData = new FormData();
-    formData.append("upload_preset", "products");
-  
+    formData.append("upload_preset", "products"); 
     for (let i = 0; i < files.length; i++) {
       let file = files[i];
       formData.append("file", file);
-  
       try {
         const response = await fetch("https://api.cloudinary.com/v1_1/montre-cloudinary/image/upload", {
           method: "POST",
@@ -16,9 +17,8 @@ export async function uploadImagesToCloudinary(files: any, images: any) {
           console.error(`Error uploading file ${file.name}`);
           continue; // Skip to the next iteration if there's an error
         }
-  
         const res = await response.json();
-         images.push(res.url)
+        images.push(res.url)
       } catch (error) {
         console.error(`Error uploading file ${file.name}: ${(error as Error).message}`);
       } finally {
