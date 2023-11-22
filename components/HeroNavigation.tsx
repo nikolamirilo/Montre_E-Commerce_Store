@@ -1,7 +1,6 @@
 "use client"
-import React from "react"
-import { useRouter } from "next/navigation"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const HeroNavigation = () => {
   const router = useRouter()
@@ -9,10 +8,9 @@ const HeroNavigation = () => {
     <div className="relative flex flex-col justify-center items-center gap-2 md:fle md:flex-row md:justify-center lg:justify-start">
       <button
         onClick={() => {
-          router.push("/contact")
+          router.push("/products/watches/categories/man")
         }}
-        className="bg-white p-4 md:skew-x-[4deg] border-2 h-56 relative md:left-3 w-full md:w-1/2  font-bold py-2 px-4 inline-flex items-center gap-2 border-black shadow-xl shadow-black/20"
-      >
+        className="bg-white p-4 md:skew-x-[4deg] border-2 h-56 relative md:left-3 w-full md:w-1/2  font-bold py-2 px-4 inline-flex items-center gap-2 border-black shadow-xl shadow-black/20">
         <Image
           className="object-cover object-center transform -scale-x-100"
           priority
@@ -26,10 +24,9 @@ const HeroNavigation = () => {
       </button>
       <button
         onClick={() => {
-          router.push("/about")
+          router.push("/products/watches/categories/woman")
         }}
-        className="bg-white md:skew-x-[4deg] p-4 border-2 h-56 relative md:right-3 w-full md:w-1/2 font-bold py-2 px-4 inline-flex items-center gap-2 border-amber-400 shadow-xl shadow-amber-600/20"
-      >
+        className="bg-white md:skew-x-[4deg] p-4 border-2 h-56 relative md:right-3 w-full md:w-1/2 font-bold py-2 px-4 inline-flex items-center gap-2 border-amber-400 shadow-xl shadow-amber-600/20">
         <Image
           className="object-cover object-center"
           priority
