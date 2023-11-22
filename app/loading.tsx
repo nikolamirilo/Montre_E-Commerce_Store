@@ -1,12 +1,8 @@
-import Image from "next/image";
-import React from "react";
+import React from "react"
 
 const Loading = () => {
   return (
-    <div
-      className="min-h-screen flex flex-row justify-center items-center"
-      id="loader"
-    >
+    <div className="min-h-screen flex flex-row justify-center items-center" id="loader">
       <div role="status">
         <svg
           aria-hidden="true"
@@ -27,7 +23,7 @@ const Loading = () => {
         <span className="sr-only">Loading...</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading

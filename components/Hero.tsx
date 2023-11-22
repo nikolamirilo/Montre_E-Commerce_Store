@@ -1,26 +1,19 @@
-import React from "react";
-import HeroNavigation from "@/components/HeroNavigation";
-import Image from "next/image";
+import HeroNavigation from "@/components/HeroNavigation"
+import Image from "next/image"
 
 const Hero = () => {
   return (
-    <section
-      className="relative min-h-screen h-fit w-full pt-10 lg:pt-16"
-      id="hero"
-    >
+    <section className="relative min-h-screen h-fit w-full pt-10 lg:pt-16" id="hero">
       <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6">
         <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 w-full font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
-          Montre, satovi koji oduzimaju dah <br className="lg:block hidden" />
-          <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
-            po tvojoj meri!
-          </span>
+          Montre, satovi koji oduzimaju dah
         </h1>
         <div className="lg:flex">
           <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
             <p className="sm:text-lg text-gray-800 lg:w-11/12">
-              Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima
-              koji kombinuju neopisivu eleganciju sa nesavladivom preciznošću,
-              čineći svaki trenutak vrednim pamćenja.
+              Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima koji kombinuju
+              neopisivu eleganciju sa nesavladivom preciznošću, čineći svaki trenutak vrednim
+              pamćenja.
             </p>
             <span className="block italic text-gray-800 text-xl">
               "Elegancija koja se meri sekundama"
@@ -78,8 +71,7 @@ const Hero = () => {
             <div className="relative w-full flex justify-center items-center">
               <div
                 aria-hidden="true"
-                className="absolute scale-75 inset-0 m-auto w-80 h-80 lg:w-88 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"
-              ></div>
+                className="absolute scale-75 inset-0 m-auto w-80 h-80 lg:w-88 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"></div>
               <Image
                 src="/CurrenHero.png"
                 className="relative"
@@ -93,7 +85,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

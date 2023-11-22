@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from "next/link"
+import React from "react"
 
 const Contact = () => {
   return (
@@ -118,7 +118,7 @@ const Contact = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

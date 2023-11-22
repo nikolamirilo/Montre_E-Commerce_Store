@@ -1,7 +1,6 @@
-"use server";
-import { revalidatePath } from "next/cache";
+"use server"
+import { revalidatePath } from "next/cache"
 
 export const revalidateData = () => {
-    revalidatePath("/");
-};
-
+  revalidatePath("/")
+}

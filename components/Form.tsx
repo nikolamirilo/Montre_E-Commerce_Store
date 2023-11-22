@@ -1,62 +1,56 @@
-"use client";
-import Image from "next/image";
-import React, { useRef, useState, useEffect } from "react";
-import logo from "../public/MontreLogoTransparent.png";
-import { revalidateData } from "@/helpers";
-import { uploadImagesToCloudinary } from "@/actions/client/products";
-import { FormInitialData } from "@/typescript/interfaces";
-import { BsTrash3 } from "react-icons/bs";
+"use client"
+import Image from "next/image"
+import React, { useRef, useState, useEffect } from "react"
+import logo from "../public/MontreLogoTransparent.png"
+import { revalidateData } from "@/helpers"
+import { uploadImagesToCloudinary } from "@/actions/client/products"
+import { FormInitialData } from "@/typescript/interfaces"
+import { BsTrash3 } from "react-icons/bs"
 
-const Form = ({
-  initialData,
-  action,
-}: {
-  initialData?: FormInitialData;
-  action: string;
-}) => {
-  const [displayImages, setDisplayImages] = useState<string[]>([]);
-  const titleInput = useRef<HTMLInputElement>(null);
-  const descriptionInput = useRef<HTMLTextAreaElement>(null);
-  const classInput = useRef<HTMLSelectElement>(null);
-  const categoryInput = useRef<HTMLSelectElement>(null);
-  const brandInput = useRef<HTMLSelectElement>(null);
-  const priceInput = useRef<HTMLInputElement>(null);
-  const isPublicInput = useRef<HTMLInputElement>(null);
-  const imagesInput = useRef<HTMLInputElement>(null);
-  const [id, setId] = useState<string>("");
-  var images: string[] = [];
+const Form = ({ initialData, action }: { initialData?: FormInitialData; action: string }) => {
+  const [displayImages, setDisplayImages] = useState<string[]>([])
+  const titleInput = useRef<HTMLInputElement>(null)
+  const descriptionInput = useRef<HTMLTextAreaElement>(null)
+  const classInput = useRef<HTMLSelectElement>(null)
+  const categoryInput = useRef<HTMLSelectElement>(null)
+  const brandInput = useRef<HTMLSelectElement>(null)
+  const priceInput = useRef<HTMLInputElement>(null)
+  const isPublicInput = useRef<HTMLInputElement>(null)
+  const imagesInput = useRef<HTMLInputElement>(null)
+  const [id, setId] = useState<string>("")
+  var images: string[] = []
 
   async function handleInputImageChange() {
-    const files = imagesInput?.current?.files;
+    const files = imagesInput?.current?.files
     if (files) {
       const newImages = await Promise.all(
         Array.from(files).map((file) => {
           return new Promise<string>((resolve) => {
-            const reader = new FileReader();
+            const reader = new FileReader()
 
             reader.onload = () => {
-              resolve(reader.result as string);
-            };
-            reader.readAsDataURL(file);
-          });
+              resolve(reader.result as string)
+            }
+            reader.readAsDataURL(file)
+          })
         })
-      );
+      )
 
-      setDisplayImages((prevImages) => [...prevImages, ...newImages]);
+      setDisplayImages((prevImages) => [...prevImages, ...newImages])
     }
   }
 
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const files = imagesInput?.current?.files;
+      const files = imagesInput?.current?.files
       if (!files) {
-        console.error("No file selected.");
-        return;
+        console.error("No file selected.")
+        return
       }
 
-      await uploadImagesToCloudinary(files, images, displayImages);
+      await uploadImagesToCloudinary(files, images, displayImages)
 
       const uploadData = {
         _id: id,
@@ -68,34 +62,34 @@ const Form = ({
         description: descriptionInput.current!.value,
         isPublic: isPublicInput.current?.checked,
         images: images,
-      };
+      }
 
       if (images.length > 0) {
         const response = await fetch(`/api/products/${action}`, {
           method: action == "create" ? "POST" : "PUT",
           body: JSON.stringify(uploadData),
-        });
+        })
 
         if (response.ok) {
-          revalidateData();
-          window.location.reload();
-          alert("Vaš odgovor je zabeležen");
+          revalidateData()
+          window.location.reload()
+          alert("Vaš odgovor je zabeležen")
         } else {
-          console.log(response.statusText);
+          console.log(response.statusText)
         }
       } else {
-        alert("Dodaj bar jednu sliku!");
+        alert("Dodaj bar jednu sliku!")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
   function handleDeleteImage(index: number) {
     setDisplayImages((prevImages) => {
-      const newImages = [...prevImages];
-      newImages.splice(index, 1);
-      return newImages;
-    });
+      const newImages = [...prevImages]
+      newImages.splice(index, 1)
+      return newImages
+    })
     images.splice(index, 1)
     console.log(displayImages)
     console.log(images)
@@ -104,29 +98,23 @@ const Form = ({
   //Set initial Values in case I want to edit product
   useEffect(() => {
     if (initialData) {
-      setId(initialData._id);
-      titleInput.current!.value = initialData.title;
-      priceInput.current!.value = initialData.price;
-      classInput.current!.value = initialData.class;
-      categoryInput.current!.value = initialData.category;
-      descriptionInput.current!.value = initialData.description;
-      isPublicInput.current!.checked = initialData.isPublic;
-      brandInput.current!.value = initialData.brand;
-      setDisplayImages(initialData.images);
+      setId(initialData._id)
+      titleInput.current!.value = initialData.title
+      priceInput.current!.value = initialData.price
+      classInput.current!.value = initialData.class
+      categoryInput.current!.value = initialData.category
+      descriptionInput.current!.value = initialData.description
+      isPublicInput.current!.checked = initialData.isPublic
+      brandInput.current!.value = initialData.brand
+      setDisplayImages(initialData.images)
     }
-  }, [initialData]);
-console.log(images)
+  }, [initialData])
+  console.log(images)
   return (
     <div className="flex justify-center items-center lg:py-10 w-full">
       <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="text-center">
-          <Image
-            className="mx-auto"
-            src={logo}
-            alt="Leafs"
-            width={120}
-            height={120}
-          />
+          <Image className="mx-auto" src={logo} alt="Leafs" width={120} height={120} />
           <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">
             {action == "create" ? "Dodaj novi proizvod" : "Ažuriraj proizvod"}
           </h2>
@@ -138,10 +126,7 @@ console.log(images)
           onSubmit={handleFormSubmit}
         >
           <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+            <label htmlFor="title" className="block text-sm font-medium leading-5 text-gray-700">
               Naslov proizvoda:
             </label>
             <div className="mt-1">
@@ -157,10 +142,7 @@ console.log(images)
             </div>
           </div>
           <div>
-            <label
-              htmlFor="price"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+            <label htmlFor="price" className="block text-sm font-medium leading-5 text-gray-700">
               Cena proizvoda:
             </label>
             <div className="mt-1">
@@ -198,10 +180,7 @@ console.log(images)
             </div>
           </div>
           <div>
-            <label
-              htmlFor="category"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+            <label htmlFor="category" className="block text-sm font-medium leading-5 text-gray-700">
               Kategorija proizvoda:
             </label>
             <div className="mt-1">
@@ -218,10 +197,7 @@ console.log(images)
             </div>
           </div>
           <div>
-            <label
-              htmlFor="brand"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+            <label htmlFor="brand" className="block text-sm font-medium leading-5 text-gray-700">
               Brend:
             </label>
             <div className="mt-1">
@@ -309,7 +285,7 @@ console.log(images)
                               id="delete"
                               className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
                               onClick={() => {
-                                handleDeleteImage(idx);
+                                handleDeleteImage(idx)
                               }}
                             >
                               <BsTrash3 size={25} />
@@ -322,7 +298,7 @@ console.log(images)
                               alt="Input Picture"
                             />
                           </div>
-                        );
+                        )
                       })
                     : null}
                 </div>
@@ -336,10 +312,7 @@ console.log(images)
               type="checkbox"
               className="w-4 h-4 rounded cursor-pointer"
             />
-            <label
-              htmlFor="link-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900"
-            >
+            <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
               Proizvod je javno dostupan
             </label>
           </div>
@@ -355,7 +328,7 @@ console.log(images)
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form

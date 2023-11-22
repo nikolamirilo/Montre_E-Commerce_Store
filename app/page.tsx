@@ -1,12 +1,9 @@
-import Hero from "@/components/Hero";
+import Hero from "@/components/Hero"
 
 export default async function Home() {
   return (
-    <main
-      className="flex w-full flex-col justify-center items-center"
-      id="home"
-    >
+    <main className="flex w-full flex-col justify-center items-center" id="home">
       <Hero />
     </main>
-  );
+  )
 }

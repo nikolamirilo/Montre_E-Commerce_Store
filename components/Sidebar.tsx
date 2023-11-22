@@ -1,38 +1,29 @@
-"use client";
-import Image from "next/image";
-import React, { useState } from "react";
-import { RiMenu3Line, RiContactsLine } from "react-icons/ri";
-import {
-  AiFillCloseCircle,
-  AiOutlineMan,
-  AiOutlineWoman,
-  AiOutlineLogin,
-} from "react-icons/ai";
-import logo from "../public/MontreLogoTransparent.png";
-import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs";
-import {
-  MdOutlineLocalOffer,
-  MdKeyboardArrowRight,
-  MdKeyboardArrowDown,
-} from "react-icons/md";
-import { FiLogOut } from "react-icons/fi";
-import { LuPlusSquare } from "react-icons/lu";
-import { TbDiscount2 } from "react-icons/tb";
-import Link from "next/link";
-import { IoHomeOutline } from "react-icons/io5";
+"use client"
+import Image from "next/image"
+import React, { useState } from "react"
+import { RiMenu3Line, RiContactsLine } from "react-icons/ri"
+import { AiFillCloseCircle, AiOutlineMan, AiOutlineWoman, AiOutlineLogin } from "react-icons/ai"
+import logo from "../public/MontreLogoTransparent.png"
+import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs"
+import { MdOutlineLocalOffer, MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md"
+import { FiLogOut } from "react-icons/fi"
+import { LuPlusSquare } from "react-icons/lu"
+import { TbDiscount2 } from "react-icons/tb"
+import Link from "next/link"
+import { IoHomeOutline } from "react-icons/io5"
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isOfferOpen, setIsOfferOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isOfferOpen, setIsOfferOpen] = useState(false)
   function handleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
+    setIsSidebarOpen(!isSidebarOpen)
   }
   function handleMenu() {
-    setIsOfferOpen(!isOfferOpen);
+    setIsOfferOpen(!isOfferOpen)
   }
 
   //user doesnt exists
-  const user = null;
+  const user = null
 
   return (
     <div className="w-full">
@@ -49,10 +40,7 @@ const Sidebar = () => {
           alt="Montre"
           priority
         />
-        <button
-          className="font-xxl text-white rounded-3xl"
-          onClick={handleSidebar}
-        >
+        <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
           <RiMenu3Line size={35} />
         </button>
       </div>
@@ -98,15 +86,9 @@ const Sidebar = () => {
                 <BsWatch size={30} />
                 <span>Ponuda satova</span>
                 {isOfferOpen ? (
-                  <MdKeyboardArrowDown
-                    size={30}
-                    className="relative bottom-[1px]"
-                  />
+                  <MdKeyboardArrowDown size={30} className="relative bottom-[1px]" />
                 ) : (
-                  <MdKeyboardArrowRight
-                    size={30}
-                    className="relative bottom-[1px]"
-                  />
+                  <MdKeyboardArrowRight size={30} className="relative bottom-[1px]" />
                 )}
               </button>
             </div>
@@ -241,7 +223,7 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

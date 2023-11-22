@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const Login = () => {
   return (
@@ -101,7 +101,7 @@ const Login = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

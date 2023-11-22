@@ -1,15 +1,15 @@
-"use client";
-import React from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+"use client"
+import React from "react"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const HeroNavigation = () => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <div className="relative flex flex-col justify-center items-center gap-2 md:fle md:flex-row md:justify-center lg:justify-start">
       <button
         onClick={() => {
-          router.push("/contact");
+          router.push("/contact")
         }}
         className="bg-white p-4 md:skew-x-[4deg] border-2 h-56 relative md:left-3 w-full md:w-1/2  font-bold py-2 px-4 inline-flex items-center gap-2 border-black shadow-xl shadow-black/20"
       >
@@ -26,7 +26,7 @@ const HeroNavigation = () => {
       </button>
       <button
         onClick={() => {
-          router.push("/about");
+          router.push("/about")
         }}
         className="bg-white md:skew-x-[4deg] p-4 border-2 h-56 relative md:right-3 w-full md:w-1/2 font-bold py-2 px-4 inline-flex items-center gap-2 border-amber-400 shadow-xl shadow-amber-600/20"
       >
@@ -42,7 +42,7 @@ const HeroNavigation = () => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default HeroNavigation;
+export default HeroNavigation

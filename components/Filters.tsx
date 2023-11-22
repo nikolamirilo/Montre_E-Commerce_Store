@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const Filters = () => {
   return (
@@ -66,7 +66,7 @@ const Filters = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filters;
+export default Filters

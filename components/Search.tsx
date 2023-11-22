@@ -1,10 +1,10 @@
-"use client";
-import React, { useState } from "react";
-import Filters from "./Filters";
-import { BiSearch } from "react-icons/bi";
+"use client"
+import React, { useState } from "react"
+import Filters from "./Filters"
+import { BiSearch } from "react-icons/bi"
 
 const Search = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <form className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
@@ -25,8 +25,8 @@ const Search = () => {
         <button
           className="bg-white w-fit text-amber-500 text-lg rounded-lg relative border-2 border-amber-500 hover:bg-amber-500 hover:text-white px-2 md:px-3 py-1 md:py-1"
           onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(!isOpen);
+            e.preventDefault()
+            setIsOpen(!isOpen)
           }}
         >
           {isOpen ? "Isključi filtere" : "Uključi filtere"}
@@ -44,7 +44,7 @@ const Search = () => {
         </>
       ) : null}
     </form>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search
