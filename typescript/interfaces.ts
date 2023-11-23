@@ -21,6 +21,15 @@ export interface Product {
   class: string
 }
 
+export interface SearchQuery {
+  search?: string
+  class?: string
+  brand?: string
+  category: string
+  minPrice?: string
+  maxPrice?: string
+}
+
 export interface FormInitialData {
   _id: string
   title: string

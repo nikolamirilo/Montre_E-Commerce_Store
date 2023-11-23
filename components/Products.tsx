@@ -1,31 +1,48 @@
-import { Product } from "@/typescript/interfaces"
-import CardsContainer from "./CardsContainer"
+import { getAllProducts } from "@/actions/server/products"
+import { Product, SearchQuery } from "@/typescript/interfaces"
+import Card from "./Card"
+import Loader from "./Loader"
 import Search from "./Search"
 
 export const revalidate = 0
 export const dynamic = "force-dynamic"
 
-const Products = ({ category }: { category?: string }) => {
-  var search = ""
-  const filterProducts = (product: Product) => {
-    if (category) {
-      return product.category == category
-    } else if (search != "") {
-      return product.title.includes(search)
-    } else {
-      return product.price > 0
-    }
-  }
-
+const Products = async ({ query, title }: { query: SearchQuery; title: string }) => {
+  const products = await getAllProducts(query)
   return (
     <section
       id="cards-container"
       className="flex flex-col justify-center items-center h-fit md:p-20 gap-10 w-full pt-12">
       <h3 className="text-gray-800 font-semibold text-4xl tracking-tight text-center uppercase">
-        Svi modeli satova
+        {title}
       </h3>
-      <Search search={search} />
-      <CardsContainer filter={filterProducts} />
+      <Search />
+      <div className="flex flex-wrap w-full justify-center items-center gap-5">
+        {products ? (
+          products.map((product: Product, idx: number) => {
+            if (
+              product.title &&
+              product.images.length > 0 &&
+              product.price &&
+              product.category &&
+              product.isPublic == true
+            ) {
+              return (
+                <Card
+                  key={idx}
+                  _id={product?._id?.toString()}
+                  title={product.title}
+                  category={product.category}
+                  images={product.images}
+                  price={product.price}
+                />
+              )
+            }
+          })
+        ) : (
+          <Loader />
+        )}
+      </div>
     </section>
   )
 }

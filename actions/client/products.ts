@@ -1,13 +1,4 @@
-export async function uploadImagesToCloudinary(
-  files: any,
-  images: any,
-  displayImages: any
-) {
-  const cldImages = await displayImages.filter((element: any) =>
-    element.includes("res.cloudinary.com")
-  )
-  console.log(cldImages)
-  images = cldImages
+export async function uploadImagesToCloudinary(files: any, images: any) {
   const formData = new FormData()
   formData.append("upload_preset", "products")
   for (let i = 0; i < files.length; i++) {
@@ -29,9 +20,7 @@ export async function uploadImagesToCloudinary(
       const res = await response.json()
       images.push(res.url)
     } catch (error) {
-      console.error(
-        `Error uploading file ${file.name}: ${(error as Error).message}`
-      )
+      console.error(`Error uploading file ${file.name}: ${(error as Error).message}`)
     } finally {
       formData.delete("file")
     }

@@ -1,11 +1,11 @@
 "use client"
-import Image from "next/image"
-import React, { useRef, useState, useEffect } from "react"
-import logo from "../public/MontreLogoTransparent.png"
-import { revalidateData } from "@/helpers"
 import { uploadImagesToCloudinary } from "@/actions/client/products"
+import { revalidateData } from "@/helpers"
 import { FormInitialData } from "@/typescript/interfaces"
+import Image from "next/image"
+import React, { useEffect, useRef, useState } from "react"
 import { BsTrash3 } from "react-icons/bs"
+import logo from "../public/MontreLogoTransparent.png"
 
 const Form = ({ initialData, action }: { initialData?: FormInitialData; action: string }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
@@ -50,10 +50,9 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
         return
       }
 
-      await uploadImagesToCloudinary(files, images, displayImages)
+      await uploadImagesToCloudinary(files, images)
 
       const uploadData = {
-        _id: id,
         title: titleInput.current!.value,
         price: priceInput.current!.value,
         class: classInput.current!.value,
@@ -67,7 +66,10 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
       if (images.length > 0) {
         const response = await fetch(`/api/products/${action}`, {
           method: action == "create" ? "POST" : "PUT",
-          body: JSON.stringify(uploadData),
+          body:
+            action == "create"
+              ? JSON.stringify(uploadData)
+              : JSON.stringify({ ...uploadData, _id: id }),
         })
 
         if (response.ok) {
@@ -123,8 +125,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
         <form
           className="mt-8 flex flex-col w-full gap-2"
           encType="multipart/form-data"
-          onSubmit={handleFormSubmit}
-        >
+          onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="title" className="block text-sm font-medium leading-5 text-gray-700">
               Naslov proizvoda:
@@ -160,8 +161,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           <div>
             <label
               htmlFor="category-price"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+              className="block text-sm font-medium leading-5 text-gray-700">
               Klasa proizvoda:
             </label>
             <div className="mt-1">
@@ -170,10 +170,9 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={classInput}
                 id="class"
                 name="class"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
-              >
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                <option selected></option>
                 <option value="Premium">Premium</option>
-                <option value="Mid">Mid</option>
                 <option value="Casual">Casual</option>
                 <option value="Sport">Sport</option>
               </select>
@@ -189,8 +188,8 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={categoryInput}
                 id="category"
                 name="category"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
-              >
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                <option selected></option>
                 <option value="man">Muški</option>
                 <option value="woman">Ženski</option>
               </select>
@@ -206,8 +205,8 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={brandInput}
                 id="brand"
                 name="brand"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900"
-              >
+                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                <option selected></option>
                 <option value="Curren">Curren</option>
                 <option value="Lige">Lige</option>
                 <option value="Naviforce">Naviforce</option>
@@ -221,8 +220,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           <div>
             <label
               htmlFor="description"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+              className="block text-sm font-medium leading-5 text-gray-700">
               Opis proizvoda:
             </label>
             <div className="mt-1">
@@ -240,8 +238,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           <div>
             <label
               htmlFor="image-upload"
-              className="block text-sm font-medium leading-5 text-gray-700"
-            >
+              className="block text-sm font-medium leading-5 text-gray-700">
               Slike proizvoda:
             </label>
             <div className="mt-2">
@@ -250,8 +247,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                   <div className="flex flex-row justify-start items-center gap-2 border border-gray-300 focus:border-amber-500 rounded-md p-2">
                     <label
                       htmlFor="image-input"
-                      className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center cursor-pointer"
-                    >
+                      className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center cursor-pointer">
                       Dodaj slike
                     </label>
                     Broj dodatih slika: {displayImages.length}
@@ -270,24 +266,21 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                   />
                 </div>
                 <div
-                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[25rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${
+                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${
                     displayImages.length !== 0 ? "flex" : "hidden"
-                  }`}
-                >
+                  }`}>
                   {displayImages.length !== 0
                     ? displayImages.map((image, idx) => {
                         return (
                           <div
                             className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
-                            key={idx}
-                          >
+                            key={idx}>
                             <button
                               id="delete"
                               className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
                               onClick={() => {
                                 handleDeleteImage(idx)
-                              }}
-                            >
+                              }}>
                               <BsTrash3 size={25} />
                             </button>
                             <Image
@@ -320,8 +313,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
             <button
               type="submit"
               id="submit-button"
-              className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md"
-            >
+              className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md">
               Dodaj proizvod
             </button>
           </div>

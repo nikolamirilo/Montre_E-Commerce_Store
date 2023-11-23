@@ -1,14 +1,36 @@
 "use server"
 import { storeDatabaseConnection } from "@/connections/mongodb/connections"
+import { SearchQuery } from "@/typescript/interfaces"
 import { ObjectId } from "mongodb"
-
-export const getAllProducts = async () => {
+export const getAllProducts = async (query: SearchQuery) => {
   try {
     const db = await storeDatabaseConnection()
-    const allProducts: any = await db.collection("products").find({}).toArray()
-    return allProducts
+    // Build the MongoDB query based on the provided search criteria
+    const mongoQuery: any = {}
+    if (query.class) {
+      mongoQuery.class = query.class
+    }
+    if (query.brand) {
+      mongoQuery.brand = query.brand
+    }
+    if (query.category) {
+      mongoQuery.category = query.category
+    }
+    if (query.minPrice && query.maxPrice) {
+      mongoQuery.price = {
+        $gte: parseFloat(query.minPrice),
+        $lte: parseFloat(query.maxPrice),
+      }
+    }
+    if (query.search) {
+      mongoQuery.title = { $regex: query.search, $options: "i" }
+    }
+    // Execute the query and retrieve the products
+    const filteredProducts: any = await db.collection("products").find(mongoQuery).toArray()
+    return filteredProducts
   } catch (error) {
     console.log((error as Error).message)
+    throw error
   }
 }
 
@@ -16,9 +38,7 @@ export const getSingleProduct = async (_id: string) => {
   try {
     const db = await storeDatabaseConnection()
     const objId = new ObjectId(_id)
-    const singleProduct: any = await db
-      .collection("products")
-      .findOne({ _id: objId })
+    const singleProduct: any = await db.collection("products").findOne({ _id: objId })
     return singleProduct
   } catch (error) {
     console.log((error as Error).message)

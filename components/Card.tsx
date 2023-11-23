@@ -62,7 +62,9 @@ const ProductCard: React.FC<CardProps> = ({ _id, title, images, price, category 
         </div>
         <div className="px-3 md:px-5 pb-5">
           <a href="#">
-            <h3 className="text-gray-900 font-semibold text-xl tracking-tight">{title}</h3>
+            <h3 className="text-gray-900 font-semibold text-2xl tracking-tight text-left">
+              {title}
+            </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
             <span className="rounded-xl border-2 bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg text-white text-bold uppercase">

@@ -1,5 +1,4 @@
 import { getSingleProduct } from "@/actions/server/products"
-import React from "react"
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id
@@ -7,7 +6,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   return (
     <main className="md:flex items-start mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
       <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-        <img className="w-2/3" alt="image of a girl posing" src={product.images[0]} />
+        <img className="w-2/3" alt="image of a girl posing" src={product?.images[0]} />
       </div>
       <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
         <div className="border-b border-gray-200 pb-6">
@@ -31,8 +30,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               height="10"
               viewBox="0 0 6 10"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M1 1L5 5L1 9"
                 stroke="currentColor"
@@ -53,8 +51,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               height="10"
               viewBox="0 0 6 10"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M1 1L5 5L1 9"
                 stroke="currentColor"
@@ -72,8 +69,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             height="17"
             viewBox="0 0 16 17"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M7.02301 7.18999C7.48929 6.72386 7.80685 6.12992 7.93555 5.48329C8.06425 4.83666 7.9983 4.16638 7.74604 3.55724C7.49377 2.94809 7.06653 2.42744 6.51835 2.06112C5.97016 1.6948 5.32566 1.49928 4.66634 1.49928C4.00703 1.49928 3.36252 1.6948 2.81434 2.06112C2.26615 2.42744 1.83891 2.94809 1.58665 3.55724C1.33439 4.16638 1.26843 4.83666 1.39713 5.48329C1.52583 6.12992 1.8434 6.72386 2.30968 7.18999L4.66634 9.54749L7.02301 7.18999Z"
               stroke="currentColor"
@@ -136,16 +132,14 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               <button
                 className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 rounded"
                 role="button"
-                aria-label="show or hide"
-              >
+                aria-label="show or hide">
                 <svg
                   className="transform text-gray-300 dark:text-white"
                   width="10"
                   height="6"
                   viewBox="0 0 10 6"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M9 1L5 5L1 1"
                     stroke="currentColor"
@@ -158,8 +152,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
             <div
               className="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300"
-              id="sect"
-            >
+              id="sect">
               You will be responsible for paying for your own shipping costs for returning your
               item. Shipping costs are nonrefundable
             </div>
@@ -172,16 +165,14 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               <button
                 className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 rounded"
                 role="button"
-                aria-label="show or hide"
-              >
+                aria-label="show or hide">
                 <svg
                   className="transform text-gray-300 dark:text-white"
                   width="10"
                   height="6"
                   viewBox="0 0 10 6"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M9 1L5 5L1 1"
                     stroke="currentColor"
@@ -194,8 +185,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
             <div
               className="hidden pt-4 text-base leading-normal pr-12 mt-4 text-gray-600 dark:text-gray-300"
-              id="sect"
-            >
+              id="sect">
               If you have any questions on how to return your item to us, contact us.
             </div>
           </div>

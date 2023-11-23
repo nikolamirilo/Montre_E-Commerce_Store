@@ -1,16 +1,16 @@
 "use client"
 import Image from "next/image"
-import React, { useState } from "react"
-import { RiMenu3Line, RiContactsLine } from "react-icons/ri"
-import { AiFillCloseCircle, AiOutlineMan, AiOutlineWoman, AiOutlineLogin } from "react-icons/ai"
-import logo from "../public/MontreLogoTransparent.png"
-import { BsInfoCircle, BsWatch, BsCart3 } from "react-icons/bs"
-import { MdOutlineLocalOffer, MdKeyboardArrowRight, MdKeyboardArrowDown } from "react-icons/md"
-import { FiLogOut } from "react-icons/fi"
-import { LuPlusSquare } from "react-icons/lu"
-import { TbDiscount2 } from "react-icons/tb"
 import Link from "next/link"
+import { useState } from "react"
+import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
+import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
+import { FiLogOut } from "react-icons/fi"
 import { IoHomeOutline } from "react-icons/io5"
+import { LuPlusSquare } from "react-icons/lu"
+import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
+import { RiContactsLine, RiMenu3Line } from "react-icons/ri"
+import { TbDiscount2 } from "react-icons/tb"
+import logo from "../public/MontreLogoTransparent.png"
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -31,8 +31,7 @@ const Sidebar = () => {
         className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 lg:px-20 px-6 ${
           isSidebarOpen && "hidden"
         }`}
-        id="navbar"
-      >
+        id="navbar">
         <Image
           src="/MontreLogoTransparentLetters.png"
           width={150}
@@ -48,19 +47,14 @@ const Sidebar = () => {
         className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${
           !isSidebarOpen && "hidden"
         }`}
-        id="sidebar"
-      >
+        id="sidebar">
         <div className="text-gray-100 text-xl relative">
           <div className="p-1.5 mt-1 flex flex-row items-center justify-between">
             <div className="heading flex items-center justify-center w-full">
               <Image src={logo} alt="Logo" width={120} height={80} priority />
             </div>
 
-            <button
-              // className="bi bi-x cursor-pointer ml-28 lg:hidden"
-              onClick={handleSidebar}
-              className="absolute top-3 right-2"
-            >
+            <button onClick={handleSidebar} className="absolute top-3 right-2">
               <AiFillCloseCircle size={30} />
             </button>
           </div>
@@ -71,8 +65,7 @@ const Sidebar = () => {
             <Link
               onClick={handleSidebar}
               href="/"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-            >
+              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
               <IoHomeOutline size={30} />
               <span>Početna</span>
             </Link>
@@ -81,8 +74,7 @@ const Sidebar = () => {
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <button
                 onClick={handleMenu}
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <BsWatch size={30} />
                 <span>Ponuda satova</span>
                 {isOfferOpen ? (
@@ -95,13 +87,11 @@ const Sidebar = () => {
             <div
               className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
                 !isOfferOpen && "hidden"
-              }`}
-            >
+              }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <MdOutlineLocalOffer size={30} />
                 <span>Svi</span>
               </Link>
@@ -109,13 +99,11 @@ const Sidebar = () => {
             <div
               className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
                 !isOfferOpen && "hidden"
-              }`}
-            >
+              }`}>
               <Link
                 onClick={handleSidebar}
-                href="/products/watches/man"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                href="/products/watches?search=&class=&brand=&category=man&minPrice=&maxPrice="
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineMan size={30} />
                 <span>Muški</span>
               </Link>
@@ -123,13 +111,11 @@ const Sidebar = () => {
             <div
               className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
                 !isOfferOpen && "hidden"
-              }`}
-            >
+              }`}>
               <Link
                 onClick={handleSidebar}
-                href="/products/watches/woman"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                href="/products/watches?search=&class=&brand=&category=woman&minPrice=&maxPrice="
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineWoman size={30} />
                 <span>Ženski</span>
               </Link>
@@ -137,13 +123,11 @@ const Sidebar = () => {
             <div
               className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
                 !isOfferOpen && "hidden"
-              }`}
-            >
+              }`}>
               <Link
                 onClick={handleSidebar}
-                href="/products/watches/super-deals"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                href="/products/watches/offers/super-deals"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <TbDiscount2 size={30} />
                 <span>Akcije</span>
               </Link>
@@ -152,8 +136,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/cart"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <BsCart3 size={30} />
                 <span>Korpa</span>
               </Link>
@@ -165,8 +148,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/about"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <BsInfoCircle size={30} />
                 <span>O Nama</span>
               </Link>
@@ -177,8 +159,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/contact"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <RiContactsLine size={30} />
                 <span>Kontaktiraj Nas</span>
               </Link>
@@ -189,8 +170,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <FiLogOut size={30} />
                 <span>Odjavi se</span>
               </Link>
@@ -200,8 +180,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/login"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-              >
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineLogin size={30} />
                 <span>Prijavi se</span>
               </Link>
@@ -214,8 +193,7 @@ const Sidebar = () => {
             <Link
               onClick={handleSidebar}
               href="/create-product"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
-            >
+              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
               <LuPlusSquare size={30} />
               <span>Dodaj Novi Proizvod</span>
             </Link>
