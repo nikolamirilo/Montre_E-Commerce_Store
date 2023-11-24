@@ -1,9 +1,10 @@
 "use client"
+import { SearchQuery } from "@/typescript/interfaces"
 import { useRouter } from "next/navigation"
 import { useRef, useState } from "react"
 import { BiSearch } from "react-icons/bi"
 
-const Search = () => {
+const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
   const [isOpen, setIsOpen] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
@@ -28,10 +29,18 @@ const Search = () => {
   }
 
   const handleRemoveFilters = () => {
-    router.push("/products/watches", { scroll: false })
+    switch (type) {
+      case "all":
+        router.push("/products/watches", { scroll: false })
+      case "man":
+        router.push("/products/watches/categories/man", { scroll: false })
+      case "woman":
+        router.push("/products/watches/categories/woman", { scroll: false })
+    }
     formRef.current?.reset()
+    searchRef.current!.value = ""
   }
-
+  console.log(params)
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
@@ -80,7 +89,10 @@ const Search = () => {
                 <option value="Geneva">Geneva</option>
               </select>
             </div>
-            <div className="flex flex-col">
+            <div
+              className={`flex flex-col ${
+                type == "man" ? "hidden" : type == "woman" ? "hidden" : null
+              }`}>
               <label htmlFor="category">Kategorija:</label>
               <select
                 id="category"
@@ -141,36 +153,32 @@ const Search = () => {
             </button>
           </div>
           <div id="selected-filters" className="flex flex-row flex-wrap gap-2">
-            {formRef.current?.class.value != "" || undefined ? (
+            {params?.class === "" ? null : (
               <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {formRef.current?.class.value}
+                {params.class}
               </span>
-            ) : null}
-            {formRef.current?.brand.value != "" || undefined ? (
+            )}
+            {params?.brand === "" ? null : (
               <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {formRef.current?.brand.value}
+                {params?.brand}
               </span>
-            ) : null}
+            )}
             <span
               className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white ${
-                formRef.current?.category.value
-                  ? formRef.current?.category.value === "man"
-                    ? "Muški"
-                    : "Ženski"
-                  : "hidden"
+                params?.category ? "" : "hidden"
               }`}>
-              {formRef.current?.category.value === "man" ? "Muški" : "Ženski"}
+              {params?.category === "man" ? "Muški" : "Ženski"}
             </span>
-            {formRef.current?.minPrice.value != "" || undefined ? (
+            {params?.minPrice === "" ? null : (
               <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {formRef.current?.minPrice.value}
+                {params?.minPrice}
               </span>
-            ) : null}
-            {formRef.current?.maxPrice.value != "" || undefined ? (
+            )}
+            {params?.maxPrice === "" ? null : (
               <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {formRef.current?.maxPrice.value}
+                {params?.maxPrice}
               </span>
-            ) : null}
+            )}
           </div>
         </>
       ) : null}

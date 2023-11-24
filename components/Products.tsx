@@ -7,7 +7,15 @@ import Search from "./Search"
 export const revalidate = 0
 export const dynamic = "force-dynamic"
 
-const Products = async ({ query, title }: { query: SearchQuery; title: string }) => {
+const Products = async ({
+  query,
+  title,
+  type,
+}: {
+  query: SearchQuery
+  title: string
+  type: string
+}) => {
   const products = await getAllProducts(query)
   return (
     <section
@@ -16,7 +24,7 @@ const Products = async ({ query, title }: { query: SearchQuery; title: string })
       <h3 className="text-gray-800 font-semibold text-4xl tracking-tight text-center uppercase">
         {title}
       </h3>
-      <Search />
+      <Search type={type} params={query} />
       <div className="flex flex-wrap w-full justify-center items-center gap-5">
         {products ? (
           products.map((product: Product, idx: number) => {

@@ -102,7 +102,7 @@ const Sidebar = () => {
               }`}>
               <Link
                 onClick={handleSidebar}
-                href="/products/watches?search=&class=&brand=&category=man&minPrice=&maxPrice="
+                href="/products/watches/categories/man"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineMan size={30} />
                 <span>Muški</span>
@@ -114,7 +114,7 @@ const Sidebar = () => {
               }`}>
               <Link
                 onClick={handleSidebar}
-                href="/products/watches?search=&class=&brand=&category=woman&minPrice=&maxPrice="
+                href="/products/watches/categories/woman"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineWoman size={30} />
                 <span>Ženski</span>

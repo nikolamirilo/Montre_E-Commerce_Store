@@ -8,7 +8,7 @@ const DynamicProducts = dynamic(() => import("@/components/Products"), {
 const AllProducts = ({ searchParams }: { searchParams: SearchQuery }) => {
   return (
     <main>
-      <DynamicProducts query={searchParams} title="Svi modeli satova" />
+      <DynamicProducts query={searchParams} title="Svi modeli satova" type="all" />
     </main>
   )
 }
