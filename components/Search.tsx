@@ -59,7 +59,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
     searchRef.current!.value = ""
   }
   return (
-    <div className="flex flex-col justify-center items-center gap-5 w-full">
+    <div className="flex flex-col justify-center items-center gap-5 w-full mb-5 md:mb-8">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
         <div className="flex flex-row items-center justify-center w-full  md:w-3/5 lg:w-4/12">
           <input
