@@ -16,6 +16,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
   const brandInput = useRef<HTMLSelectElement>(null)
   const priceInput = useRef<HTMLInputElement>(null)
   const isPublicInput = useRef<HTMLInputElement>(null)
+  const discountInput = useRef<HTMLInputElement>(null)
   const imagesInput = useRef<HTMLInputElement>(null)
   const [id, setId] = useState<string>("")
   var images: string[] = []
@@ -60,6 +61,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
         brand: brandInput.current?.value,
         description: descriptionInput.current!.value,
         isPublic: isPublicInput.current?.checked,
+        discount: discountInput.current?.checked,
         images: images,
       }
 
@@ -107,6 +109,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
       categoryInput.current!.value = initialData.category
       descriptionInput.current!.value = initialData.description
       isPublicInput.current!.checked = initialData.isPublic
+      discountInput.current!.checked = initialData.discount
       brandInput.current!.value = initialData.brand
       setDisplayImages(initialData.images)
     }
@@ -307,6 +310,17 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
             />
             <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
               Proizvod je javno dostupan
+            </label>
+          </div>
+          <div className="flex items-center relative left-1">
+            <input
+              ref={discountInput}
+              id="discount"
+              type="checkbox"
+              className="w-4 h-4 rounded cursor-pointer"
+            />
+            <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
+              Da li je proizvod na akciji
             </label>
           </div>
           <div className="mt-2">

@@ -18,14 +18,16 @@ export interface Product {
   description: string
   images: string[]
   price: number
+  discount: boolean
   class: string
 }
 
 export interface SearchQuery {
   search?: string
+  discount?: boolean
   class?: string
   brand?: string
-  category: string
+  category?: string
   minPrice?: string
   maxPrice?: string
 }
@@ -39,6 +41,7 @@ export interface FormInitialData {
   brand: string
   description: string
   isPublic: boolean
+  discount: boolean
   images: string[]
 }
 

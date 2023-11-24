@@ -16,6 +16,9 @@ export const getAllProducts = async (query: SearchQuery) => {
     if (query.category) {
       mongoQuery.category = query.category
     }
+    if (query.discount) {
+      mongoQuery.discount = query.discount
+    }
     if (query.minPrice && query.maxPrice) {
       mongoQuery.price = {
         $gte: parseFloat(query.minPrice),

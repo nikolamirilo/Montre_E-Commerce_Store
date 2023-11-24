@@ -51,6 +51,9 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
       case "woman":
         router.push("/products/watches/categories/woman", { scroll: false })
         break
+      case "discount":
+        router.push("/products/watches/offers/super-deals", { scroll: false })
+        break
       default:
         router.push("/products/watches", { scroll: false })
         break
