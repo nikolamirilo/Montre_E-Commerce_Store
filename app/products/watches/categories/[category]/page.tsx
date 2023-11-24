@@ -1,17 +1,22 @@
-import Loader from "@/components/Loader"
-import dynamic from "next/dynamic"
+import Products from "@/components/Products"
+import { SearchQuery } from "@/typescript/interfaces"
 
-const DynamicProducts = dynamic(() => import("@/components/Products"), {
-  loading: () => <Loader />,
-})
-
-const Category = ({ params }: { params: { category: string } }) => {
+const Category = ({
+  searchParams,
+  params,
+}: {
+  searchParams: SearchQuery
+  params: { category: string }
+}) => {
+  const searchParamsData = searchParams
+  const category = params.category
+  const query = { ...searchParamsData, category }
   return (
     <main className="min-h-screen w-full text-center">
-      <DynamicProducts
-        query={{ category: params.category }}
-        title={params.category == "man" ? "Muška ponuda satova" : "Ženska ponuda satova"}
-        type={params.category}
+      <Products
+        query={query}
+        title={category == "man" ? "Muška ponuda satova" : "Ženska ponuda satova"}
+        type={category}
       />
     </main>
   )

@@ -11,7 +11,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
   const router = useRouter()
 
   const getFilters = () => {
-    return {
+    const filters: any = {
       search: searchRef.current?.value || "",
       class: formRef.current?.class.value || "",
       brand: formRef.current?.brand.value || "",
@@ -19,11 +19,23 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
       minPrice: formRef.current?.minPrice.value || "",
       maxPrice: formRef.current?.maxPrice.value || "",
     }
+
+    // Remove filters with empty values
+    for (const key in filters) {
+      if (filters[key] === "") {
+        delete filters[key]
+      }
+    }
+
+    return filters
   }
 
   const handleApplyFilters = (e: React.FormEvent) => {
     e.preventDefault()
     const filters = getFilters()
+    if (type == "man" || type == "woman") {
+      delete filters.category
+    }
     const queryParams = new URLSearchParams(filters)
     router.push(`?${queryParams.toString()}`, { scroll: false })
   }
@@ -32,15 +44,20 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
     switch (type) {
       case "all":
         router.push("/products/watches", { scroll: false })
+        break
       case "man":
         router.push("/products/watches/categories/man", { scroll: false })
+        break
       case "woman":
         router.push("/products/watches/categories/woman", { scroll: false })
+        break
+      default:
+        router.push("/products/watches", { scroll: false })
+        break
     }
     formRef.current?.reset()
     searchRef.current!.value = ""
   }
-  console.log(params)
   return (
     <div className="flex flex-col justify-center items-center gap-5 w-full">
       <div className="flex flex-col gap-5 md:flex-row items-center justify-center w-full">
@@ -153,32 +170,14 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
             </button>
           </div>
           <div id="selected-filters" className="flex flex-row flex-wrap gap-2">
-            {params?.class === "" ? null : (
-              <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {params.class}
-              </span>
-            )}
-            {params?.brand === "" ? null : (
-              <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {params?.brand}
-              </span>
-            )}
-            <span
-              className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white ${
-                params?.category ? "" : "hidden"
-              }`}>
-              {params?.category === "man" ? "Muški" : "Ženski"}
-            </span>
-            {params?.minPrice === "" ? null : (
-              <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {params?.minPrice}
-              </span>
-            )}
-            {params?.maxPrice === "" ? null : (
-              <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                {params?.maxPrice}
-              </span>
-            )}
+            {Object.values(params).map((value) => {
+              if (value != "")
+                return (
+                  <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
+                    {value == "man" ? "Muški" : value == "woman" ? "Ženski" : value}
+                  </span>
+                )
+            })}
           </div>
         </>
       ) : null}
