@@ -320,7 +320,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
               className="w-4 h-4 rounded cursor-pointer"
             />
             <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
-              Da li je proizvod na akciji
+              Proizvod je na akciji
             </label>
           </div>
           <div className="mt-2">

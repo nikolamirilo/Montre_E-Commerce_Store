@@ -1,4 +1,3 @@
-import React from "react"
 import Form from "@/components/Form"
 import type { Metadata } from "next"
 

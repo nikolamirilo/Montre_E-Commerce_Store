@@ -12,10 +12,10 @@ export interface CardProps {
   title: string
   images: string[]
   price: number
-  category: string
+  productClass: string
 }
 
-const ProductCard: React.FC<CardProps> = ({ _id, title, images, price, category }) => {
+const Card: React.FC<CardProps> = ({ _id, title, images, price, productClass }) => {
   const router = useRouter()
   // const { user } = useAuthContext();
   const user = "admin"
@@ -68,11 +68,11 @@ const ProductCard: React.FC<CardProps> = ({ _id, title, images, price, category 
           </a>
           <div className="flex items-center mt-2.5 mb-5">
             <span className="rounded-xl border-2 bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg text-white text-bold uppercase">
-              {category}
+              {productClass}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold text-gray-900">${price}</span>
+            <span className="text-2xl font-bold text-gray-900">{price}RSD</span>
             <a
               href="#"
               className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
@@ -85,4 +85,4 @@ const ProductCard: React.FC<CardProps> = ({ _id, title, images, price, category 
   )
 }
 
-export default ProductCard
+export default Card

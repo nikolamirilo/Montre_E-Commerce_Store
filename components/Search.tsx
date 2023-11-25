@@ -97,6 +97,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="brand"
                 name="brand"
+                value={params.brand}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="" selected>
                   Izaberi
@@ -117,6 +118,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="category"
                 name="category"
+                value={params.category}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="" selected>
                   Izaberi
@@ -130,6 +132,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="class"
                 name="class"
+                value={params.class}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="" selected>
                   Izaberi
@@ -145,6 +148,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 id="minPrice"
                 name="minPrice"
                 type="text"
+                value={params.minPrice}
                 placeholder="RSD"
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />
@@ -156,6 +160,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 name="maxPrice"
                 placeholder="RSD"
                 type="text"
+                value={params.maxPrice}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />
             </div>

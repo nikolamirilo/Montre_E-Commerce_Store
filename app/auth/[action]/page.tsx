@@ -1,31 +1,29 @@
-import React from "react"
+const Auth = ({ params }: { params: { action: string } }) => {
+  const action = params.action
 
-const Login = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
         <div
-          className="hidden bg-cover lg:block md:1/2 xl:w-2/3"
+          className="hidden bg-cover lg:block md:1/3 xl:w-1/2"
           style={{
             backgroundImage:
               "url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)",
-          }}
-        >
+          }}>
           <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
             <div>
               <h2 className="text-4xl font-bold text-white">Montre</h2>
 
               <p className="max-w-xl mt-3 text-gray-300">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                autem ipsa, nulla laboriosam dolores, repellendus perferendis
-                libero suscipit nam temporibus molestiae
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In autem ipsa, nulla
+                laboriosam dolores, repellendus perferendis libero suscipit nam temporibus molestiae
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center w-full max-w-md px-6 mx-auto md:1/2 xl:w-2/6">
-          <div className="flex-1">
+        <div className="flex items-center w-full max-w-md px-6 mx-auto md:1/3 xl:w-1/2">
+          <div className="flex-1 w-full">
             <div className="text-center">
               <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">
                 Montre
@@ -37,12 +35,11 @@ const Login = () => {
             </div>
 
             <div className="mt-8">
-              <form>
+              <form className="w-full">
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
-                  >
+                    className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                     Email Address
                   </label>
                   <input
@@ -56,16 +53,12 @@ const Login = () => {
 
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
-                    <label
-                      htmlFor="password"
-                      className="text-sm text-gray-600 dark:text-gray-200"
-                    >
+                    <label htmlFor="password" className="text-sm text-gray-600 dark:text-gray-200">
                       Password
                     </label>
                     <a
                       href="#"
-                      className="text-sm text-gray-400 focus:text-amber-500 hover:text-amber-500 hover:underline"
-                    >
+                      className="text-sm text-gray-400 focus:text-amber-500 hover:text-amber-500 hover:underline">
                       Forgot password?
                     </a>
                   </div>
@@ -79,9 +72,15 @@ const Login = () => {
                   />
                 </div>
 
+                {/* <div id="auth-providers">
+                  <button>
+                    <FaGoogle />
+                  </button>
+                </div> */}
+
                 <div className="mt-6">
                   <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-amber-500 rounded-md hover:bg-amber-600 focus:outline-none focus:bg-amber-400 focus:ring focus:ring-amber-300 focus:ring-opacity-50">
-                    Sign in
+                    {action == "log-in" ? "Log-In" : "Sign-Up"}
                   </button>
                 </div>
               </form>
@@ -90,9 +89,8 @@ const Login = () => {
                 Don&#x27;t have an account yet?{" "}
                 <a
                   href="#"
-                  className="text-amber-500 focus:outline-none focus:underline hover:underline"
-                >
-                  Sign up
+                  className="text-amber-500 focus:outline-none focus:underline hover:underline">
+                  {action == "log-in" ? "Sign-Up" : "Log-In"}
                 </a>
                 .
               </p>
@@ -104,4 +102,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Auth

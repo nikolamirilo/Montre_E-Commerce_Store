@@ -32,7 +32,7 @@ const Products = async ({
               product.title &&
               product.images.length > 0 &&
               product.price &&
-              product.category &&
+              product.class &&
               product.isPublic == true
             ) {
               return (
@@ -40,7 +40,7 @@ const Products = async ({
                   key={idx}
                   _id={product?._id?.toString()}
                   title={product.title}
-                  category={product.category}
+                  productClass={product.class}
                   images={product.images}
                   price={product.price}
                 />
