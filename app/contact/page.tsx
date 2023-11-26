@@ -7,12 +7,12 @@ const Contact = () => {
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
           Kontaktiraj nas
         </h2>
-        <p className="mb-8 lg:mb-8 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
+        <p className="mb-8 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
           Sat ti nije dostavljen, nisi zadovoljan kvalitetom ili imas neki drugi problem?
           Kontaktiraj nas putem forme ispod ili nam pisi na nekoj od drustvenih mreza/email ili nas
           pozovi
         </p>
-        <div className="flex w-full px-5 lg:w-[90%] xl:w-3/4 flex-col gap-5 lg:gap-0 lg:flex-row shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:py-24 lg:px-10 lg:rounded-lg">
+        <div className="flex w-full px-5 lg:w-[90%] xl:w-3/4 flex-col gap-5 lg:gap-0 lg:flex-row lg:shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:py-20 lg:px-10 lg:rounded-lg">
           <form action="submit" className="w-full lg:w-2/3 flex flex-col gap-3">
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -51,7 +51,13 @@ const Contact = () => {
               Pošalji
             </button>
           </form>
+          <div className="lg:hidden w-full text-center flex flex-col items-center justify-center">
+            <span className="w-2/3"> ili nas kontaktirajte putem društvenih mreža</span>
+          </div>
           <div className="w-full lg:w-1/3 flex flex-col items-center justify-center gap-3">
+            <div className="hidden lg:flex flex-col justify-center items-start lg:w-1/2">
+              <h1 className="font-bold text-xl">Društvene mreže:</h1>
+            </div>
             <div className="flex flex-col justify-center items-start w-full lg:w-1/2">
               <label htmlFor="instagram">Instagram:</label>
               <Link

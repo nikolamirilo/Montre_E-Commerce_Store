@@ -58,10 +58,11 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
         price: priceInput.current!.value,
         class: classInput.current!.value,
         category: categoryInput.current!.value,
-        brand: brandInput.current?.value,
+        brand: brandInput.current!.value,
         description: descriptionInput.current!.value,
-        isPublic: isPublicInput.current?.checked,
-        discount: discountInput.current?.checked,
+        isPublic: isPublicInput.current!.checked,
+        discount: discountInput.current!.value,
+        isOnDiscount: parseInt(discountInput.current!.value) > 0 ? true : false,
         images: images,
       }
 
@@ -109,7 +110,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
       categoryInput.current!.value = initialData.category
       descriptionInput.current!.value = initialData.description
       isPublicInput.current!.checked = initialData.isPublic
-      discountInput.current!.checked = initialData.discount
+      discountInput.current!.value = initialData.discount
       brandInput.current!.value = initialData.brand
       setDisplayImages(initialData.images)
     }
@@ -147,7 +148,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           </div>
           <div>
             <label htmlFor="price" className="block text-sm font-medium leading-5 text-gray-700">
-              Cena proizvoda:
+              Cena proizvoda [RSD]:
             </label>
             <div className="mt-1">
               <input
@@ -156,6 +157,23 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="price"
                 name="price"
                 placeholder="e.g. 50"
+                type="text"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="discount" className="block text-sm font-medium leading-5 text-gray-700">
+              Unesi popust [%]:
+            </label>
+            <div className="mt-1">
+              <input
+                ref={discountInput}
+                id="discount"
+                name="discount"
+                min={5}
+                max={80}
+                placeholder="e.g. 20"
                 type="text"
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
               />
@@ -174,7 +192,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="class"
                 name="class"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected></option>
+                <option selected>Izaberi</option>
                 <option value="Premium">Premium</option>
                 <option value="Casual">Casual</option>
                 <option value="Sport">Sport</option>
@@ -192,7 +210,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="category"
                 name="category"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected></option>
+                <option selected>Izaberi</option>
                 <option value="man">Muški</option>
                 <option value="woman">Ženski</option>
               </select>
@@ -209,7 +227,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="brand"
                 name="brand"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected></option>
+                <option selected>Izaberi</option>
                 <option value="Curren">Curren</option>
                 <option value="Lige">Lige</option>
                 <option value="Naviforce">Naviforce</option>
@@ -238,6 +256,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
               />
             </div>
           </div>
+
           <div>
             <label
               htmlFor="image-upload"
@@ -310,17 +329,6 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
             />
             <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
               Proizvod je javno dostupan
-            </label>
-          </div>
-          <div className="flex items-center relative left-1">
-            <input
-              ref={discountInput}
-              id="discount"
-              type="checkbox"
-              className="w-4 h-4 rounded cursor-pointer"
-            />
-            <label htmlFor="link-checkbox" className="ms-2 text-sm font-medium text-gray-900">
-              Proizvod je na akciji
             </label>
           </div>
           <div className="mt-2">

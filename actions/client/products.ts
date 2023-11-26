@@ -1,4 +1,4 @@
-export async function uploadImagesToCloudinary(files: any, images: any) {
+export async function uploadImagesToCloudinary(files: any, images: string[]) {
   const formData = new FormData()
   formData.append("upload_preset", "products")
   for (let i = 0; i < files.length; i++) {

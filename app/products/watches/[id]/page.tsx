@@ -1,14 +1,16 @@
 import { getSingleProduct } from "@/actions/server/products"
+import Slider from "@/components/Slider"
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id
   const product = await getSingleProduct(id)
   return (
     <main className="md:flex items-start mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
-      <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-        <img className="w-2/3" alt="image of a girl posing" src={product?.images[0]} />
+      <div className="flex flex-col justify-center items-center w-full xl:w-2/5 md:w-1/2">
+        <Slider images={product.images} />
       </div>
-      <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
+
+      <div className="xl:w-3/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
         <div className="border-b border-gray-200 pb-6">
           <p className="text-sm leading-none text-gray-600 dark:text-gray-300 ">
             Balenciaga Fall Collection
@@ -196,18 +198,3 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
 }
 
 export default SingleProduct
-{
-  /* <script>
-let elements = document.querySelectorAll("[data-menu]");
-for (let i = 0; i < elements.length; i++) {
-let main = elements[i];
-main.addEventListener("click", function () {
-let element = main.parentElement.parentElement;
-let andicators = main.querySelectorAll("svg");
-let child = element.querySelector("#sect");
-child.classList.toggle("hidden");
-andicators[0].classList.toggle("rotate-180");
-});
-}
-</script> */
-}

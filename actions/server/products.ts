@@ -1,6 +1,6 @@
 "use server"
 import { storeDatabaseConnection } from "@/connections/mongodb/connections"
-import { SearchQuery } from "@/typescript/interfaces"
+import { Product, SearchQuery } from "@/typescript/interfaces"
 import { ObjectId } from "mongodb"
 export const getAllProducts = async (query: SearchQuery) => {
   try {
@@ -16,8 +16,8 @@ export const getAllProducts = async (query: SearchQuery) => {
     if (query.category) {
       mongoQuery.category = query.category
     }
-    if (query.discount) {
-      mongoQuery.discount = query.discount
+    if (query.isOnDiscount) {
+      mongoQuery.isOnDiscount = query.isOnDiscount
     }
     if (query.minPrice && query.maxPrice) {
       mongoQuery.price = {
@@ -66,7 +66,7 @@ export const createProduct = async (product: object) => {
   }
 }
 
-export const updateProduct = async (body: any) => {
+export const updateProduct = async (body: Product) => {
   try {
     const db = await storeDatabaseConnection()
     const objId = new ObjectId(body._id)
@@ -82,6 +82,7 @@ export const updateProduct = async (body: any) => {
           images: body.images,
           price: body.price,
           class: body.class,
+          discount: body.discount,
           brand: body.brand,
         },
       }

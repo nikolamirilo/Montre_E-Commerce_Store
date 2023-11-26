@@ -19,7 +19,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
       minPrice: formRef.current?.minPrice.value || "",
       maxPrice: formRef.current?.maxPrice.value || "",
     }
-
     // Remove filters with empty values
     for (const key in filters) {
       if (filters[key] === "") {

@@ -38,6 +38,8 @@ const Products = async ({
               return (
                 <Card
                   key={idx}
+                  discount={product?.discount}
+                  isOnDiscount={product?.isOnDiscount}
                   _id={product?._id?.toString()}
                   title={product.title}
                   productClass={product.class}

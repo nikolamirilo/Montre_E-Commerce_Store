@@ -12,10 +12,20 @@ export interface CardProps {
   title: string
   images: string[]
   price: number
+  isOnDiscount: boolean
+  discount: string
   productClass: string
 }
 
-const Card: React.FC<CardProps> = ({ _id, title, images, price, productClass }) => {
+const Card: React.FC<CardProps> = ({
+  _id,
+  title,
+  images,
+  price,
+  productClass,
+  discount,
+  isOnDiscount,
+}) => {
   const router = useRouter()
   // const { user } = useAuthContext();
   const user = "admin"
@@ -46,6 +56,17 @@ const Card: React.FC<CardProps> = ({ _id, title, images, price, productClass }) 
             </button>
           </div>
         )}
+        {isOnDiscount ? (
+          <div className="absolute left-0 top-0 z-10 w-fit h-fit">
+            <div
+              id="triangle"
+              className="w-[100px] h-[80px] bg-red-400 flex justify-start items-start">
+              <span className="h-1/2 w-1/2 flex items-center justify-center text-xl text-white font-semibold relative left-1 top-[2px]">
+                {discount}%
+              </span>
+            </div>
+          </div>
+        ) : null}
 
         <div
           className="relative w-80 h-80 xs:w-88 xs:h-88 sm:w-96 sm:h-96 cursor-pointer rounded-xl"
