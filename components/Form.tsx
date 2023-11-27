@@ -100,7 +100,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
     <div className="flex justify-center items-center lg:py-10 w-full">
       <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
         <div className="text-center">
-          <Image className="mx-auto" src={logo} alt="Leafs" width={120} height={120} />
+          <Image className="mx-auto" src={logo} alt="Leafs" width={160} height={120} />
           <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">
             {action == "create" ? "Dodaj novi proizvod" : "Ažuriraj proizvod"}
           </h2>

@@ -16,14 +16,16 @@ export const metadata: Metadata = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   const cld = new Cloudinary({ cloud: { cloudName: "montre-cloudinary" } })
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white`}>
-        <MainContextProvider>
+    // <ClerkProvider>
+    <MainContextProvider>
+      <html lang="en">
+        <body className={`${inter.className} bg-white`}>
           <Sidebar />
           {props.children}
           <Footer />
-        </MainContextProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </MainContextProvider>
+    // </ClerkProvider>
   )
 }

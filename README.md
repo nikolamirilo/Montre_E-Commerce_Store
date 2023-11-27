@@ -1,5 +1,13 @@
 # Montre E-Commerce store
 
+## Stack:
+
+1. **Full-stack framework -Next.js**
+2. **Database - MongoDB**
+3. **Static assets hosting - Cloudinary**
+4. **Auth - Clerk**
+5. **Email Sending - EmailJS**
+
 ## To run application do the following:
 
 1. **git clone** https://github.com/nikolamirilo/S2S-Next.js_Workshop-Start_Template.git
