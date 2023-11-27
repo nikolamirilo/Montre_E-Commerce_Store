@@ -7,11 +7,7 @@ const Auth = ({ params }: { params: { action: string } }) => {
   console.log(signUp)
   return (
     <main className="flex justify-center items-center">
-      {action == "sign-in" ? (
-        <SignIn signUpUrl="/auth/sign-up" />
-      ) : (
-        <SignUp signInUrl="/auth/sign-in" />
-      )}
+      {action == "sign-in" ? <SignIn /> : <SignUp />}
     </main>
   )
 }
