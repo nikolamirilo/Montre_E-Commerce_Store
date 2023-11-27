@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 #navbar,
 #sidebar,
@@ -13,52 +13,61 @@
 footer,
 #submit-button,
 #loader {
-    background-color: #0c0502;
+  background-color: #0c0502;
 }
 main {
-    min-height: 100vh;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  min-height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 #hero {
-    opacity: 0;
-    animation: fade 1000ms ease-in-out 0ms forwards;
+  opacity: 0;
+  animation: fade 1000ms ease-in-out 0ms forwards;
 }
 #sidebar,
 #navbar,
 #filters,
 img {
-    opacity: 0;
-    animation: fade 400ms ease-in-out 0ms forwards;
+  opacity: 0;
+  animation: fade 400ms ease-in-out 0ms forwards;
 }
-#triangle{
-    clip-path: polygon(100% 0, 0 98%, 0 100%, 0 0);
+#triangle {
+  clip-path: polygon(100% 0, 0 98%, 0 100%, 0 0);
 }
-#man-offer{
+.romboid {
+  clip-path: none;
+}
+.romboid-reverse {
+  clip-path: none;
+}
+
+@media screen and (min-width: 768px) {
+  .romboid {
     clip-path: polygon(100% 0, 71% 100%, 0 100%, 0 0);
-}
-#woman-offer{
+  }
+  .romboid-reverse {
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 29% 0);
+  }
 }
 
 /*KEY FRAMES*/
 @keyframes fade {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes slideIn {
-    0% {
-        position: relative;
-        left: -10vw;
-        opacity: 0;
-    }
-    100% {
-        position: relative;
-        left: 0vw;
-        opacity: 1;
-    }
+  0% {
+    position: relative;
+    left: -10vw;
+    opacity: 0;
+  }
+  100% {
+    position: relative;
+    left: 0vw;
+    opacity: 1;
+  }
 }
