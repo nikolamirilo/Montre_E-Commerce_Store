@@ -1,0 +1,105 @@
+{
+  "pathRoot": "/me",
+  "id": "user_2YlKG5yxp6Xm4Ko9k0ZYNRfhpRB",
+  "externalId": null,
+  "username": "montre_satovi",
+  "emailAddresses": [
+    {
+      "pathRoot": "/me/email_addresses",
+      "emailAddress": "satovi.montre@gmail.com",
+      "linkedTo": [
+        {
+          "pathRoot": "",
+          "id": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
+          "type": "oauth_google"
+        }
+      ],
+      "id": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
+      "verification": {
+        "pathRoot": "",
+        "status": "verified",
+        "strategy": "from_oauth_google",
+        "nonce": null,
+        "externalVerificationRedirectURL": null,
+        "attempts": null,
+        "expireAt": "2023-11-27T15:07:22.060Z",
+        "error": null
+      }
+    }
+  ],
+  "phoneNumbers": [],
+  "web3Wallets": [],
+  "externalAccounts": [
+    {
+      "pathRoot": "/me/external_accounts",
+      "providerUserId": "106515461085950784772",
+      "emailAddress": "satovi.montre@gmail.com",
+      "approvedScopes": "email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid profile",
+      "firstName": "Montre",
+      "lastName": "Satovi",
+      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMWk5tNmU5YVdYaXBEOHBUQ0lrZW0wME5NeWZzTEdzZExJVmIxMU9EQjc9czEwMDAtYyIsInMiOiIyNU56a1RhNy9YdVpQaFFMQkJGdkVZTjlOT2N4RVo2aDJ5MndUZWhEZGo4In0",
+      "username": null,
+      "publicMetadata": {},
+      "label": null,
+      "verification": {
+        "pathRoot": "",
+        "status": "verified",
+        "strategy": "oauth_google",
+        "nonce": null,
+        "externalVerificationRedirectURL": null,
+        "attempts": null,
+        "expireAt": "2023-11-27T14:25:53.473Z",
+        "error": null
+      },
+      "id": "eac_2YlKDuyrdWnBnzUxkQvAA075cV5",
+      "identificationId": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
+      "provider": "google"
+    }
+  ],
+  "samlAccounts": [],
+  "organizationMemberships": [],
+  "passwordEnabled": false,
+  "firstName": "Montre",
+  "lastName": "Satovi",
+  "fullName": "Montre Satovi",
+  "primaryEmailAddressId": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
+  "primaryEmailAddress": {
+    "pathRoot": "/me/email_addresses",
+    "emailAddress": "satovi.montre@gmail.com",
+    "linkedTo": [
+      {
+        "pathRoot": "",
+        "id": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
+        "type": "oauth_google"
+      }
+    ],
+    "id": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
+    "verification": {
+      "pathRoot": "",
+      "status": "verified",
+      "strategy": "from_oauth_google",
+      "nonce": null,
+      "externalVerificationRedirectURL": null,
+      "attempts": null,
+      "expireAt": "2023-11-27T15:07:22.060Z",
+      "error": null
+    }
+  },
+  "primaryPhoneNumberId": null,
+  "primaryPhoneNumber": null,
+  "primaryWeb3WalletId": null,
+  "primaryWeb3Wallet": null,
+  "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yWWxLRnluQjY3a2lRam8zZ1RneWRlWUxpNjMifQ",
+  "hasImage": true,
+  "twoFactorEnabled": false,
+  "totpEnabled": false,
+  "backupCodeEnabled": false,
+  "publicMetadata": {},
+  "unsafeMetadata": {},
+  "createOrganizationEnabled": true,
+  "deleteSelfEnabled": true,
+  "lastSignInAt": "2023-11-27T15:05:57.583Z",
+  "updatedAt": "2023-11-27T15:05:57.608Z",
+  "createdAt": "2023-11-27T14:17:06.851Z",
+  "cachedSessionsWithActivities": null
+}

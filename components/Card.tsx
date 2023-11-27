@@ -1,7 +1,7 @@
 "use client"
 import { deleteSingleProduct } from "@/actions/server/products"
-import { useAuthContext } from "@/context/AuthContext"
 import { revalidateData } from "@/helpers"
+import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import React from "react"
@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({
   isOnDiscount,
 }) => {
   const router = useRouter()
-  const { user } = useAuthContext()
+  const { user } = useUser()
 
   async function handleDeleteProduct() {
     await deleteSingleProduct(_id)
@@ -38,7 +38,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className="max-w-xl">
       <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
-        {user.role == "admin" && (
+        {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
           <div className="admin-buttons -top-[6px] right-1 z-10 flex flex-row gap-1 absolute">
             <button
               id="edit"
@@ -55,7 +55,7 @@ const Card: React.FC<CardProps> = ({
               <BsTrash3 size={25} />
             </button>
           </div>
-        )}
+        ) : null}
         {isOnDiscount ? (
           <div className="absolute left-0 top-0 z-10 w-fit h-fit">
             <div

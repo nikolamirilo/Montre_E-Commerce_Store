@@ -23,6 +23,18 @@ const Sidebar = () => {
   }
 
   const { user } = useUser()
+  // const JWTGenerate = async () => {
+  //   try {
+  //     const token = await Clerk?.session.getToken({ template: "JWT" })
+  //     console.log(token)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   JWTGenerate()
+  // }, [])
 
   return (
     <div className="w-full">
@@ -165,18 +177,10 @@ const Sidebar = () => {
             </div>
           </div>
           {user ? (
-            // <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-            //   <Link
-            //     onClick={handleSidebar}
-            //     href="/"
-            //     className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
-            //     <FiLogOut size={30} />
-            //     <span>Odjavi se</span>
-            //   </Link>
-            // </div>
             <div className="p-1.5 mt-2 flex items-center justify-start rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+                onClick={handleSidebar}
                 href={`/users/${user.id}`}>
                 <UserButton afterSignOutUrl="/" /> <span>{user?.username}</span>
               </Link>
