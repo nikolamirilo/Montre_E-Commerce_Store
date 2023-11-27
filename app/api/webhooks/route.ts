@@ -1,6 +1,7 @@
 import { createNewUser } from '@/actions/server/users'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { headers } from 'next/headers'
+import { NextResponse } from 'next/server'
 import { Webhook } from 'svix'
  
 export async function POST(req: Request) {
@@ -58,6 +59,6 @@ export async function POST(req: Request) {
   }
   await createNewUser(newUser)
 
-  return new Response('', { status: 200 })
+  return NextResponse.json(newUser, { status: 200 })
 }
  
