@@ -12,13 +12,12 @@ export interface User {
 export interface Product {
   _id?: string
   isPublic: boolean
-  location: string
   category: string
   title: string
   description: string
   images: string[]
-  price: number
-  isOnDiscount:boolean
+  price: string
+  isOnDiscount: boolean
   discount: string
   class: string
   brand: string
@@ -26,7 +25,7 @@ export interface Product {
 
 export interface SearchQuery {
   search?: string
-  isOnDiscount?:boolean
+  isOnDiscount?: boolean
   class?: string
   brand?: string
   category?: string

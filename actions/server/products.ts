@@ -2,6 +2,7 @@
 import { storeDatabaseConnection } from "@/connections/mongodb/connections"
 import { Product, SearchQuery } from "@/typescript/interfaces"
 import { ObjectId } from "mongodb"
+
 export const getAllProducts = async (query: SearchQuery) => {
   try {
     const db = await storeDatabaseConnection()
@@ -75,7 +76,6 @@ export const updateProduct = async (body: Product) => {
       {
         $set: {
           isPublic: body.isPublic,
-          location: body.location,
           category: body.category,
           title: body.title,
           description: body.description,
@@ -83,6 +83,7 @@ export const updateProduct = async (body: Product) => {
           price: body.price,
           class: body.class,
           discount: body.discount,
+          isOnDiscount: body.isOnDiscount,
           brand: body.brand,
         },
       }

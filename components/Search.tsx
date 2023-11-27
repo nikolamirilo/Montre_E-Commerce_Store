@@ -98,9 +98,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 name="brand"
                 value={params.brand}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
-                <option value="" selected>
-                  Izaberi
-                </option>
+                <option value="">Izaberi</option>
                 <option value="Curren">Curren</option>
                 <option value="Lige">Lige</option>
                 <option value="Naviforce">Naviforce</option>
@@ -119,9 +117,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 name="category"
                 value={params.category}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
-                <option value="" selected>
-                  Izaberi
-                </option>
+                <option value="">Izaberi</option>
                 <option value="man">Muški</option>
                 <option value="woman">Ženski</option>
               </select>
@@ -133,9 +129,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 name="class"
                 value={params.class}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
-                <option value="" selected>
-                  Izaberi
-                </option>
+                <option value="">Izaberi</option>
                 <option value="Premium">Premium</option>
                 <option value="Casual">Casual</option>
                 <option value="Sport">Sport</option>

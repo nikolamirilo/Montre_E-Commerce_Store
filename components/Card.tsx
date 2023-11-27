@@ -11,7 +11,7 @@ export interface CardProps {
   _id?: string
   title: string
   images: string[]
-  price: number
+  price: string
   isOnDiscount: boolean
   discount: string
   productClass: string

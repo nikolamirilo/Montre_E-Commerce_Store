@@ -1,7 +1,6 @@
 "use client"
-import { uploadImagesToCloudinary } from "@/actions/client/products"
-import { revalidateData } from "@/helpers"
-import { FormInitialData } from "@/typescript/interfaces"
+import { handleProductUpload, uploadImagesToCloudinary } from "@/actions/client/products"
+import { FormInitialData, Product } from "@/typescript/interfaces"
 import Image from "next/image"
 import React, { useEffect, useRef, useState } from "react"
 import { BsTrash3 } from "react-icons/bs"
@@ -9,6 +8,7 @@ import logo from "../public/MontreLogoTransparent.png"
 
 const Form = ({ initialData, action }: { initialData?: FormInitialData; action: string }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
+  const [id, setId] = useState<string>("")
   const titleInput = useRef<HTMLInputElement>(null)
   const descriptionInput = useRef<HTMLTextAreaElement>(null)
   const classInput = useRef<HTMLSelectElement>(null)
@@ -18,7 +18,6 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
   const isPublicInput = useRef<HTMLInputElement>(null)
   const discountInput = useRef<HTMLInputElement>(null)
   const imagesInput = useRef<HTMLInputElement>(null)
-  const [id, setId] = useState<string>("")
   var images: string[] = []
 
   async function handleInputImageChange() {
@@ -28,67 +27,17 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
         Array.from(files).map((file) => {
           return new Promise<string>((resolve) => {
             const reader = new FileReader()
-
+            reader.readAsDataURL(file)
             reader.onload = () => {
               resolve(reader.result as string)
             }
-            reader.readAsDataURL(file)
           })
         })
       )
-
       setDisplayImages((prevImages) => [...prevImages, ...newImages])
     }
   }
 
-  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    try {
-      const files = imagesInput?.current?.files
-      if (!files) {
-        console.error("No file selected.")
-        return
-      }
-
-      await uploadImagesToCloudinary(files, images)
-
-      const uploadData = {
-        title: titleInput.current!.value,
-        price: priceInput.current!.value,
-        class: classInput.current!.value,
-        category: categoryInput.current!.value,
-        brand: brandInput.current!.value,
-        description: descriptionInput.current!.value,
-        isPublic: isPublicInput.current!.checked,
-        discount: discountInput.current!.value,
-        isOnDiscount: parseInt(discountInput.current!.value) > 0 ? true : false,
-        images: images,
-      }
-
-      if (images.length > 0) {
-        const response = await fetch(`/api/products/${action}`, {
-          method: action == "create" ? "POST" : "PUT",
-          body:
-            action == "create"
-              ? JSON.stringify(uploadData)
-              : JSON.stringify({ ...uploadData, _id: id }),
-        })
-
-        if (response.ok) {
-          revalidateData()
-          window.location.reload()
-          alert("Vaš odgovor je zabeležen")
-        } else {
-          console.log(response.statusText)
-        }
-      } else {
-        alert("Dodaj bar jednu sliku!")
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
   function handleDeleteImage(index: number) {
     setDisplayImages((prevImages) => {
       const newImages = [...prevImages]
@@ -100,6 +49,38 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
     console.log(images)
   }
 
+  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (
+      categoryInput.current!.value != "" &&
+      brandInput.current!.value != "" &&
+      classInput.current!.value != ""
+    ) {
+      try {
+        const files = imagesInput?.current?.files
+        if (!files) {
+          console.error("No file selected.")
+          return
+        }
+        await uploadImagesToCloudinary(files, images)
+        const uploadData: Product = {
+          title: titleInput.current!.value,
+          price: priceInput.current!.value,
+          class: classInput.current!.value,
+          category: categoryInput.current!.value,
+          brand: brandInput.current!.value,
+          description: descriptionInput.current!.value,
+          isPublic: isPublicInput.current!.checked,
+          discount: discountInput.current!.value,
+          isOnDiscount: parseInt(discountInput.current!.value) > 0 ? true : false,
+          images: images,
+        }
+        await handleProductUpload(images, uploadData, action, id)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
   //Set initial Values in case I want to edit product
   useEffect(() => {
     if (initialData) {
@@ -115,7 +96,6 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
       setDisplayImages(initialData.images)
     }
   }, [initialData])
-  console.log(images)
   return (
     <div className="flex justify-center items-center lg:py-10 w-full">
       <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
@@ -125,7 +105,6 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
             {action == "create" ? "Dodaj novi proizvod" : "Ažuriraj proizvod"}
           </h2>
         </div>
-
         <form
           className="mt-8 flex flex-col w-full gap-2"
           encType="multipart/form-data"
@@ -192,7 +171,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="class"
                 name="class"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected>Izaberi</option>
+                <option value="">Izaberi</option>
                 <option value="Premium">Premium</option>
                 <option value="Casual">Casual</option>
                 <option value="Sport">Sport</option>
@@ -210,7 +189,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="category"
                 name="category"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected>Izaberi</option>
+                <option value="">Izaberi</option>
                 <option value="man">Muški</option>
                 <option value="woman">Ženski</option>
               </select>
@@ -227,7 +206,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 id="brand"
                 name="brand"
                 className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-                <option selected>Izaberi</option>
+                <option value="">Izaberi</option>
                 <option value="Curren">Curren</option>
                 <option value="Lige">Lige</option>
                 <option value="Naviforce">Naviforce</option>
@@ -336,7 +315,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
               type="submit"
               id="submit-button"
               className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md">
-              Dodaj proizvod
+              {action === "create" ? "Dodaj proizvod" : "Sačuvaj izmene"}
             </button>
           </div>
         </form>
