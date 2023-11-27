@@ -45,8 +45,6 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
       return newImages
     })
     images.splice(index, 1)
-    console.log(displayImages)
-    console.log(images)
   }
 
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {

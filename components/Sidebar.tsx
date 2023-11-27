@@ -1,10 +1,10 @@
 "use client"
+import { UserButton, useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
 import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
-import { FiLogOut } from "react-icons/fi"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
 import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
@@ -22,8 +22,7 @@ const Sidebar = () => {
     setIsOfferOpen(!isOfferOpen)
   }
 
-  //user doesnt exists
-  const user = null
+  const { user } = useUser()
 
   return (
     <div className="w-full">
@@ -166,20 +165,27 @@ const Sidebar = () => {
             </div>
           </div>
           {user ? (
-            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            // <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            //   <Link
+            //     onClick={handleSidebar}
+            //     href="/"
+            //     className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+            //     <FiLogOut size={30} />
+            //     <span>Odjavi se</span>
+            //   </Link>
+            // </div>
+            <div className="p-1.5 mt-2 flex items-center justify-start rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
-                onClick={handleSidebar}
-                href="/"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
-                <FiLogOut size={30} />
-                <span>Odjavi se</span>
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+                href={`/users/${user.id}`}>
+                <UserButton afterSignOutUrl="/" /> <span>{user?.username}</span>
               </Link>
             </div>
           ) : (
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
                 onClick={handleSidebar}
-                href="/login"
+                href="/auth/login"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineLogin size={30} />
                 <span>Prijavi se</span>
@@ -189,15 +195,17 @@ const Sidebar = () => {
 
           <div className="my-4 bg-stone-50 h-[1px]"></div>
 
-          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-            <Link
-              onClick={handleSidebar}
-              href="/create-product"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
-              <LuPlusSquare size={30} />
-              <span>Dodaj Novi Proizvod</span>
-            </Link>
-          </div>
+          {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <Link
+                onClick={handleSidebar}
+                href="/create-product"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                <LuPlusSquare size={30} />
+                <span>Dodaj Novi Proizvod</span>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

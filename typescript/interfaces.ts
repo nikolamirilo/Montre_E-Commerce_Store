@@ -1,12 +1,14 @@
+import { Role } from "./types"
+
 export interface User {
   _id?: string
-  full_name: string
-  image: string
-  orders: Object[]
-  user_group: string //admin OR customer
-  address: string
-  city: string
-  postal_code: number
+  fullName: string
+  image?: string
+  orders?: Object[]
+  role: Role
+  address?: string
+  city?: string
+  postalCode?: number
 }
 
 export interface Product {
