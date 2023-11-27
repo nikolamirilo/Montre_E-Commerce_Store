@@ -57,9 +57,12 @@ export async function POST(req: Request) {
     orders: [],
     cart: []
   }
-  await createNewUser(newUser)
+  if(eventType == "user.created"){
+    await createNewUser(newUser)
+  }
+ 
 
 
-  return NextResponse.json(newUser, { status: 200 })
+  return NextResponse.json({ status: 200 })
 }
  

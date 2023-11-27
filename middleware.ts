@@ -12,6 +12,7 @@ export default authMiddleware({
     "/products/watches/categories/man",
     "/products/watches/categories/woman",
     "/products/watches/:id",
+    "/cart",
     "/api/webhooks(.*)"
   ],
 })
