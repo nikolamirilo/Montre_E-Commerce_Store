@@ -1,10 +1,17 @@
-import { SignIn, SignUp } from "@clerk/nextjs"
+"use client"
+import { SignIn, SignUp, useSignUp } from "@clerk/nextjs"
 
 const Auth = ({ params }: { params: { action: string } }) => {
   const action = params.action
+  const { signUp } = useSignUp()
+  console.log(signUp)
   return (
     <main className="flex justify-center items-center">
-      {action == "login" ? <SignIn /> : <SignUp />}
+      {action == "sign-in" ? (
+        <SignIn signUpUrl="/auth/sign-up" />
+      ) : (
+        <SignUp signInUrl="/auth/sign-in" />
+      )}
     </main>
   )
 }

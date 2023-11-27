@@ -47,6 +47,15 @@ export interface FormInitialData {
   discount: string
   images: string[]
 }
+export interface CardProps {
+  _id?: string
+  title: string
+  images: string[]
+  price: string
+  isOnDiscount: boolean
+  discount: string
+  productClass: string
+}
 
 export interface CloudinaryResponse {
   asset_id: string

@@ -4,12 +4,12 @@ import Image from "next/image"
 const Hero = () => {
   return (
     <section className="relative min-h-screen h-fit w-full pt-10 lg:pt-16" id="hero">
-      <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6">
-        <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 w-full font-black text-amber-500 text-4xl text-center sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
+      <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6 flex items-center justify-center flex-col">
+        <h1 className="sm:mx-auto w-11/12 md:w-2/3 font-black text-amber-500 text-4xl sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
           Montre, satovi koji oduzimaju dah
         </h1>
         <div className="lg:flex">
-          <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
+          <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto">
             <p className="sm:text-lg text-gray-800 lg:w-11/12">
               Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima koji kombinuju
               neopisivu eleganciju sa nesavladivom preciznošću, čineći svaki trenutak vrednim
@@ -67,8 +67,8 @@ const Hero = () => {
               />
             </div>
           </div>
-          <div className="mt-12 md:mt-0 lg:absolute -right-10 lg:w-3/12 hidden md:flex">
-            <div className="relative w-full flex justify-center items-center">
+          <div className="mt-12 md:mt-0 lg:absolute -right-10 lg:w-3/12 hidden lg:flex">
+            <div className="relative top-32 w-full flex justify-center items-center">
               <div
                 aria-hidden="true"
                 className="absolute scale-75 inset-0 m-auto w-80 h-80 lg:w-88 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-amber-400 to-amber-300 blur-3xl"></div>

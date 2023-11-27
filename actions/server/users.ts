@@ -1,53 +1,21 @@
-import { ObjectId } from "mongodb"
+"use server"
+import { storeDatabaseConnection } from "@/connections/mongodb/connections"
 
-export async function getAllUsers() {
+export async function createNewUser(user:any){
   try {
-    const res = await fetch(`${process.env.MONGO_DB_URL!}/action/find`, {
-      cache: "no-cache",
-      method: "POST",
-      headers: {
-        "api-key": process.env.MONGO_DB_API_KEY!,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dataSource: "MainCluster",
-        database: "Store",
-        collection: "users",
-      }),
-    })
-
-    if (!res.ok) {
-      console.log(res)
-    }
-    return res.json()
+    const db = await storeDatabaseConnection()
+    await db.collection("users").insertOne(user)
   } catch (error) {
-    console.error("Error fetching data:", error)
-    throw error
+    console.log((error as Error).message)
   }
 }
-export async function getSingleUser(uid: string) {
-  try {
-    const res = await fetch(`${process.env.MONGO_DB_URL!}/action/findOne`, {
-      cache: "no-cache",
-      method: "POST",
-      headers: {
-        "api-key": process.env.MONGO_DB_API_KEY!,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dataSource: "MainCluster",
-        database: "Store",
-        collection: "users",
-        filter: { _id: new ObjectId(uid) },
-      }),
-    })
 
-    if (!res.ok) {
-      console.log(res)
-    }
-    return res.json()
+export const getSingleUser = async (uid: string | undefined) => {
+  try {
+    const db = await storeDatabaseConnection()
+    const singleUser: any = await db.collection("users").findOne({ uid: uid })
+    return singleUser
   } catch (error) {
-    console.error("Error fetching data:", error)
-    throw error
+    console.log((error as Error).message)
   }
 }

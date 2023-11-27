@@ -79,13 +79,16 @@ export const updateProduct = async (body: Product) => {
           category: body.category,
           title: body.title,
           description: body.description,
-          images: body.images,
           price: body.price,
           class: body.class,
           discount: body.discount,
           isOnDiscount: body.isOnDiscount,
           brand: body.brand,
-        },
+          images: body.images
+        }
+        // }, $push: {
+        //   images: body.images,
+        // }
       }
     )
     return true

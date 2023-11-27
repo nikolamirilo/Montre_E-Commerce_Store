@@ -1,22 +1,14 @@
 "use client"
+import { addItemToCart } from "@/actions/server/cart"
 import { deleteSingleProduct } from "@/actions/server/products"
 import { revalidateData } from "@/helpers"
+import { CardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { BsCart3, BsTrash3 } from "react-icons/bs"
 import { MdOutlineModeEditOutline } from "react-icons/md"
-
-export interface CardProps {
-  _id?: string
-  title: string
-  images: string[]
-  price: string
-  isOnDiscount: boolean
-  discount: string
-  productClass: string
-}
 
 const Card: React.FC<CardProps> = ({
   _id,
@@ -33,6 +25,12 @@ const Card: React.FC<CardProps> = ({
   async function handleDeleteProduct() {
     await deleteSingleProduct(_id)
     revalidateData()
+  }
+
+  async function handleAddItemToCart() {
+    const uid = user?.id
+    await addItemToCart(uid, _id)
+    alert("Proizvod dodat u korpu")
   }
 
   return (
@@ -94,11 +92,11 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900">{price}RSD</span>
-            <a
-              href="#"
+            <button
+              onClick={handleAddItemToCart}
               className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
               <BsCart3 size={25} /> Dodaj u korpu
-            </a>
+            </button>
           </div>
         </div>
       </div>
