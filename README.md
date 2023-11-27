@@ -1,4 +1,4 @@
-# This Montre E-Commerce store
+# Montre E-Commerce store
 
 ## To run application do the following:
 
