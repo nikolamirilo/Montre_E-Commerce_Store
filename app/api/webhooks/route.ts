@@ -47,15 +47,18 @@ export async function POST(req: Request) {
       status: 400
     })
   }
+ 
+  // Get the ID and type
   const { id } = evt.data;
-  
+  const eventType = evt.type;
+  if(eventType == "user.created"){
   const newUser = {
     uid: id,
     orders: [],
     cart: []
   }
   await createNewUser(newUser)
- 
+}
   return new Response('', { status: 200 })
 }
  
