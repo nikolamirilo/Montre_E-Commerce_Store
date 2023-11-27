@@ -50,7 +50,7 @@ export async function POST(req: Request) {
   }
  
   // Get the ID and type
-  const { id } = evt.data;
+  const id = evt.data.id;
   const eventType = evt.type;
   const newUser = {
     uid: id,
@@ -58,6 +58,7 @@ export async function POST(req: Request) {
     cart: []
   }
   await createNewUser(newUser)
+
 
   return NextResponse.json(newUser, { status: 200 })
 }
