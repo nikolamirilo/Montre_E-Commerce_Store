@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen h-fit w-full pt-10 lg:pt-16" id="hero">
       <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6 flex items-center justify-center flex-col">
-        <h1 className="sm:mx-auto w-11/12 md:w-2/3 font-black text-amber-500 text-4xl sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
+        <h1 className="sm:mx-auto w-11/12 md:w-2/3 font-black text-amber-500 text-center text-4xl sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
           Montre, satovi koji oduzimaju dah
         </h1>
         <div className="lg:flex">
