@@ -1,9 +1,12 @@
-import { createNewUser } from '@/actions/server/users'
+import { createNewUser, deleteSingleUser } from '@/actions/server/users'
 import { WebhookEvent } from '@clerk/nextjs/server'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { Webhook } from 'svix'
  
+//Through this route when user is for example created data from Clerk is sent to this route 
+//and then user will be created in MongoDB as well
+
 export async function POST(req: Request) {
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -50,17 +53,19 @@ export async function POST(req: Request) {
   }
  
   // Get the ID and type
-  const id = evt.data.id;
+  const uid = evt.data.id;
   const eventType = evt.type;
   const newUser = {
-    uid: id,
+    uid: uid,
     orders: [],
     cart: []
   }
-  var createdUser;
   if(eventType == "user.created"){
-   createdUser = await createNewUser(newUser)
+    await createNewUser(newUser!)
   }
-  return NextResponse.json({createdUser},{ status: 200 })
+  if(eventType == "user.deleted"){
+    await deleteSingleUser(uid!)
+  }
+  return NextResponse.json({message: "Successfully Done"},{ status: 200 })
 }
  

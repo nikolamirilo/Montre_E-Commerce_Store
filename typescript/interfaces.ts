@@ -55,6 +55,7 @@ export interface CardProps {
   isOnDiscount: boolean
   discount: string
   productClass: string
+  type?: string
 }
 
 export interface CloudinaryResponse {

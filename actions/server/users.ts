@@ -19,3 +19,12 @@ export const getSingleUser = async (uid: string | undefined) => {
     console.log((error as Error).message)
   }
 }
+
+export const deleteSingleUser = async (uid: string) => {
+  try {
+    const db = await storeDatabaseConnection()
+    await db.collection("users").deleteOne({ uid: uid })
+  } catch (error) {
+    console.log((error as Error).message)
+  }
+}

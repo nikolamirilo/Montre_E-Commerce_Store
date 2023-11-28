@@ -7,6 +7,7 @@ const nextConfig = {
       { hostname: "th.bing.com" },
       { hostname: "media.licdn.com" },
       { hostname: "cdn.shopify.com" },
+      { hostname: "img.clerk.com" },
     ],
   },
   swcMinify: true,

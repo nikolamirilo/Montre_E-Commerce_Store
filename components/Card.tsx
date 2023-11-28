@@ -18,6 +18,7 @@ const Card: React.FC<CardProps> = ({
   productClass,
   discount,
   isOnDiscount,
+  type,
 }) => {
   const router = useRouter()
   const { user } = useUser()
@@ -92,11 +93,15 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900">{price}RSD</span>
-            <button
-              onClick={handleAddItemToCart}
-              className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
-              <BsCart3 size={25} /> Dodaj u korpu
-            </button>
+            {type == "profile" ? (
+              <></>
+            ) : (
+              <button
+                onClick={handleAddItemToCart}
+                className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
+                <BsCart3 size={25} /> Dodaj u korpu
+              </button>
+            )}
           </div>
         </div>
       </div>

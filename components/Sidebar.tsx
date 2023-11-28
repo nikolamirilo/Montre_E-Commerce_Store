@@ -23,18 +23,6 @@ const Sidebar = () => {
   }
 
   const { user } = useUser()
-  // const JWTGenerate = async () => {
-  //   try {
-  //     const token = await Clerk?.session.getToken({ template: "JWT" })
-  //     console.log(token)
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   JWTGenerate()
-  // }, [])
 
   return (
     <div className="w-full">
@@ -189,7 +177,7 @@ const Sidebar = () => {
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
                 onClick={handleSidebar}
-                href="/auth/sign-in"
+                href="https://dear-amoeba-18.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2F"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
                 <AiOutlineLogin size={30} />
                 <span>Prijavi se</span>

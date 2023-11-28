@@ -1,6 +1,27 @@
 import Link from "next/link"
 
-const Contact = () => {
+const Contact = async () => {
+  // const fromEmailName = "Nikola" // i.e. the "sales" in sales@example.com
+
+  // const emailAddressId = "nikolamirilo@gmail.com"
+
+  // const subject = "Free tacos"
+
+  // const body = "Join us via Zoom for remote Taco Tuesday!"
+
+  // async function sendEmail() {
+  //   try {
+  //     await clerkClient.emails.createEmail({
+  //       fromEmailName,
+  //       subject,
+  //       body,
+  //       emailAddressId,
+  //     })
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  // sendEmail()
   return (
     <main className="flex flex-row items-center justify-center w-full">
       <div className="py-8 lg:py-16 mx-auto w-full flex flex-col items-center justify-center mt-10 lg:mt-0">
