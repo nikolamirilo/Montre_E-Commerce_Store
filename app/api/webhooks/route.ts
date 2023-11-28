@@ -60,6 +60,7 @@ export async function POST(req: Request) {
     orders: [],
     cart: []
   }
+  console.log(eventType)
   if(eventType == "user.created"){
     await createNewUser(newUser!)
   }
