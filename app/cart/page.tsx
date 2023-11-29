@@ -10,7 +10,7 @@ const ShoppingCart = async () => {
   const mongoUser = await getSingleUser(uid)
   return (
     <main>
-      <div className="min-h-screen bg-white py-20 h-fit">
+      <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
         <h1 className="mb-10 text-center text-3xl uppercase font-bold">Proizvodi u korpi</h1>
         {mongoUser?.cart.length > 0 ? (
           <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
