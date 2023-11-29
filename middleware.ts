@@ -10,8 +10,9 @@ export default authMiddleware({
     "/products/watches/categories/man",
     "/products/watches/categories/woman",
     "/products/watches/:id",
-    "/api/webhooks(.*)"
-  ]
+    "/api/webhooks(.*)",
+    "/auth/:action",
+  ],
 })
 
 export const config = {

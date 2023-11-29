@@ -144,6 +144,16 @@ const Order = () => {
                 </div>
               </div>
             </div>
+
+            <div>
+              <label htmlFor="costs" className="block text-sm font-medium leading-5 text-gray-700">
+                Ukupni troškovi:
+              </label>
+              <div className="mt-1">
+                <span>12.000din</span>
+              </div>
+            </div>
+
             <div className="mt-2">
               <button
                 type="submit"

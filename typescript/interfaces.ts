@@ -25,6 +25,14 @@ export interface Product {
   brand: string
 }
 
+export interface CartItemProps {
+  title: string
+  category: string
+  productClass: string
+  price: string
+  image: string
+}
+
 export interface SearchQuery {
   search?: string
   isOnDiscount?: boolean
