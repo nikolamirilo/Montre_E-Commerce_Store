@@ -24,6 +24,9 @@ main {
   opacity: 0;
   animation: fade 1000ms ease-in-out 0ms forwards;
 }
+#hero-bg{
+  clip-path: none
+}
 #sidebar,
 #navbar,
 #filters,
@@ -47,6 +50,9 @@ img {
   }
   .romboid-reverse {
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 29% 0);
+  }
+  #hero-bg{
+    clip-path: polygon(75% 0, 100% 0%, 100% 100%, 39% 100%);
   }
 }
 

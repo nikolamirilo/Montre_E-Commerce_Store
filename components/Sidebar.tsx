@@ -38,9 +38,14 @@ const Sidebar = () => {
           alt="Montre"
           priority
         />
-        <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
-          <RiMenu3Line size={35} />
-        </button>
+        <div className="flex flex-row gap-4 lg:gap-8">
+          <Link href="/cart" className="flex flex-row justify-center items-center">
+            <BsCart3 size={35} />
+          </Link>
+          <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
+            <RiMenu3Line size={35} />
+          </button>
+        </div>
       </div>
       <div
         className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${

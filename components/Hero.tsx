@@ -4,12 +4,19 @@ import Image from "next/image"
 const Hero = () => {
   return (
     <section className="relative min-h-screen h-fit w-full pt-10 lg:pt-16" id="hero">
-      <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6 flex items-center justify-center flex-col">
-        <h1 className="sm:mx-auto w-full md:w-2/3 font-black text-amber-500 text-center text-4xl sm:text-6xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl ">
+      <Image
+        src="https://th.bing.com/th/id/R.d39f8535c01ff3193eb3ef27f782d230?rik=mpQf3qvuphLMyw&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2017%2f11%2f17%2f230726-watch-luxury_watches.jpg&ehk=32PDfUB8z2%2fyJ0l8u%2bjs53NHDJqNxCDOvFNmzbPjDic%3d&risl=&pid=ImgRaw&r=0"
+        fill
+        alt="Hero"
+        id="hero-bg"
+        className="object-center object-cover hidden lg:flex"
+      />
+      <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col">
+        <h1 className="w-full lg:w-2/3 font-black text-amber-500 text-4xl sm:text-6xl md:text-6xl lg:text-left xl:text-7xl text-center">
           Montre, satovi koji oduzimaju dah
         </h1>
         <div className="lg:flex">
-          <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto">
+          <div className="relative mt-8 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto">
             <p className="sm:text-lg text-gray-800 lg:w-11/12">
               Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima koji kombinuju
               neopisivu eleganciju sa nesavladivom preciznošću, čineći svaki trenutak vrednim
@@ -18,11 +25,13 @@ const Hero = () => {
             <span className="block italic text-gray-800 text-xl">
               "Elegancija koja se meri sekundama"
             </span>
+
             <HeroNavigation />
+
             <div className="text-xl text-black">
               🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
             </div>
-            <div className="pt-10 flex flex-row justify-center align-middle flex-wrap gap-8">
+            <div className="pt-10 flex flex-row justify-center lg:w-2/3 xl:w-1/2 w-full align-middle flex-wrap gap-8">
               <Image
                 src="/brands/curren_logo.png"
                 className="h-8 w-auto"
@@ -67,7 +76,7 @@ const Hero = () => {
               />
             </div>
           </div>
-          <div className="mt-12 md:mt-0 lg:absolute -right-10 lg:w-3/12 hidden lg:flex">
+          {/* <div className="mt-12 md:mt-0 lg:absolute -right-10 lg:w-3/12 hidden lg:flex">
             <div className="relative top-32 w-full flex justify-center items-center">
               <div
                 aria-hidden="true"
@@ -81,7 +90,7 @@ const Hero = () => {
                 alt="wath illustration"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
