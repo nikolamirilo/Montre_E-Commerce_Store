@@ -2,6 +2,7 @@ import { getSingleProduct } from "@/actions/server/products"
 import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
 import { currentUser } from "@clerk/nextjs"
+import Image from "next/image"
 import Link from "next/link"
 
 const ShoppingCart = async () => {
@@ -53,7 +54,10 @@ const ShoppingCart = async () => {
             </div>
           </div>
         ) : (
-          <h2 className="text-2xl font-semibold">Nema ni jedan proizvod u korpi</h2>
+          <div className="flex w-2/3 justify-center items-center flex-col gap-20">
+            <h2 className="text-2xl font-semibold text-center">Nema ni jedan proizvod u korpi</h2>
+            <Image src="/other/empty_cart.jpg" alt="Empty Cart" width={300} height={300} />
+          </div>
         )}
       </div>
     </main>
