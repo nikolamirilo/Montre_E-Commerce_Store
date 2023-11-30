@@ -69,7 +69,7 @@ const Sidebar = () => {
             <Link
               onClick={handleSidebar}
               href="/"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
               <IoHomeOutline size={30} />
               <span>Početna</span>
             </Link>
@@ -78,7 +78,7 @@ const Sidebar = () => {
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <button
                 onClick={handleMenu}
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <BsWatch size={30} />
                 <span>Ponuda satova</span>
                 {isOfferOpen ? (
@@ -95,7 +95,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <MdOutlineLocalOffer size={30} />
                 <span>Svi</span>
               </Link>
@@ -107,7 +107,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/man"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <AiOutlineMan size={30} />
                 <span>Muški</span>
               </Link>
@@ -119,7 +119,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/woman"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <AiOutlineWoman size={30} />
                 <span>Ženski</span>
               </Link>
@@ -131,7 +131,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/offers/super-deals"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <TbDiscount2 size={30} />
                 <span>Akcije</span>
               </Link>
@@ -140,7 +140,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/cart"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <BsCart3 size={30} />
                 <span>Korpa</span>
               </Link>
@@ -152,7 +152,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/about"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <BsInfoCircle size={30} />
                 <span>O Nama</span>
               </Link>
@@ -163,7 +163,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/contact"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <RiContactsLine size={30} />
                 <span>Kontaktiraj Nas</span>
               </Link>
@@ -172,7 +172,7 @@ const Sidebar = () => {
           {user ? (
             <div className="p-1.5 mt-2 flex items-center justify-start rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500"
                 onClick={handleSidebar}
                 href={`/users/${user.id}`}>
                 <UserButton afterSignOutUrl="/" /> <span>{user?.username}</span>
@@ -183,7 +183,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/auth/log-in"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <AiOutlineLogin size={30} />
                 <span>Prijavi se</span>
               </Link>
@@ -197,7 +197,7 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/create-product"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-center items-center">
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full bg-blue-500">
                 <LuPlusSquare size={30} />
                 <span>Dodaj Novi Proizvod</span>
               </Link>

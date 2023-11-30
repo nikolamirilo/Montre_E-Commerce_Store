@@ -11,14 +11,13 @@ const Hero = () => {
         id="hero-bg"
         className="object-center object-cover hidden lg:flex"
       />
-      <div id="snow"></div>
-      <div className="relative w-full xl:pl-[5%] m-auto px-2 md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col lg:mt-[2%]">
+      <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col lg:mt-[2%]">
         <h1 className="w-full lg:w-2/3 xl:1/2 font-black text-amber-500 text-4xl sm:text-6xl md:text-5xl lg:text-left xl:text-6xl text-center">
           Elegancija koja se meri sekundama
         </h1>
         <div className="lg:flex">
           <div className="relative mt-8 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto lg:text-left lg:mr-auto">
-            <p className="text-xl text-gray-800 lg:w-10/12 xl:w-8/12 text-justify">
+            <p className="text-xl text-gray-800 lg:w-10/12 xl:w-8/12">
               Naša misija je jednostavna. Želimo da vam omogućimo pristup vrhunskim satovima koji ne
               samo da mere vreme, već ga i čine vrednim pamćenja! Svaki pažljivo biran model u nasem
               asortimanu nosi pečat beskompromisnog stila i tehničke izvrsnosti.
@@ -29,7 +28,7 @@ const Hero = () => {
             <HeroNavigation />
 
             <span className="block italic text-gray-800 text-xl">"Gde vreme postaje moda"</span>
-            <div className="pt-5 flex flex-row justify-start lg:w-2/3 w-full align-middle flex-wrap gap-8 lg:gap-4">
+            <div className="pt-5 flex flex-row justify-center lg:justify-start lg:w-2/3 w-full align-middle flex-wrap gap-8 lg:gap-4">
               <Image
                 src="/brands/curren_logo.png"
                 className="h-8 w-auto"
