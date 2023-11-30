@@ -27,7 +27,7 @@ const Sidebar = () => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 lg:px-20 px-6 ${
+        className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${
           isSidebarOpen && "hidden"
         }`}
         id="navbar">

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   const cld = new Cloudinary({ cloud: { cloudName: "montre-cloudinary" } })
+
   return (
     <ClerkProvider>
       <MainContextProvider>

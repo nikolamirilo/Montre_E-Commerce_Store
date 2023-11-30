@@ -11,27 +11,25 @@ const Hero = () => {
         id="hero-bg"
         className="object-center object-cover hidden lg:flex"
       />
-      <div className="relative w-full xl:w-10/12 m-auto px-2 md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col">
-        <h1 className="w-full lg:w-2/3 font-black text-amber-500 text-4xl sm:text-6xl md:text-6xl lg:text-left xl:text-7xl text-center">
-          Montre, satovi koji oduzimaju dah
+      <div id="snow"></div>
+      <div className="relative w-full xl:pl-[5%] m-auto px-2 md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col lg:mt-[2%]">
+        <h1 className="w-full lg:w-2/3 xl:1/2 font-black text-amber-500 text-4xl sm:text-6xl md:text-5xl lg:text-left xl:text-6xl text-center">
+          Elegancija koja se meri sekundama
         </h1>
         <div className="lg:flex">
-          <div className="relative mt-8 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto">
-            <p className="sm:text-lg text-gray-800 lg:w-11/12">
-              Naša misija je da svakom kupcu pružimo pristup vrhunskim satovima koji kombinuju
-              neopisivu eleganciju sa nesavladivom preciznošću, čineći svaki trenutak vrednim
-              pamćenja.
+          <div className="relative mt-8 space-y-8 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto lg:text-left lg:mr-auto">
+            <p className="text-xl text-gray-800 lg:w-10/12 xl:w-8/12 text-justify">
+              Naša misija je jednostavna. Želimo da vam omogućimo pristup vrhunskim satovima koji ne
+              samo da mere vreme, već ga i čine vrednim pamćenja! Svaki pažljivo biran model u nasem
+              asortimanu nosi pečat beskompromisnog stila i tehničke izvrsnosti.
             </p>
-            <span className="block italic text-gray-800 text-xl">
-              "Elegancija koja se meri sekundama"
+            <span className="block text-gray-800 text-xl">
+              Započni putovanje kroz vreme uz Montre kolekciju satova:
             </span>
-
             <HeroNavigation />
 
-            <div className="text-xl text-black">
-              🔥🌟Poruči i ti svoj sat preko našeg sajta u dva klika!
-            </div>
-            <div className="pt-10 flex flex-row justify-center lg:w-2/3 xl:w-1/2 w-full align-middle flex-wrap gap-8">
+            <span className="block italic text-gray-800 text-xl">"Gde vreme postaje moda"</span>
+            <div className="pt-5 flex flex-row justify-start lg:w-2/3 w-full align-middle flex-wrap gap-8 lg:gap-4">
               <Image
                 src="/brands/curren_logo.png"
                 className="h-8 w-auto"
@@ -39,14 +37,14 @@ const Hero = () => {
                 height={150}
                 alt="Curren"
               />
-              <Image
+              {/* <Image
                 src="/brands/lige_logo.png"
                 alt="Lige"
                 className="h-12 w-auto"
                 width={300}
                 height={150}
-              />
-              <Image
+              /> */}
+              {/* <Image
                 src="/brands/naviforce_logo.png"
                 alt="Naviforce"
                 className="h-12 w-auto"
@@ -54,11 +52,11 @@ const Hero = () => {
                 height={150}
               />
               <Image
-                src="/brands/benyar_logo.jpg"
+                src="/brands/benyar_logo.png"
                 alt="Benyar"
-                className="h-12 w-auto"
-                width={300}
-                height={150}
+                className="h-16 w-auto"
+                width={400}
+                height={200}
               />
               <Image
                 src="/brands/geneva_logo.png"
@@ -66,7 +64,7 @@ const Hero = () => {
                 className="h-10 w-auto"
                 width={300}
                 height={150}
-              />
+              /> */}
               <Image
                 src="/brands/hannah_martin_logo.png"
                 alt="Hannah Martin"
