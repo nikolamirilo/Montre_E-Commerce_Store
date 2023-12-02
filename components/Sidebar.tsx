@@ -33,11 +33,11 @@ const Sidebar = () => {
         }`}
         id="navbar">
         <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
-          <RiMenu2Line size={35} />
+          <RiMenu2Line size={30} />
         </button>
         <Image
           src="/MontreLogoTransparentLetters.png"
-          width={150}
+          width={120}
           height={90}
           alt="Montre"
           className="relative left-4 lg:left-8"
@@ -45,7 +45,7 @@ const Sidebar = () => {
         />
         <div className="flex flex-row gap-4 lg:gap-8">
           <Link href="/cart" className="flex flex-row justify-center items-center">
-            <BsCart3 size={35} />
+            <BsCart3 size={30} />
           </Link>
           {user ? (
             <Link href={`/users/${user.id}`} className="flex flex-row justify-center items-center">
@@ -53,7 +53,7 @@ const Sidebar = () => {
             </Link>
           ) : (
             <Link href="/auth/login" className="flex flex-row justify-center items-center">
-              <FaRegUser size={30} />
+              <FaRegUser size={25} />
             </Link>
           )}
         </div>

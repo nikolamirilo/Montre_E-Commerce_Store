@@ -34,6 +34,7 @@ export interface CartItemProps {
 }
 
 export interface SearchQuery {
+  length?: string
   search?: string
   isOnDiscount?: boolean
   class?: string

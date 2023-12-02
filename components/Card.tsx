@@ -88,12 +88,12 @@ const Card: React.FC<CardProps> = ({
             </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="rounded-xl border-2 bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg text-white text-bold uppercase">
+            <span className="rounded-xl border-2 text-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg uppercase">
               {productClass}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-gray-900">{price}RSD</span>
+            <span className="text-2xl font-bold text-gray-900">{price} RSD</span>
             {type == "profile" ? (
               <></>
             ) : (
