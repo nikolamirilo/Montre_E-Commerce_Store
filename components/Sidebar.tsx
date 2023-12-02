@@ -5,10 +5,11 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
 import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
+import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
 import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
-import { RiContactsLine, RiMenu3Line } from "react-icons/ri"
+import { RiContactsLine, RiMenu2Line } from "react-icons/ri"
 import { TbDiscount2 } from "react-icons/tb"
 import logo from "../public/MontreLogoTransparent.png"
 
@@ -31,20 +32,30 @@ const Sidebar = () => {
           isSidebarOpen && "hidden"
         }`}
         id="navbar">
+        <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
+          <RiMenu2Line size={35} />
+        </button>
         <Image
           src="/MontreLogoTransparentLetters.png"
           width={150}
           height={90}
           alt="Montre"
+          className="relative left-4 lg:left-8"
           priority
         />
         <div className="flex flex-row gap-4 lg:gap-8">
           <Link href="/cart" className="flex flex-row justify-center items-center">
             <BsCart3 size={35} />
           </Link>
-          <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
-            <RiMenu3Line size={35} />
-          </button>
+          {user ? (
+            <Link href={`/users/${user.id}`} className="flex flex-row justify-center items-center">
+              <UserButton afterSignOutUrl="/" />{" "}
+            </Link>
+          ) : (
+            <Link href="/auth/login" className="flex flex-row justify-center items-center">
+              <FaRegUser size={30} />
+            </Link>
+          )}
         </div>
       </div>
       <div

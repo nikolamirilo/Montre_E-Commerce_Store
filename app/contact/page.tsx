@@ -29,9 +29,8 @@ const Contact = async () => {
           Kontaktiraj nas
         </h2>
         <p className="mb-8 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
-          Sat ti nije dostavljen, nisi zadovoljan kvalitetom ili imas neki drugi problem?
-          Kontaktiraj nas putem forme ispod ili nam pisi na nekoj od drustvenih mreza/email ili nas
-          pozovi
+          Vaša povratna informacija je od suštinskog značaja za nas! Ako imate bilo kakva pitanja,
+          komentare ili jednostavno želite podeliti svoje iskustvo, slobodno nas kontaktirajte.
         </p>
         <div className="flex w-full px-5 lg:w-[90%] xl:w-3/4 flex-col gap-5 lg:gap-0 lg:flex-row lg:shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] lg:py-20 lg:px-10 lg:rounded-lg">
           <form action="submit" className="w-full lg:w-2/3 flex flex-col gap-3">

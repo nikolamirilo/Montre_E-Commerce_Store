@@ -1,5 +1,3 @@
-import React from "react"
-
 const About = () => {
   return (
     <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-white dark:bg-dark px-5">
@@ -10,14 +8,14 @@ const About = () => {
               <div className="w-full px-3 sm:px-4 xl:w-1/2">
                 <div className="py-3 sm:py-4">
                   <img
-                    src="https://i.ibb.co/gFb3ns6/image-1.jpg"
+                    src="https://th.bing.com/th/id/R.dbdd60e61c66043f4823e08afcd9cd05?rik=sPAPvksCmqfS5g&riu=http%3a%2f%2fretaildesignblog.net%2fwp-content%2fuploads%2f2014%2f09%2fWSI-flagship-watch-store-by-StartJG-HK-Limited-Singapore-Malaysia-07-.jpg&ehk=OAX4X7Xlu%2fedrInMLZxF%2fOxK2lzypnD%2bVT1l903VUiI%3d&risl=&pid=ImgRaw&r=0"
                     alt=""
                     className="w-full rounded-2xl"
                   />
                 </div>
                 <div className="py-3 sm:py-4">
                   <img
-                    src="https://i.ibb.co/rfHFq15/image-2.jpg"
+                    src="https://th.bing.com/th/id/OIP.JWCWu2ystqbe8Loc-AdB7AHaFj?rs=1&pid=ImgDetMain"
                     alt=""
                     className="w-full rounded-2xl"
                   />
@@ -26,7 +24,7 @@ const About = () => {
               <div className="w-full px-3 sm:px-4 xl:w-1/2">
                 <div className="relative z-10 my-4">
                   <img
-                    src="https://i.ibb.co/9y7nYCD/image-3.jpg"
+                    src="https://i.pinimg.com/originals/1c/1f/45/1c1f451018c2752e9b4915dec214f7be.jpg"
                     alt=""
                     className="w-full rounded-2xl"
                   />
@@ -37,25 +35,34 @@ const About = () => {
 
           <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
             <div className="mt-10 lg:mt-0">
-              <span className="block mb-4 text-lg font-semibold text-primary">Why Choose Us</span>
-              <h2 className="mb-5 text-3xl font-bold text-dark dark:text-white sm:text-[40px]/[48px]">
-                Make your customers happy by giving services.
+              <h2 className="mb-5 text-2xl font-bold text-dark dark:text-white sm:text-[40px]/[48px]">
+                Dobrodošli u Montre!
               </h2>
               <p className="mb-5 text-base text-body-color dark:text-dark-6">
-                It is a long established fact that a reader will be distracted by the readable
-                content of a page when looking at its layout. The point of using Lorem Ipsum is that
-                it has a more-or-less.
+                Montre je online destinacija posvećena pružanju nezaboravnih trenutaka kroz spoj
+                elegancije i preciznosti. Specijalizujemo se u prodaji muških i ženskih satova, sa
+                posebnim fokusom na ekskluzivne modele brendova Curren i Hannah Martin. Naša misija
+                je jednostavna - omogućiti svakom kupcu pristup vrhunskim satovima koji će dodati
+                notu stila i elegancije u svakom trenutku.
+              </p>
+              <span className="block mb-4 text-lg font-semibold text-primary">Naša Ponuda:</span>
+              <p className="mb-5 text-base text-body-color dark:text-dark-6">
+                Montre donosi pažljivo izabran asortiman muških i ženskih satova, između kojih se
+                ističu elegantni modeli brendova Curren i Hannah Martin. Svi naši satovi su odabrani
+                s posebnom pažnjom kako bismo zadovoljili raznolike stilove i ukuse naših kupaca.
+                Bez obzira tražite li klasičan sat za poslovne prilike ili modernu i atraktivnu
+                varijantu za svakodnevne trenutke, Montre ima nešto za svakoga.
               </p>
               <p className="mb-8 text-base text-body-color dark:text-dark-6">
-                A domain name is one of the first steps to establishing your brand. Secure a
-                consistent brand image with a domain name that matches your business.
+                U budućnosti planiramo proširenje naše kolekcije sa još modela koji će odražavati
+                najnovije trendove i udovoljavati raznovrsnim preferencijama naših kupaca. Montre
+                nije samo online prodavnica satova; mi smo posvećeni stvaranju zajednice ljubitelja
+                satova koji dele strast prema vrhunskom dizajnu i besprekornoj preciznosti.
               </p>
-              <a
-                href="javascript:void(0)"
-                className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
-              >
-                Get Started
-              </a>
+              <p className="mb-8 text-base text-body-color dark:text-dark-6">
+                Zahvaljujemo vam na poverenju i pozivamo vas da istražite našu pažljivo biranu
+                kolekciju i započnete putovanje kroz vreme uz Montre satove!
+              </p>
             </div>
           </div>
         </div>

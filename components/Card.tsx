@@ -31,6 +31,7 @@ const Card: React.FC<CardProps> = ({
   async function handleAddItemToCart() {
     const uid = user?.id
     await addItemToCart(uid, _id)
+    revalidateData()
     alert("Proizvod dodat u korpu")
   }
 
