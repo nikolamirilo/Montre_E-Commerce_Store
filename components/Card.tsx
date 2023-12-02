@@ -32,7 +32,6 @@ const Card: React.FC<CardProps> = ({
     const uid = user?.id
     await addItemToCart(uid, _id)
     revalidateData()
-    alert("Proizvod dodat u korpu")
   }
 
   return (
@@ -88,21 +87,17 @@ const Card: React.FC<CardProps> = ({
             </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="rounded-xl border-2 text-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg uppercase">
+            <span className="rounded-xl border-2 text-white bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg">
               {productClass}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-gray-900">{price} RSD</span>
-            {type == "profile" ? (
-              <></>
-            ) : (
-              <button
-                onClick={handleAddItemToCart}
-                className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
-                <BsCart3 size={25} /> Dodaj u korpu
-              </button>
-            )}
+            <span className="text-2xl font-semibold text-gray-900"> {price} RSD</span>
+            <button
+              onClick={handleAddItemToCart}
+              className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
+              <BsCart3 size={25} /> Dodaj u korpu
+            </button>
           </div>
         </div>
       </div>

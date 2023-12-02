@@ -9,11 +9,11 @@ import Link from "next/link"
 export default async function Home() {
   const products = await getAllProducts({})
   return (
-    <main className="flex w-full flex-col justify-center items-center gap-10" id="home">
+    <main className="flex w-full flex-col justify-center items-center" id="home">
       <Hero />
       <Snow />
-      <div className="flex flex-col gap-10 justify-center items-center">
-        <h2 className="text-3xl font-semibold w-full text-center lg:text-left relative left-0 lg:left-10">
+      <div className="flex flex-col gap-10 justify-center items-center mt-10">
+        <h2 className="text-3xl font-semibold w-full text-center lg:text-left relative left-0 lg:left-6">
           Izdvajamo iz ponude
         </h2>
         <div className="flex flex-wrap w-full justify-center items-center gap-5">
