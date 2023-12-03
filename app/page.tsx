@@ -13,9 +13,7 @@ export default async function Home() {
       <Hero />
       <Snow />
       <div className="flex flex-col gap-10 justify-center items-center mt-10">
-        <h2 className="text-3xl font-semibold w-full text-center lg:text-left relative left-0 lg:left-6">
-          Izdvajamo iz ponude
-        </h2>
+        <h2 className="text-3xl font-semibold text-center">Izdvajamo iz ponude</h2>
         <div className="flex flex-wrap w-full justify-center items-center gap-5">
           {products ? (
             products

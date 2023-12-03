@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent !important;
 }
 #navbar,
 #sidebar,
@@ -17,7 +18,7 @@ footer,
 }
 main {
   min-height: 100vh;
-  padding-top: 4rem;
+  padding-top: 3rem;
   padding-bottom: 4rem;
 }
 #hero {
