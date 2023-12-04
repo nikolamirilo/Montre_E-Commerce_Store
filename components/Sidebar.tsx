@@ -13,7 +13,7 @@ import { RiContactsLine, RiMenu2Line } from "react-icons/ri"
 import { TbDiscount2 } from "react-icons/tb"
 import logo from "../public/MontreLogoTransparent.png"
 
-const Sidebar = () => {
+const Sidebar = ({ cartItems }: { cartItems: number }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isOfferOpen, setIsOfferOpen] = useState(false)
   function handleSidebar() {
@@ -44,12 +44,15 @@ const Sidebar = () => {
           priority
         />
         <div className="flex flex-row gap-4 lg:gap-8">
-          <Link href="/cart" className="flex flex-row justify-center items-center">
+          <Link href="/cart" className="flex flex-row justify-center items-center relative">
             <BsCart3 size={30} />
+            <span className="absolute text-xs text-white -right-2 -bottom-1 px-1 rounded-full bg-amber-500">
+              {cartItems}
+            </span>
           </Link>
           {user ? (
             <Link href={`/users/${user.id}`} className="flex flex-row justify-center items-center">
-              <UserButton afterSignOutUrl="/" />{" "}
+              <UserButton afterSignOutUrl="/" />
             </Link>
           ) : (
             <Link href="/auth/login" className="flex flex-row justify-center items-center">
@@ -151,7 +154,10 @@ const Sidebar = () => {
               <Link
                 onClick={handleSidebar}
                 href="/cart"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[15px] relative ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                <span className="absolute text-xs text-white left-5 -bottom-1 px-1 rounded-full bg-amber-500">
+                  {cartItems}
+                </span>
                 <BsCart3 size={30} />
                 <span>Korpa</span>
               </Link>

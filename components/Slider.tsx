@@ -52,6 +52,7 @@ const Slider = ({ images }: { images: string[] }) => {
         {images?.map((image, idx) => {
           return (
             <div
+              key={idx}
               className={`relative w-20 h-16 cursor-pointer ${
                 image == images[index] ? "border-2 border-amber-500" : ""
               }`}

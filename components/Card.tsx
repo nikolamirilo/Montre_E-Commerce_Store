@@ -31,6 +31,7 @@ const Card: React.FC<CardProps> = ({
   async function handleAddItemToCart() {
     const uid = user?.id
     await addItemToCart(uid, _id)
+    alert("Dodat proizvod u korpu")
     revalidateData()
   }
 
@@ -92,7 +93,7 @@ const Card: React.FC<CardProps> = ({
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-2xl font-semibold text-gray-900"> {price} RSD</span>
+            <span className="text-xl text-gray-900"> {price} RSD</span>
             <button
               onClick={handleAddItemToCart}
               className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">

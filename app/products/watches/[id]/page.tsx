@@ -21,6 +21,11 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             {product.description}
           </p>
         </div>
+        <div className="flex w-full items-center justify-center mt-5">
+          <button className=" text-lg flex items-center rounded-xl gap-3 mb-5 justify-center leading-none text-white bg-amber-500 w-full lg:w-1/2 font-semibold py-2 hover:bg-amber-600 focus:outline-none">
+            <BsCart3 size={30} /> Dodaj u korpu
+          </button>
+        </div>
         <div className="py-2 border-b border-gray-200 flex items-center justify-between">
           <p className="text-lg text-gray-900 dark:text-gray-300">Brend:</p>
           <div className="flex items-center justify-center">
@@ -46,7 +51,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         <div className="py-2 border-b border-gray-200 flex items-center justify-between">
-          <p className="text-lg text-gray-900 dark:text-gray-300">Šifra proizvoda:</p>
+          <p className="text-lg text-gray-900 dark:text-gray-300">Šifra:</p>
           <div className="flex items-center justify-center">
             <p className="text-lg font-semibold leading-none text-gray-900 dark:text-gray-300 mr-3">
               {product._id}
@@ -68,11 +73,6 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               100% hirurški čelik
             </p>
           </div>
-        </div>
-        <div className="flex w-full items-center justify-center mt-5">
-          <button className=" text-lg flex items-center rounded-xl gap-3 justify-center leading-none text-white bg-amber-500 w-full lg:w-1/2 font-semibold py-2 hover:bg-amber-600 focus:outline-none">
-            <BsCart3 size={30} /> Dodaj u korpu
-          </button>
         </div>
       </div>
     </main>

@@ -1,6 +1,14 @@
+"use client"
+import { deleteCartItem } from "@/actions/server/cart"
+import { revalidateData } from "@/helpers"
 import { CartItemProps } from "@/typescript/interfaces"
+import { IoMdClose } from "react-icons/io"
 
-const CartItem = ({ title, category, productClass, price, image }: CartItemProps) => {
+const CartItem = ({ uid, _id, title, category, productClass, price, image }: CartItemProps) => {
+  const handleDeleteCartItem = async () => {
+    await deleteCartItem(uid, _id)
+    revalidateData()
+  }
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
       <input type="checkbox" className="absolute top-0 left-0 w-6 h-6 cursor-pointer" />
@@ -11,7 +19,7 @@ const CartItem = ({ title, category, productClass, price, image }: CartItemProps
           <p className="mt-1 text-lg text-gray-700">{category == "man" ? "Muški" : "Ženski"}</p>
           <p className="mt-1 text-lg text-gray-700">{productClass}</p>
         </div>
-        <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+        <div className="mt-4 flex flex-row-reverse md:flex-col sm:mt-0 h-full justify-between md:justify-around items-center">
           <div className="flex items-center border-gray-200">
             <button className="cursor-pointer text-xl rounded-l bg-gray-100 py-[2px] px-3.5 duration-100 hover:bg-amber-500 hover:text-amber-50">
               -
@@ -22,16 +30,10 @@ const CartItem = ({ title, category, productClass, price, image }: CartItemProps
             </button>
           </div>
           <div className="flex items-center space-x-4">
-            <p className="text-md">{price} RSD</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <p className="text-lg">{price} RSD</p>
+            <button onClick={handleDeleteCartItem}>
+              <IoMdClose size={30} className="hover:fill-red-500" />
+            </button>
           </div>
         </div>
       </div>

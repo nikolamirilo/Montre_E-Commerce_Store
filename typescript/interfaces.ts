@@ -26,6 +26,8 @@ export interface Product {
 }
 
 export interface CartItemProps {
+  uid?: string
+  _id?: string
   title: string
   category: string
   productClass: string
