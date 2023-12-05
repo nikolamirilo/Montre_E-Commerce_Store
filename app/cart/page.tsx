@@ -7,6 +7,7 @@ import Link from "next/link"
 
 const ShoppingCart = async () => {
   const user = await currentUser()
+  var orders: string[] = []
   const uid = user?.id
   let mongoUser: any = {}
   if (user) {
