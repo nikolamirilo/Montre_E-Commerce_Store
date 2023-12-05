@@ -20,14 +20,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   const user = await currentUser()
   var cartItems: number = 0
+  var mongoUser: any = {}
 
   if (user) {
     const uid = user?.id
-    const mongoUser = await getSingleUser(uid)
-    const uniqueArray = mongoUser?.cart?.filter((value: string, index: string, self: any) => {
-      return self.indexOf(value) === index
-    })
-    cartItems = uniqueArray?.length
+    mongoUser = await getSingleUser(uid)
+    cartItems = mongoUser?.cart?.length
   }
   return (
     <ClerkProvider>

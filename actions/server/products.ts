@@ -103,6 +103,10 @@ export const deleteSingleProduct = async (_id: any) => {
     const db = await storeDatabaseConnection()
     const objId = new ObjectId(_id)
     await db.collection("products").deleteOne({ _id: objId })
+    await db.collection("users").updateMany(
+      { cart: _id },
+      { $pull: { cart: _id } }
+    );
   } catch (error) {
     console.log((error as Error).message)
   }

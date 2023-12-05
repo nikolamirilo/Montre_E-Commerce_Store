@@ -8,18 +8,18 @@ import Link from "next/link"
 const ShoppingCart = async () => {
   const user = await currentUser()
   const uid = user?.id
-  const mongoUser = await getSingleUser(uid)
-  let uniqueArray = mongoUser?.cart?.filter((value: string, index: string, self: any) => {
-    return self.indexOf(value) === index
-  })
+  let mongoUser: any = {}
+  if (user) {
+    mongoUser = await getSingleUser(uid)
+  }
   return (
     <main>
       <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
         <h1 className="mb-10 text-center text-3xl font-bold">Proizvodi u korpi</h1>
-        {uniqueArray.length > 0 ? (
+        {mongoUser?.cart?.length > 0 ? (
           <div className="mx-auto lg:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div className="rounded-lg md:w-2/3">
-              {uniqueArray.map(async (item: string) => {
+              {mongoUser?.cart?.map(async (item: string) => {
                 const product = await getSingleProduct(item)
                 if (product != null)
                   return (

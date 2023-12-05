@@ -30,8 +30,14 @@ const Card: React.FC<CardProps> = ({
 
   async function handleAddItemToCart() {
     const uid = user?.id
-    await addItemToCart(uid, _id)
-    alert("Dodat proizvod u korpu")
+    const res = await addItemToCart(uid, _id)
+    if (res == "Success") {
+      alert("Proizvod je dodat u korpu")
+    } else if (res == "Duplicate") {
+      alert("Proizvod ste već dodali u korpu")
+    } else {
+      alert("Greška")
+    }
     revalidateData()
   }
 

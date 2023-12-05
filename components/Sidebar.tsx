@@ -22,7 +22,6 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
   function handleMenu() {
     setIsOfferOpen(!isOfferOpen)
   }
-
   const { user } = useUser()
 
   return (
@@ -44,12 +43,14 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
           priority
         />
         <div className="flex flex-row gap-4 lg:gap-8">
-          <Link href="/cart" className="flex flex-row justify-center items-center relative">
-            <BsCart3 size={30} />
-            <span className="absolute text-xs text-white -right-2 -bottom-1 px-1 rounded-full bg-amber-500">
-              {cartItems}
-            </span>
-          </Link>
+          {user ? (
+            <Link href="/cart" className="flex flex-row justify-center items-center relative">
+              <BsCart3 size={30} />
+              <span className="absolute text-xs text-white -right-2 -bottom-1 px-1 rounded-full bg-amber-500">
+                {cartItems}
+              </span>
+            </Link>
+          ) : null}
           {user ? (
             <Link href={`/users/${user.id}`} className="flex flex-row justify-center items-center">
               <UserButton afterSignOutUrl="/" />
@@ -150,18 +151,20 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
                 <span>Akcije</span>
               </Link>
             </div>
-            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-              <Link
-                onClick={handleSidebar}
-                href="/cart"
-                className="text-[15px] relative ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
-                <span className="absolute text-xs text-white left-5 -bottom-1 px-1 rounded-full bg-amber-500">
-                  {cartItems}
-                </span>
-                <BsCart3 size={30} />
-                <span>Korpa</span>
-              </Link>
-            </div>
+            {user ? (
+              <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+                <Link
+                  onClick={handleSidebar}
+                  href="/cart"
+                  className="text-[15px] relative ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                  <span className="absolute text-xs text-white left-5 -bottom-1 px-1 rounded-full bg-amber-500">
+                    {cartItems}
+                  </span>
+                  <BsCart3 size={30} />
+                  <span>Korpa</span>
+                </Link>
+              </div>
+            ) : null}
           </div>
           <div className="my-4 bg-stone-50 h-[1px]"></div>
           <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">

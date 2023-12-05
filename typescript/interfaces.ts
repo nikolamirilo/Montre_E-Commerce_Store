@@ -5,6 +5,7 @@ export interface User {
   fullName: string
   image?: string
   orders?: Object[]
+  cart?:string[]
   role: Role
   address?: string
   city?: string
