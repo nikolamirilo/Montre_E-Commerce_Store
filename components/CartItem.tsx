@@ -11,7 +11,10 @@ const CartItem = ({ uid, _id, title, category, productClass, price, image }: Car
   }
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
-      <input type="checkbox" className="absolute top-0 left-0 w-6 h-6 cursor-pointer" />
+      <input type="checkbox" className="absolute top-0 left-0 w-5 h-5 cursor-pointer" />
+      <button onClick={handleDeleteCartItem} className="absolute top-0 right-0">
+        <IoMdClose size={30} className="hover:fill-red-500" />
+      </button>
       <img src={image} alt="product-image" className="w-full rounded-lg sm:w-40" />
       <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
         <div className="mt-5 sm:mt-0">
@@ -31,9 +34,6 @@ const CartItem = ({ uid, _id, title, category, productClass, price, image }: Car
           </div>
           <div className="flex items-center space-x-4">
             <p className="text-lg">{price} RSD</p>
-            <button onClick={handleDeleteCartItem}>
-              <IoMdClose size={30} className="hover:fill-red-500" />
-            </button>
           </div>
         </div>
       </div>
