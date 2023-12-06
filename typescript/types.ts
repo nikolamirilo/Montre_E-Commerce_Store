@@ -5,3 +5,14 @@ declare global {
 }
 
 export type Role = "admin" | "customer"
+
+export type Model = {
+  id: string
+  quantity: string
+  price: string
+}
+
+export type Order = {
+  state: "draft" | "active"
+  models: Model[]
+}

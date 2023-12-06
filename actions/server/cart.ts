@@ -27,7 +27,10 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
     console.log((error as Error).message);
     return "Error"
   }
+
+
 }
+
 
 export async function deleteCartItem (uid: string | undefined, itemToDelete: string | undefined) {
     try {

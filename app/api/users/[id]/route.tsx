@@ -1,0 +1,12 @@
+import { getSingleUser } from "@/actions/server/users"
+import { NextRequest, NextResponse } from "next/server"
+
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  const id = params.id
+  try {
+    const singleProduct = await getSingleUser(id)
+    return NextResponse.json(singleProduct)
+  } catch (error) {
+    return new NextResponse((error as Error).message)
+  }
+}

@@ -2,9 +2,11 @@
 import { deleteCartItem } from "@/actions/server/cart"
 import { revalidateData } from "@/helpers"
 import { CartItemProps } from "@/typescript/interfaces"
+import { useState } from "react"
 import { IoMdClose } from "react-icons/io"
 
 const CartItem = ({ uid, _id, title, category, productClass, price, image }: CartItemProps) => {
+  const [count, setCount] = useState(0)
   const handleDeleteCartItem = async () => {
     await deleteCartItem(uid, _id)
     revalidateData()
@@ -24,11 +26,21 @@ const CartItem = ({ uid, _id, title, category, productClass, price, image }: Car
         </div>
         <div className="mt-4 flex flex-row-reverse md:flex-col sm:mt-0 h-full justify-between md:justify-around items-center">
           <div className="flex items-center border-gray-200">
-            <button className="cursor-pointer text-xl rounded-l bg-gray-100 py-[2px] px-3.5 duration-100 hover:bg-amber-500 hover:text-amber-50">
+            <button
+              onClick={() => {
+                setCount(count - 1)
+              }}
+              className="cursor-pointer text-xl rounded-l bg-gray-100 py-[2px] px-3.5 duration-100 hover:bg-amber-500 hover:text-amber-50">
               -
             </button>
-            <span className="h-8 w-8 border text-xl bg-white text-center outline-none">0</span>
-            <button className="cursor-pointer text-xl rounded-r bg-gray-100 py-[2px] px-3 duration-100 hover:bg-amber-500 hover:text-amber-50">
+            <span className="h-8 w-8 border text-xl bg-white text-center outline-none">
+              {count}
+            </span>
+            <button
+              onClick={() => {
+                setCount(count + 1)
+              }}
+              className="cursor-pointer text-xl rounded-r bg-gray-100 py-[2px] px-3 duration-100 hover:bg-amber-500 hover:text-amber-50">
               +
             </button>
           </div>
