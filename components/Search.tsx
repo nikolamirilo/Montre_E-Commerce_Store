@@ -158,7 +158,7 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               />
             </div>
           </form>
-          <div className="flex flex-row justify-center items-center gap-2">
+          <div className="flex flex-row justify-center items-center gap-2 w-full">
             <button
               onClick={handleApplyFilters}
               className="w-40 md:w-48 bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg">
