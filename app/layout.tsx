@@ -11,8 +11,25 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Montre",
-  description: "Montre online shop",
+  title: "Montre Satovi",
+  description: "Elegancija koja se meri sekundama",
+  generator: "Montre",
+  applicationName: "Montre",
+  referrer: "origin-when-cross-origin",
+  keywords: ["Montre", "Satovi", "GMT", "Hronograf", "Povoljno", "Curren", "Lige", "Hannah Martin"],
+  authors: [{ name: "Reactify Solutions" }],
+  creator: "Nikola Mirilo",
+  publisher: "Montree",
+  metadataBase: new URL("https://montre-test.vercel.app/"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "sr-RS": "/sr-RS",
+    },
+  },
+  openGraph: {
+    images: ["/opengraph-image.jpeg", "twitter-image.jpeg"],
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
