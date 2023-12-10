@@ -5,7 +5,6 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
 import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
-import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
 import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
@@ -56,8 +55,10 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
               <UserButton afterSignOutUrl="/" />
             </Link>
           ) : (
-            <Link href="/auth/login" className="flex flex-row justify-center items-center">
-              <FaRegUser size={25} />
+            <Link
+              href="/auth/login"
+              className="flex flex-row justify-center items-center text-lg border hover:bg-amber-500 border-amber-500 rounded-xl px-4">
+              Prijavi se
             </Link>
           )}
         </div>

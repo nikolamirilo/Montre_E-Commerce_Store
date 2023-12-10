@@ -11,6 +11,8 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const productDiscount = parseInt(product.discount)
   const discountedPrice = Math.round(productPrice * (1 - productDiscount / 100))
   const user = await currentUser()
+  const displayPrice = productDiscount != 0 ? discountedPrice : productPrice
+  console.log(product)
   const uid = user?.id
   return (
     <main className="md:flex items-start mt-20 lg:mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
@@ -30,7 +32,10 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           <p className="text-lg text-gray-900">Cena:</p>
           <div className="flex items-center justify-center">
             <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
-              {productDiscount != 0 ? discountedPrice : productPrice} RSD
+              {displayPrice.toLocaleString("sr-RS", {
+                style: "currency",
+                currency: "RSD",
+              })}
             </p>
           </div>
         </div>

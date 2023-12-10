@@ -158,27 +158,17 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               />
             </div>
           </form>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-2">
+          <div className="flex flex-row justify-center items-center gap-2">
             <button
               onClick={handleApplyFilters}
-              className="bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg">
+              className="w-40 md:w-48 bg-amber-500 text-white rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 text-lg">
               Primeni
             </button>
             <button
               onClick={handleRemoveFilters}
-              className="border-2 border-amber-500 bg-white text-amber-500 rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 hover:text-white text-lg">
+              className=" w-40 md:w-48 border-2 border-amber-500 bg-white text-amber-500 rounded-lg relative right-3 px-2 md:px-3 h-10 hover:bg-amber-500 hover:text-white text-lg">
               Obriši filtere
             </button>
-          </div>
-          <div id="selected-filters" className="flex flex-row flex-wrap gap-2">
-            {Object.values(params).map((value) => {
-              if (value != "")
-                return (
-                  <span className={`bg-amber-500 rounded-lg px-3 py-1 text-xl text-white`}>
-                    {value == "man" ? "Muški" : value == "woman" ? "Ženski" : value}
-                  </span>
-                )
-            })}
           </div>
         </>
       ) : null}
