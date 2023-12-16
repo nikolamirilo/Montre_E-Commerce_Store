@@ -61,16 +61,20 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           return
         }
         await uploadImagesToCloudinary(files, images)
+        const price = parseInt(priceInput.current!.value)
+        const discount = parseInt(discountInput.current!.value)
+        const discountedPrice = Math.round(price * (1 - discount / 100))
         const uploadData: Product = {
           title: titleInput.current!.value,
-          price: priceInput.current!.value,
+          price: price,
           class: classInput.current!.value,
           category: categoryInput.current!.value,
           brand: brandInput.current!.value,
           description: descriptionInput.current!.value,
           isPublic: isPublicInput.current!.checked,
-          discount: discountInput.current!.value,
-          isOnDiscount: parseInt(discountInput.current!.value) > 0 ? true : false,
+          discount: discount,
+          discountedPrice: discountedPrice,
+          isOnDiscount: discount > 0 ? true : false,
           images: images,
         }
         await handleProductUpload(images, uploadData, action, id)
@@ -168,7 +172,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={classInput}
                 id="class"
                 name="class"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                className="w-full bg-white h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Premium">Premium</option>
                 <option value="Casual">Casual</option>
@@ -186,7 +190,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={categoryInput}
                 id="category"
                 name="category"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                className="w-full bg-white h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="man">Muški</option>
                 <option value="woman">Ženski</option>
@@ -203,7 +207,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
                 ref={brandInput}
                 id="brand"
                 name="brand"
-                className="w-full h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+                className="w-full h-10 bg-white border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Curren">Curren</option>
                 <option value="Lige">Lige</option>

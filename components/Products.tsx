@@ -33,11 +33,13 @@ const Products = async ({
               product.class &&
               product.isPublic == true
             ) {
+              console.log(product)
               return (
                 <Card
                   key={idx}
                   discount={product?.discount}
                   isOnDiscount={product?.isOnDiscount}
+                  discountedPrice={product?.discountedPrice}
                   _id={product?._id?.toString()}
                   title={product.title}
                   productClass={product.class}
@@ -50,6 +52,7 @@ const Products = async ({
         ) : (
           <Loader />
         )}
+        {products?.length == 0 && <h1 className="text-3xl mt-20">Nema produkta trenutno</h1>}
       </div>
     </section>
   )

@@ -33,6 +33,7 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
                 <Card
                   discount={product?.discount}
                   isOnDiscount={product?.isOnDiscount}
+                  discountedPrice={product?.discountedPrice}
                   _id={product?._id?.toString()}
                   title={product.title}
                   productClass={product.class}

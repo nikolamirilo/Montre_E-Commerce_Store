@@ -19,11 +19,12 @@ export interface Product {
   title: string
   description: string
   images: string[]
-  price: string
+  price: number
   isOnDiscount: boolean
-  discount: string
+  discount: number
   class: string
   brand: string
+  discountedPrice?:number
 }
 
 export interface CartItemProps {
@@ -63,9 +64,10 @@ export interface CardProps {
   _id?: string
   title: string
   images: string[]
-  price: string
+  price: number
   isOnDiscount: boolean
-  discount: string
+  discountedPrice?: number
+  discount: number
   productClass: string
   type?: string
 }

@@ -31,6 +31,7 @@ export default async function Home() {
                       key={idx}
                       discount={product?.discount}
                       isOnDiscount={product?.isOnDiscount}
+                      discountedPrice={product?.discountedPrice}
                       _id={product?._id?.toString()}
                       title={product.title}
                       productClass={product.class}
