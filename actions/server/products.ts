@@ -1,5 +1,5 @@
 "use server"
-import { storeDatabaseConnection } from "@/connections/mongodb/connections"
+import { storeDatabaseConnection } from "@/mongodb/connections"
 import { Product, SearchQuery } from "@/typescript/interfaces"
 import { ObjectId } from "mongodb"
 

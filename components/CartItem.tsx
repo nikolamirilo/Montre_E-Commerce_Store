@@ -5,12 +5,23 @@ import { CartItemProps } from "@/typescript/interfaces"
 import { useState } from "react"
 import { IoMdClose } from "react-icons/io"
 
-const CartItem = ({ uid, _id, title, category, productClass, price, image }: CartItemProps) => {
+const CartItem = ({
+  uid,
+  _id,
+  title,
+  category,
+  productClass,
+  price,
+  image,
+  isOnDiscount,
+  discountedPrice,
+}: CartItemProps) => {
   const [count, setCount] = useState(0)
   const handleDeleteCartItem = async () => {
     await deleteCartItem(uid, _id)
     revalidateData()
   }
+  const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
       <input type="checkbox" className="absolute top-0 left-0 w-5 h-5 cursor-pointer" />
@@ -45,7 +56,7 @@ const CartItem = ({ uid, _id, title, category, productClass, price, image }: Car
             </button>
           </div>
           <div className="flex items-center space-x-4">
-            <p className="text-lg">{price} RSD</p>
+            <p className="text-lg">{calculatedPrice!.toLocaleString().replace(",", ".")} RSD</p>
           </div>
         </div>
       </div>

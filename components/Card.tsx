@@ -19,7 +19,6 @@ const Card: React.FC<CardProps> = ({
   discount,
   isOnDiscount,
   discountedPrice,
-  type,
 }) => {
   const router = useRouter()
   const { user } = useUser()
@@ -41,7 +40,7 @@ const Card: React.FC<CardProps> = ({
     }
     revalidateData()
   }
-  const displayPrice = isOnDiscount ? discountedPrice : price
+  const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
     <div className="max-w-xl">
       <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
@@ -101,10 +100,7 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="flex items-center justify-between">
             <span className="text-xl text-gray-900">
-              {displayPrice?.toLocaleString("sr-RS", {
-                style: "currency",
-                currency: "RSD",
-              })}
+              {calculatedPrice!.toLocaleString().replace(",", ".")},00 RSD
             </span>
             <button
               onClick={handleAddItemToCart}

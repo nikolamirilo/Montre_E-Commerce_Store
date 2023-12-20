@@ -5,10 +5,12 @@ import MainContextProvider from "@/context/MainContext"
 import { ClerkProvider, currentUser } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Open_Sans } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+// Open_SANS
+
+const font = Open_Sans({ preload: true, subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Montre Satovi",
@@ -48,7 +50,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <ClerkProvider>
       <MainContextProvider>
         <html lang="en">
-          <body className={`${inter.className} bg-white`}>
+          <body className={`${font.className} bg-white`}>
             <Sidebar cartItems={cartItems} />
             {props.children}
             <Footer />

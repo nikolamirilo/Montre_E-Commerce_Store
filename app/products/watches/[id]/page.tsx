@@ -10,7 +10,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const user = await currentUser()
   const uid = user?.id
   if (product) {
-    const displayPrice = product.isOnDiscount ? product.discountedPrice! : product.price!
+    const calculatedPrice = product.isOnDiscount ? product.discountedPrice! : product.price!
     return (
       <main className="md:flex items-start mt-20 lg:mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
         <div className="flex flex-col justify-center lg:mt-6 items-center w-full xl:w-3/5 h-full md:w-1/2">
@@ -29,10 +29,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             <p className="text-lg text-gray-900">Cena:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
-                {displayPrice.toLocaleString("sr-RS", {
-                  style: "currency",
-                  currency: "RSD",
-                })}
+                {calculatedPrice!.toLocaleString().replace(",", ".")},00 RSD
               </p>
             </div>
           </div>
@@ -56,6 +53,12 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+            <p className="text-lg text-gray-900">Tip:</p>
+            <div className="flex items-center justify-center">
+              <p className="text-lg font-semibold leading-none text-gray-900 mr-3">Hronograf</p>
+            </div>
+          </div>
+          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
             <p className="text-lg text-gray-900">Klasa:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -71,12 +74,12 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          {/* <div className="py-2 border-b border-gray-200 flex items-center justify-between">
             <p className="text-lg text-gray-900">Šifra:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">{product._id}</p>
             </div>
-          </div>
+          </div> */}
           <div className="py-2 border-b border-gray-200 flex items-center justify-between">
             <p className="text-lg text-gray-900">Prečnik:</p>
             <div className="flex items-center justify-center">

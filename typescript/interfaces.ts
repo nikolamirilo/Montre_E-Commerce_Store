@@ -33,8 +33,10 @@ export interface CartItemProps {
   title: string
   category: string
   productClass: string
-  price: string
+  price: number
   image: string
+  isOnDiscount: boolean
+  discountedPrice: number
 }
 
 export interface SearchQuery {

@@ -1,5 +1,5 @@
 "use server"
-import { storeDatabaseConnection } from "@/connections/mongodb/connections"
+import { storeDatabaseConnection } from "@/mongodb/connections"
 
 export async function createNewUser(user:any){
   try {

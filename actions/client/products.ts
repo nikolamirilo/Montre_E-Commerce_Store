@@ -46,7 +46,7 @@ export async function handleProductUpload(
     })
     if (response.ok) {
       revalidateData()
-      window.location.reload()
+      // window.location.reload()
       alert("Vaš odgovor je zabeležen")
     } else {
       console.log(response.statusText)

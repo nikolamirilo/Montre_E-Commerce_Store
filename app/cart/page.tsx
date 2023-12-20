@@ -1,3 +1,4 @@
+import { getTotalData } from "@/actions/server/cart"
 import { getSingleProduct } from "@/actions/server/products"
 import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
@@ -7,9 +8,10 @@ import Link from "next/link"
 
 const ShoppingCart = async () => {
   const user = await currentUser()
-  var orders: string[] = []
   const uid = user?.id
   let mongoUser: any = {}
+  const total = await getTotalData(uid)
+  const forPayment = total! + 500
   if (user) {
     mongoUser = await getSingleUser(uid)
   }
@@ -22,7 +24,7 @@ const ShoppingCart = async () => {
             <div className="rounded-lg md:w-2/3">
               {mongoUser?.cart?.map(async (item: string) => {
                 const product = await getSingleProduct(item)
-                if (product != null)
+                if (product != null) {
                   return (
                     <CartItem
                       _id={product?._id}
@@ -32,14 +34,17 @@ const ShoppingCart = async () => {
                       productClass={product?.class}
                       price={product?.price}
                       image={product?.images[0]}
+                      isOnDiscount={product?.isOnDiscount}
+                      discountedPrice={product?.discountedPrice}
                     />
                   )
+                }
               })}
             </div>
             <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
               <div className="mb-2 flex justify-between">
                 <p className="text-gray-700">Cena satova:</p>
-                <p className="text-gray-700">12.000,00 RSD</p>
+                <p className="text-gray-700">{total!.toLocaleString().replace(",", ".")},00 RSD</p>
               </div>
               <div className="flex justify-between">
                 <p className="text-gray-700">Dostava:</p>
@@ -48,7 +53,9 @@ const ShoppingCart = async () => {
               <hr className="my-4" />
               <div className="flex justify-between mb-5">
                 <p className="text-lg font-bold">Ukupno:</p>
-                <p className="mb-1 text-lg font-bold">12.500,00 RSD</p>
+                <p className="mb-1 text-lg font-bold">
+                  {forPayment.toLocaleString().replace(",", ".")},00 RSD
+                </p>
               </div>
               <Link
                 className="mt-6 w-full rounded-md bg-amber-500 py-2 px-4 font-medium text-amber-50 hover:bg-amber-600"
