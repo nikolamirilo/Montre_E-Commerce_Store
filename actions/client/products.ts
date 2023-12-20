@@ -1,4 +1,4 @@
-import { revalidateData } from "@/helpers"
+import { revalidateData } from "@/helpers/server"
 import { Product } from "@/typescript/interfaces"
 
 export async function uploadImagesToCloudinary(files: any, images: string[]) {
@@ -46,8 +46,6 @@ export async function handleProductUpload(
     })
     if (response.ok) {
       revalidateData()
-      // window.location.reload()
-      alert("Vaš odgovor je zabeležen")
     } else {
       console.log(response.statusText)
     }

@@ -1,6 +1,6 @@
 "use client"
 import { deleteCartItem } from "@/actions/server/cart"
-import { revalidateData } from "@/helpers"
+import { revalidateData } from "@/helpers/server"
 import { CartItemProps } from "@/typescript/interfaces"
 import { useState } from "react"
 import { IoMdClose } from "react-icons/io"

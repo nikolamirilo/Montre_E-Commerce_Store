@@ -50,7 +50,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <ClerkProvider>
       <MainContextProvider>
         <html lang="en">
-          <body className={`${font.className} bg-white`}>
+          <body className={`${font.className} bg-white relative`}>
             <Sidebar cartItems={cartItems} />
             {props.children}
             <Footer />

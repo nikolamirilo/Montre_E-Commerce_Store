@@ -5,10 +5,12 @@ import Image from "next/image"
 import React, { useEffect, useRef, useState } from "react"
 import { BsTrash3 } from "react-icons/bs"
 import logo from "../public/MontreLogoTransparent.png"
+import Loader from "./Loader"
 
 const Form = ({ initialData, action }: { initialData?: FormInitialData; action: string }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
   const [id, setId] = useState<string>("")
+  const [progress, setProgress] = useState<number>(0)
   const titleInput = useRef<HTMLInputElement>(null)
   const descriptionInput = useRef<HTMLTextAreaElement>(null)
   const classInput = useRef<HTMLSelectElement>(null)
@@ -60,6 +62,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           console.error("No file selected.")
           return
         }
+        setProgress(50)
         await uploadImagesToCloudinary(files, images)
         const price = parseInt(priceInput.current!.value)
         const discount = parseInt(discountInput.current!.value)
@@ -77,7 +80,20 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
           isOnDiscount: discount > 0 ? true : false,
           images: images,
         }
-        await handleProductUpload(images, uploadData, action, id)
+        await handleProductUpload(images, uploadData, action, id).then(() => {
+          setProgress(100)
+          alert("Vaš odgovor je zabeležen!")
+          setId("")
+          titleInput.current!.value = ""
+          priceInput.current!.value = ""
+          classInput.current!.value = ""
+          categoryInput.current!.value = ""
+          descriptionInput.current!.value = ""
+          isPublicInput.current!.checked = false
+          discountInput.current!.value = ""
+          brandInput.current!.value = ""
+          setDisplayImages([])
+        })
       } catch (error) {
         console.log(error)
       }
@@ -85,6 +101,7 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
   }
   //Set initial Values in case I want to edit product
   useEffect(() => {
+    setProgress(0)
     if (initialData) {
       setId(initialData._id)
       titleInput.current!.value = initialData.title
@@ -99,8 +116,17 @@ const Form = ({ initialData, action }: { initialData?: FormInitialData; action: 
     }
   }, [initialData])
   return (
-    <div className="flex justify-center items-center lg:py-10 w-full">
-      <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+    <div className="flex justify-center items-center min-h-screen lg:py-10 w-full">
+      <div
+        className={`absolute flex flex-row justify-center items-center w-full h-full bg-black/80 z-20 ${
+          progress == 50 ? "block" : "hidden"
+        }`}>
+        <Loader />
+      </div>
+      <div
+        className={`w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  ${
+          progress != 50 ? "block" : "hidden"
+        }`}>
         <div className="text-center">
           <Image className="mx-auto" src={logo} alt="Leafs" width={160} height={120} />
           <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">

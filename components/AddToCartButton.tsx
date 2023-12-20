@@ -1,7 +1,7 @@
 "use client"
 
 import { addItemToCart } from "@/actions/server/cart"
-import { revalidateData } from "@/helpers"
+import { revalidateData } from "@/helpers/server"
 import { BsCart3 } from "react-icons/bs"
 
 export default function AddToCartButton({ uid, id }: { uid: string | undefined; id: string }) {

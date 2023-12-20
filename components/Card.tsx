@@ -1,7 +1,7 @@
 "use client"
 import { addItemToCart } from "@/actions/server/cart"
 import { deleteSingleProduct } from "@/actions/server/products"
-import { revalidateData } from "@/helpers"
+import { revalidateData } from "@/helpers/server"
 import { CardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
