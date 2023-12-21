@@ -1,8 +1,7 @@
 "use client"
-import { deleteCartItem } from "@/actions/server/cart"
+import { deleteCartItem, updateItemCount } from "@/actions/server/cart"
 import { revalidateData } from "@/helpers/server"
 import { CartItemProps } from "@/typescript/interfaces"
-import { useState } from "react"
 import { IoMdClose } from "react-icons/io"
 
 const CartItem = ({
@@ -15,16 +14,24 @@ const CartItem = ({
   image,
   isOnDiscount,
   discountedPrice,
+  quantity,
 }: CartItemProps) => {
-  const [count, setCount] = useState(0)
   const handleDeleteCartItem = async () => {
     await deleteCartItem(uid, _id)
     revalidateData()
   }
-  const calculatedPrice = isOnDiscount ? discountedPrice : price
+  const setCountInfo = async (operation: string) => {
+    if (operation == "addition") {
+      await updateItemCount(uid, _id, quantity + 1)
+    } else {
+      await updateItemCount(uid, _id, quantity - 1)
+    }
+    revalidateData()
+  }
+  const calculatedPrice = (isOnDiscount ? discountedPrice : price) * quantity
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
-      <input type="checkbox" className="absolute top-0 left-0 w-5 h-5 cursor-pointer" />
+      {/* <input type="checkbox" className="absolute top-0 left-0 w-5 h-5 cursor-pointer" /> */}
       <button onClick={handleDeleteCartItem} className="absolute top-0 right-0">
         <IoMdClose size={30} className="hover:fill-red-500" />
       </button>
@@ -39,23 +46,23 @@ const CartItem = ({
           <div className="flex items-center border-gray-200">
             <button
               onClick={() => {
-                setCount(count - 1)
+                setCountInfo("substraction")
               }}
               className="cursor-pointer text-xl rounded-l bg-gray-100 py-[2px] px-3.5 duration-100 hover:bg-amber-500 hover:text-amber-50">
               -
             </button>
             <span className="h-8 w-8 border text-xl bg-white text-center outline-none">
-              {count}
+              {quantity}
             </span>
             <button
               onClick={() => {
-                setCount(count + 1)
+                setCountInfo("addition")
               }}
               className="cursor-pointer text-xl rounded-r bg-gray-100 py-[2px] px-3 duration-100 hover:bg-amber-500 hover:text-amber-50">
               +
             </button>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4" id="price">
             <p className="text-lg">{calculatedPrice!.toLocaleString().replace(",", ".")} RSD</p>
           </div>
         </div>

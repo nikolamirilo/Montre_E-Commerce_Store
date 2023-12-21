@@ -33,14 +33,16 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
         <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
           <RiMenu2Line size={30} />
         </button>
-        <Image
-          src="/MontreLogoTransparentLetters.png"
-          width={120}
-          height={90}
-          alt="Montre"
-          className="relative left-4 lg:left-8"
-          priority
-        />
+        <Link href="/">
+          <Image
+            src="/MontreLogoTransparentLetters.png"
+            width={120}
+            height={90}
+            alt="Montre"
+            className="relative left-4 lg:left-8"
+            priority
+          />
+        </Link>
         <div className="flex flex-row gap-4 lg:gap-8">
           {user ? (
             <Link href="/cart" className="flex flex-row justify-center items-center relative">
@@ -70,9 +72,12 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
         id="sidebar">
         <div className="text-gray-100 text-xl relative">
           <div className="p-1.5 mt-1 flex flex-row items-center justify-between">
-            <div className="heading flex items-center justify-center w-full">
+            <Link
+              href="/"
+              className="heading flex items-center justify-center w-full"
+              onClick={handleSidebar}>
               <Image src={logo} alt="Logo" width={150} height={100} priority />
-            </div>
+            </Link>
 
             <button onClick={handleSidebar} className="absolute top-3 right-2">
               <AiFillCloseCircle size={30} />

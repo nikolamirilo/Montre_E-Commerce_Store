@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar"
 import MainContextProvider from "@/context/MainContext"
 import { ClerkProvider, currentUser } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
 import "./globals.css"
@@ -49,6 +50,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <MainContextProvider>
+        <SpeedInsights />
         <html lang="en">
           <body className={`${font.className} bg-white relative`}>
             <Sidebar cartItems={cartItems} />

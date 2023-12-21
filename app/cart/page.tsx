@@ -11,10 +11,10 @@ const ShoppingCart = async () => {
   const uid = user?.id
   let mongoUser: any = {}
   const total = await getTotalData(uid)
-  const forPayment = total! + 500
   if (user) {
     mongoUser = await getSingleUser(uid)
   }
+  console.log(mongoUser?.cart)
   return (
     <main>
       <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
@@ -22,8 +22,8 @@ const ShoppingCart = async () => {
         {mongoUser?.cart?.length > 0 ? (
           <div className="mx-auto lg:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div className="rounded-lg md:w-2/3">
-              {mongoUser?.cart?.map(async (item: string) => {
-                const product = await getSingleProduct(item)
+              {mongoUser?.cart?.map(async (item: any) => {
+                const product = await getSingleProduct(item.model_id)
                 if (product != null) {
                   return (
                     <CartItem
@@ -36,6 +36,7 @@ const ShoppingCart = async () => {
                       image={product?.images[0]}
                       isOnDiscount={product?.isOnDiscount}
                       discountedPrice={product?.discountedPrice}
+                      quantity={item.quantity}
                     />
                   )
                 }
@@ -47,14 +48,14 @@ const ShoppingCart = async () => {
                 <p className="text-gray-700">{total!.toLocaleString().replace(",", ".")},00 RSD</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-gray-700">Dostava:</p>
-                <p className="text-gray-700">500,00 RSD</p>
+                <p className="text-gray-700">Poštarina:</p>
+                <p className="text-gray-700">nije uključena u cenu</p>
               </div>
               <hr className="my-4" />
               <div className="flex justify-between mb-5">
                 <p className="text-lg font-bold">Ukupno:</p>
                 <p className="mb-1 text-lg font-bold">
-                  {forPayment.toLocaleString().replace(",", ".")},00 RSD
+                  {total!.toLocaleString().replace(",", ".")},00 RSD
                 </p>
               </div>
               <Link

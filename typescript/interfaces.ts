@@ -37,6 +37,7 @@ export interface CartItemProps {
   image: string
   isOnDiscount: boolean
   discountedPrice: number
+  quantity: number
 }
 
 export interface SearchQuery {

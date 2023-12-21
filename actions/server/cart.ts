@@ -18,7 +18,7 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
       { uid: uid },
       {
         $push: {
-          cart: newCartItem
+          cart: {model_id: newCartItem, quantity: 1}
         },
       },
       {
@@ -62,10 +62,10 @@ export async function getTotalData(uid: string | undefined) {
       const mongoUser = await getSingleUser(userId);
 
       if (mongoUser.cart.length > 0) {
-        for (const itemId of mongoUser.cart) {
-          const product = await getSingleProduct(itemId);
+        for (const item of mongoUser.cart) {
+          const product = await getSingleProduct(item.model_id);
           if (product) {
-            total += product.isOnDiscount ? product.discountedPrice : product.price;
+            total += (product.isOnDiscount ? product.discountedPrice : product.price)*item.quantity;
           }
         }
       }
@@ -73,5 +73,26 @@ export async function getTotalData(uid: string | undefined) {
     }
   } catch (error) {
     console.error((error as Error).message);
+  }
+}
+export async function updateItemCount(uid: string | undefined, modelId: string | undefined, count: number) {
+  try {
+    const db = await storeDatabaseConnection();
+    await db.collection("users").updateOne(
+      { uid: uid },
+      {
+        $set: {
+          "cart.$[item].quantity": count,
+        },
+      },
+      {
+        arrayFilters: [{ "item.model_id": modelId }],
+      }
+    );
+
+    return true;
+  } catch (error) {
+    console.log((error as Error).message);
+    return false;
   }
 }

@@ -40,7 +40,6 @@ const Card: React.FC<CardProps> = ({
     }
     revalidateData()
   }
-  const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
     <div className="max-w-xl">
       <div className="bg-white shadow-xl rounded-lg max-w-lg relative">
@@ -94,17 +93,28 @@ const Card: React.FC<CardProps> = ({
             </h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="rounded-xl border-2 text-white bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg">
+            <span className="rounded-lg border-2 text-white bg-[#0c0502] border-[#0c0502] py-1 px-5 shadow-lg">
               {productClass}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-xl text-gray-900">
-              {calculatedPrice!.toLocaleString().replace(",", ".")},00 RSD
-            </span>
+            <div className="flex flex-col">
+              <span
+                className={`text-lg md:text-xl text-gray-900 ${
+                  isOnDiscount == true && "line-through"
+                }`}>
+                {price!.toLocaleString().replace(",", ".")},00 RSD
+              </span>
+              {isOnDiscount == true ? (
+                <span className="text-lg md:text-xl  text-red-600 font-semibold">
+                  {discountedPrice!.toLocaleString().replace(",", ".")}
+                  ,00 RSD
+                </span>
+              ) : null}
+            </div>
             <button
               onClick={handleAddItemToCart}
-              className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
+              className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
               <BsCart3 size={25} /> Dodaj u korpu
             </button>
           </div>
