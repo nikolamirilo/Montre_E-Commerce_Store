@@ -134,16 +134,16 @@ const Order = () => {
                     <div
                       className={`flex flex-row flex-wrap gap-2 items-center justify-center w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white`}>
                       {user.cart.length > 0
-                        ? user.cart.map((item: any, idx: number) => {
+                        ? user.cart.map((product: any, idx: number) => {
                             return (
                               <div
-                                className="relative h-52 w-full cursor-pointer md:w-1/2 xl:w-[30%]"
+                                className="relative h-64 w-full cursor-pointer md:w-1/2 xl:w-[30%]"
                                 key={idx}>
                                 <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
-                                  {item.product.title}
+                                  {product.title}
                                 </h2>
                                 <Image
-                                  src={item.product.images[0]}
+                                  src={product.images[0]}
                                   fill
                                   priority
                                   className="object-cover object-center"

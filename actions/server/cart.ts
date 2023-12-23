@@ -1,6 +1,7 @@
 "use server"
 import { storeDatabaseConnection } from "@/mongodb/connections";
 import { currentUser } from "@clerk/nextjs";
+import { ObjectId } from "mongodb";
 import { getSingleProduct } from "./products";
 import { getSingleUser } from "./users";
 
@@ -10,16 +11,17 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
     const db = await storeDatabaseConnection();
     const user = await db.collection("users").findOne({ uid: uid });
     const product = await getSingleProduct(newCartItem!)
-    // if (user && user.cart.includes(newCartItem)) {
-    //   console.log("Item already exists in the cart.");
-    //   return "Duplicate";
-    // }
-
+    // Check if the item already exists in the cart
+    if (user && user.cart.some((item:any) => item._id.equals(new ObjectId(newCartItem)))) {
+      console.log("Item already exists in the cart.");
+      return "Duplicate";
+    }
+    const cartProduct = {...product, quantity: 1}
     await db.collection("users").updateOne(
       { uid: uid },
       {
         $push: {
-          cart: {product, quantity: 1}
+          cart: cartProduct
         },
       },
       {
@@ -37,13 +39,12 @@ export async function getTotalData(uid: string | undefined) {
     const user = await currentUser();
     const userId = user?.id;
     let total = 0;
-
     if (userId) {
       const mongoUser = await getSingleUser(userId);
 
       if (mongoUser.cart.length > 0) {
         for (const item of mongoUser.cart) {
-          const product = await getSingleProduct(item.product._id);
+          const product = await getSingleProduct(item._id);
           if (product) {
             total += (product.isOnDiscount ? product.discountedPrice : product.price)*item.quantity;
           }
@@ -62,7 +63,7 @@ export async function deleteCartItem(uid: string | undefined, itemToDelete: stri
       { uid: uid },
       {
         $pull: {
-          'cart': { 'product._id': itemToDelete }
+          'cart': { '_id': new ObjectId(itemToDelete) }
         },
       }
     );
@@ -77,14 +78,11 @@ export async function updateItemCount(uid: string | undefined, modelId: string |
   try {
     const db = await storeDatabaseConnection();
     await db.collection("users").updateOne(
-      { uid: uid },
+      { uid: uid, "cart._id": new ObjectId(modelId) },
       {
         $set: {
-          "cart.$[item].quantity": count,
+          "cart.$.quantity": count,
         },
-      },
-      {
-        arrayFilters: [{ "item.product._id": modelId }],
       }
     );
 

@@ -17,19 +17,19 @@ const ShoppingCart = async () => {
           {user.cart?.length > 0 ? (
             <div className="mx-auto xl:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
               <div className="rounded-lg md:w-2/3">
-                {user.cart?.map(async (item: any) => {
+                {user.cart?.map(async (product: any) => {
                   return (
                     <CartItem
-                      _id={item.product?._id}
-                      uid={item.uid}
-                      title={item.product?.title}
-                      category={item.product?.category}
-                      productClass={item.product?.class}
-                      price={item.product?.price}
-                      image={item.product?.images[0]}
-                      isOnDiscount={item.product?.isOnDiscount}
-                      discountedPrice={item.product?.discountedPrice}
-                      quantity={item.quantity}
+                      _id={product?._id}
+                      uid={user.uid}
+                      title={product?.title}
+                      category={product?.category}
+                      productClass={product?.class}
+                      price={product?.price}
+                      image={product?.images[0]}
+                      isOnDiscount={product?.isOnDiscount}
+                      discountedPrice={product?.discountedPrice}
+                      quantity={product.quantity}
                     />
                   )
                 })}
@@ -38,18 +38,18 @@ const ShoppingCart = async () => {
                 <div className="mb-2 flex justify-between">
                   <p className="text-gray-700">Cena satova:</p>
                   <p className="text-gray-700">
-                    {total!.toLocaleString().replace(",", ".")},00 RSD
+                    {total?.toLocaleString().replace(",", ".")},00 RSD
                   </p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-gray-700">Poštarina:</p>
-                  <p className="text-gray-700">nije uključena u cenu</p>
+                  <p className="text-gray-700">Plaća se kurirskoj službi</p>
                 </div>
                 <hr className="my-4" />
                 <div className="flex justify-between mb-5">
                   <p className="text-lg font-bold">Ukupno:</p>
                   <p className="mb-1 text-lg font-bold">
-                    {total!.toLocaleString().replace(",", ".")},00 RSD
+                    {total?.toLocaleString().replace(",", ".")},00 RSD
                   </p>
                 </div>
                 <Link

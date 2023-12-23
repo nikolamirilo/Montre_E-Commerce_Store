@@ -112,11 +112,17 @@ const Card: React.FC<CardProps> = ({
                 </span>
               ) : null}
             </div>
-            <button
-              onClick={handleAddItemToCart}
-              className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
-              <BsCart3 size={25} /> Dodaj u korpu
-            </button>
+            {user != null ? (
+              <button
+                onClick={handleAddItemToCart}
+                className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
+                <BsCart3 size={25} /> Dodaj u korpu
+              </button>
+            ) : (
+              <button className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
+                Poruči
+              </button>
+            )}
           </div>
         </div>
       </div>
