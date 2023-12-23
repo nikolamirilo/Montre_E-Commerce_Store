@@ -9,7 +9,8 @@ const ShoppingCart = async () => {
   const clerkUser = await currentUser()
   const user = await getSingleUser(clerkUser?.id)
   if (user != null) {
-    const total = await getTotalData(user.uid)
+    const productsPrice = await getTotalData(user.uid)
+    const total = productsPrice! + 400
     return (
       <div id="cart">
         <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
@@ -43,7 +44,7 @@ const ShoppingCart = async () => {
                 </div>
                 <div className="flex justify-between">
                   <p className="text-gray-700">Poštarina:</p>
-                  <p className="text-gray-700">Plaća se kurirskoj službi</p>
+                  <p className="text-gray-700">400,00 RSD</p>
                 </div>
                 <hr className="my-4" />
                 <div className="flex justify-between mb-5">

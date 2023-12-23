@@ -53,9 +53,13 @@ export async function POST(req: Request) {
 
   // Get the ID and type
   const uid = evt.data.id
+  // const email = evt.data.email_addresses[0].email_address
+  // const fullName = `${evt.data.first_name} ${evt.data.last_name}`
   const eventType = evt.type
   const newUser = {
     uid: uid,
+    // fullName: fullName,
+    // email: email,
     orders: [],
     cart: [],
   }

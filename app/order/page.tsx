@@ -6,21 +6,23 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 const Order = () => {
+  const clerkUser = useUser()
   const [displayImages, setDisplayImages] = useState<string[]>([])
   const [user, setUser] = useState<any>(null)
   const [total, setTotal] = useState<number>(0)
   const fullNameInput = useRef<HTMLInputElement>(null)
+  const emailInput = useRef<HTMLInputElement>(null)
   const cityInput = useRef<HTMLInputElement>(null)
   const phoneInput = useRef<HTMLInputElement>(null)
   const noteInput = useRef<HTMLTextAreaElement>(null)
+  const zipCodeInput = useRef<HTMLInputElement>(null)
   const adressInput = useRef<HTMLInputElement>(null)
-  const clerkUser = useUser()
   useEffect(() => {
     const getUser = async () => {
       const res = await getSingleUser(clerkUser?.user?.id)
       setUser(res)
       const totalRes = await getTotalData(clerkUser?.user?.id)
-      setTotal(totalRes!)
+      setTotal(totalRes! + 400)
     }
     getUser()
   }, [])
@@ -52,6 +54,23 @@ const Order = () => {
                     ref={fullNameInput}
                     id="fullName"
                     name="fullName"
+                    type="text"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-5 text-gray-700">
+                  Email:
+                </label>
+                <div className="mt-1">
+                  <input
+                    required
+                    ref={emailInput}
+                    id="email"
+                    name="email"
                     type="text"
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
                   />
@@ -106,14 +125,27 @@ const Order = () => {
                   />
                 </div>
               </div>
-
+              <div>
+                <label htmlFor="zip" className="block text-sm font-medium leading-5 text-gray-700">
+                  Poštanski broj:
+                </label>
+                <div className="mt-1">
+                  <input
+                    required
+                    ref={zipCodeInput}
+                    id="zip"
+                    name="zip"
+                    type="text"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:border-2 sm:text-sm"
+                  />
+                </div>
+              </div>
               <div>
                 <label htmlFor="note" className="block text-sm font-medium leading-5 text-gray-700">
                   Napomena:
                 </label>
                 <div className="mt-1">
                   <textarea
-                    required
                     ref={noteInput}
                     id="note"
                     name="note"
@@ -122,7 +154,6 @@ const Order = () => {
                   />
                 </div>
               </div>
-
               <div>
                 <label
                   htmlFor="image-upload"
@@ -137,7 +168,7 @@ const Order = () => {
                         ? user.cart.map((product: any, idx: number) => {
                             return (
                               <div
-                                className="relative h-64 w-full cursor-pointer md:w-1/2 xl:w-[30%]"
+                                className="relative h-64 w-10/12 sm:w-52 cursor-pointer"
                                 key={idx}>
                                 <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
                                   {product.title}
@@ -168,7 +199,6 @@ const Order = () => {
                   <span> {total!.toLocaleString().replace(",", ".")},00 RSD</span>
                 </div>
               </div>
-
               <div className="mt-2">
                 <button
                   type="submit"
