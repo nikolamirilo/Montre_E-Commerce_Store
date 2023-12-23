@@ -16,12 +16,12 @@ footer,
 #loader {
   background-color: #0c0502;
 }
-main {
+#home, #user-profile, #auth, #products, #create-product, #order, #cart, #contact, #categories, #about {
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 4rem;
 }
-#hero {
+#hero  {
   opacity: 0;
   animation: fade 1000ms ease-in-out 0ms forwards;
 }

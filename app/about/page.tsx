@@ -1,6 +1,8 @@
 const About = () => {
   return (
-    <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-white dark:bg-dark px-5">
+    <div
+      className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-white dark:bg-dark px-5"
+      id="about">
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center justify-between md:flex-row flex-col-reverse -mx-4">
           <div className="w-full px-4 lg:w-6/12">
@@ -67,7 +69,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

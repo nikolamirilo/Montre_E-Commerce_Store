@@ -1,5 +1,4 @@
 import { getTotalData } from "@/actions/server/cart"
-import { getSingleProduct } from "@/actions/server/products"
 import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
 import { currentUser } from "@clerk/nextjs"
@@ -7,39 +6,31 @@ import Image from "next/image"
 import Link from "next/link"
 
 const ShoppingCart = async () => {
-  const user = await currentUser()
-  const uid = user?.id
-  let mongoUser: any = {}
-  const total = await getTotalData(uid)
-  if (user) {
-    mongoUser = await getSingleUser(uid)
-  }
-  console.log(mongoUser?.cart)
+  const clerkUser = await currentUser()
+  const user = await getSingleUser(clerkUser?.id)
+  const total = await getTotalData(user.uid)
   return (
-    <main>
+    <div id="cart">
       <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
         <h1 className="mb-10 text-center text-3xl font-bold">Proizvodi u korpi</h1>
-        {mongoUser?.cart?.length > 0 ? (
-          <div className="mx-auto lg:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
+        {user.cart?.length > 0 ? (
+          <div className="mx-auto xl:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div className="rounded-lg md:w-2/3">
-              {mongoUser?.cart?.map(async (item: any) => {
-                const product = await getSingleProduct(item.model_id)
-                if (product != null) {
-                  return (
-                    <CartItem
-                      _id={product?._id}
-                      uid={uid}
-                      title={product?.title}
-                      category={product?.category}
-                      productClass={product?.class}
-                      price={product?.price}
-                      image={product?.images[0]}
-                      isOnDiscount={product?.isOnDiscount}
-                      discountedPrice={product?.discountedPrice}
-                      quantity={item.quantity}
-                    />
-                  )
-                }
+              {user.cart?.map(async (item: any) => {
+                return (
+                  <CartItem
+                    _id={item.product?._id}
+                    uid={item.uid}
+                    title={item.product?.title}
+                    category={item.product?.category}
+                    productClass={item.product?.class}
+                    price={item.product?.price}
+                    image={item.product?.images[0]}
+                    isOnDiscount={item.product?.isOnDiscount}
+                    discountedPrice={item.product?.discountedPrice}
+                    quantity={item.quantity}
+                  />
+                )
               })}
             </div>
             <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
@@ -60,7 +51,9 @@ const ShoppingCart = async () => {
               </div>
               <Link
                 className="mt-6 w-full rounded-md bg-amber-500 py-2 px-4 font-medium text-amber-50 hover:bg-amber-600"
-                href="/order">
+                href={`/order/${user.cart
+                  .map((item: any) => `id=${item.product._id}&q=${item.quantity}`)
+                  .join("&")}`}>
                 Poruči
               </Link>
             </div>
@@ -72,7 +65,7 @@ const ShoppingCart = async () => {
           </div>
         )}
       </div>
-    </main>
+    </div>
   )
 }
 

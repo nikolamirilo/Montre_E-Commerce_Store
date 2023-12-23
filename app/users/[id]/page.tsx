@@ -9,7 +9,9 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
   const uid = user?.id
   const mongoUser = await getSingleUser(uid)
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center w-full text-center gap-20 mt-10">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center w-full text-center gap-20 mt-10"
+      id="user-profile">
       <div className="flex flex-col md:flex-row justify-center items-center gap-2">
         <Image
           src={user!.imageUrl}
@@ -52,7 +54,7 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
           <Image src="/other/no_order.jpg" alt="Empty Cart" width={300} height={300} />
         </div>
       )}
-    </main>
+    </div>
   )
 }
 export default UserProfile

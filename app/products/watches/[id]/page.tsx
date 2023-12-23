@@ -12,7 +12,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   if (product) {
     const calculatedPrice = product.isOnDiscount ? product.discountedPrice! : product.price!
     return (
-      <main className="md:flex items-start mt-20 lg:mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
+      <div className="md:flex items-start mt-20 lg:mt-32 justify-center 2xl:px-20 md:px-6 px-4 ">
         <div className="flex flex-col justify-center lg:mt-6 items-center w-full xl:w-3/5 h-full md:w-1/2">
           <Slider images={product.images} />
         </div>
@@ -95,7 +95,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     )
   }
 }

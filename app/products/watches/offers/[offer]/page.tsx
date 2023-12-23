@@ -2,9 +2,9 @@ import Products from "@/components/Products"
 
 const Offer = ({ params }: { params: { offer: string } }) => {
   return (
-    <main className="min-h-screen w-full text-center">
+    <div className="min-h-screen w-full text-center" id="offer">
       <Products type="discount" query={{ isOnDiscount: true }} title="Modeli koji su na sniženju" />
-    </main>
+    </div>
   )
 }
 export default Offer

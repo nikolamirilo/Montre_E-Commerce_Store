@@ -12,13 +12,13 @@ const Category = ({
   const category = params.category
   const query = { ...searchParamsData, category }
   return (
-    <main className="min-h-screen w-full text-center">
+    <div className="min-h-screen w-full text-center" id="categories">
       <Products
         query={query}
         title={category == "man" ? "Muška ponuda satova" : "Ženska ponuda satova"}
         type={category}
       />
-    </main>
+    </div>
   )
 }
 export default Category

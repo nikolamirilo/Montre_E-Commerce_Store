@@ -28,3 +28,17 @@ export const deleteSingleUser = async (uid: string) => {
     console.log((error as Error).message)
   }
 }
+
+
+// export const getCurrentUser = async () => {
+//   try {
+//     const db = await storeDatabaseConnection()
+//     const clerkUser = await currentUser()
+//     if(clerkUser){
+//       const activeUser: any = await db.collection("users").findOne({ uid: clerkUser?.id })
+//       return activeUser
+//     }
+//   } catch (error) {
+//     console.log((error as Error).message)
+//   }
+// }

@@ -24,7 +24,7 @@ const CartItem = ({
     await updateItemCount(uid, _id, q)
     revalidateData()
   }
-  const calculatedPrice = (isOnDiscount ? discountedPrice : price) * quantity
+  const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
       <button onClick={handleDeleteCartItem} className="absolute top-0 right-0">
@@ -66,7 +66,9 @@ const CartItem = ({
             </button>
           </div>
           <div className="flex items-center space-x-4" id="price">
-            <p className="text-lg">{calculatedPrice!.toLocaleString().replace(",", ".")} RSD</p>
+            <p className="text-lg">
+              {quantity}x{calculatedPrice!.toLocaleString().replace(",", ".")} RSD
+            </p>
           </div>
         </div>
       </div>

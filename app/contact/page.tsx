@@ -23,7 +23,7 @@ const Contact = async () => {
   // }
   // sendEmail()
   return (
-    <main className="flex flex-row items-center justify-center w-full">
+    <div className="flex flex-row items-center justify-center w-full" id="contact">
       <div className="py-8 lg:py-16 mx-auto w-full flex flex-col items-center justify-center mt-10 lg:mt-0">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
           Kontaktiraj nas
@@ -123,7 +123,7 @@ const Contact = async () => {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
 

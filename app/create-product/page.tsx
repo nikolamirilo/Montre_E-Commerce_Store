@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   description: "Dodaj novi proizvod u Montre online shop",
 }
 
-const CreatePost = () => {
+const CreateProduct = () => {
   return (
-    <main id="create-post" className="flex items-center justify-center">
+    <div id="create-product" className="flex items-center justify-center">
       <Form action="create" />
-    </main>
+    </div>
   )
 }
 
-export default CreatePost
+export default CreateProduct

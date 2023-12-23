@@ -9,7 +9,7 @@ import Link from "next/link"
 export default async function Home() {
   const products = await getAllProducts({})
   return (
-    <main className="flex w-full flex-col justify-center items-center" id="home">
+    <div className="flex w-full flex-col justify-center items-center" id="home">
       <Hero />
       <Snow />
       <div className="flex flex-col gap-10 justify-center items-center mt-10">
@@ -51,6 +51,6 @@ export default async function Home() {
           Svi proizvodi
         </Link>
       </div>
-    </main>
+    </div>
   )
 }
