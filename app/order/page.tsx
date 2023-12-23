@@ -1,37 +1,26 @@
 "use client"
+import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-import { BsTrash3 } from "react-icons/bs"
 
-const Order = ({ params }: { params: { query: string } }) => {
+const Order = () => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
   const [user, setUser] = useState<any>(null)
+  const [total, setTotal] = useState<number>(0)
   const fullNameInput = useRef<HTMLInputElement>(null)
   const cityInput = useRef<HTMLInputElement>(null)
   const phoneInput = useRef<HTMLInputElement>(null)
   const noteInput = useRef<HTMLTextAreaElement>(null)
   const adressInput = useRef<HTMLInputElement>(null)
-  var images: string[] = []
-  var products = []
-
-  // const query = decodeURIComponent(params.query)
-  // const regex = /id-(\w+)&q-(\d+)/g
-  // let match
-  // const products = []
-  // while ((match = regex.exec(query)) !== null) {
-  //   const productId = match[1]
-  //   const quantity = parseInt(match[2], 10)
-  //   products.push({ productId, quantity })
-  // }
-  // console.log(products)
   const clerkUser = useUser()
-  console.log(clerkUser)
   useEffect(() => {
     const getUser = async () => {
       const res = await getSingleUser(clerkUser?.user?.id)
       setUser(res)
+      const totalRes = await getTotalData(clerkUser?.user?.id)
+      setTotal(totalRes!)
     }
     getUser()
   }, [])
@@ -143,22 +132,18 @@ const Order = ({ params }: { params: { query: string } }) => {
                 <div className="mt-2">
                   <div className="flex flex-col w-full gap-2">
                     <div
-                      className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white`}>
+                      className={`flex flex-row flex-wrap gap-2 items-center justify-center w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white`}>
                       {user.cart.length > 0
-                        ? user.cart.map(async (item: any, idx: number) => {
-                            // const singleProduct = await getSingleProduct(item.model_id)
+                        ? user.cart.map((item: any, idx: number) => {
                             return (
                               <div
-                                className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
+                                className="relative h-52 w-full cursor-pointer md:w-1/2 xl:w-[30%]"
                                 key={idx}>
-                                <button
-                                  id="delete"
-                                  className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10">
-                                  <BsTrash3 size={25} />
-                                </button>
-
+                                <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
+                                  {item.product.title}
+                                </h2>
                                 <Image
-                                  src={item.image}
+                                  src={item.product.images[0]}
                                   fill
                                   priority
                                   className="object-cover object-center"
@@ -180,7 +165,7 @@ const Order = ({ params }: { params: { query: string } }) => {
                   Ukupni troškovi:
                 </label>
                 <div className="mt-1">
-                  <span>12.000din</span>
+                  <span> {total!.toLocaleString().replace(",", ".")},00 RSD</span>
                 </div>
               </div>
 

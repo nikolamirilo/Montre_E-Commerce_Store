@@ -8,8 +8,6 @@ import type { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
 import "./globals.css"
 
-// Open_SANS
-
 const font = Open_Sans({ preload: true, subsets: ["latin"] })
 
 export const metadata: Metadata = {

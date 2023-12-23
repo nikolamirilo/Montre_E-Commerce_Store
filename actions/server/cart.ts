@@ -32,24 +32,6 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
     return "Error"
   }
 }
-//Fix this function
-export async function deleteCartItem(uid: string | undefined, itemToDelete: string | undefined) {
-  try {
-    const db = await storeDatabaseConnection();
-    await db.collection("users").updateOne(
-      { uid: uid },
-      {
-        $pull: {
-          'cart.product._id': itemToDelete
-        },
-      }
-    );
-    return true;
-  } catch (error) {
-    console.error((error as Error).message);
-    return false;
-  }
-}
 export async function getTotalData(uid: string | undefined) {
   try {
     const user = await currentUser();
@@ -61,7 +43,7 @@ export async function getTotalData(uid: string | undefined) {
 
       if (mongoUser.cart.length > 0) {
         for (const item of mongoUser.cart) {
-          const product = await getSingleProduct(item.model_id);
+          const product = await getSingleProduct(item.product._id);
           if (product) {
             total += (product.isOnDiscount ? product.discountedPrice : product.price)*item.quantity;
           }
@@ -73,6 +55,24 @@ export async function getTotalData(uid: string | undefined) {
     console.error((error as Error).message);
   }
 }
+export async function deleteCartItem(uid: string | undefined, itemToDelete: string | undefined) {
+  try {
+    const db = await storeDatabaseConnection();
+    await db.collection("users").updateOne(
+      { uid: uid },
+      {
+        $pull: {
+          'cart': { 'product._id': itemToDelete }
+        },
+      }
+    );
+    return true;
+  } catch (error) {
+    console.error((error as Error).message);
+    return false;
+  }
+}
+
 export async function updateItemCount(uid: string | undefined, modelId: string | undefined, count: number) {
   try {
     const db = await storeDatabaseConnection();
@@ -84,7 +84,7 @@ export async function updateItemCount(uid: string | undefined, modelId: string |
         },
       },
       {
-        arrayFilters: [{ "item.model_id": modelId }],
+        arrayFilters: [{ "item.product._id": modelId }],
       }
     );
 
