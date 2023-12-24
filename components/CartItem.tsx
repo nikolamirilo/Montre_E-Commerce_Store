@@ -38,32 +38,31 @@ const CartItem = ({
           <p className="mt-1 text-lg text-gray-700">{productClass}</p>
         </div>
         <div className="mt-4 flex flex-row-reverse md:flex-col sm:mt-0 h-full justify-between md:justify-around items-center">
-          <div className="flex items-center border-gray-200">
-            <button
-              onClick={() => {
-                setCountInfo(1)
-              }}
-              className={`cursor-pointer text-xl rounded-l py-[2px] px-3.5 duration-100 hover:bg-amber-500 border border-gray-300 bg-gray-100`}>
-              1
-            </button>
-            <button
-              onClick={() => {
-                setCountInfo(2)
-              }}
-              className={`cursor-pointer text-xl rounded-l py-[2px] px-3.5 duration-100 hover:bg-amber-500 border border-gray-300 bg-gray-100 
-               
-              `}>
-              2
-            </button>
-            <button
-              onClick={() => {
-                setCountInfo(3)
-              }}
-              className={`cursor-pointer text-xl rounded-l py-[2px] px-3.5 duration-100 hover:bg-amber-500 border border-gray-300 bg-gray-100
-          
-              `}>
-              3
-            </button>
+          <div className="flex flex-col items-start justify-center border-gray-200">
+            <h2 className="text-lg">Izaberi količinu</h2>
+            <select
+              name="quantity"
+              className="w-full bg-white border-2 text-lg border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
+              <option
+                selected={true}
+                onClick={() => {
+                  setCountInfo(1)
+                }}>
+                1
+              </option>
+              <option
+                onClick={() => {
+                  setCountInfo(2)
+                }}>
+                2
+              </option>
+              <option
+                onClick={() => {
+                  setCountInfo(3)
+                }}>
+                3
+              </option>
+            </select>
           </div>
           <div className="flex items-center space-x-4" id="price">
             <p className="text-lg">
