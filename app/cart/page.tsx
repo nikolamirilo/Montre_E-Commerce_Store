@@ -4,7 +4,8 @@ import CartItem from "@/components/CartItem"
 import { currentUser } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
-
+export const revalidate = 0
+export const dynamic = "force-dynamic"
 const ShoppingCart = async () => {
   const clerkUser = await currentUser()
   const user = await getSingleUser(clerkUser?.id)

@@ -5,7 +5,8 @@ import { revalidateData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
-
+export const revalidate = 0
+export const dynamic = "force-dynamic"
 const Order = () => {
   const clerkUser = useUser()
   const [displayImages, setDisplayImages] = useState<string[]>([])
