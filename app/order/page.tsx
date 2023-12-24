@@ -1,5 +1,5 @@
 "use client"
-import { getTotalData } from "@/actions/server/cart"
+import { getTotalData, orderCartItems } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
@@ -17,11 +17,22 @@ const Order = () => {
   const noteInput = useRef<HTMLTextAreaElement>(null)
   const zipCodeInput = useRef<HTMLInputElement>(null)
   const adressInput = useRef<HTMLInputElement>(null)
+  const uid = clerkUser?.user?.id
+  async function handleOrder(e: any) {
+    e.preventDefault()
+    const isOrdered = await orderCartItems(uid)
+    if (isOrdered == true) {
+      //Navigate to Thank you page/User Profile page
+      //Send email for confirmation
+      alert("Vaša porudžbina je primljena")
+    }
+  }
+
   useEffect(() => {
     const getUser = async () => {
-      const res = await getSingleUser(clerkUser?.user?.id)
+      const res = await getSingleUser(uid)
       setUser(res)
-      const totalRes = await getTotalData(clerkUser?.user?.id)
+      const totalRes = await getTotalData(uid)
       setTotal(totalRes! + 400)
     }
     getUser()
@@ -39,7 +50,7 @@ const Order = () => {
                 width={160}
                 height={120}
               />
-              <h2 className="mt-6 text-2xl font-bold text-gray-900 uppercase">Poruči:</h2>
+              {/* <h2 className="mt-6 text-2xl font-bold text-gray-900"></h2> */}
             </div>
             <form className="mt-8 flex flex-col w-full gap-2" encType="multipart/Order-data">
               <div>
@@ -167,9 +178,7 @@ const Order = () => {
                       {user.cart.length > 0
                         ? user.cart.map((product: any, idx: number) => {
                             return (
-                              <div
-                                className="relative h-64 w-10/12 sm:w-52 cursor-pointer"
-                                key={idx}>
+                              <div className="relative h-64 w-10/12 sm:w-52" key={idx}>
                                 <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
                                   {product.title}
                                 </h2>
@@ -188,7 +197,6 @@ const Order = () => {
                   </div>
                 </div>
               </div>
-
               <div>
                 <label
                   htmlFor="costs"
@@ -201,7 +209,7 @@ const Order = () => {
               </div>
               <div className="mt-2">
                 <button
-                  type="submit"
+                  onClick={handleOrder}
                   id="submit-button"
                   className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md">
                   Naruči

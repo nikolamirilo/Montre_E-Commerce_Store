@@ -1,5 +1,4 @@
 import { createNewUser, deleteSingleUser } from "@/actions/server/users"
-import { WebhookEvent } from "@clerk/nextjs/server"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 import { Webhook } from "svix"
@@ -35,7 +34,7 @@ export async function POST(req: Request) {
   // Create a new Svix instance with your secret.
   const wh = new Webhook(WEBHOOK_SECRET)
 
-  let evt: WebhookEvent
+  let evt: any
 
   // Verify the payload with the headers
   try {
@@ -43,7 +42,7 @@ export async function POST(req: Request) {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,
-    }) as WebhookEvent
+    }) as any
   } catch (err) {
     console.error("Error verifying webhook:", err)
     return new Response("Error occured", {
@@ -53,13 +52,13 @@ export async function POST(req: Request) {
 
   // Get the ID and type
   const uid = evt.data.id
-  // const email = evt.data.email_addresses[0].email_address
-  // const fullName = `${evt.data.first_name} ${evt.data.last_name}`
+  const email = evt.data.email_addresses[0].email_address
+  const fullName = `${evt.data.first_name} ${evt.data.last_name}`
   const eventType = evt.type
   const newUser = {
     uid: uid,
-    // fullName: fullName,
-    // email: email,
+    fullName: fullName,
+    email: email,
     orders: [],
     cart: [],
   }

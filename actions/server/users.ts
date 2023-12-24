@@ -1,7 +1,7 @@
 "use server"
 import { storeDatabaseConnection } from "@/mongodb/connections"
 
-export async function createNewUser(user:any){
+export async function createNewUser(user: any) {
   try {
     const db = await storeDatabaseConnection()
     await db.collection("users").insertOne(user)
@@ -28,7 +28,6 @@ export const deleteSingleUser = async (uid: string) => {
     console.log((error as Error).message)
   }
 }
-
 
 // export const getCurrentUser = async () => {
 //   try {
