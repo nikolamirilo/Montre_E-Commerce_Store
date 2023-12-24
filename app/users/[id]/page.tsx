@@ -1,6 +1,4 @@
-import { getSingleProduct } from "@/actions/server/products"
 import { getSingleUser } from "@/actions/server/users"
-import Card from "@/components/Card"
 import { currentUser } from "@clerk/nextjs"
 import Image from "next/image"
 
@@ -29,20 +27,22 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
         <div className="flex flex-col justify-center items-center gap-10">
           <h1 className="font-semibold text-2xl">Moje porudžbine</h1>
           <div className="flex flex-row flex-wrap w-full justify-center items-center">
-            {mongoUser.orders?.map(async (order: any) => {
-              const product = await getSingleProduct(order.model)
-              return (
-                <Card
-                  discount={product?.discount}
-                  isOnDiscount={product?.isOnDiscount}
-                  discountedPrice={product?.discountedPrice}
-                  _id={product?._id?.toString()}
-                  title={product.title}
-                  productClass={product.class}
-                  images={product.images}
-                  price={product.price}
-                />
-              )
+            {mongoUser.orders?.map((order: any) => {
+              order.products.map((product: any) => {
+                return (
+                  // <Card
+                  //   discount={product?.discount}
+                  //   isOnDiscount={product?.isOnDiscount}
+                  //   discountedPrice={product?.discountedPrice}
+                  //   _id={product?._id?.toString()}
+                  //   title={product?.title}
+                  //   productClass={product?.class}
+                  //   images={product?.images}
+                  //   price={product?.price}
+                  // />
+                  <h1>{product.title!}</h1>
+                )
+              })
             })}
           </div>
         </div>

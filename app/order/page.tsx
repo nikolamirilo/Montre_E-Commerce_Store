@@ -1,6 +1,7 @@
 "use client"
 import { getTotalData, orderCartItems } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
+import { revalidateData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -24,6 +25,7 @@ const Order = () => {
     if (isOrdered == true) {
       //Navigate to Thank you page/User Profile page
       //Send email for confirmation
+      revalidateData()
       alert("Vaša porudžbina je primljena")
     }
   }

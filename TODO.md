@@ -4,8 +4,10 @@
 
 # Payment using Stripe API
 
-# Calculation in Cart
+# Calculation in Cart => DONE
 
-# Order product form
+# Order product form => DONE (handle storing user info and displaying orders on profile)
 
 # Displaying orders on profile
+
+# Fix filters to be dynamic
