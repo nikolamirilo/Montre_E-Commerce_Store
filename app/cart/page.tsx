@@ -42,7 +42,7 @@ const ShoppingCart = async () => {
                 <div className="mb-2 flex justify-between">
                   <p className="text-gray-700">Cena satova:</p>
                   <p className="text-gray-700">
-                    {total?.toLocaleString().replace(",", ".")},00 RSD
+                    {productsPrice?.toLocaleString().replace(",", ".")},00 RSD
                   </p>
                 </div>
                 <div className="flex justify-between">

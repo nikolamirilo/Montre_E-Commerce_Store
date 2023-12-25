@@ -16,18 +16,7 @@ footer,
 #loader {
   background-color: #0c0502;
 }
-#home,
-#user-profile,
-#auth,
-#products,
-#create-product,
-#order,
-#cart,
-#contact,
-#categories,
-#about,
-#loader,
-#thank-you {
+#parent {
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 4rem;
