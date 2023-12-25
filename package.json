@@ -19,6 +19,7 @@
     "autoprefixer": "10.4.15",
     "bson": "^6.2.0",
     "firebase": "^10.3.0",
+    "moment": "^2.29.4",
     "mongodb": "^5.9.2",
     "next": "^14.0.0",
     "postcss": "^8.4.31",

@@ -1,6 +1,7 @@
 "use server"
 import { storeDatabaseConnection } from "@/mongodb/connections"
 import { currentUser } from "@clerk/nextjs"
+import moment from "moment"
 import { ObjectId } from "mongodb"
 import { getSingleProduct } from "./products"
 import { getSingleUser } from "./users"
@@ -114,6 +115,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
 
     // Calculate the total amount for each order
     var total = 400
+    const currentDate = moment()
     const products = user.cart.map((item: any) => {
       total += (item.isOnDiscount == true ? item.discountedPrice : item.price) * item.quantity
       return {
@@ -137,6 +139,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
       total: total,
       products: products,
       customerInfo: customerInfo,
+      date: currentDate.format("MMMM Do YYYY, h:mm:ss a"),
     }
 
     // Update the user document to move items from cart to order array

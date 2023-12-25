@@ -5,7 +5,7 @@ export interface User {
   fullName: string
   image?: string
   orders?: Object[]
-  cart?:string[]
+  cart?: string[]
   role: Role
   address?: string
   city?: string
@@ -24,10 +24,11 @@ export interface Product {
   discount: number
   class: string
   brand: string
-  discountedPrice?:number
+  discountedPrice?: number
 }
 
 export interface CartItemProps {
+  type?: string
   uid?: string
   _id?: string
   title: string

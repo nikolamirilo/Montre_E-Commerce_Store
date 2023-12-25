@@ -201,7 +201,14 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full"
                 onClick={handleSidebar}
                 href={`/users/${user.id}`}>
-                <UserButton afterSignOutUrl="/" /> <span>{user?.username}</span>
+                <Image
+                  src={user.imageUrl}
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                  alt="User Avatar"
+                />
+                <span>Moje porudžbine</span>
               </Link>
             </div>
           ) : (

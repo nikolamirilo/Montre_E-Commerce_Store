@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   keywords: ["Montre", "Satovi", "GMT", "Hronograf", "Povoljno", "Curren", "Lige", "Hannah Martin"],
   authors: [{ name: "Reactify Solutions" }],
   creator: "Nikola Mirilo",
-  publisher: "Montree",
+  publisher: "Montre",
   metadataBase: new URL("https://montre-test.vercel.app/"),
   alternates: {
     canonical: "/",
