@@ -1,0 +1,45 @@
+import { currentUser } from "@clerk/nextjs"
+import Image from "next/image"
+import Link from "next/link"
+
+const ThankYou = async () => {
+  const user = await currentUser()
+  return (
+    <div className="relative w-full h-fit">
+      <Image
+        src="/ty_bg.jpg"
+        fill
+        alt="Backrgound"
+        id="ty-bg"
+        className="object-center object-cover"
+      />
+      <div className="flex items-center justify-center h-fit min-h-screen w-11/12 mx-auto">
+        <div className="p-1 rounded shadow-lg bg-gradient-to-r from-yellow-500 via-amber-500 to-red-500 z-10">
+          <div className="flex flex-col items-center p-4 gap-8 bg-[#0c0502]">
+            <Image
+              src="/MontreLogoTransparent.png"
+              width={150}
+              height={110}
+              alt="Montre"
+              className="relative"
+              priority
+            />
+            <h1 className="text-4xl w-full md:w-9/12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500">
+              {`${user?.firstName}`}, hvala na ukazanom poverenju!
+            </h1>
+            <p className="text-lg w-full md:w-10/12 mx-auto text-center text-white">
+              Vaša porudžbina je zabeležena i biće poslata u najkraćem roku.
+            </p>
+            <Link
+              className="px-4 py-2 text-white bg-amber-500 text-lg rounded-lg hover:bg-amber-600 focus:outline-none focus:ring"
+              href="/">
+              Nazad na početnu stranu
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default ThankYou

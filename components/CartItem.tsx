@@ -2,7 +2,11 @@
 import { deleteCartItem, updateItemCount } from "@/actions/server/cart"
 import { revalidateData } from "@/helpers/server"
 import { CartItemProps } from "@/typescript/interfaces"
+import { useEffect, useState } from "react"
 import { IoMdClose } from "react-icons/io"
+
+export const revalidate = 0
+export const dynamic = "force-dynamic"
 
 const CartItem = ({
   uid,
@@ -16,6 +20,7 @@ const CartItem = ({
   discountedPrice,
   quantity,
 }: CartItemProps) => {
+  const [count, setCount] = useState<number>(1)
   const handleDeleteCartItem = async () => {
     await deleteCartItem(uid, _id)
     revalidateData()
@@ -24,6 +29,9 @@ const CartItem = ({
     await updateItemCount(uid, _id, q)
     revalidateData()
   }
+  useEffect(() => {
+    setCount(quantity)
+  }, [])
   const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
@@ -42,31 +50,19 @@ const CartItem = ({
             <h2 className="text-lg">Izaberi količinu</h2>
             <select
               name="quantity"
+              onChange={(e: any) => {
+                setCountInfo(e.target.value)
+                setCount(e.target.value)
+              }}
               className="w-full bg-white border-2 text-lg border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
-              <option
-                selected={true}
-                onClick={() => {
-                  setCountInfo(1)
-                }}>
-                1
-              </option>
-              <option
-                onClick={() => {
-                  setCountInfo(2)
-                }}>
-                2
-              </option>
-              <option
-                onClick={() => {
-                  setCountInfo(3)
-                }}>
-                3
-              </option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
             </select>
           </div>
           <div className="flex items-center space-x-4" id="price">
             <p className="text-lg">
-              {quantity}x{calculatedPrice!.toLocaleString().replace(",", ".")} RSD
+              {count}x{calculatedPrice!.toLocaleString().replace(",", ".")} RSD
             </p>
           </div>
         </div>

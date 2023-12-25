@@ -97,7 +97,7 @@ export async function updateItemCount(
   }
 }
 
-export async function orderCartItems(uid: string | undefined) {
+export async function orderCartItems(uid: string | undefined, customerInfo: object) {
   try {
     const db = await storeDatabaseConnection()
     const user = await db.collection("users").findOne({ uid: uid })
@@ -136,6 +136,7 @@ export async function orderCartItems(uid: string | undefined) {
       status: "ordered",
       total: total,
       products: products,
+      customerInfo: customerInfo,
     }
 
     // Update the user document to move items from cart to order array

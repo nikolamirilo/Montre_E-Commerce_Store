@@ -1,15 +1,17 @@
 "use client"
-import { getTotalData, orderCartItems } from "@/actions/server/cart"
+import { handleOrderProducts } from "@/actions/client/cart"
+import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import { revalidateData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 export const revalidate = 0
 export const dynamic = "force-dynamic"
 const Order = () => {
   const clerkUser = useUser()
-  const [displayImages, setDisplayImages] = useState<string[]>([])
+  const router = useRouter()
   const [user, setUser] = useState<any>(null)
   const [total, setTotal] = useState<number>(0)
   const fullNameInput = useRef<HTMLInputElement>(null)
@@ -22,12 +24,19 @@ const Order = () => {
   const uid = clerkUser?.user?.id
   async function handleOrder(e: any) {
     e.preventDefault()
-    const isOrdered = await orderCartItems(uid)
+    const customerInfo = {
+      fullName: fullNameInput.current!.value,
+      email: emailInput.current!.value,
+      city: cityInput.current!.value,
+      phone: phoneInput.current!.value,
+      note: noteInput.current!.value,
+      zipCode: zipCodeInput.current!.value,
+      adress: adressInput.current!.value,
+    }
+    const isOrdered = await handleOrderProducts(uid, customerInfo)
     if (isOrdered == true) {
-      //Navigate to Thank you page/User Profile page
-      //Send email for confirmation
       revalidateData()
-      alert("Vaša porudžbina je primljena")
+      router.push("/thank-you")
     }
   }
 

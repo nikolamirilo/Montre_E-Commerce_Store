@@ -1,11 +1,13 @@
 import { getSingleUser } from "@/actions/server/users"
 import Footer from "@/components/Footer"
+import { NavigationEvents } from "@/components/NavigationEvents"
 import Sidebar from "@/components/Sidebar"
 import MainContextProvider from "@/context/MainContext"
 import { ClerkProvider, currentUser } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import type { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
+import { Suspense } from "react"
 import "./globals.css"
 
 const font = Open_Sans({ preload: true, subsets: ["latin"] })
@@ -52,6 +54,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
             <Sidebar cartItems={cartItems} />
             {props.children}
             <Footer />
+            <Suspense fallback={null}>
+              <NavigationEvents />
+            </Suspense>
           </body>
         </html>
       </MainContextProvider>

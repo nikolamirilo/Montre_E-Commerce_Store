@@ -26,7 +26,8 @@ footer,
 #contact,
 #categories,
 #about,
-#loader {
+#loader,
+#thank-you {
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 4rem;

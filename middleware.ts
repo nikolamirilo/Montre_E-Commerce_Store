@@ -14,6 +14,7 @@ export default authMiddleware({
     "/api/webhooks(.*)",
     "/auth/:action",
     "/order",
+    "/thank-you",
   ],
   afterAuth(auth, req, evt) {
     // Handle users who aren't authenticated
