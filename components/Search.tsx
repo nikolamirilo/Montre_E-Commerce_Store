@@ -12,12 +12,12 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
 
   const getFilters = () => {
     const filters: any = {
-      search: searchRef.current?.value || "",
-      class: formRef.current?.class.value || "",
-      brand: formRef.current?.brand.value || "",
-      category: formRef.current?.category.value || "",
-      minPrice: formRef.current?.minPrice.value || "",
-      maxPrice: formRef.current?.maxPrice.value || "",
+      search: searchRef.current!.value || "",
+      class: formRef.current!.class.value || "",
+      brand: formRef.current!.brand.value || "",
+      category: formRef.current!.category.value || "",
+      minPrice: formRef.current!.minPrice.value || "",
+      maxPrice: formRef.current!.maxPrice.value || "",
     }
     // Remove filters with empty values
     for (const key in filters) {
@@ -96,7 +96,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="brand"
                 name="brand"
-                value={params.brand}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Curren">Curren</option>
@@ -115,7 +114,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="category"
                 name="category"
-                value={params.category}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="man">Muški</option>
@@ -127,7 +125,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
               <select
                 id="class"
                 name="class"
-                value={params.class}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Premium">Premium</option>
@@ -141,7 +138,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 id="minPrice"
                 name="minPrice"
                 type="text"
-                value={params.minPrice}
                 placeholder="RSD"
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />
@@ -153,7 +149,6 @@ const Search = ({ type, params }: { type: string; params: SearchQuery }) => {
                 name="maxPrice"
                 placeholder="RSD"
                 type="text"
-                value={params.maxPrice}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />
             </div>
