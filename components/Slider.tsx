@@ -49,7 +49,7 @@ const Slider = ({ images }: { images: string[] }) => {
         </button>
       </div>
       <div className="flex flex-row flex-wrap justify-center items-center gap-2 mt-3">
-        {images?.map((image, idx) => {
+        {images?.map((image: string, idx: number) => {
           return (
             <div
               key={idx}

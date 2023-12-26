@@ -1,3 +1,4 @@
+import { RefObject } from "react"
 import { Role } from "./types"
 
 export interface User {
@@ -98,4 +99,19 @@ export interface CloudinaryResponse {
   access_mode: string
   existing: boolean
   original_filename: string
+}
+
+export interface OrderFormProps {
+  type: string
+  product?: Product
+  cartItems?: []
+  fullNameInput: RefObject<HTMLInputElement>
+  emailInput: RefObject<HTMLInputElement>
+  phoneInput: RefObject<HTMLInputElement>
+  adressInput: RefObject<HTMLInputElement>
+  cityInput: RefObject<HTMLInputElement>
+  zipCodeInput: RefObject<HTMLInputElement>
+  noteInput: RefObject<HTMLTextAreaElement>
+  handleOrder: (e: any) => Promise<void>
+  total: number
 }

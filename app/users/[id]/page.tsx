@@ -16,9 +16,9 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col justify-center items-center gap-10 w-full">
             <h1 className="font-semibold text-2xl md:text-3xl w-full py-10">Moje porudžbine</h1>
             <div className="flex flex-col w-full sm:w-10/12 justify-center items-center gap-10">
-              {mongoUser.orders.map((order: any) => {
+              {mongoUser.orders.map((order: any, idx: number) => {
                 return (
-                  <div className="mx-auto xl:w-2/3 w-full">
+                  <div className="mx-auto xl:w-2/3 w-full" key={idx}>
                     <div className="w-full flex flex-col px-2 justify-start items-center md:items-start">
                       <h2 className="font-semibold text-xl">
                         Datum: <span className="font-normal">{order?.date}</span>
@@ -36,9 +36,10 @@ const UserProfile = async ({ params }: { params: { id: string } }) => {
                         </span>
                       </h2>
                     </div>
-                    {order.products.map((product: any) => {
+                    {order.products.map((product: any, idx: number) => {
                       return (
                         <CartItem
+                          key={idx}
                           type="user-profile"
                           discountedPrice={product?.discountedPrice}
                           isOnDiscount={product?.isOnDiscount}

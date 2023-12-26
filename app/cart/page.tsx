@@ -21,9 +21,10 @@ const ShoppingCart = async () => {
           {user.cart?.length > 0 ? (
             <div className="mx-auto xl:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
               <div className="rounded-lg md:w-2/3">
-                {user.cart?.map(async (product: any) => {
+                {user.cart?.map(async (product: any, idx: number) => {
                   return (
                     <CartItem
+                      key={idx}
                       _id={product?._id}
                       uid={user.uid}
                       title={product?.title}

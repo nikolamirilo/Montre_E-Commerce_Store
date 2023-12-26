@@ -14,7 +14,7 @@ const ThankYou = async () => {
         className="object-center object-cover"
         priority
       />
-      <div className="flex items-center justify-center h-fit min-h-screen w-11/12 mx-auto">
+      <div className="flex items-center justify-center min-h-[80vh] w-11/12 mx-auto">
         <div className="p-1 rounded shadow-lg bg-gradient-to-r from-yellow-500 via-amber-500 to-red-500 z-10">
           <div className="flex flex-col items-center p-4 gap-8 bg-[#0c0502]">
             <Image

@@ -21,5 +21,3 @@
 # Redesign CartItem component
 
 # Loader for order forms
-
-# Navbar white space removing
