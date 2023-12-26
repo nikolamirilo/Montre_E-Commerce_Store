@@ -51,12 +51,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <MainContextProvider>
         <html lang="en">
           <body className={`${font.className} bg-white relative`}>
-            <Sidebar cartItems={cartItems} />
-            <div id="parent">{props.children}</div>
-            <Footer />
             <Suspense fallback={null}>
               <NavigationEvents />
             </Suspense>
+            <Sidebar cartItems={cartItems} />
+            <div id="parent">{props.children}</div>
+            <Footer />
           </body>
         </html>
       </MainContextProvider>

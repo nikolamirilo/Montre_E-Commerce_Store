@@ -6,8 +6,8 @@
 
 # Calculation in Cart => DONE
 
-# Order product form => DONE (handle storing user info and displaying orders on profile)
+# Order product form => DONE
 
-# Displaying orders on profile
+# Displaying orders on profile => DONE
 
-# Fix filters to be dynamic
+# Fix filters to be dynamic => DONE

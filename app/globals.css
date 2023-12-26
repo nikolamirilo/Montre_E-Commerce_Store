@@ -19,7 +19,6 @@ footer,
 #parent {
   min-height: 100vh;
   padding-top: 3rem;
-  padding-bottom: 4rem;
 }
 #hero {
   opacity: 0;

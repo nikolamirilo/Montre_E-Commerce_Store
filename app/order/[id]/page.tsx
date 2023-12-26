@@ -1,19 +1,15 @@
 "use client"
 import { handleOrderProducts } from "@/actions/client/cart"
-import { getTotalData } from "@/actions/server/cart"
-import { getSingleUser } from "@/actions/server/users"
+import { getSingleProduct } from "@/actions/server/products"
 import { revalidateData } from "@/helpers/server"
-import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-export const revalidate = 0
-export const dynamic = "force-dynamic"
-const Order = () => {
-  const clerkUser = useUser()
+
+const OrderSingleProduct = ({ params }: { params: { id: string } }) => {
+  const productId = params.id
   const router = useRouter()
-  const [user, setUser] = useState<any>(null)
-  const [total, setTotal] = useState<number>(0)
+  const [product, setProduct] = useState<any>(null)
   const fullNameInput = useRef<HTMLInputElement>(null)
   const emailInput = useRef<HTMLInputElement>(null)
   const cityInput = useRef<HTMLInputElement>(null)
@@ -21,7 +17,7 @@ const Order = () => {
   const noteInput = useRef<HTMLTextAreaElement>(null)
   const zipCodeInput = useRef<HTMLInputElement>(null)
   const adressInput = useRef<HTMLInputElement>(null)
-  const uid = clerkUser?.user?.id
+
   async function handleOrder(e: any) {
     e.preventDefault()
     const customerInfo = {
@@ -33,7 +29,7 @@ const Order = () => {
       zipCode: zipCodeInput.current!.value,
       adress: adressInput.current!.value,
     }
-    const isOrdered = await handleOrderProducts(uid, customerInfo, true)
+    const isOrdered = await handleOrderProducts(productId, customerInfo, false)
     if (isOrdered == true) {
       revalidateData()
       router.push("/thank-you")
@@ -41,15 +37,14 @@ const Order = () => {
   }
 
   useEffect(() => {
-    const getUser = async () => {
-      const res = await getSingleUser(uid)
-      setUser(res)
-      const totalRes = await getTotalData(uid)
-      setTotal(totalRes! + 400)
+    const getProduct = async () => {
+      const res = await getSingleProduct(productId)
+      setProduct(res)
     }
-    getUser()
+    getProduct()
   }, [])
-  if (user != null)
+  const total = (product?.isOnDiscount == true ? product?.discountedPrice : product?.price) + 400
+  if (product)
     return (
       <div className="flex items-center justify-center" id="order">
         <div className="flex justify-center items-center lg:py-10 w-full">
@@ -62,7 +57,6 @@ const Order = () => {
                 width={160}
                 height={120}
               />
-              {/* <h2 className="mt-6 text-2xl font-bold text-gray-900"></h2> */}
             </div>
             <form className="mt-8 flex flex-col w-full gap-2" encType="multipart/Order-data">
               <div>
@@ -187,24 +181,18 @@ const Order = () => {
                   <div className="flex flex-col w-full gap-2">
                     <div
                       className={`flex flex-row flex-wrap gap-2 items-center justify-center w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white`}>
-                      {user.cart.length > 0
-                        ? user.cart.map((product: any, idx: number) => {
-                            return (
-                              <div className="relative h-64 w-10/12 sm:w-52" key={idx}>
-                                <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
-                                  {product.title}
-                                </h2>
-                                <Image
-                                  src={product.images[0]}
-                                  fill
-                                  priority
-                                  className="object-cover object-center"
-                                  alt="Input Picture"
-                                />
-                              </div>
-                            )
-                          })
-                        : null}
+                      <div className="relative h-64 w-10/12 sm:w-52">
+                        <h2 className="absolute bottom-0 right-0 text-center text-md text-white bg-amber-500 z-10 w-full">
+                          {product.title}
+                        </h2>
+                        <Image
+                          src={product.images[0]}
+                          fill
+                          priority
+                          className="object-cover object-center"
+                          alt="Input Picture"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -216,7 +204,7 @@ const Order = () => {
                   Ukupni troškovi:
                 </label>
                 <div className="mt-1">
-                  <span> {total!.toLocaleString().replace(",", ".")},00 RSD</span>
+                  <span>{total.toLocaleString().replace(",", ".")},00 RSD</span>
                 </div>
               </div>
               <div className="mt-2">
@@ -234,4 +222,4 @@ const Order = () => {
     )
 }
 
-export default Order
+export default OrderSingleProduct

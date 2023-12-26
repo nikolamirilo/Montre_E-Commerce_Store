@@ -1,11 +1,14 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa"
 import { MdOutlineEmail } from "react-icons/md"
 
 const Footer = () => {
+  const pathname = usePathname()
   return (
-    <footer className="w-full" id="footer">
+    <footer className={`w-full ${pathname != "/thank-you" ? "mt-20" : null}`} id="footer">
       <div className="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
         <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
           <Link

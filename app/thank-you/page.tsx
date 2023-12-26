@@ -7,7 +7,7 @@ const ThankYou = async () => {
   return (
     <div className="relative w-full h-fit">
       <Image
-        src="/ty_bg.jpg"
+        src="/ty_bg.webp"
         fill
         alt="Backrgound"
         id="ty-bg"
@@ -25,7 +25,7 @@ const ThankYou = async () => {
               priority
             />
             <h1 className="text-4xl w-full md:w-9/12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500">
-              {`${user?.firstName}`}, hvala na ukazanom poverenju!
+              {`${user ? user.firstName : "Poštovani"}`}, hvala na ukazanom poverenju!
             </h1>
             <p className="text-lg w-full md:w-10/12 mx-auto text-center text-white">
               Vaša porudžbina je zabeležena i biće poslata u najkraćem roku.

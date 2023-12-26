@@ -1,6 +1,10 @@
-export async function handleOrderProducts(uid: string | undefined, customerInfo: object) {
+export async function handleOrderProducts(
+  uid: string | undefined,
+  customerInfo: object,
+  isAuthenticated: boolean
+) {
   try {
-    const body = { uid: uid, customerInfo: customerInfo }
+    const body = { uid: uid, customerInfo: customerInfo, isAuthenticated }
     const response = await fetch("/api/products/order", {
       method: "POST",
       body: JSON.stringify(body),

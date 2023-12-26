@@ -5,6 +5,7 @@ import { revalidateData } from "@/helpers/server"
 import { CardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { BsCart3, BsTrash3 } from "react-icons/bs"
@@ -119,9 +120,11 @@ const Card: React.FC<CardProps> = ({
                 <BsCart3 size={25} /> Dodaj u korpu
               </button>
             ) : (
-              <button className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
+              <Link
+                href={`/order/${_id}`}
+                className="text-white bg-amber-500 hover:bg-amber-600 rounded-lg px-2.5 py-2 text-center flex flex-row gap-1 justify-center items-center">
                 Poruči
-              </button>
+              </Link>
             )}
           </div>
         </div>
