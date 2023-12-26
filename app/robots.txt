@@ -1,4 +1,7 @@
 User-Agent: *
+Disallow: */auth/:action
+Disallow: */users/:id
+Disallow: */cart
+Disallow: */order
 Allow: /
-Disallow: /private/
-Sitemap: https://www.montre-shop.com/
+Sitemap: https://www.montre-shop.com/sitemap.xml

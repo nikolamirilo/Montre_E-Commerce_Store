@@ -57,7 +57,7 @@ const OrderSingleProduct = ({ params }: { params: { id: string } }) => {
                 height={120}
               />
             </div>
-            <form className="mt-8 flex flex-col w-full gap-2" encType="multipart/Order-data">
+            <form className="mt-8 flex-col w-full gap-2 hidden">
               <div>
                 <label
                   htmlFor="fullName"
