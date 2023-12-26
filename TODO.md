@@ -8,7 +8,7 @@
 
 # Promote Clerk to production
 
-# Refactor code
+# Refactor code (interfaces, any types, etc)
 
 # Add more Meta data and optiize website for SEO
 

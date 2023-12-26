@@ -6,7 +6,7 @@
 2. **Database - MongoDB**
 3. **Static assets hosting - Cloudinary**
 4. **Auth - Clerk**
-5. **Email Sending - EmailJS**
+5. **Email Sending - Resend**
 
 ## To run application do the following:
 
