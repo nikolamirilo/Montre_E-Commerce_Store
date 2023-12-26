@@ -5,7 +5,7 @@ import Link from "next/link"
 const ThankYou = async () => {
   const user = await currentUser()
   return (
-    <div className="relative w-full h-fit">
+    <div className="w-full h-fit">
       <Image
         src="/ty_bg.webp"
         fill

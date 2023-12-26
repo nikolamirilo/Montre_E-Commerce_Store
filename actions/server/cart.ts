@@ -164,18 +164,20 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
 export async function orderSingleItem(productId: string | undefined, customerInfo: object) {
   try {
     const db = await storeDatabaseConnection()
-    const product = await getSingleProduct(productId!)
-    var total = (product.isOnDiscount == true ? product.discountedPrice : product.price) + 400
-    const currentDate = moment()
-    const order = {
-      status: "ordered",
-      total: total,
-      product: product,
-      customerInfo: customerInfo,
-      date: currentDate.format("MMMM Do YYYY, h:mm:ss a"),
+    const product: any = await getSingleProduct(productId!)
+    if (product) {
+      var total = (product.isOnDiscount ? product.discountedPrice : product.price) + 400
+      const currentDate = moment()
+      const order = {
+        status: "ordered",
+        total: total,
+        product: product,
+        customerInfo: customerInfo,
+        date: currentDate.format("MMMM Do YYYY, h:mm:ss a"),
+      }
+      await db.collection("anonymus-orders").insertOne(order)
+      console.log("Order created successfully.")
     }
-    await db.collection("anonymus-orders").insertOne(order)
-    console.log("Order created successfully.")
     return true
   } catch (error) {
     console.log((error as Error).message)

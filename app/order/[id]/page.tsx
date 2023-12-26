@@ -35,7 +35,6 @@ const OrderSingleProduct = ({ params }: { params: { id: string } }) => {
       router.push("/thank-you")
     }
   }
-
   useEffect(() => {
     const getProduct = async () => {
       const res = await getSingleProduct(productId)

@@ -1,9 +1,6 @@
 import { orderCartItems, orderSingleItem } from "@/actions/server/cart"
 import { NextRequest, NextResponse } from "next/server"
 
-export const revalidate = 0
-export const dynamic = "force-dynamic"
-
 export async function POST(request: NextRequest) {
   try {
     const orderDetails = await request.json()
