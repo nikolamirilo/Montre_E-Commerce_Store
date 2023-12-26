@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Reactify Solutions" }],
   creator: "Nikola Mirilo",
   publisher: "Montre",
-  metadataBase: new URL("https://montre-test.vercel.app/"),
+  metadataBase: new URL("https://www.montre-shop.com/"),
   alternates: {
     canonical: "/",
     languages: {
