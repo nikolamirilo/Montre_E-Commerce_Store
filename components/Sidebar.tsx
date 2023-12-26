@@ -26,11 +26,11 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${
-          isSidebarOpen && "hidden"
-        }`}
+        className={`fixed top-0 w-full text-white text-4xl flex flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%]`}
         id="navbar">
-        <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
+        <button
+          className={`font-xxl text-white rounded-3xl ${isSidebarOpen && "hidden"}`}
+          onClick={handleSidebar}>
           <RiMenu2Line size={30} />
         </button>
         <Link href="/">

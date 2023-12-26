@@ -4,12 +4,22 @@
 
 # Payment using Stripe API
 
-# Calculation in Cart => DONE
+# Sending emails using Resend API
 
-# Order product form => DONE
+# Promote Clerk to production
 
-# Displaying orders on profile => DONE
+# Refactor code
 
-# Fix filters to be dynamic => DONE
+# Add more Meta data and optiize website for SEO
 
-# Fix problem on production regarding single product add to cart
+# Fix problem with crawlers and let Google index page - finish with writing Robots.txt
+
+# Fix problem with Clerk which is happening on build (write on Discord regarding problem) - revise middleware
+
+# Fix visual problems
+
+# Redesign CartItem component
+
+# Loader for order forms
+
+# Navbar white space removing
