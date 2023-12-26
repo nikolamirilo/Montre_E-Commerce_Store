@@ -11,3 +11,5 @@
 # Displaying orders on profile => DONE
 
 # Fix filters to be dynamic => DONE
+
+# Fix problem on production regarding single product add to cart

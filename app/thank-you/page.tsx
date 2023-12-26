@@ -12,6 +12,7 @@ const ThankYou = async () => {
         alt="Backrgound"
         id="ty-bg"
         className="object-center object-cover"
+        priority
       />
       <div className="flex items-center justify-center h-fit min-h-screen w-11/12 mx-auto">
         <div className="p-1 rounded shadow-lg bg-gradient-to-r from-yellow-500 via-amber-500 to-red-500 z-10">
