@@ -14,7 +14,6 @@ export default authMiddleware({
     "/api/webhooks(.*)",
     "/api/products/order",
     "/auth/:action",
-    "/order",
     "/order/:id",
     "/thank-you",
   ],
