@@ -12,7 +12,7 @@ const Hero = () => {
         className="object-center object-cover hidden lg:flex"
         priority
       />
-      <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col lg:mt-[2%] 2xl:mt-[5%]">
+      <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center md:items-start justify-center flex-col lg:mt-[2%]">
         <h1 className="w-full lg:w-2/3 xl:1/2 font-black text-amber-500 text-4xl sm:text-6xl md:text-5xl lg:text-left xl:text-6xl text-center">
           Elegancija koja se meri sekundama
         </h1>

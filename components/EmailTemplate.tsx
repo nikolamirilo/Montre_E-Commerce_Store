@@ -15,11 +15,10 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 }) => (
   <Container
     style={{ width: "800px", background: "#0c0502", padding: "30px 20px", borderRadius: "10px" }}>
-    <Text style={textStyle}>Poštovani {customerInfo.fullName},</Text>
+    <Text style={textStyle}>Poštovani/a {customerInfo.fullName},</Text>
     <Text style={textStyle}>
       Vaša porudžbina je zabeležena i biće Vam dostavljena u naredna 3 radna dana.
     </Text>
-    <Text style={textStyle}>U tabeli ispod se nalazi lista proizvoda koje ste poručili.</Text>
     <Section style={{ border: "1px solid #ffffff", width: "700px" }}>
       <Row>
         <Column style={headingCellStyle}>Naziv proizvoda</Column>
@@ -71,7 +70,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
       </Link>
     </Text>
     <Text style={textStyle}>Hvala na poverenju!</Text>
-    <Text style={textStyle}>Tvoj Montre,</Text>
+    <Text style={textStyle}>Vaš Montre,</Text>
     <Text style={textStyle}>Srdačan pozdrav,</Text>
     <Img
       src="https://www.montre-shop.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FMontreLogoTransparent.7998db34.png&w=256&q=75"
@@ -97,6 +96,6 @@ const textStyle = {
 }
 const headingCellStyle = {
   ...cellStyle,
-  background: "#f59e0b",
+  background: "#d97706",
   fontWeight: "bold",
 }

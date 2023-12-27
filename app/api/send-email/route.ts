@@ -7,11 +7,10 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   const order = await request.json()
-  console.log(order)
   if (order)
     try {
       const { data, error } = await resend.emails.send({
-        from: "office@montre-shop.com",
+        from: "Montre Shop <office@montre-shop.com>",
         to: order.customerInfo.email,
         cc: "satovi.montre@gmail.com",
         subject: "Potvrda o narudžbini",
