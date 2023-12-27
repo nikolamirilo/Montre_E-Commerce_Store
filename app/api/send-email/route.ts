@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         cc: "satovi.montre@gmail.com",
         subject: "Potvrda o narudžbini",
         react: EmailTemplate({
-          fullName: order?.customerInfo?.fullName,
+          customerInfo: order?.customerInfo,
           products: order?.products,
           total: order?.total,
         }) as React.ReactElement,
