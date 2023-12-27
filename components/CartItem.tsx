@@ -36,13 +36,13 @@ const CartItem = ({
   }, [])
   const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
-    <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start relative">
+    <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex w-full mx-auto sm:justify-start relative">
       {type != "user-profile" ? (
         <button onClick={handleDeleteCartItem} className="absolute top-0 right-0">
           <IoMdClose size={30} className="hover:fill-red-500" />
         </button>
       ) : null}
-      <div className="w-48 h-48 relative">
+      <div className="w-11/12 h-72 mx-auto sm:w-56 sm:h-48 relative">
         <Image
           src={image}
           alt="product-image"
@@ -56,7 +56,7 @@ const CartItem = ({
           <p className="mt-1 text-lg text-gray-700">{category === "man" ? "Muški" : "Ženski"}</p>
           <p className="mt-1 text-lg text-gray-700">{productClass}</p>
         </div>
-        <div className="mt-4 flex flex-row-reverse md:flex-col sm:mt-0 h-full justify-between md:justify-around items-center">
+        <div className="mt-4 flex flex-row-reverse sm:flex-col sm:mt-0 h-full justify-between md:justify-around items-center">
           {type != "user-profile" ? (
             <div className="flex flex-col items-start justify-center border-gray-200">
               <h2 className="text-lg">Izaberi količinu</h2>
