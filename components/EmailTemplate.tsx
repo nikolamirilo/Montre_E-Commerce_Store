@@ -22,38 +22,10 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     <Text style={textStyle}>U tabeli ispod se nalazi lista proizvoda koje ste poručili.</Text>
     <Section style={{ border: "1px solid #ffffff", width: "700px" }}>
       <Row>
-        <Column
-          style={{
-            ...cellStyle,
-            background: "#f59e0b",
-            fontWeight: "bold",
-          }}>
-          Naziv proizvoda
-        </Column>
-        <Column
-          style={{
-            ...cellStyle,
-            background: "#f59e0b",
-            fontWeight: "bold",
-          }}>
-          Količina
-        </Column>
-        <Column
-          style={{
-            ...cellStyle,
-            background: "#f59e0b",
-            fontWeight: "bold",
-          }}>
-          Jedinična cena
-        </Column>
-        <Column
-          style={{
-            ...cellStyle,
-            background: "#f59e0b",
-            fontWeight: "bold",
-          }}>
-          Ukupna cena
-        </Column>
+        <Column style={headingCellStyle}>Naziv proizvoda</Column>
+        <Column style={headingCellStyle}>Količina</Column>
+        <Column style={headingCellStyle}>Jedinična cena</Column>
+        <Column style={headingCellStyle}>Ukupna cena</Column>
       </Row>
       {products.map((product: any, idx: number) => {
         const price = product.isOnDiscount == true ? product.discountedPrice : product.price
@@ -77,10 +49,10 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     <Text style={textStyle}>Informacije za dostavu:</Text>
     <Section>
       <Row>
-        <Column style={cellStyle}>Broj telefona:</Column>
-        <Column style={cellStyle}>Grad:</Column>
-        <Column style={cellStyle}>Adresa:</Column>
-        <Column style={cellStyle}>Poštanski broj:</Column>
+        <Column style={headingCellStyle}>Broj telefona:</Column>
+        <Column style={headingCellStyle}>Grad:</Column>
+        <Column style={headingCellStyle}>Adresa:</Column>
+        <Column style={headingCellStyle}>Poštanski broj:</Column>
       </Row>
       <Row>
         <Column style={cellStyle}>{customerInfo.phone}</Column>
@@ -98,7 +70,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         satovi.montre@gmail.com
       </Link>
     </Text>
-    <Text style={textStyle}>Hvala na poverenju</Text>
+    <Text style={textStyle}>Hvala na poverenju!</Text>
     <Text style={textStyle}>Tvoj Montre,</Text>
     <Text style={textStyle}>Srdačan pozdrav,</Text>
     <Img
@@ -122,4 +94,9 @@ const cellStyle = {
 const textStyle = {
   fontSize: "1.2rem",
   color: "#ffffff",
+}
+const headingCellStyle = {
+  ...cellStyle,
+  background: "#f59e0b",
+  fontWeight: "bold",
 }
