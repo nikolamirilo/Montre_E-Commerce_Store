@@ -71,7 +71,6 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     </Text>
     <Text style={textStyle}>Hvala na poverenju!</Text>
     <Text style={textStyle}>Vaš Montre,</Text>
-    <Text style={textStyle}>Srdačan pozdrav,</Text>
     <Img
       src="https://www.montre-shop.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FMontreLogoTransparent.7998db34.png&w=256&q=75"
       alt="Montre"
