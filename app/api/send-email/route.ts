@@ -11,12 +11,14 @@ export async function POST(request: NextRequest) {
   if (order)
     try {
       const { data, error } = await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: ["satovi.montre@gmail.com"],
-        subject: "Hello world",
+        from: "office@montre-shop.com",
+        to: order.customerInfo.email,
+        cc: "satovi.montre@gmail.com",
+        subject: "Potvrda o narudžbini",
         react: EmailTemplate({
           fullName: order?.customerInfo?.fullName,
           products: order?.products,
+          total: order?.total,
         }) as React.ReactElement,
       })
 

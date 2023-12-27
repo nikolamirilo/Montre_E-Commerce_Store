@@ -1,22 +1,23 @@
 import { Product } from "@/typescript/interfaces"
-import { Column, Container, Heading, Img, Row, Section, Text } from "@react-email/components"
+import { Column, Container, Img, Row, Section, Text } from "@react-email/components"
 import * as React from "react"
 
 interface EmailTemplateProps {
   products: Product[]
   fullName: string
+  total: number
 }
-var total = 400
 const orderNumber = "MS-0002"
 
-export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ products, fullName }) => (
+export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
+  products,
+  fullName,
+  total,
+}) => (
   <Container
-    style={{ width: "800px", background: "#0c0502", padding: "50px 30px", borderRadius: "10px" }}>
-    <Heading as="h2" style={{ color: "#ffffff" }}>
-      Potvrda o narudžbini
-    </Heading>
+    style={{ width: "800px", background: "#0c0502", padding: "30px 20px", borderRadius: "10px" }}>
     <Text style={{ fontSize: "1.2rem", color: "#ffffff" }}>
-      Poštovani {fullName}, tvoja porudžbina {orderNumber} je primljena i biće ti dostavljena u
+      Poštovani {fullName}, Vaša porudžbina {orderNumber} je zabeležena i biće Vam dostavljena u
       naredna 3 radna dana.
     </Text>
     <Section style={{ border: "1px solid #ffffff", width: "700px" }}>
@@ -61,7 +62,6 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ products
       {products.map((product: any, idx: number) => {
         const price = product.isOnDiscount == true ? product.discountedPrice : product.price
         const totalPerProduct = price * product.quantity
-        total += totalPerProduct
         return (
           <Row key={idx}>
             <Column style={{ ...cellStyle }}>{product.title}</Column>
