@@ -1,6 +1,7 @@
 import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
+import { SHIPPING_COST } from "@/constants"
 import { currentUser } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,7 +14,7 @@ const ShoppingCart = async () => {
   const user = await getSingleUser(clerkUser?.id)
   if (user != null) {
     const productsPrice = await getTotalData(user.uid)
-    const total = productsPrice! + 400
+    const total = productsPrice! + SHIPPING_COST
     return (
       <div id="cart">
         <div className="min-h-screen bg-white py-20 h-fit w-full flex flex-col justify-start items-center">

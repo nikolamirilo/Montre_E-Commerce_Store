@@ -3,6 +3,7 @@ import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import OrderForm from "@/components/OrderForm"
+import { SHIPPING_COST } from "@/constants"
 import { revalidateData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
@@ -45,7 +46,7 @@ const Order = () => {
       const res = await getSingleUser(uid)
       setUser(res)
       const totalRes = await getTotalData(uid)
-      setTotal(totalRes! + 400)
+      setTotal(totalRes! + SHIPPING_COST)
     }
     getUser()
   }, [])

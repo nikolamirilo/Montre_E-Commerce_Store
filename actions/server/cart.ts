@@ -1,4 +1,5 @@
 "use server"
+import { SHIPPING_COST } from "@/constants"
 import { storeDatabaseConnection } from "@/mongodb/connections"
 import { currentUser } from "@clerk/nextjs"
 import moment from "moment"
@@ -114,7 +115,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
     }
 
     // Calculate the total amount for each order
-    var total = 400
+    var total = SHIPPING_COST
     const currentDate = moment()
     const products = user.cart.map((item: any) => {
       total += (item.isOnDiscount == true ? item.discountedPrice : item.price) * item.quantity
@@ -134,7 +135,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
         quantity: item.quantity,
       }
     })
-    const orders = {
+    const order = {
       status: "ordered",
       total: total,
       products: products,
@@ -147,13 +148,21 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
       { uid: uid },
       {
         $push: {
-          orders: orders,
+          orders: order,
         },
         $set: {
           cart: [],
         },
       }
     )
+
+    const emailRes = await fetch(process.env.WEB_APP_URL + "/api/send-email", {
+      method: "POST",
+      body: JSON.stringify(order),
+    })
+    if (!emailRes.ok) {
+      console.log(`Error: ${emailRes.statusText}`)
+    }
     console.log("Orders created successfully.")
     return true
   } catch (error) {
@@ -165,20 +174,28 @@ export async function orderSingleItem(productId: string | undefined, customerInf
   try {
     const db = await storeDatabaseConnection()
     const product: any = await getSingleProduct(productId!)
+    const extendedProduct = { ...product, quantity: 1 }
     if (product) {
-      var total = (product.isOnDiscount ? product.discountedPrice : product.price) + 400
+      var total = (product.isOnDiscount ? product.discountedPrice : product.price) + SHIPPING_COST
       const currentDate = moment()
       const order = {
         status: "ordered",
         total: total,
-        product: product,
+        products: [extendedProduct],
         customerInfo: customerInfo,
         date: currentDate.format("MMMM Do YYYY, h:mm:ss a"),
       }
       await db.collection("anonymus-orders").insertOne(order)
+      const emailRes = await fetch(process.env.WEB_APP_URL + "/api/send-email", {
+        method: "POST",
+        body: JSON.stringify(order),
+      })
+      if (!emailRes.ok) {
+        console.log(`Error: ${emailRes.statusText}`)
+      }
       console.log("Order created successfully.")
+      return true
     }
-    return true
   } catch (error) {
     console.log((error as Error).message)
     return false

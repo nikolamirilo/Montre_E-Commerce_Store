@@ -1,29 +1,23 @@
+import { Product } from "@/typescript/interfaces"
 import { Column, Container, Heading, Img, Row, Section, Text } from "@react-email/components"
 import * as React from "react"
 
 interface EmailTemplateProps {
-  firstName: string
-  orderNumber: string
+  products: Product[]
+  fullName: string
 }
-const products = [
-  { title: "Curren Gold Blue", image: "", quantity: 4, price: 3200 },
-  { title: "Curren Classic", image: "", quantity: 3, price: 5000 },
-  { title: "Curren Oak Green", image: "", quantity: 1, price: 7000 },
-]
 var total = 400
+const orderNumber = "MS-0002"
 
-export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
-  firstName,
-  orderNumber,
-}) => (
+export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ products, fullName }) => (
   <Container
     style={{ width: "800px", background: "#0c0502", padding: "50px 30px", borderRadius: "10px" }}>
     <Heading as="h2" style={{ color: "#ffffff" }}>
       Potvrda o narudžbini
     </Heading>
     <Text style={{ fontSize: "1.2rem", color: "#ffffff" }}>
-      Dragi {firstName}, tvoja porudžbina {orderNumber} je primljena i biće ti dostavljena u naredna
-      3 radna dana.
+      Poštovani {fullName}, tvoja porudžbina {orderNumber} je primljena i biće ti dostavljena u
+      naredna 3 radna dana.
     </Text>
     <Section style={{ border: "1px solid #ffffff", width: "700px" }}>
       <Row>
@@ -65,14 +59,15 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         </Column>
       </Row>
       {products.map((product: any, idx: number) => {
-        const totalPerProduct = product.price * product.quantity
+        const price = product.isOnDiscount == true ? product.discountedPrice : product.price
+        const totalPerProduct = price * product.quantity
         total += totalPerProduct
         return (
           <Row key={idx}>
             <Column style={{ ...cellStyle }}>{product.title}</Column>
             <Column style={{ ...cellStyle }}>{product.quantity} kom</Column>
             <Column style={{ ...cellStyle }}>
-              {product.price.toLocaleString().replace(",", ".")},00 RSD
+              {price.toLocaleString().replace(",", ".")},00 RSD
             </Column>
             <Column style={{ ...cellStyle }}>
               {totalPerProduct.toLocaleString().replace(",", ".")},00 RSD

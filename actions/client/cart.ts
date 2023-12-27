@@ -4,27 +4,24 @@ export async function handleOrderProducts(
   isAuthenticated: boolean
 ) {
   try {
-    if (isAuthenticated == true) {
-      const body = { uid: id, customerInfo, isAuthenticated }
-      const response = await fetch("/api/products/order", {
-        method: "POST",
-        body: JSON.stringify(body),
-      })
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`)
-      }
-      return true
-    } else {
-      const body = { productId: id, customerInfo, isAuthenticated }
-      const response = await fetch("/api/products/order", {
-        method: "POST",
-        body: JSON.stringify(body),
-      })
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`)
-      }
-      return true
+    const order = isAuthenticated
+      ? { uid: id, customerInfo, isAuthenticated }
+      : { productId: id, customerInfo, isAuthenticated }
+    const orderRes = await fetch("/api/products/order", {
+      method: "POST",
+      body: JSON.stringify(order),
+    })
+    if (!orderRes.ok) {
+      throw new Error(`Error: ${orderRes.statusText}`)
     }
+    // const emailRes = await fetch("/api/send-email", {
+    //   method: "POST",
+    //   body: JSON.stringify(order),
+    // })
+    // if (!emailRes.ok) {
+    //   throw new Error(`Error: ${orderRes.statusText}`)
+    // }
+    return true
   } catch (error) {
     console.error(error)
     return false

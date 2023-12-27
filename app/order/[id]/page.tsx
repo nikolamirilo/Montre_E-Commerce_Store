@@ -2,6 +2,7 @@
 import { handleOrderProducts } from "@/actions/client/cart"
 import { getSingleProduct } from "@/actions/server/products"
 import OrderForm from "@/components/OrderForm"
+import { SHIPPING_COST } from "@/constants"
 import { revalidateData } from "@/helpers/server"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -42,7 +43,8 @@ const OrderSingleProduct = ({ params }: { params: { id: string } }) => {
     }
     getProduct()
   }, [])
-  const total = (product?.isOnDiscount == true ? product?.discountedPrice : product?.price) + 400
+  const total =
+    (product?.isOnDiscount == true ? product?.discountedPrice : product?.price) + SHIPPING_COST
   if (product)
     return (
       <OrderForm
