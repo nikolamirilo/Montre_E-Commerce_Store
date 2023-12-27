@@ -3,6 +3,7 @@ import Footer from "@/components/Footer"
 import { NavigationEvents } from "@/components/NavigationEvents"
 import Sidebar from "@/components/Sidebar"
 import MainContextProvider from "@/context/MainContext"
+
 import { ClerkProvider, currentUser } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import type { Metadata } from "next"
