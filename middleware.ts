@@ -13,6 +13,7 @@ export default authMiddleware({
     "/products/watches/:id",
     "/api/webhooks(.*)",
     "/api/products/order",
+    "/api/send-email",
     "/auth/:action",
     "/order/:id",
     "/thank-you",
