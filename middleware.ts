@@ -16,6 +16,8 @@ export default authMiddleware({
     "/api/products/:id",
     "/api/send-email",
     "/auth/:action",
+    "/sitemap.xml",
+    "/robots.txt"
     "/order/:id",
     "/thank-you",
   ],
