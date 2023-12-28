@@ -21,3 +21,5 @@
 # Redesign CartItem component
 
 # Loader for order forms
+
+# Fix OAuth keys for Google and Facebook
