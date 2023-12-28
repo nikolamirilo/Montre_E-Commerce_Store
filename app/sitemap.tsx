@@ -69,7 +69,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: "https://www.montre-shop.com/order/:id",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: "https://www.montre-shop.com/auth/:action",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://www.montre-shop.com/thank-you",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
