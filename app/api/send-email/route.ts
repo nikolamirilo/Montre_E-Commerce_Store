@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
   if (order)
     try {
       const { data, error } = await resend.emails.send({
-        from: "Montre Shop <office@montre-shop.com>",
+        from: "Montre Shop <no-reply@montre-shop.com>",
         to: order.customerInfo.email,
         cc: "satovi.montre@gmail.com",
         subject: "Potvrda o narudžbini",
