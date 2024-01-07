@@ -5,13 +5,13 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
 import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
+import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
 import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
 import { RiContactsLine, RiMenu2Line } from "react-icons/ri"
 import { TbDiscount2 } from "react-icons/tb"
 import logo from "../public/MontreLogoTransparent.png"
-
 const Sidebar = ({ cartItems }: { cartItems: number }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isOfferOpen, setIsOfferOpen] = useState(false)
@@ -54,7 +54,7 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
           ) : null}
           {user ? (
             <Link href={`/users/${user.id}`} className="flex flex-row justify-center items-center">
-              <UserButton afterSignOutUrl="/" />
+              {user.imageUrl != "" ? <UserButton afterSignOutUrl="/" /> : <FaRegUser size={25} />}
             </Link>
           ) : (
             <Link
@@ -201,13 +201,18 @@ const Sidebar = ({ cartItems }: { cartItems: number }) => {
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full"
                 onClick={handleSidebar}
                 href={`/users/${user.id}`}>
-                <Image
-                  src={user.imageUrl}
-                  width={30}
-                  height={30}
-                  className="rounded-full"
-                  alt="User Avatar"
-                />
+                {user.imageUrl != "" ? (
+                  <Image
+                    src={user.imageUrl}
+                    width={30}
+                    height={30}
+                    className="rounded-full"
+                    alt="User Avatar"
+                  />
+                ) : (
+                  <FaRegUser size={25} />
+                )}
+
                 <span>Moje porudžbine</span>
               </Link>
             </div>
