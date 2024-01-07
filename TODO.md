@@ -4,11 +4,9 @@
 
 # Payment using Stripe API
 
-# Sending emails using Resend API
-
-# Promote Clerk to production
-
 # Refactor code (interfaces, any types, etc)
+
+# Fix bugs on production Clerk
 
 # Add more Meta data and optiize website for SEO
 

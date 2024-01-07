@@ -33,7 +33,6 @@ const Products = async ({
               product.class &&
               product.isPublic == true
             ) {
-              console.log(product)
               return (
                 <Card
                   key={idx}

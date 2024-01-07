@@ -36,7 +36,6 @@ export const metadata: Metadata = {
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const cld = new Cloudinary({ cloud: { cloudName: "montre-cloudinary" } })
-
   const user = await currentUser()
   var cartItems: number = 0
   var mongoUser: any = {}
