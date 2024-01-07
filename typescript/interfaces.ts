@@ -114,4 +114,5 @@ export interface OrderFormProps {
   noteInput: RefObject<HTMLTextAreaElement>
   handleOrder: (e: any) => Promise<void>
   total: number
+  progress: number
 }

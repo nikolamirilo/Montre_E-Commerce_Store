@@ -14,9 +14,10 @@ const OrderForm: React.FC<OrderFormProps> = ({
   noteInput,
   handleOrder,
   total,
+  progress,
 }) => {
   return (
-    <div className="flex items-center justify-center" id="order">
+    <div className={`flex items-center justify-center" id="order`}>
       <div className="flex justify-center items-center lg:py-10 w-full">
         <div className="w-full md:w-10/12 lg:w-2/3 xl:w-1/2 md:mt-5 lg:mt-2 bg-white block rounded-lg px-4 py-16 sm:p-4 lg:p-16 md:border-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
           <div className="text-center">
@@ -200,6 +201,7 @@ const OrderForm: React.FC<OrderFormProps> = ({
             <div className="mt-2">
               <button
                 onClick={handleOrder}
+                disabled={progress == 50 ? true : false}
                 id="submit-button"
                 className="uppercase w-full flex justify-center py-2 px-4 text-white rounded-md">
                 Naruči

@@ -12,12 +12,10 @@
 
 # Fix problem with crawlers and let Google index page - finish with writing Robots.txt
 
-# Fix problem with Clerk which is happening on build (write on Discord regarding problem) - revise middleware
+# Fix problem with Clerk which is happening on build (write on Discord regarding problem) - revise middleware on Discord
 
 # Fix visual problems
 
 # Redesign CartItem component
-
-# Loader for order forms
 
 # Fix OAuth keys for Google and Facebook

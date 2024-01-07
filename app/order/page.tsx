@@ -2,6 +2,7 @@
 import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
+import Loader from "@/components/Loader"
 import OrderForm from "@/components/OrderForm"
 import { SHIPPING_COST } from "@/constants"
 import { revalidateData } from "@/helpers/server"
@@ -15,6 +16,7 @@ const Order = () => {
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
   const [total, setTotal] = useState<number>(0)
+  const [progress, setProgress] = useState<number>(50)
   const fullNameInput = useRef<HTMLInputElement>(null)
   const emailInput = useRef<HTMLInputElement>(null)
   const cityInput = useRef<HTMLInputElement>(null)
@@ -25,6 +27,7 @@ const Order = () => {
   const uid = clerkUser?.user?.id
   async function handleOrder(e: any) {
     e.preventDefault()
+    setProgress(50)
     const customerInfo = {
       fullName: fullNameInput.current!.value,
       email: emailInput.current!.value,
@@ -37,11 +40,15 @@ const Order = () => {
     const isOrdered = await handleOrderProducts(uid, customerInfo, true)
     if (isOrdered == true) {
       revalidateData()
+      setProgress(100)
       router.push("/thank-you")
+    } else {
+      setProgress(0)
     }
   }
 
   useEffect(() => {
+    setProgress(0)
     const getUser = async () => {
       const res = await getSingleUser(uid)
       setUser(res)
@@ -52,19 +59,28 @@ const Order = () => {
   }, [])
   if (user != null)
     return (
-      <OrderForm
-        type="multiple-items"
-        cartItems={user?.cart}
-        fullNameInput={fullNameInput}
-        emailInput={emailInput}
-        phoneInput={phoneInput}
-        adressInput={adressInput}
-        cityInput={cityInput}
-        zipCodeInput={zipCodeInput}
-        noteInput={noteInput}
-        handleOrder={handleOrder}
-        total={total}
-      />
+      <>
+        <div
+          className={`absolute flex flex-row justify-center items-center w-full h-full bg-black/80 z-20 ${
+            progress == 50 ? "block" : "hidden"
+          }`}>
+          <Loader />
+        </div>
+        <OrderForm
+          type="multiple-items"
+          cartItems={user?.cart}
+          fullNameInput={fullNameInput}
+          emailInput={emailInput}
+          phoneInput={phoneInput}
+          adressInput={adressInput}
+          cityInput={cityInput}
+          zipCodeInput={zipCodeInput}
+          noteInput={noteInput}
+          handleOrder={handleOrder}
+          total={total}
+          progress={progress}
+        />
+      </>
     )
 }
 
