@@ -1,105 +1,156 @@
 {
-  "pathRoot": "/me",
-  "id": "user_2YlKG5yxp6Xm4Ko9k0ZYNRfhpRB",
-  "externalId": null,
-  "username": "montre_satovi",
-  "emailAddresses": [
-    {
-      "pathRoot": "/me/email_addresses",
-      "emailAddress": "satovi.montre@gmail.com",
-      "linkedTo": [
-        {
-          "pathRoot": "",
-          "id": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
-          "type": "oauth_google"
-        }
-      ],
-      "id": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
-      "verification": {
-        "pathRoot": "",
-        "status": "verified",
-        "strategy": "from_oauth_google",
-        "nonce": null,
-        "externalVerificationRedirectURL": null,
-        "attempts": null,
-        "expireAt": "2023-11-27T15:07:22.060Z",
-        "error": null
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "pathRoot": { "type": "string" },
+    "id": { "type": "string" },
+    "externalId": { "type": ["string", "null"] },
+    "username": { "type": ["string", "null"] },
+    "emailAddresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pathRoot": { "type": "string" },
+          "emailAddress": { "type": "string" },
+          "linkedTo": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pathRoot": { "type": "string" },
+                "id": { "type": "string" },
+                "type": { "type": "string" }
+              },
+              "required": ["pathRoot", "id", "type"]
+            }
+          },
+          "id": { "type": "string" },
+          "verification": {
+            "type": "object",
+            "properties": {
+              "pathRoot": { "type": "string" },
+              "status": { "type": "string" },
+              "strategy": { "type": "string" },
+              "nonce": { "type": ["string", "null"] },
+              "externalVerificationRedirectURL": { "type": ["string", "null"] },
+              "attempts": { "type": ["number", "null"] },
+              "expireAt": { "type": "string" },
+              "error": { "type": ["string", "null"] }
+            },
+            "required": ["pathRoot", "status", "strategy", "expireAt"]
+          }
+        },
+        "required": ["pathRoot", "emailAddress", "linkedTo", "id", "verification"]
       }
-    }
-  ],
-  "phoneNumbers": [],
-  "web3Wallets": [],
-  "externalAccounts": [
-    {
-      "pathRoot": "/me/external_accounts",
-      "providerUserId": "106515461085950784772",
-      "emailAddress": "satovi.montre@gmail.com",
-      "approvedScopes": "email https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid profile",
-      "firstName": "Montre",
-      "lastName": "Satovi",
-      "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NMWk5tNmU5YVdYaXBEOHBUQ0lrZW0wME5NeWZzTEdzZExJVmIxMU9EQjc9czEwMDAtYyIsInMiOiIyNU56a1RhNy9YdVpQaFFMQkJGdkVZTjlOT2N4RVo2aDJ5MndUZWhEZGo4In0",
-      "username": null,
-      "publicMetadata": {},
-      "label": null,
-      "verification": {
-        "pathRoot": "",
-        "status": "verified",
-        "strategy": "oauth_google",
-        "nonce": null,
-        "externalVerificationRedirectURL": null,
-        "attempts": null,
-        "expireAt": "2023-11-27T14:25:53.473Z",
-        "error": null
-      },
-      "id": "eac_2YlKDuyrdWnBnzUxkQvAA075cV5",
-      "identificationId": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
-      "provider": "google"
-    }
-  ],
-  "samlAccounts": [],
-  "organizationMemberships": [],
-  "passwordEnabled": false,
-  "firstName": "Montre",
-  "lastName": "Satovi",
-  "fullName": "Montre Satovi",
-  "primaryEmailAddressId": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
-  "primaryEmailAddress": {
-    "pathRoot": "/me/email_addresses",
-    "emailAddress": "satovi.montre@gmail.com",
-    "linkedTo": [
-      {
-        "pathRoot": "",
-        "id": "idn_2YlKDr8BPYV54QH7wRs0dk8YXXg",
-        "type": "oauth_google"
+    },
+    "phoneNumbers": { "type": "array" },
+    "web3Wallets": { "type": "array" },
+    "externalAccounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pathRoot": { "type": "string" },
+          "providerUserId": { "type": "string" },
+          "emailAddress": { "type": "string" },
+          "approvedScopes": { "type": "string" },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "imageUrl": { "type": ["string", "null"] },
+          "username": { "type": ["string", "null"] },
+          "publicMetadata": { "type": "object" },
+          "label": { "type": ["string", "null"] },
+          "verification": {
+            "type": "object",
+            "properties": {
+              "pathRoot": { "type": "string" },
+              "status": { "type": "string" },
+              "strategy": { "type": "string" },
+              "nonce": { "type": ["string", "null"] },
+              "externalVerificationRedirectURL": { "type": ["string", "null"] },
+              "attempts": { "type": ["number", "null"] },
+              "expireAt": { "type": "string" },
+              "error": { "type": ["string", "null"] }
+            },
+            "required": ["pathRoot", "status", "strategy", "expireAt"]
+          },
+          "id": { "type": "string" },
+          "identificationId": { "type": "string" },
+          "provider": { "type": "string" }
+        },
+        "required": [
+          "pathRoot",
+          "providerUserId",
+          "emailAddress",
+          "approvedScopes",
+          "firstName",
+          "lastName",
+          "verification",
+          "id",
+          "identificationId",
+          "provider"
+        ]
       }
-    ],
-    "id": "idn_2YlKDwikxxJMOLWmhQVY86mK54j",
-    "verification": {
-      "pathRoot": "",
-      "status": "verified",
-      "strategy": "from_oauth_google",
-      "nonce": null,
-      "externalVerificationRedirectURL": null,
-      "attempts": null,
-      "expireAt": "2023-11-27T15:07:22.060Z",
-      "error": null
-    }
+    },
+    "samlAccounts": { "type": "array" },
+    "organizationMemberships": { "type": "array" },
+    "passwordEnabled": { "type": "boolean" },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "fullName": { "type": "string" },
+    "primaryEmailAddressId": { "type": "string" },
+    "primaryEmailAddress": { "type": "object" },
+    "primaryPhoneNumberId": { "type": ["string", "null"] },
+    "primaryPhoneNumber": { "type": ["string", "null"] },
+    "primaryWeb3WalletId": { "type": ["string", "null"] },
+    "primaryWeb3Wallet": { "type": ["string", "null"] },
+    "imageUrl": { "type": ["string", "null"] },
+    "hasImage": { "type": "boolean" },
+    "twoFactorEnabled": { "type": "boolean" },
+    "totpEnabled": { "type": "boolean" },
+    "backupCodeEnabled": { "type": "boolean" },
+    "publicMetadata": { "type": "object" },
+    "unsafeMetadata": { "type": "object" },
+    "createOrganizationEnabled": { "type": "boolean" },
+    "deleteSelfEnabled": { "type": "boolean" },
+    "lastSignInAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "cachedSessionsWithActivities": { "type": ["object", "null"] }
   },
-  "primaryPhoneNumberId": null,
-  "primaryPhoneNumber": null,
-  "primaryWeb3WalletId": null,
-  "primaryWeb3Wallet": null,
-  "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yWWxLRnluQjY3a2lRam8zZ1RneWRlWUxpNjMifQ",
-  "hasImage": true,
-  "twoFactorEnabled": false,
-  "totpEnabled": false,
-  "backupCodeEnabled": false,
-  "publicMetadata": {},
-  "unsafeMetadata": {},
-  "createOrganizationEnabled": true,
-  "deleteSelfEnabled": true,
-  "lastSignInAt": "2023-11-27T15:05:57.583Z",
-  "updatedAt": "2023-11-27T15:05:57.608Z",
-  "createdAt": "2023-11-27T14:17:06.851Z",
-  "cachedSessionsWithActivities": null
+  "required": [
+    "pathRoot",
+    "id",
+    "username",
+    "emailAddresses",
+    "phoneNumbers",
+    "web3Wallets",
+    "externalAccounts",
+    "samlAccounts",
+    "organizationMemberships",
+    "passwordEnabled",
+    "firstName",
+    "lastName",
+    "fullName",
+    "primaryEmailAddressId",
+    "primaryEmailAddress",
+    "primaryPhoneNumberId",
+    "primaryPhoneNumber",
+    "primaryWeb3WalletId",
+    "primaryWeb3Wallet",
+    "imageUrl",
+    "hasImage",
+    "twoFactorEnabled",
+    "totpEnabled",
+    "backupCodeEnabled",
+    "publicMetadata",
+    "unsafeMetadata",
+    "createOrganizationEnabled",
+    "deleteSelfEnabled",
+    "lastSignInAt",
+    "updatedAt",
+    "createdAt",
+    "cachedSessionsWithActivities"
+  ]
 }
