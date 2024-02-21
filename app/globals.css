@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/*Scrollbar*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0502;
+  border-radius: 0rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+#navbar,
+#sidebar,
+#footer,
+footer,
+#submit-button,
+#loader,
+#global-error {
+  background-color: #0c0502;
+}
+
+#parent {
+  min-height: 90vh;
+  padding-top: 8vh;
+}
+
+#hero {
+  opacity: 0;
+  animation: fade 1000ms ease-in-out 0ms forwards;
+}
+
+#hero-bg {
+  clip-path: none;
+}
+
+#sidebar,
+#navbar,
+#filters,
+img {
+  opacity: 0;
+  animation: fade 400ms ease-in-out 0ms forwards;
+}
+
+#triangle {
+  clip-path: polygon(100% 0, 0 98%, 0 100%, 0 0);
+}
+
+.romboid {
+  clip-path: none;
+}
+
+.romboid-reverse {
+  clip-path: none;
+}
+
+.shadow-text {
+  text-shadow: black 1px 0 10px;
+}
+
+/*KEY FRAMES*/
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    position: relative;
+    left: -10vw;
+    opacity: 0;
+  }
+
+  100% {
+    position: relative;
+    left: 0vw;
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/*Snow animation*/
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial;
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  user-select: none;
+  width: 50%;
+  right: 0;
+  cursor: default;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+}
+
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-of-type(1) {
+  left: 10%;
+  animation-delay: 1s, 1s;
+}
+
+.snowflake:nth-of-type(2) {
+  left: 25%;
+  animation-delay: 6s, 0.5s;
+}
+
+.snowflake:nth-of-type(3) {
+  left: 40%;
+  animation-delay: 4s, 2s;
+}
+
+.snowflake:nth-of-type(4) {
+  left: 50%;
+  animation-delay: 2s, 2s;
+}
+
+.snowflake:nth-of-type(5) {
+  left: 60%;
+  animation-delay: 8s, 3s;
+}
+
+.snowflake:nth-of-type(6) {
+  left: 70%;
+  animation-delay: 6s, 2s;
+}
+
+.snowflake:nth-of-type(7) {
+  left: 80%;
+  animation-delay: 2.5s, 1s;
+}
+
+.snowflake:nth-of-type(8) {
+  left: 90%;
+  animation-delay: 1s, 0s;
+}
+
+.snowflake:nth-of-type(9) {
+  left: 100%;
+  animation-delay: 3s, 1.5s;
+}
+
+/*For Slides of Gallery*/
+
+.swiper-pagination-bullet {
+  background: #f59e0b !important;
+  width: 12px;
+  height: 12px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 100%;
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: #f59e0b;
+  fill: none;
+  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes snowflakes-shake {
+  0% {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(80px);
+    -webkit-transform: translateX(80px);
+    -moz-transform: translateX(80px);
+    -o-transform: translateX(80px);
+    -ms-transform: translateX(80px);
+  }
+
+  100% {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .romboid {
+    clip-path: polygon(100% 0, 71% 100%, 0 100%, 0 0);
+  }
+
+  .romboid-reverse {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 29% 0);
+  }
+
+  #hero-bg {
+    clip-path: polygon(75% 0, 100% 0%, 100% 100%, 39% 100%);
+  }
+}
