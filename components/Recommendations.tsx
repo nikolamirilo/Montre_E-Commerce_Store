@@ -21,22 +21,24 @@ const Recommendations = ({ products }: { products: Product[] }) => {
           </p>
         </div>
         <div className="flex flex-wrap w-full justify-center items-center gap-5">
-          {recommendedProducts?.map((product: Product, idx: number) => {
-            return (
-              <Card
-                key={idx}
-                discount={product?.discount}
-                isOnDiscount={product?.isOnDiscount}
-                discountedPrice={product?.discountedPrice}
-                productCode={product.productCode}
-                _id={product?._id?.toString()}
-                title={product.title}
-                productClass={product.class}
-                image={product.images[0]}
-                price={product.price}
-              />
-            )
-          })}
+          {recommendedProducts
+            ? recommendedProducts.map((product: Product, idx: number) => {
+                return (
+                  <Card
+                    key={idx}
+                    discount={product?.discount}
+                    isOnDiscount={product?.isOnDiscount}
+                    discountedPrice={product?.discountedPrice}
+                    productCode={product.productCode}
+                    _id={product?._id?.toString()}
+                    title={product.title}
+                    productClass={product.class}
+                    image={product.images[0]}
+                    price={product.price}
+                  />
+                )
+              })
+            : "Greška pri učitavanju"}
         </div>
         <Link
           href="/products/watches"

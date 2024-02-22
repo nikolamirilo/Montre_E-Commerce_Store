@@ -27,31 +27,33 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
       </div>
       <Search type={type} params={query} />
       <div className="flex flex-wrap w-fit justify-center items-center gap-5 max-w-[1500px] mx-auto">
-        {products?.map((product: Product, idx: number) => {
-          if (
-            product.title &&
-            product.images.length > 0 &&
-            product.price &&
-            product.class &&
-            product.isPublic == true
-          ) {
-            return (
-              <Card
-                key={idx}
-                productCode={product?.productCode}
-                discount={product?.discount}
-                isOnDiscount={product?.isOnDiscount}
-                discountedPrice={product?.discountedPrice}
-                _id={product?._id?.toString()}
-                isOutOfStock={product?.isOutOfStock}
-                title={product?.title}
-                productClass={product?.class}
-                image={product?.images[0]!}
-                price={product?.price}
-              />
-            )
-          }
-        })}
+        {products
+          ? products.map((product: Product, idx: number) => {
+              if (
+                product.title &&
+                product.images.length > 0 &&
+                product.price &&
+                product.class &&
+                product.isPublic == true
+              ) {
+                return (
+                  <Card
+                    key={idx}
+                    productCode={product?.productCode}
+                    discount={product?.discount}
+                    isOnDiscount={product?.isOnDiscount}
+                    discountedPrice={product?.discountedPrice}
+                    _id={product?._id?.toString()}
+                    isOutOfStock={product?.isOutOfStock}
+                    title={product?.title}
+                    productClass={product?.class}
+                    image={product?.images[0]!}
+                    price={product?.price}
+                  />
+                )
+              }
+            })
+          : "Greška pri učitavanju"}
 
         {products?.length == 0 && (
           <div className="flex w-2/3 justify-center items-center flex-col gap-5">
