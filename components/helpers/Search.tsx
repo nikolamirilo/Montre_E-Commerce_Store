@@ -82,7 +82,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
         </div>
 
         <button
-          className="bg-white w-fit py-1 px-4 text-amber-500 text-lg rounded-lg relative border-2 flex flex-row gap-2 justify-center items-center border-amber-500 hover:bg-amber-500 hover:text-white md:px-3 md:py-1"
+          className="bg-white w-fit py-1 px-12 md:px-8 text-amber-500 text-lg rounded-lg relative border-2 flex flex-row gap-2 justify-center items-center border-amber-500 hover:bg-amber-500 hover:text-white"
           onClick={() => {
             setIsOpen(!isOpen)
           }}>
