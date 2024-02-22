@@ -10,7 +10,7 @@ const Loading = () => {
         <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
           Ponuda muških satova Montre kolekcije
         </h1>
-        <p className="text-gray-800 text-base lg:text-lg text-left md:text-center w-10/12 xl:w-1/2">
+        <p className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
           Montre muški satovi su više od samo merila vremena, oni su izraz snage, stila i
           samopouzdanja. Otkrijte jedinstvene detalje i funkcionalnosti koje će dodati notu luksuza
           vašem svakodnevnom izgledu.

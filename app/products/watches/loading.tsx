@@ -10,7 +10,7 @@ const Loading = () => {
         <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
           Ponuda satova Montre kolekcije
         </h1>
-        <p className="text-gray-800 text-base lg:text-lg text-left md:text-center w-10/12 xl:w-1/2">
+        <p className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
           Montre donosi pažljivo izabran asortiman muških i ženskih satova, između kojih se ističu
           elegantni modeli brendova Curren i Hannah Martin. Svi naši satovi su odabrani s posebnom
           pažnjom kako bismo zadovoljili raznolike stilove i ukuse naših kupaca.

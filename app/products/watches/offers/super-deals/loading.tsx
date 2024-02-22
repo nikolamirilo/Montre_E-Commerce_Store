@@ -10,7 +10,7 @@ const Loading = () => {
         <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
           Ponuda satova na akciji
         </h1>
-        <p className="text-gray-800 text-base lg:text-lg text-left md:text-center w-10/12 xl:w-1/2">
+        <p className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
           Istražite raznovrsne stilove i tehničke karakteristike i započnite putovanje kroz vreme uz
           svoj idealni sat povoljnije nego ikada!
         </p>
