@@ -122,6 +122,7 @@ const Card: React.FC<CardProps> = ({
           }}>
           <Image
             className="object-cover object-center"
+            style={{ borderRadius: "10px 10px 0 0" }}
             fill
             src={image}
             alt={title}
