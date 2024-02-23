@@ -156,7 +156,7 @@ const Card: React.FC<CardProps> = ({
                 disabled={progress == 0 ? false : true}
                 className={`${
                   isOutOfStock == true ? "hidden" : "flex"
-                } text-white z-10 rounded-lg 5 py-2 text-center flex-row gap-1 justify-center items-center ${
+                } text-white z-10 rounded-lg px-2 5 py-2 text-center flex-row gap-1 justify-center items-center ${
                   progress == 100
                     ? "bg-green-600 hover:bg-green-700"
                     : progress == 75
