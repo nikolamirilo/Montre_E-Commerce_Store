@@ -14,7 +14,7 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
   return (
     <section
       id="cards-container"
-      className="flex flex-col justify-center items-center h-fit py-[6vh] md:px-20 gap-8 w-full">
+      className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
       <div className="flex flex-col w-full justify-center items-center gap-4">
         <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
           {title}
@@ -26,7 +26,7 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
         )}
       </div>
       <Search type={type} params={query} />
-      <div className="flex flex-wrap w-fit justify-center items-center gap-5 max-w-[1500px] mx-auto">
+      <div className="px-0 flex flex-wrap w-fit justify-center gap-x-5 gap-y-5 2xl:gap-y-10 lg:gap-x-0 items-center cards-container max-w-[1500px] mx-auto">
         {products
           ? products.map((product: Product, idx: number) => {
               if (
