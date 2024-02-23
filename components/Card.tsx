@@ -62,7 +62,7 @@ const Card: React.FC<CardProps> = ({
           }}
         />
       ) : null}
-      <div className="bg-white shadow-xl rounded-lg w-80 h-fit sm:h-[28rem] relative lg:hover:scale-[1.02] transition-all duration-200 ease-in-out">
+      <div className="bg-white shadow-xl rounded-lg w-[96vw] xs:w-80 h-fit sm:h-[28rem] relative lg:hover:scale-[1.02] transition-all duration-200 ease-in-out">
         {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
           <div className="admin-buttons top-0 right-3 z-10 flex flex-row-reverse gap-2 absolute">
             <button
