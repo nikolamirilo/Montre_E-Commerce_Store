@@ -11,6 +11,6 @@ export async function POST(request: NextRequest) {
     }
     return NextResponse.json({ message: "Ordered Successully" }, { status: 200 })
   } catch (error) {
-    return new NextResponse((error as Error).message)
+    return new NextResponse((error as Error).message, { status: 500 })
   }
 }

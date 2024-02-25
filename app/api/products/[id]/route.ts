@@ -8,8 +8,8 @@ export async function GET(
   const id = params.id
   try {
     const singleProduct = await getSingleProduct(id)
-    return NextResponse.json(singleProduct)
+    return NextResponse.json(singleProduct, { status: 200 })
   } catch (error) {
-    return new NextResponse((error as Error).message)
+    return new NextResponse((error as Error).message, { status: 500 })
   }
 }

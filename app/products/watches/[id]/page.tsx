@@ -74,15 +74,15 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           <Slider images={product?.images} />
         </div>
         <div className="xl:w-3/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-8">
-          <div className="border-b border-gray-200 pb-6">
+          <div className="border-b border-gray-300 pb-6">
             <h1 className="lg:text-3xl text-2xl font-semibold lg:leading-6 leading-7 text-gray-800 mt-2">
               {product?.title}
             </h1>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg tracking-wide text-gray-900">{product?.description}</p>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Cena:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -91,7 +91,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           {product?.isOnDiscount == true ? (
-            <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+            <div className="py-2 border-b border-gray-300 flex items-center justify-between">
               <p className="text-lg text-gray-900">Popust:</p>
               <div className="flex items-center justify-center">
                 <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -100,7 +100,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           ) : null}
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Status:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -109,7 +109,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           {product?.isOnDiscount == true ? (
-            <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+            <div className="py-2 border-b border-gray-300 flex items-center justify-between">
               <p className="text-lg text-gray-900">Cena sa popustom:</p>
               <div className="flex items-center justify-center">
                 <p className="text-lg font-bold leading-none text-red-600 mr-3">
@@ -123,7 +123,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           ) : product?.isOutOfStock == false && !user ? (
             <AddToCartButton uid={uid} id={id} type="order" />
           ) : null}
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Brend:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -131,7 +131,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Tip:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -139,7 +139,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Klasa:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -147,7 +147,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Kategorija:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -155,7 +155,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Prečnik:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">
@@ -163,7 +163,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          <div className="py-2 border-b border-gray-200 flex items-center justify-between">
+          <div className="py-2 border-b border-gray-300 flex items-center justify-between">
             <p className="text-lg text-gray-900">Sastav:</p>
             <div className="flex items-center justify-center">
               <p className="text-lg font-semibold leading-none text-gray-900 mr-3">

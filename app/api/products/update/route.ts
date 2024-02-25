@@ -10,6 +10,6 @@ export async function PUT(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    return new NextResponse((error as Error).message)
+    return new NextResponse((error as Error).message, { status: 500 })
   }
 }
