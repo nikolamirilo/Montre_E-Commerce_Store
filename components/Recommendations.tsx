@@ -8,7 +8,7 @@ const Recommendations = ({ products }: { products: Product[] }) => {
   )
   if (recommendedProducts?.length > 0)
     return (
-      <div className="flex flex-col gap-10 justify-center items-center w-full md:px-20">
+      <div className="flex flex-col justify-center items-center w-full h-fit lg:px-[5%] xl:px-[10%] gap-8">
         <div className="flex flex-col w-full justify-center items-center gap-4">
           <h2 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
             Izdvajamo iz ponude

@@ -14,7 +14,6 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
   if (products)
     return (
       <section
-        id="cards-container"
         className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
         <div className="flex flex-col w-full justify-center items-center gap-4">
           <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
