@@ -27,7 +27,7 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
           )}
         </div>
         <Search type={type} params={query} />
-        <div className="px-0 flex flex-wrap w-fit justify-center gap-x-5 gap-y-5 2xl:gap-y-10 lg:gap-x-0 items-center cards-container max-w-[1500px] mx-auto">
+        <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
           {products
             ? products.map((product: Product, idx: number) => {
               if (

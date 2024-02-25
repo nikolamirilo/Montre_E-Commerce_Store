@@ -37,6 +37,7 @@ footer,
 #global-error {
   background-color: #0c0502;
 }
+
 .cards-container {
   width: 100% !important;
 }
@@ -105,6 +106,7 @@ img {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
@@ -278,10 +280,11 @@ img {
     clip-path: polygon(75% 0, 100% 0%, 100% 100%, 39% 100%);
   }
 }
+
 @media screen and (min-width: 1024px) {
   .cards-container {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1rem));
     grid-auto-rows: minmax(28rem, auto) !important;
     align-items: center !important;
     justify-items: center !important;

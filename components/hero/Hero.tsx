@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         priority
       />
       <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center pt-[10vh] sm:pt-[12vh] md:items-start justify-center flex-col lg:mt-[1%] xl:mt-[2%]">
-        <h1 className={`w-full lg:w-8/12 xl:w-1/2 font-black text-amber-500 text-[2rem] md:text-4xl lg:text-left xl:text-5xl text-center`}>
+        <h1 className={`w-full lg:w-8/12 xl:w-1/2 font-black leading-10 text-amber-500 text-[2rem] md:text-4xl lg:text-left xl:text-5xl text-center`}>
           Unikatna kolekcija muških i ženskih satova
         </h1>
         <div className="lg:flex">

@@ -20,7 +20,7 @@ const Recommendations = ({ products }: { products: Product[] }) => {
             inženjeringa i estetike.
           </p>
         </div>
-        <div className="flex flex-wrap w-full justify-center items-center gap-5">
+        <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
           {recommendedProducts
             ? recommendedProducts.map((product: Product, idx: number) => {
               return (

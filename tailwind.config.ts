@@ -25,6 +25,9 @@ const config: Config = {
         xs: "340px",
         ...defaultTheme.screens,
       },
+      container: {
+        center: true
+      }
     },
   },
 }
