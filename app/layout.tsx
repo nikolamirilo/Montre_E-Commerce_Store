@@ -51,10 +51,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     cloud: { cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME },
   })
 
+
+
   return (
     <ClerkProvider>
       <html lang="sr">
-        <body className={`${openSans.className} bg-white relative`}>
+        <body className={`${openSans.className} bg-stone-200 relative`}>
           <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />

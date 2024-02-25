@@ -32,9 +32,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 w-full text-white text-4xl flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${
-          isSidebarOpen ? "hidden" : "flex"
-        }`}
+        className={`fixed top-0 w-full text-white text-4xl flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${isSidebarOpen ? "hidden" : "flex"
+          }`}
         id="navbar">
         <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
           <RiMenu2Line size={30} />
@@ -70,9 +69,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
         }}
         animate={isSidebarOpen ? "open" : "closed"}
         variants={variants}
-        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${
-          isSidebarOpen ? "block" : "hidden"
-        }`}
+        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${isSidebarOpen ? "block" : "hidden"
+          }`}
         id="sidebar">
         <div className="text-gray-100 text-xl relative">
           <div className="p-1.5 mt-1 flex flex-row items-center justify-between">
@@ -114,9 +112,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </button>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
-                !isOfferOpen && "hidden"
-              }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
+                }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches"
@@ -126,9 +123,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
-                !isOfferOpen && "hidden"
-              }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
+                }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/men"
@@ -138,9 +134,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
-                !isOfferOpen && "hidden"
-              }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
+                }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/women"
@@ -150,9 +145,8 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
-                !isOfferOpen && "hidden"
-              }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
+                }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/offers/super-deals"

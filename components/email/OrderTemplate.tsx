@@ -20,7 +20,7 @@ export const OrderTemplate: React.FC<Readonly<OrderTemplateProps>> = ({
         <Column style={headingCellStyle}>Jedinična cena</Column>
         <Column style={headingCellStyle}>Ukupna cena</Column>
       </Row>
-      {products.map((product: any, idx: number) => {
+      {products?.map((product: any, idx: number) => {
         const price = product.isOnDiscount == true ? product.discountedPrice : product.price
         const totalPerProduct = price * product.quantity
         return (

@@ -47,6 +47,7 @@ export default async function Home() {
       {/* <Suspense fallback="">
         <Overlay emoji="🧡" />
       </Suspense> */}
+
       <Suspense fallback="">
         <Recommendations products={products} />
       </Suspense>

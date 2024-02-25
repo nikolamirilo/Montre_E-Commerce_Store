@@ -6,7 +6,7 @@ const Recommendations = ({ products }: { products: Product[] }) => {
   const recommendedProducts = products.filter(
     (product: Product) => product.isRecommended && product.isPublic
   )
-  if (recommendedProducts.length > 0)
+  if (recommendedProducts?.length > 0)
     return (
       <div className="flex flex-col gap-10 justify-center items-center w-full md:px-20">
         <div className="flex flex-col w-full justify-center items-center gap-4">
@@ -23,21 +23,21 @@ const Recommendations = ({ products }: { products: Product[] }) => {
         <div className="flex flex-wrap w-full justify-center items-center gap-5">
           {recommendedProducts
             ? recommendedProducts.map((product: Product, idx: number) => {
-                return (
-                  <Card
-                    key={idx}
-                    discount={product?.discount}
-                    isOnDiscount={product?.isOnDiscount}
-                    discountedPrice={product?.discountedPrice}
-                    productCode={product.productCode}
-                    _id={product?._id?.toString()}
-                    title={product.title}
-                    productClass={product.class}
-                    image={product.images[0]}
-                    price={product.price}
-                  />
-                )
-              })
+              return (
+                <Card
+                  key={idx}
+                  discount={product?.discount}
+                  isOnDiscount={product?.isOnDiscount}
+                  discountedPrice={product?.discountedPrice}
+                  productCode={product.productCode}
+                  _id={product?._id?.toString()}
+                  title={product.title}
+                  productClass={product.class}
+                  image={product.images[0]}
+                  price={product.price}
+                />
+              )
+            })
             : "Greška pri učitavanju"}
         </div>
         <Link

@@ -46,7 +46,7 @@ const OrdersTable = ({ orders }: { orders: any }) => {
         </tr>
       </thead>
       <tbody>
-        {orders
+        {orders ? orders
           ?.sort((a: any, b: any) => {
             const dateA: any = parseDate(a.date)
             const dateB: any = parseDate(b.date)
@@ -62,7 +62,7 @@ const OrdersTable = ({ orders }: { orders: any }) => {
               <tr className="border-b border-gray-700 h-[100px] font-medium">
                 <td className={primaryCellStyle}>{order.customerInfo.fullName}</td>
                 <td scope="row" className={`lg:w-[300px] ${secondaryCellStyle}`}>
-                  {order.products.map((product: any) => {
+                  {order?.products.map((product: any) => {
                     return `${product.quantity} x ${product.title}, `
                   })}
                 </td>
@@ -77,7 +77,7 @@ const OrdersTable = ({ orders }: { orders: any }) => {
                 </td>
               </tr>
             )
-          })}
+          }) : null}
       </tbody>
     </table>
   )
