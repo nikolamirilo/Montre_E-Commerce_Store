@@ -139,11 +139,11 @@ const Card: React.FC<CardProps> = ({
           <div className={`flex items-center justify-between  ${isOnDiscount == false && "mb-3"}`}>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl text-gray-900 ${isOnDiscount == true && "line-through"
+                className={`text-lg md:text-xl text-gray-900 ${isOnDiscount == true && isOutOfStock == false ? "line-through" : "mt-3"
                   }`}>
                 {price!.toLocaleString().replace(",", ".")},00 RSD
               </span>
-              {isOnDiscount == true ? (
+              {isOnDiscount == true && isOutOfStock == false ? (
                 <span className="text-lg md:text-xl text-red-600 font-semibold">
                   {discountedPrice!.toLocaleString().replace(",", ".")}
                   ,00 RSD

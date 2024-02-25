@@ -2,8 +2,6 @@
 
 ## Preparing for production
 
-- Error 500 on load (maybe up to connecction pooling)
-
 - Error handling for functions related to customers
 
 ## Refactoring

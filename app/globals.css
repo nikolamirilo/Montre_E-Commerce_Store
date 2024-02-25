@@ -199,13 +199,13 @@ img {
   color: #fff !important;
 }
 
-.autoplay-progress {
+/* .autoplay-progress {
   position: absolute;
   right: 16px;
   bottom: 16px;
   z-index: 10;
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,13 +223,13 @@ img {
   z-index: 10;
   width: 100%;
   height: 100%;
-  stroke-width: 4px;
+  stroke-width: 3px;
   stroke: #f59e0b;
   fill: none;
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
-}
+} */
 
 @keyframes snowflakes-fall {
   0% {
