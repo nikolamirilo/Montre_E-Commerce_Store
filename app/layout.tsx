@@ -56,7 +56,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <html lang="sr">
-        <body className={`${openSans.className} bg-stone-200 relative`}>
+        <body className={`${openSans.className} bg-stone-100 relative`}>
           <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />
