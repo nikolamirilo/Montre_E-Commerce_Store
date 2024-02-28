@@ -20,6 +20,7 @@ const Gallery: React.FC = () => {
     }
   }
   const slides = [
+    "/gallery/11.png",
     "/gallery/1.jpeg",
     "/gallery/2.jpg",
     "/gallery/3.jpg",
@@ -45,7 +46,7 @@ const Gallery: React.FC = () => {
         </p>
       </div>
       <Swiper
-        className="w-full h-72 md:w-1/2 md:h-[60vh]"
+        className="w-full h-72 md:w-2/3 lg:w-1/2 md:h-[60vh]"
         spaceBetween={30}
         centeredSlides={true}
         zoom={true}
@@ -80,12 +81,6 @@ const Gallery: React.FC = () => {
             </SwiperSlide>
           )
         })}
-        {/* <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div> */}
       </Swiper>
     </section>
   )
