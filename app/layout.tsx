@@ -50,9 +50,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const cld = new Cloudinary({
     cloud: { cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME },
   })
-
-
-
   return (
     <ClerkProvider>
       <html lang="sr">

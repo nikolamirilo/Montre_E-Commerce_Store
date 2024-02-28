@@ -3,6 +3,7 @@ import Gallery from "@/components/Gallery"
 import Recommendations from "@/components/Recommendations"
 import Hero from "@/components/hero/Hero"
 import { KEYWORDS, homePage } from "@/constants"
+import { getGalleryImagesFromCloudinary } from "@/helpers/server"
 import { homePageSchema } from "@/schemas"
 import { Metadata } from "next"
 import { Suspense } from "react"
@@ -37,6 +38,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const products = await getAllProducts({})
+  const galleryImages = await getGalleryImagesFromCloudinary()
+  console.log(galleryImages)
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script
@@ -47,12 +50,11 @@ export default async function Home() {
       {/* <Suspense fallback="">
         <Overlay emoji="🧡" />
       </Suspense> */}
-
       <Suspense fallback="">
         <Recommendations products={products} />
       </Suspense>
       <Suspense fallback="">
-        <Gallery />
+        <Gallery images={galleryImages} />
       </Suspense>
     </div>
   )

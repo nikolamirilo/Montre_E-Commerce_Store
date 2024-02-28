@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import React, { useRef } from "react"
+import { useRef } from "react"
 import "swiper/css"
 import "swiper/css/effect-fade"
 import "swiper/css/navigation"
@@ -9,7 +9,7 @@ import "swiper/css/pagination"
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
-const Gallery: React.FC = () => {
+const Gallery = ({ images }: { images: any }) => {
   const router = useRouter()
   const progressCircle = useRef<SVGSVGElement | null>(null)
   const progressContent = useRef<HTMLSpanElement | null>(null)
@@ -19,19 +19,6 @@ const Gallery: React.FC = () => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
   }
-  const slides = [
-    "/gallery/11.png",
-    "/gallery/1.jpeg",
-    "/gallery/2.jpg",
-    "/gallery/3.jpg",
-    "/gallery/4.jpg",
-    "/gallery/5.jpg",
-    "/gallery/6.jpg",
-    "/gallery/7.jpg",
-    "/gallery/8.jpg",
-    "/gallery/9.jpg",
-    "/gallery/10.jpg",
-  ]
 
   return (
     <section className="w-full h-fit flex flex-col justify-center items-center px-2 py-10 gap-8">
@@ -63,7 +50,7 @@ const Gallery: React.FC = () => {
         grabCursor={true}
         modules={[Autoplay, EffectFade, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}>
-        {slides?.map((image, idx) => {
+        {images?.map((image: string, idx: number) => {
           return (
             <SwiperSlide
               key={idx}
@@ -75,6 +62,7 @@ const Gallery: React.FC = () => {
                 src={image}
                 alt="Slide Image"
                 loading="lazy"
+                quality={60}
                 fill
                 className="object-cover object-center rounded-xl"
               />
