@@ -20,24 +20,26 @@ const Recommendations = ({ products }: { products: Product[] }) => {
             inženjeringa i estetike.
           </p>
         </div>
-        <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
+        <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center max-w-[1500px] mx-auto">
           {recommendedProducts
-            ? recommendedProducts.map((product: Product, idx: number) => {
-              return (
-                <Card
-                  key={idx}
-                  discount={product?.discount}
-                  isOnDiscount={product?.isOnDiscount}
-                  discountedPrice={product?.discountedPrice}
-                  productCode={product.productCode}
-                  _id={product?._id?.toString()}
-                  title={product.title}
-                  productClass={product.class}
-                  image={product.images[0]}
-                  price={product.price}
-                />
-              )
-            })
+            ? recommendedProducts
+                .filter((item, idx) => idx < 3)
+                .map((product: Product, idx: number) => {
+                  return (
+                    <Card
+                      key={idx}
+                      discount={product?.discount}
+                      isOnDiscount={product?.isOnDiscount}
+                      discountedPrice={product?.discountedPrice}
+                      productCode={product.productCode}
+                      _id={product?._id?.toString()}
+                      title={product.title}
+                      productClass={product.class}
+                      image={product.images[0]}
+                      price={product.price}
+                    />
+                  )
+                })
             : "Greška pri učitavanju"}
         </div>
         <Link

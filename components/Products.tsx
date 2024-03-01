@@ -11,10 +11,9 @@ export const dynamic = "force-static"
 
 const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type }) => {
   const products = await getAllProducts(query)
-  if (products)
+  if (products?.length > 0)
     return (
-      <section
-        className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
+      <section className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
         <div className="flex flex-col w-full justify-center items-center gap-4">
           <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
             {title}
@@ -26,33 +25,36 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
           )}
         </div>
         <Search type={type} params={query} />
-        <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
+        <div
+          className={`px-0 flex flex-wrap w-fit justify-center gap-4 items-center ${
+            products.length >= 4 && "cards-container"
+          } max-w-[1500px] mx-auto`}>
           {products
             ? products.map((product: Product, idx: number) => {
-              if (
-                product.title &&
-                product.images.length > 0 &&
-                product.price &&
-                product.class &&
-                product.isPublic == true
-              ) {
-                return (
-                  <Card
-                    key={idx}
-                    productCode={product?.productCode}
-                    discount={product?.discount}
-                    isOnDiscount={product?.isOnDiscount}
-                    discountedPrice={product?.discountedPrice}
-                    _id={product?._id?.toString()}
-                    isOutOfStock={product?.isOutOfStock}
-                    title={product?.title}
-                    productClass={product?.class}
-                    image={product?.images[0]!}
-                    price={product?.price}
-                  />
-                )
-              }
-            })
+                if (
+                  product.title &&
+                  product.images.length > 0 &&
+                  product.price &&
+                  product.class &&
+                  product.isPublic == true
+                ) {
+                  return (
+                    <Card
+                      key={idx}
+                      productCode={product?.productCode}
+                      discount={product?.discount}
+                      isOnDiscount={product?.isOnDiscount}
+                      discountedPrice={product?.discountedPrice}
+                      _id={product?._id?.toString()}
+                      isOutOfStock={product?.isOutOfStock}
+                      title={product?.title}
+                      productClass={product?.class}
+                      image={product?.images[0]!}
+                      price={product?.price}
+                    />
+                  )
+                }
+              })
             : "Greška pri učitavanju"}
 
           {products?.length == 0 && (

@@ -42,7 +42,7 @@ const Contact = async () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
       />
-      <div className="py-8 lg:py-16 mx-auto w-full flex flex-col items-center justify-center mt-10 lg:mt-0">
+      <div className="py-8 lg:py-16 mx-auto max-w-[1500px] w-full flex flex-col items-center justify-center mt-10 lg:mt-0">
         <h1 className="mb-4 text-3xl tracking-tight font-extrabold text-center text-gray-900">
           Kontaktirajte nas
         </h1>
