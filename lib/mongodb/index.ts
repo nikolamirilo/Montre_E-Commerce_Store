@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb"
 
-const url = process.env.NEXT_PUBLIC_MONGO_DB_URL
+const url = process.env.MONGODB_URI
 
 if (!url) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URL"')
