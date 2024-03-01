@@ -157,7 +157,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
       }
     )
 
-    const emailRes = await fetch(process.env.WEB_APP_URL + "/api/send-email", {
+    const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/send-email", {
       method: "POST",
 
       body: JSON.stringify(order),
@@ -188,7 +188,7 @@ export async function orderSingleItem(productId: string | undefined, customerInf
         date: currentDate.format("DD.MM.YYYY."),
       }
       await db.collection("anonymus-orders").insertOne(order)
-      const emailRes = await fetch(process.env.WEB_APP_URL + "/api/send-email", {
+      const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/send-email", {
         method: "POST",
 
         body: JSON.stringify(order),

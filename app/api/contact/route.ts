@@ -4,7 +4,7 @@ import { NextRequest } from "next/server"
 import * as React from "react"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   const contactEmailData: ContactTemplateProps = await request.json()

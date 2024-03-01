@@ -17,7 +17,7 @@ export async function getGalleryImagesFromCloudinary() {
   try {
     var imageUrls: string[] = []
     const results = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/resources/image`,
+      `https://api.cloudinary.com/v1_1/montre-cloudinary/resources/image`,
       {
         headers: {
           Authorization: `Basic ${Buffer.from(

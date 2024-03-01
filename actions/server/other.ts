@@ -3,7 +3,7 @@ import { ContactTemplateProps } from "@/typescript/interfaces"
 
 export async function sendContactEmail(contactEmailData: ContactTemplateProps) {
   try {
-    const emailRes = await fetch(process.env.WEB_APP_URL + "/api/contact", {
+    const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/contact", {
       method: "POST",
       body: JSON.stringify(contactEmailData),
     })
