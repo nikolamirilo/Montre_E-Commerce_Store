@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer"
 import Menu from "@/components/Menu"
-import GoogleAnalytics from "@/components/helpers/GoogleAnalytics"
 import { NavigationEvents } from "@/components/helpers/NavigationEvents"
 import { KEYWORDS, homePage } from "@/constants"
 import { openSans } from "@/fonts"
 import { ClerkProvider } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
+import { GoogleTagManager } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
@@ -54,8 +54,6 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <ClerkProvider>
       <html lang="sr">
         <body className={`${openSans.className} bg-stone-100 relative`}>
-          <GoogleAnalytics />
-          <Analytics />
           <SpeedInsights />
           <Menu />
           <div id="parent">{props.children}</div>
@@ -63,6 +61,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <Suspense fallback={null}>
             <NavigationEvents />
           </Suspense>
+          <GoogleTagManager gtmId="GTM-K9DMSZJG" />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
