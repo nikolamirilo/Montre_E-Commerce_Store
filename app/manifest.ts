@@ -3,7 +3,7 @@ import { MetadataRoute } from "next"
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Montre Satovi",
-    short_name: "Montre",
+    short_name: "Montre Shop",
     description:
       "Unikatna kolekcija muških i ženskih satova. Naša misija je jednostavna. Želimo da vam omogućimo pristup vrhunskim satovima koji ne samo da mere vreme, već ga i čine vrednim pamćenja!",
     theme_color: "#000000",

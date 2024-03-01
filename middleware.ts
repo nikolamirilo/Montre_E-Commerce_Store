@@ -22,6 +22,8 @@ export default authMiddleware({
     "/robots.txt",
     "/order/:id",
     "/thank-you",
+    "/blogs",
+    "/faq",
   ],
   afterAuth(auth, req, evt) {
     // Handle users who aren't authenticated

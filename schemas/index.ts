@@ -16,7 +16,7 @@ export const homePageSchema: WithContext<WebSite> = {
   name: homePage.title,
   description: homePage.description,
   url: "https://www.montre-shop.com/",
-  creator: "Montre",
+  creator: "Montre Shop",
   image: "https://www.montre-shop.com/opengraph-image.png",
   sameAs: [
     "https://www.facebook.com/people/Montre-Satovi/61553370101519/?mibextid=LQQJ4d",
@@ -36,7 +36,7 @@ export const aboutPageSchema: WithContext<Organization> = {
     email: "satovi.montre@gmail.com",
     telephone: "+381604278175",
   },
-  founder: "Montre",
+  founder: "Montre Shop",
   location: {
     "@type": "Place",
     address: {
@@ -67,7 +67,7 @@ export const contactPageSchema: WithContext<ContactPage> = {
     "https://www.tiktok.com/@montre.satovi",
   ],
   contentLocation: "Srbija",
-  creator: "Montre",
+  creator: "Montre Shop",
 }
 
 export function getProductJSONSchema(
@@ -181,8 +181,9 @@ export function getProductJSONSchema(
         worstRating: "3.5",
       },
       name: "Odlični satovi!",
-      reviewBody: `${category == "men" ? "Kupio sam " : "Kupila sam "
-        } ${name}. Sat je jako elegantan i kvalitetan. Uklapa se sa svakom kombinacijom.`,
+      reviewBody: `${
+        category == "men" ? "Kupio sam " : "Kupila sam "
+      } ${name}. Sat je jako elegantan i kvalitetan. Uklapa se sa svakom kombinacijom.`,
     },
   }
 
@@ -219,7 +220,7 @@ export const menProductsPageSchema: WithContext<Product> = {
   image: `${menWatches.link}/opengraph-image.jpg`,
   brand: {
     "@type": "Brand",
-    name: "Montre",
+    name: "Montre Shop",
   },
   offers: {
     "@type": "AggregateOffer",
@@ -265,7 +266,7 @@ export const womenProductsPageSchema: WithContext<Product> = {
   image: `${womenWatches.link}/opengraph-image.jpg`,
   brand: {
     "@type": "Brand",
-    name: "Montre",
+    name: "Montre Shop",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -311,7 +312,7 @@ export const superDealsProductsPageSchema: WithContext<Product> = {
   image: `${superDealsWatches.link}/opengraph-image.jpg`,
   brand: {
     "@type": "Brand",
-    name: "Montre",
+    name: "Montre Shop",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -393,7 +394,7 @@ export const allProductsPageSchema: WithContext<Product> = {
   image: `${allWatches.link}/opengraph-image.png`,
   brand: {
     "@type": "Brand",
-    name: "Montre",
+    name: "Montre Shop",
   },
   aggregateRating: {
     "@type": "AggregateRating",

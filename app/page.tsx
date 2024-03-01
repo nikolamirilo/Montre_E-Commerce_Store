@@ -11,12 +11,12 @@ import { Suspense } from "react"
 export const metadata: Metadata = {
   title: homePage.title,
   description: homePage.description,
-  generator: "Montre",
-  applicationName: "Montre",
+  generator: "Montre Shop",
+  applicationName: "Montre Shop",
   keywords: KEYWORDS,
   authors: [{ name: "Reactify Solutions" }],
   creator: "Reactify Solutions",
-  publisher: "Montre",
+  publisher: "Montre Shop",
   metadataBase: new URL("https://www.montre-shop.com/"),
   alternates: {
     canonical: "https://www.montre-shop.com/",
@@ -39,7 +39,6 @@ export const metadata: Metadata = {
 export default async function Home() {
   const products = await getAllProducts({})
   const galleryImages = await getGalleryImagesFromCloudinary()
-  console.log(galleryImages)
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script
@@ -47,9 +46,6 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
       />
       <Hero />
-      {/* <Suspense fallback="">
-        <Overlay emoji="🧡" />
-      </Suspense> */}
       <Suspense fallback="">
         <Recommendations products={products} />
       </Suspense>

@@ -3,16 +3,17 @@ import { KEYWORDS, superDealsWatches } from "@/constants"
 import { superDealsProductsPageSchema } from "@/schemas"
 import { SearchQuery } from "@/typescript/types"
 import { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: superDealsWatches.title,
   description: superDealsWatches.description,
-  generator: "Montre",
-  applicationName: "Montre",
+  generator: "Montre Shop",
+  applicationName: "Montre Shop",
   keywords: KEYWORDS,
   authors: [{ name: "Reactify Solutions" }],
   creator: "Reactify Solutions",
-  publisher: "Montre",
+  publisher: "Montre Shop",
   metadataBase: new URL("https://www.montre-shop.com/products/watches/offers/super-deals"),
   alternates: {
     canonical: "https://www.montre-shop.com/products/watches/offers/super-deals",
@@ -46,6 +47,10 @@ const Offer = ({ searchParams }: { searchParams: SearchQuery }) => {
         title="Ponuda satova na akciji"
         subtitle="Istražite raznovrsne stilove i tehničke karakteristike i započnite putovanje kroz vreme uz svoj idealni sat povoljnije nego ikada!"
       />
+      <div className="flex flex-col justify-center items-center w-full text-green-500">
+        <Link href="/products/watches/categories/men">Muski satovi</Link>
+        <Link href="/products/watches/categories/women">Zenski satovi</Link>
+      </div>
     </div>
   )
 }

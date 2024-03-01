@@ -14,12 +14,12 @@ export async function generateMetadata({
       action == "log-in"
         ? "Prijavite se kako bi sa lakoćom upravljali vašim narudžbinama."
         : "Registrujte se kako bi sa lakoćom upravljali vašim narudžbinama",
-    generator: "Montre",
-    applicationName: "Montre",
+    generator: "Montre Shop",
+    applicationName: "Montre Shop",
     keywords: KEYWORDS,
     authors: [{ name: "Reactify Solutions" }],
     creator: "Reactify Solutions",
-    publisher: "Montre",
+    publisher: "Montre Shop",
     openGraph: {
       title: "Montre Satovi",
       description: "Unikatna kolekcija muških i ženskih satova",

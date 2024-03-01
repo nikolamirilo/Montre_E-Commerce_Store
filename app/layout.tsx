@@ -15,15 +15,15 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: {
     default: homePage.title,
-    template: "%s | Montre",
+    template: "%s | Montre Shop",
   },
   description: homePage.description,
-  generator: "Montre",
-  applicationName: "Montre",
+  generator: "Montre Shop",
+  applicationName: "Montre Shop",
   keywords: KEYWORDS,
   authors: [{ name: "Reactify Solutions" }],
   creator: "Reactify Solutions",
-  publisher: "Montre",
+  publisher: "Montre Shop",
   metadataBase: new URL("https://www.montre-shop.com/"),
   alternates: {
     canonical: "https://www.montre-shop.com/",

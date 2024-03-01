@@ -22,12 +22,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   return {
     title: product?.title,
     description: product?.description,
-    generator: "Montre",
-    applicationName: "Montre",
+    generator: "Montre Shop",
+    applicationName: "Montre Shop",
     keywords: KEYWORDS,
     authors: [{ name: "Reactify Solutions" }],
     creator: "Reactify Solutions",
-    publisher: "Montre",
+    publisher: "Montre Shop",
     metadataBase: new URL(`https://www.montre-shop.com/products/watches/${product?.productCode}`),
     alternates: {
       canonical: `https://www.montre-shop.com/products/watches/${product?.productCode}`,

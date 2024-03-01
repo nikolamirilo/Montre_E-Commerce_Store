@@ -30,7 +30,7 @@ const ThankYou = async () => {
               src="/MontreLogoTransparent.png"
               width={150}
               height={110}
-              alt="Montre"
+              alt="Montre Shop"
               className="relative"
               priority
             />

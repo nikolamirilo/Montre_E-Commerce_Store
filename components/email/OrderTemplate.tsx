@@ -67,7 +67,7 @@ export const OrderTemplate: React.FC<Readonly<OrderTemplateProps>> = ({
     <Text style={textStyle}>Vaš Montre,</Text>
     <Img
       src="https://www.montre-shop.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FMontreLogoTransparent.7998db34.png&w=256&q=75"
-      alt="Montre"
+      alt="Montre Shop"
       width="180"
       height="120"
     />

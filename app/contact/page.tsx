@@ -9,13 +9,13 @@ import { MdOutlineEmail } from "react-icons/md"
 export const metadata: Metadata = {
   title: contactPage.title,
   description: contactPage.description,
-  generator: "Montre",
-  applicationName: "Montre",
+  generator: "Montre Shop",
+  applicationName: "Montre Shop",
 
   keywords: KEYWORDS,
   authors: [{ name: "Reactify Solutions" }],
   creator: "Reactify Solutions",
-  publisher: "Montre",
+  publisher: "Montre Shop",
   metadataBase: new URL("https://www.montre-shop.com/contact"),
   alternates: {
     canonical: "https://www.montre-shop.com/contact",
