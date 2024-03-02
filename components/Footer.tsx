@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   const currYear = new Date().getFullYear()
   return (
     <footer
-      className={`w-full relative flex flex-col justify-center items-center ${
+      className={`w-full flex flex-col relative top-6 justify-center items-center ${
         pathname != "/thank-you" ? "mt-20" : null
       }`}
       id="footer">
