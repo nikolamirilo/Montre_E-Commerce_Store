@@ -78,26 +78,29 @@ const Slider = ({ images }: { images: string[] }) => {
             </span>
           </button>
         </div>
-        <div className="flex flex-row flex-wrap justify-center items-center gap-2 mt-3">
-          {images ? images?.map((image: string, idx: number) => {
-            return (
-              <div
-                key={idx}
-                className={`relative w-20 h-16 cursor-pointer ${image == images[index] ? "border-2 border-amber-500" : ""
-                  }`}
-                onClick={() => {
-                  setIndex(idx)
-                }}>
-                <Image
-                  src={image}
-                  className="object-cover object-center"
-                  loading="lazy"
-                  alt="Product"
-                  fill
-                />
-              </div>
-            )
-          }) : null}
+        <div className="flex flex-row flex-wrap justify-start md:justify-center w-full items-center gap-2 mt-3">
+          {images
+            ? images?.map((image: string, idx: number) => {
+                return (
+                  <div
+                    key={idx}
+                    className={`relative w-20 h-16 cursor-pointer ${
+                      image == images[index] ? "border-2 border-amber-500" : ""
+                    }`}
+                    onClick={() => {
+                      setIndex(idx)
+                    }}>
+                    <Image
+                      src={image}
+                      className="object-cover object-center"
+                      loading="lazy"
+                      alt="Product"
+                      fill
+                    />
+                  </div>
+                )
+              })
+            : null}
         </div>
       </div>
     )

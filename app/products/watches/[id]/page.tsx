@@ -70,7 +70,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
         />
         <CldOgImage src={product?.images[0]} alt={product?.title} twitterTitle={product?.title} />
-        <div className="flex flex-col justify-center lg:mt-6 items-center w-full xl:w-4/5 2xl:w-3/5 h-full md:w-full">
+        <div className="flex flex-col justify-center lg:mt-[1.5%] items-center w-full xl:w-4/5 2xl:w-3/5 h-full md:w-full">
           <Slider images={product?.images} />
         </div>
         <div className="xl:w-3/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-8">
