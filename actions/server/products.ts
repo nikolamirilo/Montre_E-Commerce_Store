@@ -10,7 +10,6 @@ export const getAllProducts = async (query: SearchQuery, limit?: number) => {
     const mongoQuery: any = {}
     const minPrice: number = parseInt(query?.minPrice!)
     const maxPrice: number = parseInt(query?.maxPrice!)
-
     if (query.class) {
       mongoQuery.class = query.class
     }
@@ -42,7 +41,9 @@ export const getAllProducts = async (query: SearchQuery, limit?: number) => {
       }
     }
     if (query.text) {
-      mongoQuery.title = { $regex: query.text, $options: "i" }
+      const keywords = query.text.split(" ").map((keyword) => keyword.trim())
+      const regexArray = keywords.map((keyword) => new RegExp(keyword, "i"))
+      mongoQuery.title = { $all: regexArray }
     }
     const queryBuilder = db.collection("products").find(mongoQuery)
     const queryResult = limit ? queryBuilder.limit(limit) : queryBuilder

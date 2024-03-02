@@ -4,14 +4,15 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { AiFillCloseCircle, AiOutlineLogin, AiOutlineMan, AiOutlineWoman } from "react-icons/ai"
+import { AiFillCloseCircle, AiOutlineLogin } from "react-icons/ai"
 import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
 import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
 import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
+import { PiDress } from "react-icons/pi"
 import { RiContactsLine, RiMenu2Line } from "react-icons/ri"
-import { TbDiscount2, TbPackages } from "react-icons/tb"
+import { TbDiscount2, TbPackages, TbTie } from "react-icons/tb"
 import logo from "../public/MontreLogoTransparent.png"
 import Logo from "./helpers/Logo"
 
@@ -32,8 +33,9 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   return (
     <div className="w-full">
       <div
-        className={`fixed top-0 w-full text-white text-4xl flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${isSidebarOpen ? "hidden" : "flex"
-          }`}
+        className={`fixed top-0 w-full text-white text-4xl flex-row justify-between items-center cursor-pointer h-fit lg:py-3 py-5 z-40 px-[5%] ${
+          isSidebarOpen ? "hidden" : "flex"
+        }`}
         id="navbar">
         <button className="font-xxl text-white rounded-3xl" onClick={handleSidebar}>
           <RiMenu2Line size={30} />
@@ -69,8 +71,9 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
         }}
         animate={isSidebarOpen ? "open" : "closed"}
         variants={variants}
-        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${isSidebarOpen ? "block" : "hidden"
-          }`}
+        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${
+          isSidebarOpen ? "block" : "hidden"
+        }`}
         id="sidebar">
         <div className="text-gray-100 text-xl relative">
           <div className="p-1.5 mt-1 flex flex-row items-center justify-between">
@@ -112,8 +115,9 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </button>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
-                }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches"
@@ -123,30 +127,33 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
-                }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/men"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
-                <AiOutlineMan size={30} />
+                <TbTie size={30} />
                 <span>Muški</span>
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
-                }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/women"
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
-                <AiOutlineWoman size={30} />
+                <PiDress size={30} />
                 <span>Ženski</span>
               </Link>
             </div>
             <div
-              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${!isOfferOpen && "hidden"
-                }`}>
+              className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                !isOfferOpen && "hidden"
+              }`}>
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/offers/super-deals"

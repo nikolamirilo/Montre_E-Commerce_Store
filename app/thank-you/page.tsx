@@ -35,7 +35,8 @@ const ThankYou = async () => {
               priority
             />
             <h1 className="text-4xl w-full md:w-9/12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500">
-              {`${user ? user.firstName : "Poštovani"}`}, hvala na ukazanom poverenju!
+              {`${user && user.firstName != null ? user.firstName : "Poštovani"}`}, hvala na
+              ukazanom poverenju!
             </h1>
             <p className="text-lg w-full md:w-10/12 mx-auto text-center text-white">
               Vaša narudžbina je evidentirana i biće poslata u roku od 3 radna dana. Potvrda
