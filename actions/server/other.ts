@@ -36,6 +36,7 @@ export async function getGalleryImagesFromCloudinary() {
           imageUrls.push(item.url)
         }
       })
+      console.log(imageUrls)
       return imageUrls
     } else {
       return "Error while fetching images from Cloudinary"

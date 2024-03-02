@@ -9,7 +9,7 @@ import "swiper/css/pagination"
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
-const Gallery = ({ images }: { images: any }) => {
+const Gallery = () => {
   const router = useRouter()
   const progressCircle = useRef<SVGSVGElement | null>(null)
   const progressContent = useRef<HTMLSpanElement | null>(null)
@@ -19,7 +19,19 @@ const Gallery = ({ images }: { images: any }) => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
   }
-  if (images)
+  const galleryImages = [
+    "/gallery/1_xxv5ih.jpg",
+    "/gallery/2_mk38js.jpg",
+    "/gallery/4_tntij5.jpg",
+    "/gallery/5_s6dns1.jpg",
+    "/gallery/6_niedwu.jpg",
+    "/gallery/7_cc1cgc.jpg",
+    "/gallery/8_blq56g.jpg",
+    "/gallery/9_j5jo3w.jpg",
+    "/gallery/10_nnvvmj.jpg",
+    "/gallery/11_lng2gl.png",
+  ]
+  if (galleryImages)
     return (
       <section className="w-full h-fit flex flex-col justify-center items-center px-2 py-10 gap-8">
         <div className="flex flex-col w-full justify-center items-center gap-4">
@@ -50,7 +62,7 @@ const Gallery = ({ images }: { images: any }) => {
           grabCursor={true}
           modules={[Autoplay, EffectFade, Pagination, Navigation]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}>
-          {images?.map((image: string, idx: number) => {
+          {galleryImages?.map((image: string, idx: number) => {
             return (
               <SwiperSlide
                 key={idx}

@@ -1,4 +1,3 @@
-import { getGalleryImagesFromCloudinary } from "@/actions/server/other"
 import { getAllProducts } from "@/actions/server/products"
 import Gallery from "@/components/Gallery"
 import Recommendations from "@/components/Recommendations"
@@ -38,7 +37,6 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const products = await getAllProducts({})
-  const galleryImages = await getGalleryImagesFromCloudinary()
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script
@@ -50,7 +48,7 @@ export default async function Home() {
         <Recommendations products={products} />
       </Suspense>
       <Suspense fallback="">
-        <Gallery images={galleryImages} />
+        <Gallery />
       </Suspense>
     </div>
   )
