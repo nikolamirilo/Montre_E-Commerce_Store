@@ -51,6 +51,7 @@ const About: React.FC = () => {
                     src="/about/1.webp"
                     alt="Shop"
                     className="w-full rounded-2xl"
+                    quality={70}
                   />
                 </div>
                 <div className="relative z-10 my-4">
@@ -60,6 +61,7 @@ const About: React.FC = () => {
                     src="/about/3.webp"
                     alt="Men watch"
                     className="w-full rounded-2xl"
+                    quality={70}
                   />
                 </div>
               </div>
@@ -71,6 +73,7 @@ const About: React.FC = () => {
                     src="/about/2.webp"
                     alt="Watches"
                     className="w-full rounded-2xl"
+                    quality={70}
                   />
                 </div>
               </div>

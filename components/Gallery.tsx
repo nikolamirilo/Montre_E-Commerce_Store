@@ -19,6 +19,7 @@ const Gallery = ({ images }: { images: any }) => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
   }
+  console.log(images)
   if (images)
     return (
       <section className="w-full h-fit flex flex-col justify-center items-center px-2 py-10 gap-8">
@@ -27,9 +28,9 @@ const Gallery = ({ images }: { images: any }) => {
             Montre galerija
           </h2>
           <p className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
-            Dobrodošli u Montre galeriju - virtuelno putovanje kroz raskošan svet satova i neodoljivih
-            akcija. Ovde možete istražiti najnovije kolekcije satova koje nudi Montre shop,
-            otkrivajući izvanredan spoj elegancije i funkcionalnosti.
+            Dobrodošli u Montre galeriju - virtuelno putovanje kroz raskošan svet satova i
+            neodoljivih akcija. Ovde možete istražiti najnovije kolekcije satova koje nudi Montre
+            shop, otkrivajući izvanredan spoj elegancije i funkcionalnosti.
           </p>
         </div>
         <Swiper
@@ -62,7 +63,7 @@ const Gallery = ({ images }: { images: any }) => {
                   src={image}
                   alt="Slide Image"
                   loading="lazy"
-                  quality={60}
+                  quality={75}
                   fill
                   className="object-cover object-center rounded-xl"
                 />

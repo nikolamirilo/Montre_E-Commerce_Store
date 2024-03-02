@@ -28,7 +28,7 @@ const Orders = async () => {
         ) : (
           <div className="flex w-2/3 justify-center items-center flex-col gap-5">
             <h2 className="text-2xl  text-center">Nemate trenutno ni jedan proizvod u korpi</h2>
-            <Image src="/other/no_order.jpg" alt="Empty Cart" width={200} height={200} />
+            <Image src="/other/no_order.png" alt="No Orders" width={200} height={200} />
           </div>
         )}
       </div>

@@ -79,7 +79,7 @@ const ShoppingCart = async () => {
           ) : (
             <div className="flex w-2/3 justify-center items-center flex-col gap-20">
               <h2 className="text-2xl  text-center">Nema ni jedan proizvod u korpi</h2>
-              <Image src="/other/empty_cart.jpg" alt="Empty Cart" width={200} height={200} />
+              <Image src="/other/empty_cart.png" alt="Empty Cart" width={200} height={200} />
             </div>
           )}
         </div>
