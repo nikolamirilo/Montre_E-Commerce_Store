@@ -27,7 +27,7 @@ const ShoppingCart = async () => {
     const total = productsPrice! + SHIPPING_COST
     return (
       <div id="cart">
-        <div className="min-h-screen 2xl:min-h-[75vh] bg-white py-20 h-fit w-full flex flex-col justify-start items-center">
+        <div className="min-h-screen 2xl:min-h-[75vh] py-20 h-fit w-full flex flex-col justify-start items-center">
           <h1 className="mb-10 text-center text-3xl font-bold">Proizvodi u korpi</h1>
           {user.cart?.length > 0 ? (
             <div className="mx-auto xl:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const About: React.FC = () => {
   return (
-    <div className="overflow-hidden pt-[6vh] bg-white dark:bg-dark px-5" id="about">
+    <div className="overflow-hidden pt-[6vh] px-5" id="about">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
