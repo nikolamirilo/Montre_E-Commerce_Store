@@ -27,7 +27,6 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
         delete filters[key]
       }
     }
-
     return filters
   }
 
@@ -101,6 +100,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
               <select
                 id="brand"
                 name="brand"
+                defaultValue={params.brand}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Curren">Curren</option>
@@ -119,6 +119,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
               <select
                 id="category"
                 name="category"
+                defaultValue={params.category}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="men">Muški</option>
@@ -130,6 +131,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
               <select
                 id="class"
                 name="class"
+                defaultValue={params.class}
                 className="w-40 md:w-48 h-10 border-2 bg-white border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg cursor-pointer px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900">
                 <option value="">Izaberi</option>
                 <option value="Premium">Premium</option>
@@ -144,6 +146,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
                 name="minPrice"
                 type="text"
                 placeholder="RSD"
+                defaultValue={params.minPrice}
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />
             </div>
@@ -153,6 +156,7 @@ const Search: React.FC<SearchProps> = ({ type, params }) => {
                 id="maxPrice"
                 name="maxPrice"
                 placeholder="RSD"
+                defaultValue={params.maxPrice}
                 type="text"
                 className="w-40 md:w-48 h-10 border-2 border-amber-500 focus:outline-none focus:border-amber-500 rounded-lg px-2 md:px-3 py-0 md:py-1 tracking-wider text-gray-900"
               />

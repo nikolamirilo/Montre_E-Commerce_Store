@@ -19,7 +19,6 @@ const Gallery = ({ images }: { images: any }) => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
     }
   }
-  console.log(images)
   if (images)
     return (
       <section className="w-full h-fit flex flex-col justify-center items-center px-2 py-10 gap-8">
