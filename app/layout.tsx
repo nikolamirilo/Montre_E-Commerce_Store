@@ -55,14 +55,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <html lang="sr">
         <body className={`${openSans.className} bg-stone-100 relative`}>
           <SpeedInsights />
+          <GoogleTagManager gtmId="GTM-K9DMSZJG" />
+          <Analytics />
           <Menu />
           <div id="parent">{props.children}</div>
           <Footer />
           <Suspense fallback={null}>
             <NavigationEvents />
           </Suspense>
-          <GoogleTagManager gtmId="GTM-K9DMSZJG" />
-          <Analytics />
         </body>
       </html>
     </ClerkProvider>
