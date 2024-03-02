@@ -3,7 +3,6 @@ import { KEYWORDS, menWatches } from "@/constants"
 import { menProductsPageSchema } from "@/schemas"
 import { SearchQuery } from "@/typescript/types"
 import { Metadata } from "next"
-import Link from "next/link"
 
 export const metadata: Metadata = {
   title: menWatches.title,
@@ -48,10 +47,6 @@ const Category = ({ searchParams }: { searchParams: SearchQuery }) => {
         subtitle="Montre muški satovi su više od samo merila vremena, oni su izraz snage, stila i samopouzdanja. Otkrijte jedinstvene detalje i funkcionalnosti koje će dodati notu luksuza vašem svakodnevnom izgledu."
         type={category}
       />
-      <div className="flex flex-col justify-center items-center w-full text-blue-500">
-        <Link href="/products/watches/categories/women">Zenski satovi</Link>
-        <Link href="/products/watches/offers/super-deals">Akcije</Link>
-      </div>
     </div>
   )
 }

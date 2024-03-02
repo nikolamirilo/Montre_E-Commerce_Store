@@ -3,7 +3,6 @@ import { KEYWORDS, allWatches } from "@/constants"
 import { allProductsPageSchema } from "@/schemas"
 import { SearchQuery } from "@/typescript/types"
 import { Metadata } from "next"
-import Link from "next/link"
 
 export const metadata: Metadata = {
   title: allWatches.title,
@@ -47,11 +46,6 @@ const AllProducts = ({ searchParams }: { searchParams: SearchQuery }) => {
         subtitle="Montre donosi pažljivo izabran asortiman muških i ženskih satova, između kojih se ističu elegantni modeli brendova Curren i Hannah Martin. Svi naši satovi su odabrani s posebnom pažnjom kako bismo zadovoljili raznolike stilove i ukuse naših kupaca."
         type="all"
       />
-      <div className="flex flex-col justify-center items-center w-full text-purple-500">
-        <Link href="/products/watches/categories/men">Muski satovi</Link>
-        <Link href="/products/watches/categories/women">Zenski satovi</Link>
-        <Link href="/products/watches/offers/super-deals">Akcije</Link>
-      </div>
     </div>
   )
 }
