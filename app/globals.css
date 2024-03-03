@@ -79,6 +79,9 @@ img {
 .shadow-text {
   text-shadow: black 1px 0 10px;
 }
+.shadow-custom {
+  box-shadow: inset 0 0 5px 2px #282a2d;
+}
 
 /*KEY FRAMES*/
 @keyframes fade {
