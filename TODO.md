@@ -24,6 +24,8 @@
 
 - Animation and/or additional content on Home Page
 
+- Create 3D animations
+
 - Implement: [https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox]
 
 - Store orders in Google Sheets
