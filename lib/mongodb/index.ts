@@ -12,34 +12,31 @@ const options = {
   serverSelectionTimeoutMS: 60000,
 }
 
-let client: any
-let clientPromise: any
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>
+}
 
-let attempt: number = 1
-const retries: number = 2
-
-try {
-  if (process.env.NEXT_PUBLIC_APP_ENV === "development") {
-    let globalWithMongo = global
-    if (!globalWithMongo._mongoClientPromise) {
-      client = new MongoClient(uri, options)
-      globalWithMongo._mongoClientPromise = client.connect()
+class Singleton {
+  private static _instance: Singleton
+  private client: MongoClient
+  private clientPromise: Promise<MongoClient>
+  private constructor() {
+    this.client = new MongoClient(uri, options)
+    this.clientPromise = this.client.connect()
+    if (process.env.NODE_ENV === "development") {
+      // In development mode, use a global variable so that the value
+      // is preserved across module reloads caused by HMR (Hot Module Replacement).
+      global._mongoClientPromise = this.clientPromise
     }
-    clientPromise = globalWithMongo._mongoClientPromise
-  } else {
-    client = new MongoClient(uri, options)
-    clientPromise = client.connect()
-    console.log(`Successfully connected after ${attempt} ${attempt > 1 ? "attempts" : "attempt"}`)
   }
-} catch (error) {
-  console.log(`error\n`, error)
-  console.log(`Trying again...`)
 
-  if (attempt < retries) {
-    attempt += 1
-    client = new MongoClient(uri, options)
-    clientPromise = client.connect()
-    console.log(`Successfully connected after ${attempt} ${attempt > 1 ? "attempts" : "attempt"}`)
+  public static get instance() {
+    if (!this._instance) {
+      this._instance = new Singleton()
+    }
+    return this._instance.clientPromise
   }
 }
+const clientPromise = Singleton.instance
+
 export default clientPromise
