@@ -27,6 +27,10 @@ export type Product = {
 }
 export type ProductWithoutId = Omit<Product, "_id">
 
+export type ProductsContextValue = {
+  products: Product[] | null
+}
+
 export type CartItem = ProductWithoutId & {
   _id: ObjectId
   quantity: number
