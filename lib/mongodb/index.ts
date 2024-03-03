@@ -8,8 +8,10 @@ const uri = process.env.MONGODB_URI
 const options = {
   minPoolSize: 10,
   maxPoolSize: 20,
-  connectTimeoutMS: 60000,
-  serverSelectionTimeoutMS: 60000,
+  maxIdleTimeMS: 80000,
+  serverSelectionTimeoutMS: 80000,
+  socketTimeoutMS: 0,
+  connectTimeoutMS: 0,
 }
 
 declare global {
