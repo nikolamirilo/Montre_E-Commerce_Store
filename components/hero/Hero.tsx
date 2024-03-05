@@ -1,8 +1,27 @@
 import Navigation from "@/components/hero/Navigation"
 import Image from "next/image"
 import React, { Suspense } from "react"
+import { TypeWriterEffect } from "../helpers/TypeWritterEffect"
 
 const Hero: React.FC = () => {
+  const words = [
+    {
+      text: "Unikatna",
+    },
+    {
+      text: "kolekcija",
+    },
+    {
+      text: "muških i",
+    },
+    {
+      text: "ženskih",
+    },
+    {
+      text: "satova",
+      className: "text-rose-500",
+    },
+  ]
   return (
     <section className="relative -top-[4vh] lg:-top-[8vh] lg:min-h-screen h-fit w-full" id="hero">
       <Image
@@ -14,10 +33,17 @@ const Hero: React.FC = () => {
         priority
       />
       <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center pt-[10vh] sm:pt-[12vh] md:items-start justify-center flex-col lg:mt-[1%] xl:mt-[2%]">
-        <h1
-          className={`w-full lg:w-8/12 xl:w-1/2 font-black leading-10 text-amber-500 text-[2rem] md:text-4xl lg:text-left xl:text-5xl text-center`}>
+        {/* <h1
+          className={`bg-gradient-to-r bg-clip-text  text-transparent 
+          from-amber-500 via-orange-500 to-rose-500
+          animate-text w-full lg:w-8/12 xl:w-1/2 font-black leading-10 text-amber-500 text-[2rem] md:text-4xl lg:text-left xl:text-5xl text-center`}>
           Unikatna kolekcija muških i ženskih satova
-        </h1>
+        </h1> */}
+        <TypeWriterEffect
+          words={words}
+          cursorClassName="bg-rose-500"
+          className="uppercase font-black flex flex-wrap justify-start text-left text-amber-500"
+        />
         <div className="lg:flex">
           <div className="relative mt-4 md:mt-8 space-y-4 sm:w-10/12 lg:w-8/12 lg:ml-0 sm:mx-auto lg:text-left lg:mr-auto">
             <p className="text-base lg:text-lg text-gray-800 w-full lg:w-full xl:w-11/12 2xl:w-10/12">

@@ -53,9 +53,9 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="px-4 fill flex flex-col md:justify-start md:items-start items-center justify-center gap-3">
-          <h2 className="mb-1 text-[16px] font-medium tracking-widest text-white uppercase title-font">
+          <span className="mb-1 text-[16px] font-medium tracking-widest text-white uppercase title-font">
             Ponuda
-          </h2>
+          </span>
           <ul className="list-none flex flex-col md:justify-start md:items-start items-center justify-center gap-2">
             <li>
               <Link
@@ -81,9 +81,9 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         <div className="px-4 flex flex-col md:justify-start md:items-start items-center justify-center gap-3">
-          <h2 className="mb-1 text-[16px] font-medium tracking-widest text-white uppercase title-font">
+          <span className="mb-1 text-[16px] font-medium tracking-widest text-white uppercase title-font">
             Kontakt
-          </h2>
+          </span>
           <ul className="list-none flex flex-col md:justify-start md:items-start items-center justify-center gap-2">
             <li>
               <Link href="/about" className="text-white cursor-pointer hover:text-amber-500">

@@ -1,6 +1,16 @@
 import type { Config } from "tailwindcss"
 
 const defaultTheme = require("tailwindcss/defaultTheme")
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette")
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"))
+  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]))
+
+  addBase({
+    ":root": newVars,
+  })
+}
 
 const config: Config = {
   content: [
@@ -8,6 +18,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  plugins: [addVariablesForColors],
   theme: {
     extend: {
       backgroundImage: {
@@ -17,6 +28,7 @@ const config: Config = {
       animation: {
         "spin-slow": "spin 8s linear infinite",
         "spin-medium": "spin 4s linear infinite",
+        text: "text 4s ease-in-out infinite",
       },
       scale: {
         "-100": "-1",
@@ -26,8 +38,20 @@ const config: Config = {
         ...defaultTheme.screens,
       },
       container: {
-        center: true
-      }
+        center: true,
+      },
+      keyframes: {
+        text: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
+      },
     },
   },
 }

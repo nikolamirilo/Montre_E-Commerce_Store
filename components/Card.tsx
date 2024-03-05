@@ -130,7 +130,9 @@ const Card: React.FC<CardProps> = ({
           />
         </div>
         <div className="p-2">
-          <h3 className="text-gray-900 font-semibold text-xl tracking-tight text-left">{title}</h3>
+          <span className="text-gray-900 font-semibold text-xl tracking-tight text-left">
+            {title}
+          </span>
           <div className="flex items-center my-2.5">
             <span className="rounded-lg border-2 text-white bg-[#0c0502] border-[#0c0502] shadow-lg py-1 px-4">
               {productClass}
@@ -139,8 +141,9 @@ const Card: React.FC<CardProps> = ({
           <div className={`flex items-center justify-between  ${isOnDiscount == false && "mb-3"}`}>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl text-gray-900 ${isOnDiscount == true && isOutOfStock == false ? "line-through" : "mt-3"
-                  }`}>
+                className={`text-lg md:text-xl text-gray-900 ${
+                  isOnDiscount == true && isOutOfStock == false ? "line-through" : "mt-3"
+                }`}>
                 {price!.toLocaleString().replace(",", ".")},00 RSD
               </span>
               {isOnDiscount == true && isOutOfStock == false ? (
@@ -154,13 +157,15 @@ const Card: React.FC<CardProps> = ({
               <button
                 onClick={handleAddItemToCart}
                 disabled={progress == 0 ? false : true}
-                className={`${isOutOfStock == true ? "hidden" : "flex"
-                  } text-white z-10 rounded-lg px-2 5 py-2 text-center flex-row gap-1 justify-center items-center ${progress == 100
+                className={`${
+                  isOutOfStock == true ? "hidden" : "flex"
+                } text-white z-10 rounded-lg px-2 5 py-2 text-center flex-row gap-1 justify-center items-center ${
+                  progress == 100
                     ? "bg-green-600 hover:bg-green-700"
                     : progress == 75
-                      ? "bg-red-500 hover:bg-red-600"
-                      : "bg-amber-500 hover:bg-amber-600"
-                  }`}>
+                    ? "bg-red-500 hover:bg-red-600"
+                    : "bg-amber-500 hover:bg-amber-600"
+                }`}>
                 {progress == 50 ? (
                   <LuLoader2
                     className="animate-spin h-5 w-5 rounded-full"
@@ -175,16 +180,17 @@ const Card: React.FC<CardProps> = ({
                 {progress == 50
                   ? "Dodavanje..."
                   : progress == 75
-                    ? "Već je dodato"
-                    : progress == 100
-                      ? "Dodato"
-                      : "Dodaj"}
+                  ? "Već je dodato"
+                  : progress == 100
+                  ? "Dodato"
+                  : "Dodaj"}
               </button>
             ) : (
               <Link
                 href={`/order/${productCode}`}
-                className={`text-white z-10 bg-amber-500 hover:bg-amber-600 rounded-lg 5 py-2 text-center flex-row gap-1 justify-center items-center px-2 ${isOutOfStock == true ? "hidden" : "flex"
-                  }`}>
+                className={`text-white z-10 bg-amber-500 hover:bg-amber-600 rounded-lg 5 py-2 text-center flex-row gap-1 justify-center items-center px-2 ${
+                  isOutOfStock == true ? "hidden" : "flex"
+                }`}>
                 <LuPackageCheck size={25} /> Naruči
               </Link>
             )}
