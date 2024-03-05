@@ -32,15 +32,15 @@ export function SkeletonCards() {
 export function ProductsSkeleton({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <section className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
-      {/* <div className="flex flex-col w-full justify-center items-center gap-4">
-        <h1 className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
+      <div className="flex flex-col w-full justify-center items-center gap-4">
+        <div className="text-amber-500 text-2xl font-bold lg:text-3xl text-center w-10/12 xl:w-1/2">
           {title}
-        </h1>
-        <p className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
+        </div>
+        <span className="text-gray-800 text-base lg:text-lg text-center w-10/12 xl:w-1/2">
           {subtitle}
-        </p>
+        </span>
       </div>
-      <Search type="discount" params={{}} /> */}
+      <Search type="discount" params={{}} />
       <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
         <SkeletonCards />
       </div>
