@@ -16,10 +16,9 @@ const Navigation: React.FC = () => {
         className="romboid bg-white lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] p-4 border-none h-36 lg:h-32 relative md:left-[6%] w-full md:w-[45%]  font-bold py-2 px-4 inline-flex items-center gap-2 shadow-xl shadow-black/20 transition-all ease-out duration-150">
         <Image
           className="object-cover object-center transform -scale-x-100"
-          priority
           quality={50}
           fill
-          src="/hero/men.webp"
+          src="/hero/men.jpg"
           alt="product image"
         />
         <span className="absolute bottom-0 left-0 top-0 right-0 w-full h-full bg-black/40 z-10 lg:hover:bg-black/20 text-amber-500 uppercase flex justify-center items-center text-[1.6rem] transition-all ease-out duration-150">
@@ -36,7 +35,6 @@ const Navigation: React.FC = () => {
         className="romboid-reverse lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] bg-white p-4 border-none h-36 lg:h-32 relative md:right-[6%] w-full md:w-[45%] font-bold py-2 px-4 inline-flex items-center gap-2  shadow-xl shadow-amber-600/20 transition-all ease-out duration-150">
         <Image
           className="object-cover object-center"
-          priority
           quality={50}
           fill
           src="/hero/women.jpg"
