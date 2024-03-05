@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative -top-[4vh] lg:-top-[8vh] lg:min-h-screen h-fit w-full" id="hero">
       <Image
-        src="/hero/hero.webp"
+        src="/hero/hero.jpg"
         fill
         alt="Hero"
         id="hero-bg"
