@@ -1,4 +1,3 @@
-"use client"
 import productsDevelopment from "../data/development/products.json"
 import productsProduction from "../data/production/products.json"
 export function scrollToTop() {
