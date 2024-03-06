@@ -3,6 +3,7 @@ import Menu from "@/components/Menu"
 import { NavigationEvents } from "@/components/helpers/NavigationEvents"
 import { KEYWORDS, homePage } from "@/constants"
 import { openSans } from "@/fonts"
+import { fetchProductsDataAndUpdateFile } from "@/helpers/server"
 import { ClerkProvider } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import { GoogleTagManager } from "@next/third-parties/google"
@@ -50,6 +51,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const cld = new Cloudinary({
     cloud: { cloudName: "montre-cloudinary" },
   })
+  await fetchProductsDataAndUpdateFile()
   return (
     <ClerkProvider>
       <html lang="sr">

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const Category = ({ searchParams }: { searchParams: SearchQuery }) => {
   const searchParamsData = searchParams
   const category = "men"
-  const query = { ...searchParamsData, category }
+  // const query = { ...searchParamsData, category }
   return (
     <div className="min-h-screen 2xl:min-h-[75vh] w-full" id="categories">
       <script
@@ -42,7 +42,8 @@ const Category = ({ searchParams }: { searchParams: SearchQuery }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(menProductsPageSchema) }}
       />
       <Products
-        query={query}
+        // query={query}
+        variant="men"
         title="Ponuda muških satova Montre kolekcije"
         subtitle="Montre muški satovi su više od samo merila vremena, oni su izraz snage, stila i samopouzdanja. Otkrijte jedinstvene detalje i funkcionalnosti koje će dodati notu luksuza vašem svakodnevnom izgledu."
         type={category}

@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import { Dispatch, FormEvent, LegacyRef, RefObject, SetStateAction } from "react"
 import { CustomerInfo, FormInitialData, Option, Product, SearchQuery } from "./types"
 
@@ -15,15 +16,15 @@ export interface CartItemProps {
   discountedPrice: number
   quantity: number
 }
-export interface CardProps {
-  _id?: string
+export interface ProductCardProps {
+  _id?: ObjectId | string
   title: string
   productCode: string
   image: string
   price: number
   isOnDiscount: boolean
   discountedPrice?: number
-  discount: number
+  discount: number | null
   productClass: string
   type?: string
   isOutOfStock?: boolean
@@ -100,7 +101,8 @@ export interface AddToCartButtonProps {
 }
 
 export interface ProductsProps {
-  query: SearchQuery
+  query?: SearchQuery
+  variant: string
   title: string
   subtitle?: string
   type: string

@@ -1,3 +1,6 @@
+"use client"
+import productsDevelopment from "../data/development/products.json"
+import productsProduction from "../data/production/products.json"
 export function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -17,4 +20,30 @@ export function parseDate(dateString: string) {
   if (parts.length !== 3) return null // Handle improperly formatted date strings
   const [day, month, year] = parts
   return new Date(`${year}-${month}-${day}`)
+}
+
+export async function getAllProductsFromLocalData(variant: string) {
+  let data: any
+  if (process.env.NODE_ENV === "production") {
+    data = await productsProduction
+  } else {
+    data = await productsDevelopment
+  }
+  if (data)
+    try {
+      if (variant == "men" || variant == "women") {
+        const filteredProducts = data.products.filter((item: any) => item.category == variant)
+        return filteredProducts
+      } else if (variant == "super-deals") {
+        const filteredProducts = data.products.filter((item: any) => item.isOnDiscount == true)
+        return filteredProducts
+      } else if (variant == "recommended") {
+        const filteredProducts = data.products.filter((item: any) => item.isRecommended == true)
+        return filteredProducts
+      } else {
+        return data.products
+      }
+    } catch (error) {
+      console.error("Error:", error)
+    }
 }

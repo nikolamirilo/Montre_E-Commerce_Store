@@ -52,9 +52,7 @@ const Hero: React.FC = () => {
             <span className="block text-gray-800 text-base lg:text-lg w-full lg:w-full xl:w-11/12 2xl:w-10/12">
               Započni putovanje kroz vreme uz Montre kolekciju satova:
             </span>
-            <Suspense fallback="">
-              <Navigation />
-            </Suspense>
+            <Navigation />
             <span className="block italic text-gray-800 text-base lg:text-lg">
               "Elegancija koja se meri sekundama"
             </span>

@@ -2,7 +2,7 @@
 import { addItemToCart } from "@/actions/server/cart"
 import { deleteSingleProduct } from "@/actions/server/products"
 import { revalidateData } from "@/helpers/server"
-import { CardProps } from "@/typescript/interfaces"
+import { ProductCardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,9 +12,9 @@ import { BsCart3, BsTrash3 } from "react-icons/bs"
 import { IoCheckmarkCircleOutline } from "react-icons/io5"
 import { LuLoader2, LuPackageCheck } from "react-icons/lu"
 import { MdOutlineModeEditOutline } from "react-icons/md"
-import InfoModal from "./modals/InfoModal"
+import InfoModal from "../modals/InfoModal"
 
-const Card: React.FC<CardProps> = ({
+const ProductCard: React.FC<ProductCardProps> = ({
   _id,
   title,
   image,
@@ -201,4 +201,4 @@ const Card: React.FC<CardProps> = ({
   )
 }
 
-export default Card
+export default ProductCard

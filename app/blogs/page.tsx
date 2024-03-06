@@ -1,123 +1,63 @@
+"use client"
 
-const Blogs = () => {
-    return (
-        <div className="flex justify-center items-center">
-            <div className="2xl:mx-auto 2xl:container lg:px-20 lg:py-16 md:py-12 md:px-6 py-9 px-4 w-96 sm:w-auto">
-                <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-4xl font-semibold leading-9 text-center text-gray-800">This Week Blogs</h1>
-                    <p className="text-base leading-normal text-center text-gray-600 mt-4 lg:w-1/2 md:w-10/12 w-11/12">If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough</p>
-                </div>
-                <div className="lg:flex items-stretch md:mt-12 mt-8">
-                    <div className="lg:w-1/2">
-                        <div className="sm:flex items-center justify-between xl:gap-x-8 gap-x-6">
-                            <div className="sm:w-1/2 relative">
-                                <div className="z-30">
-                                    <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                    <div className="absolute bottom-0 left-0 p-6">
-                                        <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                        <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                        <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                            <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                            <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="https://i.ibb.co/DYxtCJq/img-1.png" className="w-full z-0" alt="chair" />
-                            </div>
-                            <div className="sm:w-1/2 sm:mt-0 mt-4 relative">
-                                <div className="z-30">
-                                    <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                    <div className="absolute bottom-0 left-0 p-6">
-                                        <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                        <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                        <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                            <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                            <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="https://i.ibb.co/3C5HvxC/img-2.png" className="w-full z-0" alt="wall design" />
-                            </div>
-                        </div>
-                        <div className="relative">
-                            <div>
-                                <p className="md:p-10 p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                <div className="absolute bottom-0 left-0 md:p-10 p-6">
-                                    <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                    <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                    <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                        <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                        <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="https://i.ibb.co/Ms4qyXp/img-3.png" alt="sitting place" className="w-full mt-8 md:mt-6 hidden sm:block" />
-                            <img className="w-full mt-4 sm:hidden" src="https://i.ibb.co/6XYbN7f/Rectangle-29.png" alt="sitting place" />
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2 xl:ml-8 lg:ml-4 lg:mt-0 md:mt-6 mt-4 lg:flex flex-col justify-between">
-                        <div className="relative">
-                            <div>
-                                <p className="md:p-10 p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                <div className="absolute bottom-0 left-0 md:p-10 p-6">
-                                    <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                    <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                    <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                        <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                        <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="https://i.ibb.co/6Wfjf2w/img-4.png" alt="sitting place" className="w-full sm:block hidden" />
-                            <img className="w-full sm:hidden" src="https://i.ibb.co/dpXStJk/Rectangle-29.png" alt="sitting place" />
-                        </div>
-                        <div className="sm:flex items-center justify-between xl:gap-x-8 gap-x-6 md:mt-6 mt-4">
-                            <div className="relative w-full">
-                                <div className="z-30">
-                                    <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                    <div className="absolute bottom-0 left-0 p-6">
-                                        <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                        <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                        <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                            <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                            <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="https://i.ibb.co/3yvZBpm/img-5.png" className="w-full z-0" alt="chair" />
-                            </div>
-                            <div className="relative w-full sm:mt-0 mt-4">
-                                <div className="z-30">
-                                    <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">12 April 2021</p>
-                                    <div className="absolute bottom-0 left-0 p-6">
-                                        <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                                        <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                                        <div className="flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                                            <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                                            <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img src="https://i.ibb.co/gDdnJb5/img-6.png" className="w-full z-0" alt="wall design" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
+import { LayoutGrid } from "@/components/BlogLayout"
+import BlogCard from "@/components/cards/BlogCard"
 
-export default Blogs;
+export default function Blogs() {
+  return (
+    <div className="h-screen py-20 w-full">
+      <LayoutGrid cards={cards} />
+    </div>
+  )
+}
+
+const cards = [
+  {
+    id: 1,
+    content: (
+      <BlogCard
+        title="Rivers are serene"
+        text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
+      />
+    ),
+    className: "md:col-span-2",
+    thumbnail:
+      "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 2,
+    content: (
+      <BlogCard
+        title="Rivers are serene"
+        text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
+      />
+    ),
+    className: "col-span-1",
+    thumbnail:
+      "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 3,
+    content: (
+      <BlogCard
+        title="Rivers are serene"
+        text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
+      />
+    ),
+    className: "col-span-1",
+    thumbnail:
+      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    id: 4,
+    content: (
+      <BlogCard
+        title="Rivers are serene"
+        text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
+      />
+    ),
+    className: "md:col-span-2",
+    thumbnail:
+      "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+]

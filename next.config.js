@@ -9,6 +9,7 @@ const nextConfig = {
       { hostname: "cdn.shopify.com" },
       { hostname: "img.clerk.com" },
       { hostname: "wallpapercave.com" },
+      { hostname: "images.unsplash.com" },
     ],
   },
   swcMinify: true,

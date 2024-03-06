@@ -1,5 +1,3 @@
-import Search from "../helpers/Search"
-
 export function Skeleton({ className }: { className: string }) {
   return <div className={`bg-slate-200 motion-safe:animate-pulse rounded ${className}`} />
 }
@@ -42,7 +40,7 @@ export function ProductsSkeleton({ title, subtitle }: { title: string; subtitle:
           {subtitle}
         </span>
       </div>
-      <Search type="discount" params={{}} />
+      {/* <Search type="discount" params={{}} /> */}
       <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center cards-container max-w-[1500px] mx-auto">
         <SkeletonCards />
       </div>

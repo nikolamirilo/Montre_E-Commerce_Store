@@ -7,7 +7,7 @@ declare global {
 export type Role = "admin" | "customer"
 
 export type Product = {
-  _id?: ObjectId
+  _id?: ObjectId | string
   isPublic: boolean
   productCode: string
   category: string
@@ -18,7 +18,7 @@ export type Product = {
   images: string[]
   price: number
   isOnDiscount: boolean
-  discount: number
+  discount: number | null
   class: string
   brand: string
   discountedPrice: number

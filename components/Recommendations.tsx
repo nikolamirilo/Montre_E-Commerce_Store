@@ -1,12 +1,9 @@
 import { Product } from "@/typescript/types"
 import Link from "next/link"
-import Card from "./Card"
+import ProductCard from "./cards/ProductCard"
 
 const Recommendations = ({ products }: { products: Product[] }) => {
-  const recommendedProducts = products.filter(
-    (product: Product) => product.isRecommended && product.isPublic
-  )
-  if (recommendedProducts?.length > 0)
+  if (products.length > 0)
     return (
       <div className="flex flex-col justify-center items-center w-full h-fit lg:px-[5%] xl:px-[10%] gap-8">
         <div className="flex flex-col w-full justify-center items-center gap-4">
@@ -21,12 +18,12 @@ const Recommendations = ({ products }: { products: Product[] }) => {
           </p>
         </div>
         <div className="px-0 flex flex-wrap w-fit justify-center gap-4 items-center max-w-[1500px] mx-auto">
-          {recommendedProducts
-            ? recommendedProducts
+          {products
+            ? products
                 .filter((item, idx) => idx < 3)
                 .map((product: Product, idx: number) => {
                   return (
-                    <Card
+                    <ProductCard
                       key={idx}
                       discount={product?.discount}
                       isOnDiscount={product?.isOnDiscount}
