@@ -1,6 +1,7 @@
 "use client"
 import { handleProductChange, uploadImagesToCloudinary } from "@/actions/client/products"
 import { generateProductCode } from "@/helpers/client"
+import { fetchProductsDataAndUpdateFile } from "@/helpers/server"
 import { EditProductProps } from "@/typescript/interfaces"
 import { Product } from "@/typescript/types"
 import React, { useEffect, useRef, useState } from "react"
@@ -107,6 +108,7 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       }
       // Send POST request to create new product or update existing one and reset form
       await handleProductChange(images, uploadData, "update", id)
+      await fetchProductsDataAndUpdateFile()
       resetForm()
     } catch (error) {
       console.log(error)
