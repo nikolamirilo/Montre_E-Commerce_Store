@@ -1,4 +1,5 @@
 "use server"
+import { fetchProductsDataAndUpdateFile } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { Product, ProductWithoutId, SearchQuery } from "@/typescript/types"
 import { ObjectId } from "mongodb"
@@ -60,6 +61,7 @@ export const getSingleProduct = async (productCode: string) => {
   try {
     const db = await storeDatabaseConnection()
     const singleProduct: any = await db.collection("products").findOne({ productCode: productCode })
+    await fetchProductsDataAndUpdateFile()
     return singleProduct
   } catch (error) {
     console.log((error as Error).message)
@@ -71,6 +73,7 @@ export const deleteAllproducts = async () => {
   try {
     const db = await storeDatabaseConnection()
     db.collection("products").deleteMany({})
+    await fetchProductsDataAndUpdateFile()
   } catch (error) {
     console.log((error as Error).message)
     throw new Error((error as Error).message)
@@ -81,6 +84,7 @@ export const createProduct = async (product: ProductWithoutId) => {
   try {
     const db = await storeDatabaseConnection()
     await db.collection("products").insertOne(product)
+    await fetchProductsDataAndUpdateFile()
   } catch (error) {
     console.log((error as Error).message)
     throw new Error((error as Error).message)
@@ -114,6 +118,7 @@ export const updateProduct = async (body: Product) => {
         },
       }
     )
+    await fetchProductsDataAndUpdateFile()
     return true
   } catch (error) {
     console.log((error as Error).message)
@@ -127,6 +132,7 @@ export const deleteSingleProduct = async (_id: any) => {
     const objId = new ObjectId(_id)
     await db.collection("products").deleteOne({ _id: objId })
     await db.collection("users").updateMany({ cart: _id }, { $pull: { cart: _id } })
+    await fetchProductsDataAndUpdateFile()
   } catch (error) {
     console.log((error as Error).message)
     throw new Error((error as Error).message)

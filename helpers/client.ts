@@ -25,25 +25,27 @@ export function parseDate(dateString: string) {
 export async function getAllProductsFromLocalData(variant: string) {
   let data: any
   if (process.env.NODE_ENV === "production") {
-    data = await productsProduction
+    data = productsProduction
   } else {
-    data = await productsDevelopment
+    data = productsDevelopment
   }
-  if (data)
-    try {
-      if (variant == "men" || variant == "women") {
-        const filteredProducts = data.products.filter((item: any) => item.category == variant)
-        return filteredProducts
-      } else if (variant == "super-deals") {
-        const filteredProducts = data.products.filter((item: any) => item.isOnDiscount == true)
-        return filteredProducts
-      } else if (variant == "recommended") {
-        const filteredProducts = data.products.filter((item: any) => item.isRecommended == true)
-        return filteredProducts
-      } else {
-        return data.products
-      }
-    } catch (error) {
-      console.error("Error:", error)
+  if (!data || !data.products) {
+    throw new Error("Data or products array is missing or empty.")
+  }
+  try {
+    if (variant == "men" || variant == "women") {
+      const filteredProducts = data.products.filter((item: any) => item.category == variant)
+      return filteredProducts
+    } else if (variant == "super-deals") {
+      const filteredProducts = data.products.filter((item: any) => item.isOnDiscount == true)
+      return filteredProducts
+    } else if (variant == "recommended") {
+      const filteredProducts = data.products.filter((item: any) => item.isRecommended == true)
+      return filteredProducts
+    } else {
+      return data.products
     }
+  } catch (error) {
+    console.error("Error:", error)
+  }
 }
