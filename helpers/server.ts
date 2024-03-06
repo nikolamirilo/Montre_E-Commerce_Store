@@ -27,7 +27,6 @@ export async function fetchProductsDataAndUpdateFile() {
         fs.writeFileSync(developmentFilePath, JSON.stringify({ products }))
       }
     }
-
     console.log("Fetched data for products and stored inside /data/products.json")
   } catch (error) {
     console.error("Error:", error)
