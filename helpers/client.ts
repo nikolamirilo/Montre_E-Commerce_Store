@@ -22,12 +22,12 @@ export function parseDate(dateString: string) {
   return new Date(`${year}-${month}-${day}`)
 }
 
-export async function getAllProductsFromLocalData(variant: string) {
+export const getAllProductsFromLocalData = async (variant: string) => {
   let data: any
   if (process.env.NODE_ENV === "production") {
-    data = productsProduction
+    data = await productsProduction
   } else {
-    data = productsDevelopment
+    data = await productsDevelopment
   }
   if (!data || !data.products) {
     throw new Error("Data or products array is missing or empty.")
