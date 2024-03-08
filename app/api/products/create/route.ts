@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const newProduct = await request.json()
     await createProduct(newProduct)
-    return NextResponse.json({ message: "Post Added Successully" }, { status: 200 })
+    return NextResponse.json({ message: "Post created successully" }, { status: 201 })
   } catch (error) {
     return new NextResponse((error as Error).message, { status: 500 })
   }

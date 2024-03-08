@@ -32,6 +32,7 @@ export const getAllProductsFromLocalData = async (variant: string) => {
   if (!data || !data.products) {
     throw new Error("Data or products array is missing or empty.")
   }
+  console.log(data)
   try {
     if (variant == "men" || variant == "women") {
       const filteredProducts = data.products.filter((item: any) => item.category == variant)
