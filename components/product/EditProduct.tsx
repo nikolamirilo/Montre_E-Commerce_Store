@@ -7,6 +7,8 @@ import { Product } from "@/typescript/types"
 import React, { useEffect, useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
 
+export const dynamic = "force-dynamic"
+
 const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
   const [id, setId] = useState<string>("")
@@ -108,7 +110,8 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       }
       // Send POST request to create new product or update existing one and reset form
       await handleProductChange(images, uploadData, "update", id)
-      await fetchProductsDataAndUpdateFile()
+      const res = await fetchProductsDataAndUpdateFile()
+      console.log(res)
       resetForm()
     } catch (error) {
       console.log(error)
