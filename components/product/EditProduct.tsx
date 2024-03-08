@@ -7,8 +7,6 @@ import { Product } from "@/typescript/types"
 import React, { useEffect, useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
 
-export const dynamic = "force-dynamic"
-
 const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
   const [displayImages, setDisplayImages] = useState<string[]>([])
   const [id, setId] = useState<string>("")
