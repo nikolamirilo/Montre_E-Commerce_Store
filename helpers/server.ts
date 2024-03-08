@@ -1,34 +1,33 @@
 "use server"
-const fs = require("fs")
-
 import { getAllProducts } from "@/actions/server/products"
+import fs from "fs"
 import { revalidatePath } from "next/cache"
+const url = process.env.WEB_APP_URL
+
 export const revalidateData = () => {
   revalidatePath("/")
 }
-
 export async function fetchProductsDataAndUpdateFile() {
   try {
     // Fetch data from the /products route
     const products = await getAllProducts({})
-
-    const productionFilePath = "../data/production/products.json"
-    const developmentFilePath = "../data/development/products.json"
+    const productionFilePath = "./data/production/products.json"
+    const developmentFilePath = "./data/development/products.json"
 
     // Write fetched data to respective JSON files
     if (process.env.NODE_ENV === "production") {
-      if (fs.existsSync(productionFilePath)) {
-        fs.unlinkSync(productionFilePath)
-        fs.writeFileSync(productionFilePath, JSON.stringify({ products }))
-      }
+      fs.writeFile(productionFilePath, JSON.stringify({ products }), (err: any) => {
+        if (err) throw err
+        console.log("Data for products fetched and stored inside products.json")
+      })
     } else {
-      if (fs.existsSync(developmentFilePath)) {
-        fs.unlinkSync(developmentFilePath)
-        fs.writeFileSync(developmentFilePath, JSON.stringify({ products }))
-      }
+      fs.writeFile(developmentFilePath, JSON.stringify({ products }), (err: any) => {
+        if (err) throw err
+        console.log("Data for products fetched and stored inside products.json")
+      })
     }
-    console.log("Fetched data for products and stored inside /data/products.json")
   } catch (error) {
     console.error("Error:", error)
+    throw new Error("Failed to fetch products data and update file")
   }
 }

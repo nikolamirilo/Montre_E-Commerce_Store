@@ -16,8 +16,12 @@ const Select: React.FC<FormElementProps> = ({ selectRef, name, label, options })
           name={name}
           className="w-full bg-white h-10 border-2 text-sm focus:border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">
           <option value="">Izaberi</option>
-          {options?.map((option: Option) => {
-            return <option value={option.value}>{option.label}</option>
+          {options?.map((option: Option, idx: number) => {
+            return (
+              <option value={option.value} key={idx}>
+                {option.label}
+              </option>
+            )
           })}
         </select>
       </div>

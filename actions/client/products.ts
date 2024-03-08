@@ -1,4 +1,3 @@
-import { revalidateData } from "@/helpers/server"
 import { Product } from "@/typescript/types"
 
 export async function uploadImagesToCloudinary(
@@ -94,7 +93,7 @@ export async function handleProductChange(
           : JSON.stringify({ ...uploadData, _id: id }),
     })
     if (response.ok) {
-      revalidateData()
+      // revalidateData()
     } else {
       console.log(response.statusText)
     }

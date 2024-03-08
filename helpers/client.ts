@@ -1,5 +1,6 @@
 import productsDevelopment from "../data/development/products.json"
 import productsProduction from "../data/production/products.json"
+
 export function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -24,9 +25,9 @@ export function parseDate(dateString: string) {
 export const getAllProductsFromLocalData = async (variant: string) => {
   let data: any
   if (process.env.NODE_ENV === "production") {
-    data = await productsProduction
+    data = productsProduction
   } else {
-    data = await productsDevelopment
+    data = productsDevelopment
   }
   if (!data || !data.products) {
     throw new Error("Data or products array is missing or empty.")

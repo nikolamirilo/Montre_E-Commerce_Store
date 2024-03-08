@@ -14,35 +14,13 @@
       "isPublic": true,
       "isRecommended": false,
       "isOutOfStock": false,
-      "discount": 10,
-      "discountedPrice": 4500,
+      "discount": 32,
+      "discountedPrice": 3300,
       "isOnDiscount": true,
       "images": [
         "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709400502/products/2_izqv1y.jpg",
         "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709400503/products/3_qx8yqw.jpg",
         "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709400506/products/4_trodxz.jpg"
-      ]
-    },
-    {
-      "_id": "65e329bada264fe42267c0e7",
-      "title": "Curren RTG 2024",
-      "price": 7000,
-      "productCode": "curren-rtg-2024",
-      "class": "Premium",
-      "diameter": "12",
-      "typ": "Hronograf",
-      "category": "men",
-      "brand": "Naviforce",
-      "description": "dasds",
-      "isPublic": true,
-      "isRecommended": true,
-      "isOutOfStock": false,
-      "discount": 20,
-      "discountedPrice": 5600,
-      "isOnDiscount": true,
-      "images": [
-        "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709386172/products/2_i29owb.jpg",
-        "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709386173/products/3_uud1g6.jpg"
       ]
     },
     {
@@ -59,9 +37,9 @@
       "isPublic": true,
       "isRecommended": true,
       "isOutOfStock": false,
-      "discount": null,
-      "discountedPrice": 5000,
-      "isOnDiscount": false,
+      "discount": 20,
+      "discountedPrice": 4000,
+      "isOnDiscount": true,
       "images": [
         "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709386141/products/0_c5qndc.jpg",
         "http://res.cloudinary.com/montre-cloudinary/image/upload/v1709386142/products/1_r9mnis.jpg"
