@@ -1,4 +1,4 @@
-import { getAllProductsFromLocalData } from "@/helpers/client"
+import { getAllProducts } from "@/actions/server/products"
 import { ProductsProps } from "@/typescript/interfaces"
 import { Product } from "@/typescript/types"
 import Image from "next/image"
@@ -9,8 +9,8 @@ export const revalidate = 86400
 export const dynamic = "force-static"
 
 const Products: React.FC<ProductsProps> = async ({ query, variant, title, subtitle, type }) => {
-  // const products = await getAllProducts(query)
-  const products = await getAllProductsFromLocalData(variant)
+  const products = await getAllProducts(query)
+  // const products = await getAllProductsFromLocalData(variant)
   if (products)
     return (
       <section className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">

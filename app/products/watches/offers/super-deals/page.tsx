@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 }
 
 const Offer = ({ searchParams }: { searchParams: SearchQuery }) => {
-  // const query = searchParams
+  const query = searchParams
   return (
     <div className="min-h-screen 2xl:min-h-[75vh] w-full" id="offer">
       <script
@@ -41,9 +41,9 @@ const Offer = ({ searchParams }: { searchParams: SearchQuery }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(superDealsProductsPageSchema) }}
       />
       <Products
-        variant="super-deals"
+        // variant="super-deals"
         type="discount"
-        // query={{ ...query, isOnDiscount: true }}
+        query={{ ...query, isOnDiscount: true }}
         title="Ponuda satova na akciji"
         subtitle="Istražite raznovrsne stilove i tehničke karakteristike i započnite putovanje kroz vreme uz svoj idealni sat povoljnije nego ikada!"
       />

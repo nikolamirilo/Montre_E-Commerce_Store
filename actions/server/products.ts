@@ -22,6 +22,9 @@ export const getAllProducts = async (query: SearchQuery, limit?: number) => {
     if (query.isOnDiscount) {
       mongoQuery.isOnDiscount = query.isOnDiscount
     }
+    if (query.isRecommended) {
+      mongoQuery.isRecommended = query.isRecommended
+    }
     if (minPrice > 0) {
       mongoQuery.discountedPrice = {
         $gte: minPrice,

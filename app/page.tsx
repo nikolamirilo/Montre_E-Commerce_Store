@@ -1,8 +1,8 @@
+import { getAllProducts } from "@/actions/server/products"
 import Gallery from "@/components/Gallery"
 import Recommendations from "@/components/Recommendations"
 import Hero from "@/components/hero/Hero"
 import { KEYWORDS, homePage } from "@/constants"
-import { getAllProductsFromLocalData } from "@/helpers/client"
 import { homePageSchema } from "@/schemas"
 import { Metadata } from "next"
 import { Suspense } from "react"
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const recommendedProducts: any = await getAllProductsFromLocalData("recommended")
+  // const recommendedProducts: any = await getAllProductsFromLocalData("recommended")
+  const recommendedProducts = await getAllProducts({ isRecommended: true })
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script

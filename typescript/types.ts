@@ -61,6 +61,7 @@ export type SearchQuery = {
   category?: string
   minPrice?: string
   maxPrice?: string
+  isRecommended?: boolean
 }
 
 export type FormInitialData = {
