@@ -1,7 +1,7 @@
 "use server"
 import { getAllProducts } from "@/actions/server/products"
-import fs from "fs"
 import { revalidatePath } from "next/cache"
+const fs = require("fs")
 const url = process.env.WEB_APP_URL
 
 export const revalidateData = () => {

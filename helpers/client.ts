@@ -1,5 +1,5 @@
-import productsDevelopment from "../data/development/products.json"
-import productsProduction from "../data/production/products.json"
+const productsDevelopment = require("../data/development/products.json")
+const productsProduction = require("../data/production/products.json")
 
 export function scrollToTop() {
   window.scrollTo({
