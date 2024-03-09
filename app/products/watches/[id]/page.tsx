@@ -9,7 +9,7 @@ import { Metadata } from "next"
 import { CldOgImage } from "next-cloudinary"
 
 export async function generateStaticParams() {
-  const products = await getAllProducts({})
+  const products = await getAllProducts()
   return products.map((product: Product) => ({
     id: product?.productCode,
   }))

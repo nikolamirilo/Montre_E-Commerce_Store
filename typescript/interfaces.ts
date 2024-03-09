@@ -101,7 +101,7 @@ export interface AddToCartButtonProps {
 }
 
 export interface ProductsProps {
-  query: SearchQuery
+  query: any
   variant?: string
   title: string
   subtitle?: string

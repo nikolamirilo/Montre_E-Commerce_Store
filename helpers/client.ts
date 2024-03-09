@@ -1,3 +1,5 @@
+import { FetchOptions } from "@/typescript/types"
+
 const productsDevelopment = require("../data/development/products.json")
 const productsProduction = require("../data/production/products.json")
 
@@ -20,6 +22,23 @@ export function parseDate(dateString: string) {
   if (parts.length !== 3) return null // Handle improperly formatted date strings
   const [day, month, year] = parts
   return new Date(`${year}-${month}-${day}`)
+}
+
+export async function fetchData(url: string, options: FetchOptions) {
+  try {
+    const { method, cache, body } = options
+    const res = await fetch(url, {
+      method,
+      cache: cache || "force-cache",
+      body,
+    })
+    if (!res.ok) {
+      throw new Error(`Failed to fetch data from ${url}. Status: ${res.status}`)
+    }
+    return await res.json()
+  } catch (error) {
+    console.error(error as Error)
+  }
 }
 
 export const getAllProductsFromLocalData = async (variant: string) => {

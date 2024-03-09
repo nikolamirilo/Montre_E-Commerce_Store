@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 export async function generateStaticParams() {
-  const products = await getAllProducts({})
+  const products = await getAllProducts()
   return products.map((product: Product) => ({
     id: product.productCode,
   }))

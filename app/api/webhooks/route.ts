@@ -3,9 +3,6 @@ import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 import { Webhook } from "svix"
 
-//Through this route when user is for example created data from Clerk is sent to this route
-//and then user will be created in MongoDB as well
-
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.NEXT_PUBLIC_WEBHOOK_SECRET

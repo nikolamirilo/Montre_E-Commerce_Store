@@ -3,27 +3,26 @@ import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { Product, ProductWithoutId, SearchQuery } from "@/typescript/types"
 import { ObjectId } from "mongodb"
 
-export const getAllProducts = async (query: SearchQuery, limit?: number) => {
+export const getAllProducts = async (query?: SearchQuery, limit?: number) => {
   try {
     const db = await storeDatabaseConnection()
-    // Build the MongoDB query based on the provided search criteria
     const mongoQuery: any = {}
     const minPrice: number = parseInt(query?.minPrice!)
     const maxPrice: number = parseInt(query?.maxPrice!)
-    if (query.class) {
-      mongoQuery.class = query.class
+    if (query?.class) {
+      mongoQuery.class = query?.class
     }
-    if (query.brand) {
-      mongoQuery.brand = query.brand
+    if (query?.brand) {
+      mongoQuery.brand = query?.brand
     }
-    if (query.category) {
-      mongoQuery.category = query.category
+    if (query?.category) {
+      mongoQuery.category = query?.category
     }
-    if (query.isOnDiscount) {
-      mongoQuery.isOnDiscount = query.isOnDiscount
+    if (query?.isOnDiscount) {
+      mongoQuery.isOnDiscount = query?.isOnDiscount
     }
-    if (query.isRecommended) {
-      mongoQuery.isRecommended = query.isRecommended
+    if (query?.isRecommended) {
+      mongoQuery.isRecommended = query?.isRecommended
     }
     if (minPrice > 0) {
       mongoQuery.discountedPrice = {
@@ -43,8 +42,8 @@ export const getAllProducts = async (query: SearchQuery, limit?: number) => {
         $lte: maxPrice,
       }
     }
-    if (query.text) {
-      const keywords = query.text.split(" ").map((keyword) => keyword.trim())
+    if (query?.text) {
+      const keywords = query?.text.split(" ").map((keyword) => keyword.trim())
       const regexArray = keywords.map((keyword) => new RegExp(keyword, "i"))
       mongoQuery.title = { $all: regexArray }
     }

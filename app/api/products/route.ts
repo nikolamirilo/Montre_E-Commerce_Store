@@ -1,13 +1,14 @@
 import { getAllProducts } from "@/actions/server/products"
 import { NextRequest, NextResponse } from "next/server"
 
-export const dynamic = "force-dynamic"
-
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
+  const query = await request.json()
   try {
-    const allProducts = await getAllProducts({})
-    return NextResponse.json(allProducts, { status: 200 })
+    if (query) {
+      const allProducts = await getAllProducts(query)
+      return NextResponse.json(allProducts, { status: 200 })
+    }
   } catch (error) {
-    return new NextResponse((error as Error).message, { status: 500 })
+    return NextResponse.json((error as Error).message, { status: 500 })
   }
 }

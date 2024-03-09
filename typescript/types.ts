@@ -64,6 +64,12 @@ export type SearchQuery = {
   isRecommended?: boolean
 }
 
+export type FetchOptions = {
+  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
+  cache: "force-cache" | "no-cache" | "no-store"
+  body?: BodyInit
+}
+
 export type FormInitialData = {
   _id: string
   title: string

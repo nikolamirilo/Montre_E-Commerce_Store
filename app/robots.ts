@@ -3,7 +3,7 @@ import { Product } from "@/typescript/types"
 import type { MetadataRoute } from "next"
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const products = await getAllProducts({})
+  const products = await getAllProducts()
   const productsUrls = products?.map(
     (product: Product) => `/products/watches/${product.productCode}`
   )

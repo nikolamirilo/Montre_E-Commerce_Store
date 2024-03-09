@@ -1,7 +1,7 @@
 "use client"
 import { addItemToCart } from "@/actions/server/cart"
 import { deleteSingleProduct } from "@/actions/server/products"
-import { fetchProductsDataAndUpdateFile, revalidateData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { ProductCardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
@@ -48,8 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   async function handleDeleteItem() {
     setIsOpen(false)
     await deleteSingleProduct(_id)
-    await fetchProductsDataAndUpdateFile()
-    // revalidateData()
+    revalidateData()
   }
   return (
     <>
@@ -65,26 +64,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
       ) : null}
       <div className="bg-white shadow-xl rounded-lg w-[96vw] xs:w-80 h-fit sm:h-[28rem] relative lg:hover:scale-[1.02] transition-all duration-200 ease-in-out">
-        {/* {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? ( */}
-        <div className="admin-buttons top-0 right-3 z-10 flex flex-row-reverse gap-2 absolute">
-          <button
-            id="edit"
-            className="p-1 rounded-full z-10 bg-amber-500 text-white"
-            onClick={() => {
-              router.push(`/products/watches/${productCode}/edit`)
-            }}>
-            <MdOutlineModeEditOutline size={30} />
-          </button>
-          <button
-            id="delete"
-            className="p-1 z-10 rounded-full bg-red-500 text-white"
-            onClick={() => {
-              setIsOpen(true)
-            }}>
-            <BsTrash3 size={25} />
-          </button>
-        </div>
-        {/* ) : null} */}
+        {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
+          <div className="admin-buttons top-0 right-3 z-10 flex flex-row-reverse gap-2 absolute">
+            <button
+              id="edit"
+              className="p-1 rounded-full z-10 bg-amber-500 text-white"
+              onClick={() => {
+                router.push(`/products/watches/${productCode}/edit`)
+              }}>
+              <MdOutlineModeEditOutline size={30} />
+            </button>
+            <button
+              id="delete"
+              className="p-1 z-10 rounded-full bg-red-500 text-white"
+              onClick={() => {
+                setIsOpen(true)
+              }}>
+              <BsTrash3 size={25} />
+            </button>
+          </div>
+        ) : null}
         {isOnDiscount ? (
           <div className="absolute left-0 top-0 z-10 w-fit h-fit">
             {isOutOfStock ? (

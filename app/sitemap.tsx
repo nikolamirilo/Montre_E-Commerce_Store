@@ -4,7 +4,7 @@ import { MetadataRoute } from "next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.montre-shop.com"
-  const products = await getAllProducts({})
+  const products = await getAllProducts()
   const productsUrls = products?.map((product: Product) => ({
     url: `${baseUrl}/products/watches/${product.productCode}`,
     lastModified: new Date(),
