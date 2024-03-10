@@ -35,6 +35,7 @@ export async function fetchData(url: string, options: FetchOptions) {
     if (!res.ok) {
       throw new Error(`Failed to fetch data from ${url}. Status: ${res.status}`)
     }
+    console.log("Fetch products")
     return await res.json()
   } catch (error) {
     console.error(error as Error)

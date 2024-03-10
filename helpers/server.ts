@@ -3,7 +3,7 @@ import { getAllProducts } from "@/actions/server/products"
 import { revalidatePath } from "next/cache"
 const fs = require("fs")
 
-export const revalidateData = () => {
+export const revalidateProductsData = () => {
   revalidatePath("/", "page")
   revalidatePath("/products/watches", "page")
   revalidatePath("/products/watches/categories/men", "page")

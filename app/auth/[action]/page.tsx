@@ -48,8 +48,8 @@ const Auth = ({ params }: { params: { action: string } }) => {
       </h1>
       <p className="mb-8 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
         Kreiranje naloga ima mnoge prednosti kao što su funkcionalnost korpe, brže popunjavanje
-        informacija za naručivanje, mogućnost naručivanje više artikla istovremeno i mogućnost
-        praćenja istorije narudžbina.
+        naloga za naručivanje, mogućnost naručivanja više artikla istovremeno i mogućnost praćenja
+        istorije narudžbina.
       </p>
       {params.action == "log-in" ? <SignIn afterSignInUrl="/" /> : <SignUp afterSignUpUrl="/" />}
     </div>

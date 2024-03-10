@@ -11,7 +11,8 @@ export default authMiddleware({
     "/products/watches/categories/men",
     "/products/watches/:id/edit",
     "/products/watches/categories/women",
-    "/products/watches/:id",
+    "/products/watches/:id", // remove later
+    "/admin/orders", // remove later
     "/api/webhooks(.*)",
     "/api/products/order",
     "/api/products",

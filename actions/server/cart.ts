@@ -4,6 +4,7 @@ import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { CartItem, Product } from "@/typescript/types"
 import moment from "moment"
 import { ObjectId } from "mongodb"
+import { revalidatePath } from "next/cache"
 import { getSingleProduct } from "./products"
 import { getSingleUser } from "./users"
 
@@ -156,16 +157,15 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
         },
       }
     )
-
     const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/send-email", {
       method: "POST",
-
       body: JSON.stringify(order),
     })
     if (!emailRes.ok) {
       console.log(`Error: ${emailRes.statusText}`)
     }
     console.log("Orders created successfully.")
+    revalidatePath("/admin/orders", "page")
     return true
   } catch (error) {
     console.log((error as Error).message)

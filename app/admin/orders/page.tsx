@@ -1,5 +1,5 @@
-import { getAllOrders } from "@/actions/server/users"
 import OrdersTable from "@/components/tables/OrdersTable"
+import { fetchData } from "@/helpers/client"
 import { currentUser } from "@clerk/nextjs"
 import { Metadata } from "next"
 import Image from "next/image"
@@ -11,9 +11,11 @@ export const metadata: Metadata = {
     nocache: true,
   },
 }
-
 const Orders = async () => {
-  const allOrders = await getAllOrders()
+  const allOrders = await fetchData(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/api/orders`, {
+    method: "GET",
+    cache: "force-cache",
+  })
   const user = await currentUser()
   if (user?.emailAddresses[0].emailAddress != "satovi.montre@gmail.com")
     throw new Error("Admin permissions needed to access this page")
@@ -27,7 +29,7 @@ const Orders = async () => {
           <OrdersTable orders={allOrders} />
         ) : (
           <div className="flex w-2/3 justify-center items-center flex-col gap-5">
-            <h2 className="text-2xl  text-center">Nemate trenutno ni jedan proizvod u korpi</h2>
+            <h2 className="text-2xl  text-center">Nemate trenutno ni jedna narudžbina</h2>
             <Image src="/other/no_order.png" alt="No Orders" width={200} height={200} />
           </div>
         )}

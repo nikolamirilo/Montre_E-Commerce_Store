@@ -3,7 +3,7 @@ import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import { SHIPPING_COST } from "@/constants"
-import { revalidateData } from "@/helpers/server"
+import { revalidateProductsData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -38,7 +38,7 @@ const MultipleOrder = () => {
     }
     const isOrdered = await handleOrderProducts(uid, customerInfo, true)
     if (isOrdered == true) {
-      revalidateData()
+      revalidateProductsData()
       setProgress(100)
       router.push("/thank-you")
     } else {
@@ -56,17 +56,17 @@ const MultipleOrder = () => {
     }
     getUserData()
   }, [])
-  // var initialCustomerInfoData: any = {}
+  var initialCustomerInfoData: any = {}
 
-  // if (user?.orders.length > 0) {
-  //   const lastItemIndex: number = user?.orders?.length - 1
-  //   initialCustomerInfoData = user?.orders[lastItemIndex]?.customerInfo
-  // }
   if (user != null) {
+    if (user.orders.length > 0) {
+      const lastItemIndex: number = user.orders.length - 1
+      initialCustomerInfoData = user.orders[lastItemIndex]?.customerInfo
+    }
     return (
       <OrderProductForm
         type="multiple-items"
-        // initialCustomerData={initialCustomerInfoData}
+        initialCustomerData={initialCustomerInfoData}
         cartItems={user?.cart}
         fullNameInput={fullNameInput}
         emailInput={emailInput}

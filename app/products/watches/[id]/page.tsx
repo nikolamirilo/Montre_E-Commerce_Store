@@ -51,18 +51,18 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id
   const product: Product = await getSingleProduct(id)
-  const jsonLD = getProductJSONSchema(
-    product?.title,
-    product?.brand,
-    product?.category,
-    product?.discountedPrice,
-    product?.description,
-    product?.images[0],
-    product?.productCode
-  )
-  const user = await currentUser()
-  const uid = user?.id
   if (product) {
+    const jsonLD = getProductJSONSchema(
+      product.title,
+      product.brand,
+      product.category,
+      product.discountedPrice,
+      product.description,
+      product.images[0],
+      product.productCode
+    )
+    const user = await currentUser()
+    const uid = user?.id
     return (
       <div className="md:flex items-start mt-[10vh] justify-center 2xl:px-20 md:px-6 px-4 ">
         <script
