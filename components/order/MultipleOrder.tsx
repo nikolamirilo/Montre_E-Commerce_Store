@@ -59,7 +59,7 @@ const MultipleOrder = () => {
   var initialCustomerInfoData: any = {}
 
   if (user != null) {
-    if (user.orders.length > 0) {
+    if (user.orders) {
       const lastItemIndex: number = user.orders.length - 1
       initialCustomerInfoData = user.orders[lastItemIndex]?.customerInfo
     }
