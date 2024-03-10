@@ -9,6 +9,7 @@ export default authMiddleware({
     "/products/watches",
     "/products/watches/offers/super-deals",
     "/products/watches/categories/men",
+    "/products/watches/:id/edit",
     "/products/watches/categories/women",
     "/products/watches/:id",
     "/api/webhooks(.*)",

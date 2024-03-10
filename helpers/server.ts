@@ -2,13 +2,13 @@
 import { getAllProducts } from "@/actions/server/products"
 import { revalidatePath } from "next/cache"
 const fs = require("fs")
-const url = process.env.WEB_APP_URL
 
 export const revalidateData = () => {
-  revalidatePath("/")
-  revalidatePath("/products/watches/categories/men")
-  revalidatePath("/products/watches/categories/women")
-  revalidatePath("/products/watches/offers/super-deals")
+  revalidatePath("/", "page")
+  revalidatePath("/products/watches", "page")
+  revalidatePath("/products/watches/categories/men", "page")
+  revalidatePath("/products/watches/categories/women", "page")
+  revalidatePath("/products/watches/offers/super-deals", "page")
 }
 export async function fetchProductsDataAndUpdateFile() {
   try {
