@@ -1,7 +1,8 @@
-import { getAllProducts, getSingleProduct } from "@/actions/server/products"
+import { getAllProducts } from "@/actions/server/products"
 import AddToCartButton from "@/components/helpers/AddToCartButton"
 import Slider from "@/components/Slider"
-import { KEYWORDS } from "@/constants"
+import { APP_URL, KEYWORDS } from "@/constants"
+import { fetchData } from "@/helpers/client"
 import { getProductJSONSchema } from "@/schemas"
 import { Product } from "@/typescript/types"
 import { currentUser } from "@clerk/nextjs"
@@ -17,7 +18,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const id = params.id
-  const product: Product = await getSingleProduct(id)
+  const product: Product = await fetchData(`${APP_URL}/api/products/single-product`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ productCode: id }),
+  })
   const imageUrl: string = product?.images[0]
   return {
     title: product?.title,
@@ -50,7 +55,11 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const id = params.id
-  const product: Product = await getSingleProduct(id)
+  const product: Product = await fetchData(`${APP_URL}/api/products/single-product`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ productCode: id }),
+  })
   if (product) {
     const jsonLD = getProductJSONSchema(
       product.title,

@@ -1,5 +1,5 @@
 "use server"
-import { SHIPPING_COST } from "@/constants"
+import { APP_URL, SHIPPING_COST } from "@/constants"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { CartItem, Product } from "@/typescript/types"
 import moment from "moment"
@@ -157,14 +157,13 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
         },
       }
     )
-    const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/send-email", {
+    const emailRes = await fetch(`${APP_URL}/api/send-email`, {
       method: "POST",
       body: JSON.stringify(order),
     })
     if (!emailRes.ok) {
       console.log(`Error: ${emailRes.statusText}`)
     }
-    console.log("Orders created successfully.")
     revalidatePath("/admin/orders", "page")
     return true
   } catch (error) {
@@ -188,7 +187,7 @@ export async function orderSingleItem(productId: string | undefined, customerInf
         date: currentDate.format("DD.MM.YYYY."),
       }
       await db.collection("anonymus-orders").insertOne(order)
-      const emailRes = await fetch(process.env.NEXT_PUBLIC_WEB_APP_URL + "/api/send-email", {
+      const emailRes = await fetch(`${APP_URL}/api/send-email`, {
         method: "POST",
 
         body: JSON.stringify(order),

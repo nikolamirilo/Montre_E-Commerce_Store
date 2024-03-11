@@ -1,3 +1,4 @@
+import { APP_URL } from "@/constants"
 import { fetchData } from "@/helpers/client"
 import { ProductsProps } from "@/typescript/interfaces"
 import { Product } from "@/typescript/types"
@@ -9,8 +10,8 @@ import ProductCard from "./cards/ProductCard"
 export const revalidate = 86400
 export const dynamic = "force-static"
 
-const Products: React.FC<ProductsProps> = async ({ query, variant, title, subtitle, type }) => {
-  const products = await fetchData(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/api/products`, {
+const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type }) => {
+  const products = await fetchData(`${APP_URL}/api/products`, {
     method: "POST",
     cache: "force-cache",
     body: JSON.stringify(query),

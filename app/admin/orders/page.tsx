@@ -1,4 +1,5 @@
 import OrdersTable from "@/components/tables/OrdersTable"
+import { APP_URL } from "@/constants"
 import { fetchData } from "@/helpers/client"
 import { currentUser } from "@clerk/nextjs"
 import { Metadata } from "next"
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   },
 }
 const Orders = async () => {
-  const allOrders = await fetchData(`${process.env.NEXT_PUBLIC_WEB_APP_URL}/api/orders`, {
+  const allOrders = await fetchData(`${APP_URL}/api/orders`, {
     method: "GET",
     cache: "force-cache",
   })

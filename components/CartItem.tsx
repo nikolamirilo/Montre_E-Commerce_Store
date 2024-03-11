@@ -1,6 +1,6 @@
 "use client"
 import { deleteCartItem, updateItemCount } from "@/actions/server/cart"
-import { revalidateProductsData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { CartItemProps } from "@/typescript/interfaces"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -28,11 +28,11 @@ const CartItem: React.FC<CartItemProps> = ({
   const router = useRouter()
   const handleDeleteCartItem = async () => {
     await deleteCartItem(uid, _id)
-    revalidateProductsData()
+    revalidateData()
   }
   const setCountInfo = async (q: number) => {
     await updateItemCount(uid, _id, q)
-    revalidateProductsData()
+    revalidateData()
   }
   useEffect(() => {
     setCount(quantity)

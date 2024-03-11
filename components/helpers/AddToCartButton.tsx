@@ -1,6 +1,6 @@
 "use client"
 import { addItemToCart } from "@/actions/server/cart"
-import { revalidateProductsData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { AddToCartButtonProps } from "@/typescript/interfaces"
 import Link from "next/link"
 import React, { useState } from "react"
@@ -20,7 +20,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ uid, id, type }) => {
     } else {
       alert("Došlo je do greške")
     }
-    revalidateProductsData()
+    revalidateData()
   }
   if (type == "add-to-cart") {
     return (

@@ -1,5 +1,6 @@
 import { Option, PageDescription } from "@/typescript/types"
 
+export const APP_URL = process.env.NEXT_PUBLIC_WEB_APP_URL
 export const SHIPPING_COST: number = 400
 export const KEYWORDS: string[] = [
   "Satovi",

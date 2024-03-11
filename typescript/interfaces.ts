@@ -102,7 +102,6 @@ export interface AddToCartButtonProps {
 
 export interface ProductsProps {
   query: any
-  variant?: string
   title: string
   subtitle?: string
   type: string

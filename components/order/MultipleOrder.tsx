@@ -3,7 +3,7 @@ import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
 import { getSingleUser } from "@/actions/server/users"
 import { SHIPPING_COST } from "@/constants"
-import { revalidateProductsData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -38,7 +38,7 @@ const MultipleOrder = () => {
     }
     const isOrdered = await handleOrderProducts(uid, customerInfo, true)
     if (isOrdered == true) {
-      revalidateProductsData()
+      revalidateData()
       setProgress(100)
       router.push("/thank-you")
     } else {

@@ -1,7 +1,7 @@
 "use client"
 import { addItemToCart } from "@/actions/server/cart"
 import { deleteSingleProduct } from "@/actions/server/products"
-import { revalidateProductsData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { ProductCardProps } from "@/typescript/interfaces"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
@@ -43,12 +43,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
       setProgress(0)
       alert("Došlo je do greške")
     }
-    revalidateProductsData()
+    revalidateData()
   }
   async function handleDeleteItem() {
     setIsOpen(false)
     await deleteSingleProduct(_id)
-    revalidateProductsData()
+    revalidateData()
   }
   return (
     <>

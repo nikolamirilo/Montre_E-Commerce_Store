@@ -3,7 +3,7 @@ import { handleOrderProducts } from "@/actions/client/cart"
 import { getSingleProduct } from "@/actions/server/products"
 import OrderProductForm from "@/components/forms/OrderProductForm"
 import { SHIPPING_COST } from "@/constants"
-import { revalidateProductsData } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
@@ -34,7 +34,7 @@ const SingleOrder = ({ id }: { id: string }) => {
     }
     const isOrdered = await handleOrderProducts(productCode, customerInfo, false)
     if (isOrdered == true) {
-      revalidateProductsData()
+      revalidateData()
       setProgress(100)
       router.push("/thank-you")
     }

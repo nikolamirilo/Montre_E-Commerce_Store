@@ -41,7 +41,6 @@ const Offer = ({ searchParams }: { searchParams: SearchQuery }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(superDealsProductsPageSchema) }}
       />
       <Products
-        // variant="super-deals"
         type="discount"
         query={{ ...query, isOnDiscount: true }}
         title="Ponuda satova na akciji"

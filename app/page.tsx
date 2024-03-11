@@ -1,7 +1,7 @@
 import Gallery from "@/components/Gallery"
 import Recommendations from "@/components/Recommendations"
 import Hero from "@/components/hero/Hero"
-import { KEYWORDS, homePage } from "@/constants"
+import { APP_URL, KEYWORDS, homePage } from "@/constants"
 import { fetchData } from "@/helpers/client"
 import { homePageSchema } from "@/schemas"
 import { Metadata } from "next"
@@ -37,14 +37,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const filter = { isRecommended: true }
-  const recommendedProducts = await fetchData(
-    `${process.env.NEXT_PUBLIC_WEB_APP_URL}/api/products`,
-    {
-      method: "POST",
-      cache: "no-cache",
-      body: JSON.stringify(filter),
-    }
-  )
+  const recommendedProducts = await fetchData(`${APP_URL}/api/products`, {
+    method: "POST",
+    cache: "no-cache",
+    body: JSON.stringify(filter),
+  })
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script
