@@ -1,26 +1,9 @@
-import Navigation from "@/components/hero/Navigation"
+import { openSans } from "@/fonts"
 import Image from "next/image"
 import React, { Suspense } from "react"
+import Navigation from "./Navigation"
 
 const Hero: React.FC = () => {
-  const words = [
-    {
-      text: "Unikatna",
-    },
-    {
-      text: "kolekcija",
-    },
-    {
-      text: "muških i",
-    },
-    {
-      text: "ženskih",
-    },
-    {
-      text: "satova",
-      className: "text-rose-500",
-    },
-  ]
   return (
     <section className="relative -top-[4vh] lg:-top-[10vh] lg:min-h-screen h-fit w-full" id="hero">
       <Image
@@ -33,7 +16,7 @@ const Hero: React.FC = () => {
       />
       <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center pt-[10vh] sm:pt-[12vh] md:items-start justify-center flex-col lg:mt-[1%] xl:mt-[2%]">
         <h1
-          className={`bg-gradient-to-r bg-clip-text  text-transparent 
+          className={`${openSans.className} bg-gradient-to-r bg-clip-text  text-transparent 
           from-amber-500 via-amber-500 to-orange-500
           animate-text w-full lg:w-8/12 xl:w-1/2 font-black leading-10 text-amber-500 text-[2rem] md:text-4xl lg:text-left xl:text-5xl text-center`}>
           Unikatna kolekcija muških i ženskih satova
@@ -52,10 +35,10 @@ const Hero: React.FC = () => {
               "Elegancija koja se meri sekundama"
             </span>
             <Suspense fallback="">
-              <div className="pt-5 flex flex-row justify-center lg:justify-start lg:w-2/3 w-full align-middle flex-wrap gap-8 lg:gap-4">
+              <div className="pt-5 flex flex-row justify-center lg:justify-start lg:w-2/3 w-full items-center flex-wrap gap-8 lg:gap-4">
                 <Image
                   src="/brands/curren_logo.png"
-                  className="h-8 w-auto"
+                  className="h-6 w-auto"
                   width={300}
                   height={150}
                   alt="Curren"
@@ -63,10 +46,24 @@ const Hero: React.FC = () => {
                 <Image
                   src="/brands/hannah_martin_logo.png"
                   alt="Hannah Martin"
-                  className="h-8 w-auto"
+                  className="h-6 w-auto"
                   width={300}
                   height={150}
                 />
+                <Image
+                  src="/brands/poedgar_logo.png"
+                  alt="Poedgar"
+                  className="h-20 w-auto"
+                  width={200}
+                  height={400}
+                />
+                {/* <Image
+                  src="/brands/naviforce_logo.png"
+                  alt="Naviforce"
+                  className="h-12 w-auto"
+                  width={200}
+                  height={400}
+                /> */}
               </div>
             </Suspense>
           </div>

@@ -62,7 +62,6 @@ export const getSingleProduct = async (productCode: string) => {
   try {
     const db = await storeDatabaseConnection()
     const singleProduct: any = await db.collection("products").findOne({ productCode: productCode })
-    console.log("Fetch single product data")
     return singleProduct
   } catch (error) {
     console.log((error as Error).message)

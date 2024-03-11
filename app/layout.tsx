@@ -2,7 +2,7 @@ import Footer from "@/components/Footer"
 import Menu from "@/components/Menu"
 import { NavigationEvents } from "@/components/helpers/NavigationEvents"
 import { KEYWORDS, homePage } from "@/constants"
-import { openSans } from "@/fonts"
+import { mulish } from "@/fonts"
 import { ClerkProvider } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import { GoogleTagManager } from "@next/third-parties/google"
@@ -53,7 +53,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
       <html lang="sr">
-        <body className={`${openSans.className} bg-stone-100 relative`}>
+        <body className={`${mulish.className} bg-stone-100 relative dark:bg-stone-100`}>
           <SpeedInsights />
           <GoogleTagManager gtmId="GTM-K9DMSZJG" />
           <Analytics />
