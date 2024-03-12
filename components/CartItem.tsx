@@ -39,9 +39,9 @@ const CartItem: React.FC<CartItemProps> = ({
   }, [])
   const calculatedPrice = isOnDiscount ? discountedPrice : price
   return (
-    <div className="justify-between mb-6 rounded-lg bg-white px-2 py-2 shadow-md sm:flex w-full mx-auto sm:justify-start relative">
+    <div className="justify-between mb-6 rounded-lg bg-white shadow-md sm:flex w-full mx-auto sm:justify-start relative p-5">
       {type != "user-profile" ? (
-        <button onClick={handleDeleteCartItem} className="absolute top-0 right-0 z-10">
+        <button onClick={handleDeleteCartItem} className="absolute top-1 right-1 z-10">
           <IoMdClose className="w-7 h-7 fill-white bg-red-500 rounded-full" />
         </button>
       ) : null}
@@ -60,10 +60,10 @@ const CartItem: React.FC<CartItemProps> = ({
       <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
         <div className="mt-5 sm:mt-0">
           <h2 className="text-lg font-bold text-gray-900 text-left">{title}</h2>
-          <p className="mt-1 text-base text-gray-700 text-left">
+          <p className="mt-1 text-lg text-gray-700 text-left">
             {category === "men" ? "Muški" : "Ženski"}
           </p>
-          <p className="mt-1 text-base text-gray-700 text-left">{productClass}</p>
+          <p className="mt-1 text-lg text-gray-700 text-left">{productClass}</p>
         </div>
         <div className="mt-4 flex min-w-[40%] flex-row sm:flex-col sm:mt-0 h-full justify-between md:justify-end md:gap-2 items-center">
           {type != "user-profile" ? (

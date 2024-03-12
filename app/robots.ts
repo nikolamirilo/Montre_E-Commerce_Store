@@ -33,6 +33,9 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
           "/order",
           "/thank-you",
           "/api/",
+          "/blogs/", // remove when done
+          "/faq", // remove when done
+          "/test",
           ...editProductsUrls,
         ],
       },

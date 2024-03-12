@@ -19,6 +19,7 @@ export default authMiddleware({
     "/thank-you",
     "/blogs",
     "/blogs/:id",
+    "/test",
     "/faq",
   ],
   afterAuth(auth, req, evt) {

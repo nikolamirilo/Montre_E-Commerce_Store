@@ -1,0 +1,25 @@
+{
+  "blogs": [
+    {
+      "blogCode": "rivers-are-serene",
+      "title": "Rivers are serene",
+      "author": {
+        "fullName": "Nikola Mirilo",
+        "image": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yY2JScTRaNEY0TXhlM2N6MmlPdWJjenZRbTgifQ?width=80"
+      },
+      "date": "12.03.2024",
+      "description": "When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu",
+      "thumbnail": "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "content": [
+        {
+          "text": "LoreNon Lorem aute nisi qui exercitation consectetur dolor incididunt ut officia ea culpa ipsum consequat. Tempor nisi velit do culpa commodo laboris. Irure reprehenderit magna anim ex eiusmod commodo duis nisi deserunt dolore. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu. Nisi eiusmod ex occaecat ad eu. Ullamco enim enim proident incididunt dolor laborum ad duis voluptate elit deserunt velit. Dolore id magna consectetur nisi do excepteur eiusmod excepteur cillum laborum deserunt. Consectetur ad incididunt mollit ut irure deserunt adipisicing do culpa excepteur anim velit. Mollit non labore ut elit elit mollit magna adipisicing fugiat enim adipisicing quis aliquip. ",
+          "image": "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+          "text": "LoreNon Lorem aute nisi qui exercitation consectetur dolor incididunt ut officia ea culpa ipsum consequat. Tempor nisi velit do culpa commodo laboris. Irure reprehenderit magna anim ex eiusmod commodo duis nisi deserunt dolore. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu. Nisi eiusmod ex occaecat ad eu. Ullamco enim enim proident incididunt dolor laborum ad duis voluptate elit deserunt velit. Dolore id magna consectetur nisi do excepteur eiusmod excepteur cillum laborum deserunt. Consectetur ad incididunt mollit ut irure deserunt adipisicing do culpa excepteur anim velit. Mollit non labore ut elit elit mollit magna adipisicing fugiat enim adipisicing quis aliquip.",
+          "image": "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+      ]
+    }
+  ]
+}

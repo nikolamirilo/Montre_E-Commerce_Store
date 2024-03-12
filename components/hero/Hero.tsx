@@ -5,13 +5,15 @@ import Navigation from "./Navigation"
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative -top-[4vh] lg:-top-[10vh] lg:min-h-screen h-fit w-full" id="hero">
+    <section
+      className="relative -top-[4vh] lg:-top-[10vh] lg:min-h-screen h-fit w-full lg:shadow-2xl lg:shadow-black/40 border-black"
+      id="hero">
       <Image
         src="/hero/hero.jpg"
         fill
         alt="Hero"
         id="hero-bg"
-        className="object-center object-cover hidden lg:flex shadow-custom"
+        className="object-center object-cover hidden lg:flex"
         priority={true}
       />
       <div className="relative w-full px-[5%] xl:pl-[5%] m-auto md:px-12 lg:px-6 flex items-center pt-[10vh] sm:pt-[12vh] md:items-start justify-center flex-col lg:mt-[1%] xl:mt-[2%]">
@@ -31,7 +33,7 @@ const Hero: React.FC = () => {
               Započni putovanje kroz vreme uz Montre kolekciju satova:
             </span>
             <Navigation />
-            <span className="block italic text-gray-800 text-base lg:text-lg">
+            <span className="block italic text-gray-800 text-base lg:text-lg mt-5">
               "Elegancija koja se meri sekundama"
             </span>
             <Suspense fallback="">
