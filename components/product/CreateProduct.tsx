@@ -1,6 +1,6 @@
 "use client"
 import { handleProductChange, uploadImagesToCloudinary } from "@/actions/client/products"
-import { generateProductCode } from "@/helpers/client"
+import { generateStringCode } from "@/helpers/client"
 import { Product } from "@/typescript/types"
 import React, { useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
@@ -83,7 +83,7 @@ const CreateProduct: React.FC = () => {
       const discount = parseInt(discountInput.current!.value)
       const discountedPrice = discount > 0 ? Math.round(price * (1 - discount / 100)) : price
       // Generate productCode
-      productCode = generateProductCode(titleInput.current!.value)
+      productCode = generateStringCode(titleInput.current!.value)
       setDisplayTitle(titleInput.current!.value)
       // Prepare upload data
       const uploadData: Product = {

@@ -18,6 +18,7 @@ export default authMiddleware({
     "/order/:id",
     "/thank-you",
     "/blogs",
+    "/blogs/:id",
     "/faq",
   ],
   afterAuth(auth, req, evt) {

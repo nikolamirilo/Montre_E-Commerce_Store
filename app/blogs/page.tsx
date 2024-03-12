@@ -1,12 +1,14 @@
 "use client"
 
-import { LayoutGrid } from "@/components/BlogLayout"
+import { BlogLayoutGrid } from "@/components/BlogLayout"
 import BlogCard from "@/components/cards/BlogCard"
+import Heading from "@/components/helpers/Heading"
 
 export default function Blogs() {
   return (
-    <div className="h-screen py-20 w-full">
-      <LayoutGrid cards={cards} />
+    <div className="h-screen py-20 w-full flex flex-col justify-center items-center gap-5">
+      <Heading value="Svi blogovi" />
+      <BlogLayoutGrid cards={cards} />
     </div>
   )
 }

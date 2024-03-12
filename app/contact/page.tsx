@@ -1,4 +1,5 @@
 import ContactForm from "@/components/forms/ContactForm"
+import Heading from "@/components/helpers/Heading"
 import { KEYWORDS, contactPage } from "@/constants"
 import { contactPageSchema } from "@/schemas"
 import { Metadata } from "next"
@@ -43,10 +44,8 @@ const Contact = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
       />
       <div className="py-8 lg:py-16 mx-auto container w-full flex flex-col items-center justify-center mt-10 lg:mt-0">
-        <h1 className="mb-4 text-3xl tracking-tight font-extrabold text-center text-gray-900">
-          Kontaktirajte nas
-        </h1>
-        <p className="mb-8 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
+        <Heading value=" Kontaktirajte nas" />
+        <p className="mb-8 mt-4 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 lg:w-1/2 px-5">
           Vaša povratna informacija je od suštinskog značaja za nas! Ako imate bilo kakva pitanja,
           komentare ili jednostavno želite podeliti svoje iskustvo, slobodno nas kontaktirajte.
         </p>

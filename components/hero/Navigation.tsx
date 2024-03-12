@@ -38,7 +38,7 @@ const Navigation: React.FC = () => {
           src="/hero/women.jpg"
           alt="product image"
         />
-        <span className="absolute bottom-0 left-0 top-0 right-0 w-full h-full z-10 text-white uppercase flex bg-amber-600/30 lg:hover:bg-amber-600/20 justify-center items-center text-[1.6rem] transition-all ease-out duration-150">
+        <span className="absolute bottom-0 left-0 top-0 right-0 w-full h-full z-10 text-white uppercase flex bg-orange-200/20 lg:hover:bg-orange-300/10 justify-center items-center text-[1.6rem] transition-all ease-out duration-150">
           <p className={`w-full lg:w-1/2 text-center shadow-text ${josefinSans.className}`}>
             Ženski satovi
           </p>

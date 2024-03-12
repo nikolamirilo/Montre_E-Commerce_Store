@@ -11,7 +11,7 @@ type Card = {
   thumbnail: string
 }
 
-export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
+export const BlogLayoutGrid = ({ cards }: { cards: Card[] }) => {
   const [selected, setSelected] = useState<Card | null>(null)
   const [lastSelected, setLastSelected] = useState<Card | null>(null)
 
@@ -35,9 +35,9 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
               card.className,
               "relative overflow-hidden cursor-pointer",
               selected?.id === card.id
-                ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+                ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-20 flex justify-center items-center flex-wrap flex-col"
                 : lastSelected?.id === card.id
-                ? "z-40 bg-white rounded-xl h-full w-full"
+                ? "z-10 bg-white rounded-xl h-full w-full"
                 : "bg-white rounded-xl h-full w-full"
             )}
             layout>
@@ -77,7 +77,7 @@ const BlurImage = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
-    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[30]">
       <motion.div
         initial={{
           opacity: 0,

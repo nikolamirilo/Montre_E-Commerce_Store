@@ -7,7 +7,7 @@ export function scrollToTop() {
   })
 }
 
-export function generateProductCode(name: string) {
+export function generateStringCode(name: string) {
   const hyphenatedName = name.toLowerCase().replace(/\s+/g, "-")
   return hyphenatedName
 }
