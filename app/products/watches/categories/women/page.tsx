@@ -32,9 +32,7 @@ export const metadata: Metadata = {
   },
 }
 const Category = ({ searchParams }: { searchParams: SearchQuery }) => {
-  const searchParamsData = searchParams
-  const category = "women"
-  const query = { ...searchParamsData, category }
+  // const queryParams = searchParams
   return (
     <div className="min-h-screen 2xl:min-h-[75vh] w-full" id="categories">
       <script
@@ -42,10 +40,9 @@ const Category = ({ searchParams }: { searchParams: SearchQuery }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(womenProductsPageSchema) }}
       />
       <Products
-        query={query}
+        query={{ category: "women" }}
         title="Ponuda ženskih satova Montre kolekcije"
         subtitle="Istražite pažljivo biranu kolekciju Montre ženskih satova i pronađite sat koji u potpunosti odgovara vašoj meri i ukusu! Neka on postane izraz vašeg stila i pratilac za svaki dan ili posebne trenutke."
-        type={category}
       />
     </div>
   )

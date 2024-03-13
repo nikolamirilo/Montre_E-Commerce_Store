@@ -10,7 +10,7 @@ import ProductCard from "./cards/ProductCard"
 export const revalidate = 86400
 export const dynamic = "force-static"
 
-const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type }) => {
+const Products: React.FC<ProductsProps> = async ({ query, title, subtitle }) => {
   const products = await fetchData(`${APP_URL}/api/products`, {
     method: "POST",
     cache: "force-cache",

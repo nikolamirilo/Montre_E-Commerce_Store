@@ -104,7 +104,6 @@ export interface ProductsProps {
   query: any
   title: string
   subtitle?: string
-  type: string
 }
 
 export interface SearchProps {
