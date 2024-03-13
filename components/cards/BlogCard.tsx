@@ -1,8 +1,6 @@
-import { generateStringCode } from "@/helpers/client"
 import Link from "next/link"
 
-const BlogCard = ({ title, text }: { title: string; text: string }) => {
-  const blogCode = generateStringCode(title)
+const BlogCard = ({ title, text, blogCode }: { title: string; text: string; blogCode: string }) => {
   return (
     <div>
       <p className="font-bold text-4xl text-white">{title}</p>

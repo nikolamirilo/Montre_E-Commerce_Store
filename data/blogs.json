@@ -1,22 +1,35 @@
 {
   "blogs": [
     {
-      "blogCode": "rivers-are-serene",
-      "title": "Rivers are serene",
+      "blogCode": "hronograf",
+      "title": "Očaravajući svet hronografa",
+      "subtitle": "Savršen spoj stila i funkcionalnosti",
       "author": {
         "fullName": "Nikola Mirilo",
         "image": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18yY2JScTRaNEY0TXhlM2N6MmlPdWJjenZRbTgifQ?width=80"
       },
-      "date": "12.03.2024",
-      "description": "When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu",
+      "date": "12.03.2024.",
+      "description": "Da li ste ikada zaronili u čarobni svet hronografa? Ovi dragoceni komadi ne samo da mere vreme, već su i pravo remek delo inženjerske veštine i estetike. U svetu satova, hronografi predstavljaju vrhunac elegancije i funkcionalnosti. Pridružite nam se dok istražujemo zašto su hronografi toliko fascinantni, kako su evoluirali tokom vremena i zašto su postali neizostavni deo kolekcije svakog pravog ljubitelja satova.",
       "thumbnail": "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "content": [
         {
-          "text": "LoreNon Lorem aute nisi qui exercitation consectetur dolor incididunt ut officia ea culpa ipsum consequat. Tempor nisi velit do culpa commodo laboris. Irure reprehenderit magna anim ex eiusmod commodo duis nisi deserunt dolore. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu. Nisi eiusmod ex occaecat ad eu. Ullamco enim enim proident incididunt dolor laborum ad duis voluptate elit deserunt velit. Dolore id magna consectetur nisi do excepteur eiusmod excepteur cillum laborum deserunt. Consectetur ad incididunt mollit ut irure deserunt adipisicing do culpa excepteur anim velit. Mollit non labore ut elit elit mollit magna adipisicing fugiat enim adipisicing quis aliquip. ",
+          "subheading": "Šta je hronograf?",
+          "text": "Hronograf je tip sata koji ne samo da pokazuje trenutno vreme već ima i dodatne funkcije za merenje perioda vremena. Ovaj izuzetno koristan dodatak može meriti vreme u različitim intervalima, od sekundi do časova, i koristi se u različitim kontekstima, od sportskih događaja do vojnih operacija. Istorija hronografa seže unazad više od jednog veka, a tokom tog vremena doživela je značajne inovacije i promene. Prvi komercijalno uspešan hronograf proizveden je krajem 19. veka, dok su se tokom 20. veka pojavljivali sve sofisticiraniji modeli sa dodatnim funkcijama poput hronometarskih i kalendarskih prikaza. Danas, moderni hronografi predstavljaju spoj tradicionalne ručne izrade i naprednih tehnologija, što ih čini savršenim spojem prošlosti i budućnosti."
+        },
+
+        {
+          "subheading": "Zašto odabrati hronograf?",
+          "text": "Pored osnovne funkcije merenja vremena, hronografi nude niz dodatnih benefita koji ih čine nezamenjivim dodatkom vašoj kolekciji satova. Njihov elegantan dizajn često privlači pažnju, dok njihova funkcionalnost čini da se ističu u svakoj situaciji. Bez obzira da li tražite sat za svakodnevnu upotrebu ili želite ekskluzivan komad za posebne prilike, hronograf je uvek pravi izbor.",
+          "image": "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+          "subheading": "Saveti za odabir savršenog hronografa",
+          "text": "Prilikom odabira hronografa, važno je uzeti u obzir nekoliko ključnih faktora. Prvo, razmislite o svrsi za koju vam je potreban sat - da li ga planirate koristiti za sportske aktivnosti, formalne događaje ili svakodnevno nošenje? Zatim, obratite pažnju na materijale i kvalitet izrade, jer će oni odrediti trajnost i estetiku sata. Na kraju, budžet je takođe važan faktor, ali zapamtite da investicija u kvalitetan hronograf može biti dugoročna.",
           "image": "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
-          "text": "LoreNon Lorem aute nisi qui exercitation consectetur dolor incididunt ut officia ea culpa ipsum consequat. Tempor nisi velit do culpa commodo laboris. Irure reprehenderit magna anim ex eiusmod commodo duis nisi deserunt dolore. Officia deserunt occaecat ut ipsum ipsum reprehenderit ea proident incididunt velit excepteur in exercitation. Pariatur officia officia dolore quis. Eiusmod pariatur Lorem reprehenderit voluptate exercitation exercitation est.Ea aliquip do in nostrud mollit adipisicing dolor pariatur adipisicing amet voluptate ipsum sint laborum. Sunt enim consequat culpa minim ad eiusmod veniam minim ut qui mollit eu. Nisi eiusmod ex occaecat ad eu. Ullamco enim enim proident incididunt dolor laborum ad duis voluptate elit deserunt velit. Dolore id magna consectetur nisi do excepteur eiusmod excepteur cillum laborum deserunt. Consectetur ad incididunt mollit ut irure deserunt adipisicing do culpa excepteur anim velit. Mollit non labore ut elit elit mollit magna adipisicing fugiat enim adipisicing quis aliquip.",
+          "subheading": "Zaključak",
+          "text": "Hronografi predstavljaju vrhunac inženjerske veštine i estetike u svetu satova. Njihova funkcionalnost, elegancija i istorija čine ih neizostavnim delom kolekcije svakog pravog ljubitelja satova. Bez obzira da li ste sportski entuzijasta, poslovni profesionalac ili ljubitelj luksuza, hronograf je komad koji će vas oduševiti svojom lepotom i korisnošću. Zaronite u čarobni svet hronografa i otkrijte svoj savršen komad danas.",
           "image": "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
       ]

@@ -3,6 +3,7 @@
 import { BlogLayoutGrid } from "@/components/BlogLayout"
 import BlogCard from "@/components/cards/BlogCard"
 import Heading from "@/components/helpers/Heading"
+import data from "@/data/blogs.json"
 
 export default function Blogs() {
   return (
@@ -18,18 +19,19 @@ const cards = [
     id: 1,
     content: (
       <BlogCard
-        title="Rivers are serene"
-        text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
+        blogCode={data.blogs[0].blogCode}
+        title={data.blogs[0].title}
+        text={data.blogs[0].description}
       />
     ),
     className: "md:col-span-2",
-    thumbnail:
-      "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    thumbnail: data.blogs[0].thumbnail,
   },
   {
     id: 2,
     content: (
       <BlogCard
+        blogCode="something"
         title="Rivers are serene"
         text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
       />
@@ -42,6 +44,7 @@ const cards = [
     id: 3,
     content: (
       <BlogCard
+        blogCode="something"
         title="Rivers are serene"
         text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
       />
@@ -54,6 +57,7 @@ const cards = [
     id: 4,
     content: (
       <BlogCard
+        blogCode="something"
         title="Rivers are serene"
         text="When youre searching for a house, numerous factors could affect your decision, from deciding on the location to deciding on a price that fits your budget and anything in-between. Each of these factors can effectively sway your decision on your dream home.Perhaps you are also considering buying a house near a river and wondering if that is a good idea. While the easiest answer to help homeowners is to give them a hard yes or no, but the actual reply to this question would be: that depends."
       />
