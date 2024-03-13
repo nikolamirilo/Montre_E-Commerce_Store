@@ -7,7 +7,7 @@ import data from "@/data/blogs.json"
 
 export default function Blogs() {
   return (
-    <div className="h-screen py-20 w-full flex flex-col justify-center items-center gap-5">
+    <div className="h-screen py-10 w-full flex flex-col justify-center items-center gap-5">
       <Heading value="Svi blogovi" />
       <BlogLayoutGrid cards={cards} />
     </div>
