@@ -13,7 +13,7 @@ const Navigation: React.FC = () => {
           router.push("/products/watches/categories/men")
         }}
         id="men-offer"
-        className="romboid bg-white lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] p-4 border-none h-36 lg:h-32 relative md:left-[6%] w-full md:w-[45%]  font-bold py-2 px-4 inline-flex items-center gap-2 shadow-xl shadow-black/20 transition-all ease-out duration-150">
+        className="romboid bg-white lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] p-4 border-none h-36 lg:h-32 relative md:left-[6%] w-full md:w-[45%]  font-bold py-2 px-4 inline-flex items-center gap-2 shadow-sm lg:shadow-xl shadow-black/20 transition-all ease-out duration-150">
         <Image
           className="object-cover object-center transform -scale-x-100"
           fill
@@ -31,7 +31,7 @@ const Navigation: React.FC = () => {
           router.push("/products/watches/categories/women")
         }}
         id="women-offer"
-        className="romboid-reverse lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] bg-white p-4 border-none h-36 lg:h-32 relative md:right-[6%] w-full md:w-[45%] font-bold py-2 px-4 inline-flex items-center gap-2  shadow-xl shadow-amber-600/20 transition-all ease-out duration-150">
+        className="romboid-reverse lg:hover:transform lg:hover:transition-all lg:hover:ease-in-out lg:hover:duration-200 lg:hover:scale-[1.03] bg-white p-4 border-none h-36 lg:h-32 relative md:right-[6%] w-full md:w-[45%] font-bold py-2 px-4 inline-flex items-center gap-2  shadow-sm lg:shadow-xl shadow-amber-600/20 transition-all ease-out duration-150">
         <Image
           className="object-cover object-center"
           fill

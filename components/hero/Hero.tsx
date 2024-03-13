@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
               Započni putovanje kroz vreme uz Montre kolekciju satova:
             </span>
             <Navigation />
-            <span className="block italic text-gray-800 text-base lg:text-lg mt-5">
+            <span className="block italic text-gray-800 text-lg lg:text-lg mt-8">
               "Elegancija koja se meri sekundama"
             </span>
             <Suspense fallback="">
