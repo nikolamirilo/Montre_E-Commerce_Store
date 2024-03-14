@@ -17,7 +17,7 @@ const Navigation: React.FC = () => {
         <Image
           className="object-cover object-center transform -scale-x-100"
           fill
-          src="/hero/men.jpg"
+          src="/hero/men.webp"
           alt="product image"
         />
         <span className="absolute bottom-0 left-0 top-0 right-0 w-full h-full bg-black/40 z-10 lg:hover:bg-black/20 text-amber-500 uppercase flex justify-center items-center text-[1.6rem] transition-all ease-out duration-150">
@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
         <Image
           className="object-cover object-center"
           fill
-          src="/hero/women.jpg"
+          src="/hero/women.webp"
           alt="product image"
         />
         <span className="absolute bottom-0 left-0 top-0 right-0 w-full h-full z-10 text-white uppercase flex bg-orange-200/20 lg:hover:bg-orange-300/10 justify-center items-center text-[1.6rem] transition-all ease-out duration-150">
