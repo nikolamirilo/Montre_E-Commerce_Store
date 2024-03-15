@@ -1,11 +1,11 @@
 "use server"
 import { APP_URL, SHIPPING_COST } from "@/constants"
 import { fetchData } from "@/helpers/client"
+import { revalidateTagCustom } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { CartItem, Product } from "@/typescript/types"
 import moment from "moment"
 import { ObjectId } from "mongodb"
-import { revalidatePath } from "next/cache"
 import { getSingleProduct } from "./products"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
@@ -169,7 +169,7 @@ export async function orderCartItems(uid: string | undefined, customerInfo: obje
     if (!emailRes.ok) {
       console.log(`Error: ${emailRes.statusText}`)
     }
-    revalidatePath("/admin/orders", "page")
+    revalidateTagCustom("orders")
     return true
   } catch (error) {
     console.log((error as Error).message)

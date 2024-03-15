@@ -67,8 +67,6 @@ export async function POST(req: Request) {
       await deleteSingleUser(uid!)
     case "user.updated":
       await updateSingleUser({ uid, fullName, email })
-    case "session.created":
-    // await getSingleUser(uid)
   }
   return NextResponse.json({ message: "Successfully Done" }, { status: 200 })
 }
