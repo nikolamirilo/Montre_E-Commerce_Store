@@ -1,12 +1,12 @@
 "use server"
 import { APP_URL, SHIPPING_COST } from "@/constants"
+import { fetchData } from "@/helpers/client"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { CartItem, Product } from "@/typescript/types"
 import moment from "moment"
 import { ObjectId } from "mongodb"
 import { revalidatePath } from "next/cache"
 import { getSingleProduct } from "./products"
-import { getSingleUser } from "./users"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
   try {
@@ -44,7 +44,12 @@ export async function getTotalData(uid: string | undefined) {
   try {
     var total: number = 0
     if (uid) {
-      const mongoUser = await getSingleUser(uid)
+      const mongoUser = await fetchData(`${APP_URL}/api/users/single-user`, {
+        method: "POST",
+        cache: "force-cache",
+        tags: ["users"],
+        body: JSON.stringify({ uid: uid }),
+      })
       if (mongoUser.cart.length > 0) {
         for (const item of mongoUser.cart) {
           const product = await getSingleProduct(item.productCode)

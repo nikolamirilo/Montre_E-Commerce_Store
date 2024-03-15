@@ -23,11 +23,12 @@ export function parseDate(dateString: string) {
 
 export async function fetchData(url: string, options: FetchOptions) {
   try {
-    const { method, cache, body } = options
+    const { method, cache, body, tags } = options
     const res = await fetch(url, {
       method,
       cache: cache || "force-cache",
       body,
+      next: { tags },
     })
     if (!res.ok) {
       throw new Error(`Failed to fetch data from ${url}. Status: ${res.status}`)

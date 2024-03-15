@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     method: "POST",
     cache: "force-cache",
     body: JSON.stringify({ productCode: id }),
+    tags: ["products"],
   })
   const imageUrl: string = product?.images[0]
   return {
@@ -59,6 +60,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
     method: "POST",
     cache: "force-cache",
     body: JSON.stringify({ productCode: id }),
+    tags: ["products"],
   })
   if (product) {
     const jsonLD = getProductJSONSchema(

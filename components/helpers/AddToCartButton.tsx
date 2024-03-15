@@ -1,6 +1,6 @@
 "use client"
 import { addItemToCart } from "@/actions/server/cart"
-import { revalidateData } from "@/helpers/server"
+import { revalidateTagCustom } from "@/helpers/server"
 import { AddToCartButtonProps } from "@/typescript/interfaces"
 import Link from "next/link"
 import React, { useState } from "react"
@@ -15,12 +15,12 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ uid, id, type }) => {
     const res = await addItemToCart(uid, id)
     if (res == "Success") {
       setProgress(100)
+      revalidateTagCustom("users")
     } else if (res == "Duplicate") {
       setProgress(75)
     } else {
       alert("Došlo je do greške")
     }
-    revalidateData()
   }
   if (type == "add-to-cart") {
     return (

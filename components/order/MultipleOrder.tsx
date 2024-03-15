@@ -1,9 +1,9 @@
 "use client"
 import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
-import { getSingleUser } from "@/actions/server/users"
-import { SHIPPING_COST } from "@/constants"
-import { revalidateData } from "@/helpers/server"
+import { APP_URL, SHIPPING_COST } from "@/constants"
+import { fetchData } from "@/helpers/client"
+import { revalidateTagCustom } from "@/helpers/server"
 import { useUser } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
@@ -38,7 +38,7 @@ const MultipleOrder = () => {
     }
     const isOrdered = await handleOrderProducts(uid, customerInfo, true)
     if (isOrdered == true) {
-      revalidateData()
+      revalidateTagCustom("users")
       setProgress(100)
       router.push("/thank-you")
     } else {
@@ -49,7 +49,12 @@ const MultipleOrder = () => {
   useEffect(() => {
     setProgress(0)
     const getUserData = async () => {
-      const res = await getSingleUser(uid)
+      const res = await fetchData(`${APP_URL}/api/users/single-user`, {
+        method: "POST",
+        cache: "force-cache",
+        body: JSON.stringify({ uid: uid }),
+        tags: ["users"],
+      })
       setUser(res)
       const totalRes: any = await getTotalData(uid)
       setTotal(totalRes! + SHIPPING_COST)

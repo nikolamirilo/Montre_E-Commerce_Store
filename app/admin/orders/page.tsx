@@ -16,6 +16,7 @@ const Orders = async () => {
   const allOrders = await fetchData(`${APP_URL}/api/orders`, {
     method: "GET",
     cache: "force-cache",
+    tags: ["orders"],
   })
   const user = await currentUser()
   if (user?.emailAddresses[0].emailAddress != "satovi.montre@gmail.com")

@@ -60,14 +60,15 @@ export async function POST(req: Request) {
     cart: [],
   }
   console.log(eventType)
-  if (eventType == "user.created") {
-    await createNewUser(newUser!)
-  }
-  if (eventType == "user.deleted") {
-    await deleteSingleUser(uid!)
-  }
-  if (eventType == "user.updated") {
-    await updateSingleUser({ uid, fullName, email })
+  switch (eventType) {
+    case "user.created":
+      await createNewUser(newUser!)
+    case "user.deleted":
+      await deleteSingleUser(uid!)
+    case "user.updated":
+      await updateSingleUser({ uid, fullName, email })
+    case "session.created":
+    // await getSingleUser(uid)
   }
   return NextResponse.json({ message: "Successfully Done" }, { status: 200 })
 }

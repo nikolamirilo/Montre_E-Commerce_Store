@@ -1,6 +1,6 @@
-import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
-import { parseDate } from "@/helpers/client"
+import { APP_URL } from "@/constants"
+import { fetchData, parseDate } from "@/helpers/client"
 import { currentUser } from "@clerk/nextjs"
 import { Metadata } from "next"
 import Image from "next/image"
@@ -15,7 +15,12 @@ export const metadata: Metadata = {
 const UserProfile = async () => {
   const user = await currentUser()
   const uid = user?.id
-  const mongoUser = await getSingleUser(uid)
+  const mongoUser = await fetchData(`${APP_URL}/api/users/single-user`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ uid: uid }),
+    tags: ["users"],
+  })
   if (user)
     return (
       <div

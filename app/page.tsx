@@ -41,6 +41,7 @@ export default async function Home() {
     method: "POST",
     cache: "no-cache",
     body: JSON.stringify(filter),
+    tags: ["products"],
   })
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">

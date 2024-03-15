@@ -15,6 +15,7 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle }) => 
     method: "POST",
     cache: "force-cache",
     body: JSON.stringify(query),
+    tags: ["products"],
   })
   return (
     <section className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
