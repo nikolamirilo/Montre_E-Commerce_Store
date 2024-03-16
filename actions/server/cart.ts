@@ -32,6 +32,7 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
         upsert: true,
       }
     )
+    revalidateTagCustom("users")
     return "Success"
   } catch (error) {
     console.error("Error adding item to cart:", (error as Error).message)
