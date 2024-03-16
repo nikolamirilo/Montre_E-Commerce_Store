@@ -21,18 +21,20 @@ export const OrderTemplate: React.FC<Readonly<OrderTemplateProps>> = ({
         <Column style={headingCellStyle}>Ukupna cena</Column>
       </Row>
       {products?.map((product: any, idx: number) => {
-        const price = product.isOnDiscount == true ? product.discountedPrice : product.price
-        const totalPerProduct = price * product.quantity
-        return (
-          <Row key={idx}>
-            <Column style={cellStyle}>{product.title}</Column>
-            <Column style={cellStyle}>{product.quantity} kom</Column>
-            <Column style={cellStyle}>{price.toLocaleString().replace(",", ".")},00 RSD</Column>
-            <Column style={cellStyle}>
-              {totalPerProduct.toLocaleString().replace(",", ".")},00 RSD
-            </Column>
-          </Row>
-        )
+        if (product) {
+          const price = product.isOnDiscount == true ? product.discountedPrice : product.price
+          const totalPerProduct = price * product.quantity
+          return (
+            <Row key={idx}>
+              <Column style={cellStyle}>{product.title}</Column>
+              <Column style={cellStyle}>{product.quantity} kom</Column>
+              <Column style={cellStyle}>{price.toLocaleString().replace(",", ".")},00 RSD</Column>
+              <Column style={cellStyle}>
+                {totalPerProduct.toLocaleString().replace(",", ".")},00 RSD
+              </Column>
+            </Row>
+          )
+        }
       })}
     </Section>
     <Text style={textStyle}>

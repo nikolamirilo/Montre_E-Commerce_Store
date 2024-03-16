@@ -1,4 +1,5 @@
 import { getTotalData } from "@/actions/server/cart"
+import { getSingleProduct } from "@/actions/server/products"
 import { getSingleUser } from "@/actions/server/users"
 import CartItem from "@/components/CartItem"
 import { SHIPPING_COST } from "@/constants"
@@ -32,7 +33,8 @@ const ShoppingCart = async () => {
           {user.cart?.length > 0 ? (
             <div className="mx-auto xl:w-2/3 w-full justify-center px-6 md:flex md:space-x-6 xl:px-0">
               <div className="rounded-lg md:w-2/3">
-                {user.cart?.map(async (product: any, idx: number) => {
+                {user.cart?.map(async (item: any, idx: number) => {
+                  const product = await getSingleProduct(item.productCode)
                   return (
                     <CartItem
                       key={idx}
@@ -46,7 +48,7 @@ const ShoppingCart = async () => {
                       image={product?.images[0]}
                       isOnDiscount={product?.isOnDiscount}
                       discountedPrice={product?.discountedPrice}
-                      quantity={product.quantity}
+                      quantity={item.quantity}
                     />
                   )
                 })}

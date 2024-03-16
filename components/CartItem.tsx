@@ -27,11 +27,11 @@ const CartItem: React.FC<CartItemProps> = ({
   const [count, setCount] = useState<number>(1)
   const router = useRouter()
   const handleDeleteCartItem = async () => {
-    await deleteCartItem(uid, _id)
+    await deleteCartItem(uid, productCode)
     revalidateTagCustom("users")
   }
   const setCountInfo = async (q: number) => {
-    await updateItemCount(uid, _id, q)
+    await updateItemCount(uid, productCode, q)
     revalidateTagCustom("users")
   }
   useEffect(() => {
@@ -72,8 +72,9 @@ const CartItem: React.FC<CartItemProps> = ({
               <select
                 name="quantity"
                 onChange={(e: any) => {
-                  setCountInfo(e.target.value)
-                  setCount(e.target.value)
+                  const num = parseInt(e.target.value)
+                  setCountInfo(num)
+                  setCount(num)
                 }}
                 defaultValue={quantity}
                 className="w-full bg-white border-2 text-base xl:text-lg border-amber-500 focus:outline-none rounded-lg cursor-pointer px-2 py-0 md:py-1 text-gray-900">

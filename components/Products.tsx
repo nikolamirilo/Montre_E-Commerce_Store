@@ -3,6 +3,7 @@ import { fetchData } from "@/helpers/client"
 import { ProductsProps } from "@/typescript/interfaces"
 import { Product } from "@/typescript/types"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 import { BiMessageError } from "react-icons/bi"
 import ProductCard from "./cards/ProductCard"
@@ -10,7 +11,7 @@ import ProductCard from "./cards/ProductCard"
 export const revalidate = 86400
 export const dynamic = "force-static"
 
-const Products: React.FC<ProductsProps> = async ({ query, title, subtitle }) => {
+const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type }) => {
   const products = await fetchData(`${APP_URL}/api/products`, {
     method: "POST",
     cache: "force-cache",
@@ -72,6 +73,13 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle }) => 
           </div>
         )}
       </div>
+      {type == "recommendations" && (
+        <Link
+          href="/products/watches"
+          className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-lg px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center">
+          Svi proizvodi
+        </Link>
+      )}
     </section>
   )
 }

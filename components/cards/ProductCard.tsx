@@ -47,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   }
   async function handleDeleteItem() {
     setIsOpen(false)
-    await deleteSingleProduct(_id)
+    await deleteSingleProduct(productCode)
     revalidateTagCustom("products")
   }
   return (

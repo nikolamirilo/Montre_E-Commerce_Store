@@ -1,6 +1,7 @@
 "use client"
 import { handleOrderProducts } from "@/actions/client/cart"
 import { getTotalData } from "@/actions/server/cart"
+import { getSingleProduct } from "@/actions/server/products"
 import { APP_URL, SHIPPING_COST } from "@/constants"
 import { fetchData } from "@/helpers/client"
 import { revalidateTagCustom } from "@/helpers/server"
@@ -13,6 +14,7 @@ const MultipleOrder = () => {
   const clerkUser = useUser()
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
+  const [cartItems, setCartItems] = useState<any>([])
   const [total, setTotal] = useState<number>(0)
   const [progress, setProgress] = useState<number>(50)
   const fullNameInput = useRef<HTMLInputElement>(null)
@@ -55,9 +57,16 @@ const MultipleOrder = () => {
         body: JSON.stringify({ uid: uid }),
         tags: ["users"],
       })
-      setUser(res)
-      const totalRes: any = await getTotalData(uid)
-      setTotal(totalRes! + SHIPPING_COST)
+      if (res) {
+        setUser(res)
+        const totalRes: any = await getTotalData(uid)
+        for (const item of res.cart) {
+          const singleProduct = await getSingleProduct(item.productCode)
+          const cartItem = { ...singleProduct, quantity: item.quantity }
+          setCartItems([...cartItems, cartItem])
+        }
+        setTotal(totalRes! + SHIPPING_COST)
+      }
     }
     getUserData()
   }, [])
@@ -72,7 +81,7 @@ const MultipleOrder = () => {
       <OrderProductForm
         type="multiple-items"
         initialCustomerData={initialCustomerInfoData}
-        cartItems={user?.cart}
+        cartItems={cartItems}
         fullNameInput={fullNameInput}
         emailInput={emailInput}
         phoneInput={phoneInput}

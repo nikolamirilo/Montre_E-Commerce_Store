@@ -3,9 +3,8 @@ import { APP_URL, SHIPPING_COST } from "@/constants"
 import { fetchData } from "@/helpers/client"
 import { revalidateTagCustom } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
-import { CartItem, Product } from "@/typescript/types"
+import { Product } from "@/typescript/types"
 import moment from "moment"
-import { ObjectId } from "mongodb"
 import { getSingleProduct } from "./products"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
@@ -21,7 +20,7 @@ export async function addItemToCart(uid: string | undefined, newCartItem: string
       return "Duplicate"
     }
     const product = await getSingleProduct(newCartItem)
-    const cartProduct = { ...product, quantity: 1 }
+    const cartProduct = { productCode: product.productCode, quantity: 1 }
     await db.collection("users").updateOne(
       { uid: uid },
       {
@@ -73,7 +72,7 @@ export async function deleteCartItem(uid: string | undefined, itemToDelete: stri
       { uid: uid },
       {
         $pull: {
-          cart: { _id: new ObjectId(itemToDelete) },
+          cart: { productCode: itemToDelete },
         },
       }
     )
@@ -91,91 +90,89 @@ export async function updateItemCount(
 ) {
   try {
     const db = await storeDatabaseConnection()
+    // Update the quantity of the specified item in the user's cart
     await db.collection("users").updateOne(
-      { uid: uid, "cart._id": new ObjectId(modelId) },
+      { uid: uid, "cart.productCode": modelId },
       {
         $set: {
           "cart.$.quantity": count,
         },
       }
     )
+
     return true
   } catch (error) {
-    console.log((error as Error).message)
-    throw new Error((error as Error).message)
+    console.error("Error updating item count:", error)
+    throw new Error("Failed to update item count.")
   }
 }
 
-export async function orderCartItems(uid: string | undefined, customerInfo: object) {
+export async function orderCartItems(uid: string, customerInfo: object) {
   try {
     const db = await storeDatabaseConnection()
     const user = await db.collection("users").findOne({ uid: uid })
+    const cartItems = user?.cart
 
     if (!user) {
       console.log("User not found.")
       return false
     }
 
-    if (!user.cart || user.cart.length === 0) {
+    if (!cartItems || cartItems.length === 0) {
       console.log("Cart is empty.")
       return false
     }
 
     // Calculate the total amount for each order
-    var total = SHIPPING_COST
-    const currentDate = moment()
-    const products = user.cart.map((item: CartItem) => {
-      total += (item.isOnDiscount == true ? item.discountedPrice : item.price) * item.quantity
-      return {
-        _id: item._id,
-        title: item.title,
-        price: item.price,
-        class: item.class,
-        category: item.category,
-        brand: item.brand,
-        description: item.description,
-        isPublic: item.isPublic,
-        discount: item.discount,
-        discountedPrice: item.discountedPrice,
-        isOnDiscount: item.isOnDiscount,
-        images: item.images,
-        quantity: item.quantity,
-      }
-    })
-    const order = {
-      status: "ordered",
-      total: total,
-      products: products,
-      customerInfo: customerInfo,
-      date: currentDate.format("DD.MM.YYYY."),
+    const productsTotal = await getTotalData(uid)
+    if (!productsTotal) {
+      console.log("Error calculating products total.")
+      return false
     }
 
+    const total = SHIPPING_COST + productsTotal
+    const currentDate = moment().format("DD.MM.YYYY.")
+    const products = []
+
+    for (const item of cartItems) {
+      const product = await getSingleProduct(item.productCode)
+      const cartItem = { ...product, quantity: item.quantity }
+      products.push(cartItem)
+    }
+
+    const order = {
+      total,
+      products,
+      customerInfo,
+      date: currentDate,
+    }
     // Update the user document to move items from cart to order array
     await db.collection("users").updateOne(
       { uid: uid },
       {
-        $push: {
-          orders: order,
-        },
-        $set: {
-          cart: [],
-        },
+        $push: { orders: order },
+        $set: { cart: [] },
       }
     )
+
     const emailRes = await fetch(`${APP_URL}/api/send-email`, {
       method: "POST",
       body: JSON.stringify(order),
     })
+
     if (!emailRes.ok) {
       console.log(`Error: ${emailRes.statusText}`)
     }
+
     revalidateTagCustom("orders")
+
     return true
   } catch (error) {
     console.log((error as Error).message)
     throw new Error((error as Error).message)
   }
 }
+
 export async function orderSingleItem(productId: string | undefined, customerInfo: object) {
   try {
     const db = await storeDatabaseConnection()

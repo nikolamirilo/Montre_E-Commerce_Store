@@ -1,8 +1,7 @@
 import Gallery from "@/components/Gallery"
-import Recommendations from "@/components/Recommendations"
+import Products from "@/components/Products"
 import Hero from "@/components/hero/Hero"
-import { APP_URL, KEYWORDS, homePage } from "@/constants"
-import { fetchData } from "@/helpers/client"
+import { KEYWORDS, homePage } from "@/constants"
 import { homePageSchema } from "@/schemas"
 import { Metadata } from "next"
 import { Suspense } from "react"
@@ -36,13 +35,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const filter = { isRecommended: true }
-  const recommendedProducts = await fetchData(`${APP_URL}/api/products`, {
-    method: "POST",
-    cache: "no-cache",
-    body: JSON.stringify(filter),
-    tags: ["products"],
-  })
+  const query = { isRecommended: true }
   return (
     <div className="flex w-full flex-col justify-center items-center gap-10" id="home">
       <script
@@ -51,7 +44,15 @@ export default async function Home() {
       />
       <Hero />
       <Suspense fallback="">
-        <Recommendations products={recommendedProducts} />
+        <Products
+          query={query}
+          title="Izdvajamo iz ponude"
+          subtitle="Sa zadovoljstvom vam predstavljamo ekskluzivnu i raskošnu ponudu iz Montre kolekcije.
+            Ovi satovi predstavljaju vrhunac elegancije, izrade i stila. Uz pažljivo izabrane
+            materijale i vrhunsku izradu, svaki sat iz ove kolekcije predstavlja spoj vrhunskog
+            inženjeringa i estetike."
+          type="recommendations"
+        />
       </Suspense>
       <Suspense fallback="">
         <Gallery />

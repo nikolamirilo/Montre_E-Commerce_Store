@@ -1,4 +1,5 @@
 "use server"
+import { revalidateData } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { Product, ProductWithoutId, SearchQuery } from "@/typescript/types"
 import { ObjectId } from "mongodb"
@@ -123,12 +124,21 @@ export const updateProduct = async (body: Product) => {
   }
 }
 
-export const deleteSingleProduct = async (_id: any) => {
+export const deleteSingleProduct = async (productCode: string) => {
   try {
     const db = await storeDatabaseConnection()
-    const objId = new ObjectId(_id)
-    await db.collection("products").deleteOne({ _id: objId })
-    await db.collection("users").updateMany({ cart: _id }, { $pull: { cart: _id } })
+
+    // Delete the product from the products collection
+    await db.collection("products").deleteOne({ productCode })
+
+    // Remove the specific item from users' carts where the productCode matches
+    await db.collection("users").updateMany(
+      { "cart.productCode": productCode }, // @ts-ignore
+      { $pull: { cart: { productCode: productCode } } }
+    )
+
+    // After deleting the product, you might want to trigger a revalidation or update of data
+    revalidateData()
   } catch (error) {
     console.log((error as Error).message)
     throw new Error((error as Error).message)
