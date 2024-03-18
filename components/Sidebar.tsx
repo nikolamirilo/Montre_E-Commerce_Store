@@ -71,7 +71,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
         }}
         animate={isSidebarOpen ? "open" : "closed"}
         variants={variants}
-        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 ${
+        className={`sidebar fixed top-0 bottom-0 left-0 lg:left-0 p-2 w-fit text-center z-40 overflow-y-visible ${
           isSidebarOpen ? "block" : "hidden"
         }`}
         id="sidebar">

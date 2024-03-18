@@ -60,16 +60,21 @@ const MultipleOrder = () => {
       if (res) {
         setUser(res)
         const totalRes: any = await getTotalData(uid)
+        // Create a temporary array to store cart items
+        const tempCartItems = []
         for (const item of res.cart) {
           const singleProduct = await getSingleProduct(item.productCode)
           const cartItem = { ...singleProduct, quantity: item.quantity }
-          setCartItems([...cartItems, cartItem])
+          tempCartItems.push(cartItem) // Push each cart item to the temporary array
         }
+        // Set cart items once all items are fetched
+        setCartItems(tempCartItems)
         setTotal(totalRes! + SHIPPING_COST)
       }
     }
     getUserData()
-  }, [])
+  }, []) //
+
   var initialCustomerInfoData: any = {}
 
   if (user != null) {

@@ -29,7 +29,6 @@ const Gallery = () => {
     "/gallery/8_blq56g.jpg",
     "/gallery/9_j5jo3w.jpg",
     "/gallery/10_nnvvmj.jpg",
-    "/gallery/11_lng2gl.png",
   ]
   if (galleryImages)
     return (
