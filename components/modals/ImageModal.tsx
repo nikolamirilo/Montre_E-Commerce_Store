@@ -11,7 +11,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
 }) => {
   return (
     <div className="fixed z-40 top-0 left-0 w-screen h-screen bg-black/80 flex justify-center items-center">
-      <div className="relative h-[40vh] md:h-[90vh] w-[98vw] md:w-[60vw] bg-center bg-cover">
+      <div className="relative h-[50vh] md:h-[90vh] w-[98vw] md:w-[60vw] bg-center bg-cover">
         <button className="absolute top-2 md:top-5 right-2 md:right-5 z-20" onClick={closeModal}>
           <FaXmark size={30} color="white" className="hover:fill-amber-500" />
         </button>
