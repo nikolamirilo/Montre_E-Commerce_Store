@@ -37,13 +37,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
     const res = await addItemToCart(uid, productCode)
     if (res == "Success") {
       setProgress(100)
+      revalidateTagCustom("users")
     } else if (res == "Duplicate") {
       setProgress(75)
     } else {
       setProgress(0)
       alert("Došlo je do greške")
     }
-    revalidateTagCustom("users")
   }
   async function handleDeleteItem() {
     setIsOpen(false)
