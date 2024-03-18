@@ -38,7 +38,11 @@ const Slider = ({ images }: { images: string[] }) => {
         <div className="relative w-fit h-full" data-carousel="static">
           <div className="relative overflow-hidden rounded-lg w-fit">
             <div className="duration-700 ease-in-out h-fit w-fit" data-carousel-item>
-              <div className="relative h-[60vh] w-[90vw] md:w-[45vw] xl:h-[65vh] cursor-pointer">
+              <div
+                className="relative h-[40vh] w-[90vw] md:w-[35vw] md:h-[65vh] cursor-pointer"
+                onClick={() => {
+                  setIsModalOpen(true)
+                }}>
                 <Image
                   src={images[index]}
                   fill

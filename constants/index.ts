@@ -12,6 +12,7 @@ export const KEYWORDS: string[] = [
   "Poklon za dečka",
   "Curren",
   "Lige",
+  "Poedagar",
   "Hannah Martin",
 ]
 export const menWatches: PageDescription = {
@@ -69,6 +70,10 @@ export const classOptions: Option[] = [
     label: "Sport",
     value: "Sport",
   },
+  {
+    label: "Elegance",
+    value: "Elegance",
+  },
 ]
 export const typOptions: Option[] = [
   {
@@ -92,6 +97,10 @@ export const brandOptions: Option[] = [
   {
     label: "Hannah Martin",
     value: "Hannah Martin",
+  },
+  {
+    label: "Poedagar",
+    value: "Poedagar",
   },
   {
     label: "Lige",
