@@ -8,9 +8,7 @@
 
 1. Handling Images change (add and edit product)
 
-2. Reduce number of requests to database and refactor functions
-
-3. Data conscent for user data and prepopulating order form fields
+2. Data conscent for user data and prepopulating order form fields
 
 ## For Future
 
