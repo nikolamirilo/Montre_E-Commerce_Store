@@ -53,20 +53,19 @@ export async function POST(req: Request) {
   const fullName = `${evt.data.first_name} ${evt.data.last_name}`
   const eventType = evt.type
   const newUser = {
-    uid: uid,
-    fullName: fullName,
+    uid,
+    fullName,
     email: email,
     orders: [],
     cart: [],
   }
-  console.log(eventType)
-  switch (eventType) {
-    case "user.created":
-      await createNewUser(newUser!)
-    case "user.deleted":
-      await deleteSingleUser(uid!)
-    case "user.updated":
-      await updateSingleUser({ uid, fullName, email })
+  if (eventType == "user.created") {
+    await createNewUser(newUser)
+  } else if (eventType == "user.deleted") {
+    await deleteSingleUser(uid)
+  } else if (eventType == "user.updated") {
+    await updateSingleUser({ uid, fullName, email })
   }
+
   return NextResponse.json({ message: "Successfully Done" }, { status: 200 })
 }
