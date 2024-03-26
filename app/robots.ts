@@ -1,9 +1,15 @@
-import { getAllProducts } from "@/actions/server/products"
+import { APP_URL } from "@/constants"
+import { fetchData } from "@/helpers/client"
 import { Product } from "@/typescript/types"
 import type { MetadataRoute } from "next"
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const products = await getAllProducts()
+  const products = await fetchData(`${APP_URL}/api/products`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ isPublic: true }),
+    tags: ["products"],
+  })
   const productsUrls = products?.map(
     (product: Product) => `/products/watches/${product.productCode}`
   )

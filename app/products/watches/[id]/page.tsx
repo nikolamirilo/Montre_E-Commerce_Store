@@ -1,4 +1,3 @@
-import { getAllProducts } from "@/actions/server/products"
 import AddToCartButton from "@/components/helpers/AddToCartButton"
 import Slider from "@/components/Slider"
 import { APP_URL, KEYWORDS } from "@/constants"
@@ -10,7 +9,12 @@ import { Metadata } from "next"
 import { CldOgImage } from "next-cloudinary"
 
 export async function generateStaticParams() {
-  const products = await getAllProducts()
+  const products = await fetchData(`${APP_URL}/api/products`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ isPublic: true }),
+    tags: ["products"],
+  })
   return products.map((product: Product) => ({
     id: product?.productCode,
   }))

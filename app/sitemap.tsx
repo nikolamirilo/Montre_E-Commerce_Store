@@ -1,10 +1,16 @@
-import { getAllProducts } from "@/actions/server/products"
+import { APP_URL } from "@/constants"
+import { fetchData } from "@/helpers/client"
 import { Product } from "@/typescript/types"
 import { MetadataRoute } from "next"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://www.montre-shop.com"
-  const products = await getAllProducts()
+  const products = await fetchData(`${APP_URL}/api/products`, {
+    method: "POST",
+    cache: "force-cache",
+    body: JSON.stringify({ isPublic: true }),
+    tags: ["products"],
+  })
   const productsUrls = products?.map((product: Product) => ({
     url: `${baseUrl}/products/watches/${product.productCode}`,
     lastModified: new Date(),
