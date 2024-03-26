@@ -95,6 +95,11 @@ const Footer: React.FC = () => {
                 Kontaktirajte nas
               </Link>
             </li>
+            <li>
+              <Link href="/faq" className="text-white cursor-pointer hover:text-amber-500">
+                FAQ
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

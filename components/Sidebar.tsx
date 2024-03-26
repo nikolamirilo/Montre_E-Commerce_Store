@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillCloseCircle, AiOutlineLogin } from "react-icons/ai"
-import { BsCart3, BsInfoCircle, BsWatch } from "react-icons/bs"
+import { BsCart3, BsInfoCircle, BsQuestionDiamond, BsWatch } from "react-icons/bs"
 import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
@@ -197,6 +197,17 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
                 className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <RiContactsLine size={30} />
                 <span>Kontaktirajte Nas</span>
+              </Link>
+            </div>
+          </div>
+          <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+            <div className="flex justify-between w-full items-center">
+              <Link
+                onClick={handleSidebar}
+                href="/faq"
+                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                <BsQuestionDiamond size={30} />
+                <span>FAQ</span>
               </Link>
             </div>
           </div>

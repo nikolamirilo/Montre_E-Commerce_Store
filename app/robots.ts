@@ -29,6 +29,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
           "/products/watches/categories/men",
           "/products/watches/categories/women",
           "/auth/log-in",
+          "/faq",
           ...productsUrls,
         ],
         disallow: [
@@ -39,8 +40,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
           "/order",
           "/thank-you",
           "/api/",
-          "/blogs/", // remove when done
-          "/faq", // remove when done
+          "/blogs/",
           "/test",
           ...editProductsUrls,
         ],

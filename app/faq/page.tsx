@@ -6,9 +6,9 @@ const FAQ = () => {
   return (
     <section className="py-10 sm:py-16">
       <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="flex w-full items-center flex-col justify-center">
           <Heading value="Često postavljena pitanja" />
-          <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">
+          <p className="mb-8 mt-4 font-light text-center text-gray-500 sm:text-xl w-full md:2/3 max-w-4xl px-2 md:px-5">
             Da bismo vam pružili potpunu jasnoću, identifikovali smo neka od najčešćih pitanja. U
             ovoj sekciji ćemo odgovoriti na pitanja koja često postavljaju naši kupci.
           </p>
