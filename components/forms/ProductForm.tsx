@@ -155,8 +155,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
                             <button
                               id="delete"
                               className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
-                              onClick={() => {
-                                handleDeleteImage(idx)
+                              onClick={(e) => {
+                                handleDeleteImage(e, idx)
                               }}>
                               <BsTrash3 size={25} />
                             </button>

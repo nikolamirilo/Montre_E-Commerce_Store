@@ -47,7 +47,8 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
     }
   }
 
-  function handleDeleteImage(index: number) {
+  function handleDeleteImage(e: any, index: number) {
+    e.preventDefault()
     setDisplayImages((prevImages) => {
       const newImages = [...prevImages]
       newImages.splice(index, 1)

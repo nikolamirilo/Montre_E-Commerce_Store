@@ -1,7 +1,7 @@
 import CartItem from "@/components/CartItem"
 import { APP_URL } from "@/constants"
 import { fetchData, parseDate } from "@/helpers/client"
-import { currentUser } from "@clerk/nextjs"
+import { auth } from "@clerk/nextjs"
 import { Metadata } from "next"
 import Image from "next/image"
 
@@ -13,15 +13,14 @@ export const metadata: Metadata = {
   },
 }
 const UserProfile = async () => {
-  const user = await currentUser()
-  const uid = user?.id
+  const { userId }: { userId: string | null } = auth()
   const mongoUser = await fetchData(`${APP_URL}/api/users/single-user`, {
     method: "POST",
     cache: "force-cache",
-    body: JSON.stringify({ uid: uid }),
+    body: JSON.stringify({ uid: userId }),
     tags: ["users"],
   })
-  if (user)
+  if (userId)
     return (
       <div
         className="min-h-screen 2xl:min-h-[90vh] flex flex-col items-center justify-center w-full text-center gap-20 mt-10"

@@ -1,5 +1,12 @@
 import { ObjectId } from "mongodb"
-import { Dispatch, FormEvent, LegacyRef, RefObject, SetStateAction } from "react"
+import {
+  ChangeEventHandler,
+  Dispatch,
+  FormEvent,
+  LegacyRef,
+  RefObject,
+  SetStateAction,
+} from "react"
 import { CustomerInfo, FormInitialData, Option, Product, SearchQuery } from "./types"
 
 export interface CartItemProps {
@@ -67,8 +74,8 @@ export interface ProductFormProps {
   isOutOfStockInput: RefObject<HTMLInputElement>
   handleFormSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>
   displayImages: string[]
-  handleDeleteImage: (idx: number) => void
-  handleInputImageChange: () => void
+  handleDeleteImage: (e: any, idx: number) => void
+  handleInputImageChange: ChangeEventHandler<HTMLInputElement>
   progress: number
 }
 

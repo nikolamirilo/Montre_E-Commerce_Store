@@ -2,7 +2,7 @@ import { FetchOptions } from "@/typescript/types"
 
 export function scrollToTop() {
   window.scrollTo({
-    top: 0,
+    top: -20,
     behavior: "smooth",
   })
 }
