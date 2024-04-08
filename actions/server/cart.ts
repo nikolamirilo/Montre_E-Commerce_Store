@@ -142,6 +142,7 @@ export async function orderCartItems(uid: string, customerInfo: object) {
     }
 
     const order = {
+      isHandled: false,
       total,
       products,
       customerInfo,
@@ -183,7 +184,7 @@ export async function orderSingleItem(productId: string | undefined, customerInf
       var total = (product.isOnDiscount ? product.discountedPrice : product.price) + SHIPPING_COST
       const currentDate = moment()
       const order = {
-        status: "ordered",
+        isHandled: false,
         total: total,
         products: [extendedProduct],
         customerInfo: customerInfo,

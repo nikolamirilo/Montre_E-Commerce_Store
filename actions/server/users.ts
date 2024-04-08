@@ -82,3 +82,49 @@ export const getAllOrders = async () => {
     throw new Error((error as Error).message)
   }
 }
+
+export async function updateOrder(orderId: string, isHandledInput: boolean) {
+  let firstUpdateSucceeded = false
+  try {
+    const db = await storeDatabaseConnection()
+    const objId = new ObjectId(orderId)
+
+    // First update operation
+    await db.collection("anonymus-orders").updateOne(
+      { _id: objId },
+      {
+        $set: {
+          isHandled: isHandledInput,
+        },
+      }
+    )
+    firstUpdateSucceeded = true
+  } catch (error: any) {
+    console.error("First update failed:", error.message)
+    // Throw error to indicate failure
+    throw new Error("Failed to update order in anonymus-orders collection")
+  }
+
+  // If first update succeeded or if it failed, attempt second update
+  try {
+    const db = await storeDatabaseConnection()
+    const objId = new ObjectId(orderId)
+
+    if (firstUpdateSucceeded) {
+      // Second update operation
+      await db.collection("users").updateOne(
+        { "orders._id": objId },
+        {
+          $set: {
+            "orders.$.isHandled": isHandledInput,
+          },
+        }
+      )
+    }
+    return true
+  } catch (error: any) {
+    console.error("Second update failed:", error.message)
+    // Throw error to indicate failure
+    throw new Error("Failed to update order in users collection")
+  }
+}
