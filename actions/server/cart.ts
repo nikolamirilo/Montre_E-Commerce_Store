@@ -1,10 +1,11 @@
 "use server"
 import { APP_URL, SHIPPING_COST } from "@/constants"
-import { fetchData } from "@/helpers/client"
+import { fetchData, generateRandomHex } from "@/helpers/client"
 import { revalidateTagCustom } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { Product } from "@/typescript/types"
 import moment from "moment"
+import { ObjectId } from "mongodb"
 import { getSingleProduct } from "./products"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
@@ -141,7 +142,10 @@ export async function orderCartItems(uid: string, customerInfo: object) {
       products.push(cartItem)
     }
 
+    const hexId = generateRandomHex(24)
+
     const order = {
+      _id: new ObjectId(hexId),
       isHandled: false,
       total,
       products,

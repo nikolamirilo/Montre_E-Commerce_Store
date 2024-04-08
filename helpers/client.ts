@@ -12,6 +12,15 @@ export function generateStringCode(name: string) {
   return hyphenatedName
 }
 
+export function generateRandomHex(length: number) {
+  let result = ""
+  const characters = "0123456789abcdef"
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length))
+  }
+  return result
+}
+
 export function parseDate(dateString: string) {
   if (!dateString) return null // Handle missing date strings
   const formattedDateString = dateString.replace(/\.$/, "") // Remove trailing dot
