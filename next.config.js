@@ -13,6 +13,7 @@ const nextConfig = {
     ],
   },
   swcMinify: true,
+  productionBrowserSourceMaps: true,
   async rewrites() {
     return [
       {
