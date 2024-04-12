@@ -8,11 +8,7 @@ const uri: string = process.env.NEXT_PUBLIC_MONGODB_URI
 
 const options = {
   minPoolSize: 10,
-  maxPoolSize: 20,
-  maxIdleTimeMS: 80000,
-  serverSelectionTimeoutMS: 80000,
-  socketTimeoutMS: 0,
-  connectTimeoutMS: 0,
+  maxPoolSize: 20
 }
 
 declare global {
