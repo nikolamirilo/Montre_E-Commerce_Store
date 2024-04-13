@@ -8,6 +8,11 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent !important;
 }
+:root {
+  --amber: rgb(245 158 11);
+  --white: #fff;
+  --black: #121212;
+}
 html {
   scroll-behavior: smooth !important;
 }

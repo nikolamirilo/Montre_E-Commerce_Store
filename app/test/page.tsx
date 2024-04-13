@@ -1,7 +1,11 @@
-import Hero from "@/components/hero/Hero"
+import Watch from "@/components/watch/Watch"
 
 const page = () => {
-  return <Hero />
+  return (
+    <div className="py-96">
+      <Watch />
+    </div>
+  )
 }
 
 export default page

@@ -10,6 +10,8 @@
 
 2. Data conscent for user data and prepopulating order form fields
 
+3. Revalidating data when adding product
+
 ## For Future
 
 - Create Admin page for executing ETL's
@@ -17,7 +19,5 @@
 - Animation (3D) and/or additional content on Home Page
 
 - Implement: [https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox]
-
-- Localization for Clerk
 
 - Implement Payment system using `Stripe API`
