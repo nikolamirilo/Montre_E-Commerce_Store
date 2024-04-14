@@ -1,4 +1,5 @@
 import moment from "moment"
+import Image from "next/image"
 import "./style.css"
 
 const Watch = () => {
@@ -96,36 +97,90 @@ const Watch = () => {
               <span className="seconds"></span>
             </div>
             <div className="watch-date">{moment().format("MMM Do")}</div>
-            <div className="watch-alert">
-              <strong>Montre</strong> <br />
-              Shop
+            <div className="watch-alert flex justify-center items-center">
+              <Image
+                src="/brands/poedagar_logo_white.png"
+                width={100}
+                height={1000}
+                alt="Poedagar"
+              />
             </div>
             <div className="watch-week">
-              <span className="week-arrow"></span>
-              <ul>
-                <div className="!text-gray-900">S</div>
-                <div className="!text-gray-900">M</div>
-                <div className="!text-gray-900">T</div>
-                <div className="!text-gray-900">W</div>
-                <div className="!text-gray-900">T</div>
-                <div className="!text-gray-900">F</div>
-                <div className="!text-gray-900">S</div>
+              <span className="week-arrow !bg-white"></span>
+              <ul className="!text-white relative">
+                <div>S</div>
+                <div>M</div>
+                <div>T</div>
+                <div>W</div>
+                <div>T</div>
+                <div>F</div>
+                <div>S</div>
               </ul>
             </div>
             <div className="watch-day">
-              <div className="sun">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+              <div className="watch-points">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
               </div>
             </div>
-            <div className="watch-week days"></div>
           </div>
         </div>
       </div>

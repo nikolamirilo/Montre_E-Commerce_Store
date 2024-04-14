@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
                   height={150}
                 />
                 <Image
-                  src="/brands/poedgar_logo.png"
+                  src="/brands/poedagar_logo.png"
                   alt="Poedgar"
                   className="h-20 w-auto"
                   width={200}

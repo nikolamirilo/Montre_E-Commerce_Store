@@ -12,6 +12,9 @@
   --amber: rgb(245 158 11);
   --white: #fff;
   --black: #121212;
+  --blue: #022436;
+  --lightblue: #043a57;
+  --brown: #84510a;
 }
 html {
   scroll-behavior: smooth !important;
