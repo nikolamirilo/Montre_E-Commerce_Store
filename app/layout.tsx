@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer"
 import Menu from "@/components/Menu"
+import Meta from "@/components/helpers/Meta"
 import { NavigationEvents } from "@/components/helpers/NavigationEvents"
 import { KEYWORDS, homePage } from "@/constants"
 import { mulish } from "@/fonts"
@@ -57,6 +58,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <SpeedInsights />
           <GoogleTagManager gtmId="GTM-K9DMSZJG" />
           <Analytics />
+          <Meta />
           <Menu />
           <div id="parent">{props.children}</div>
           <Footer />
