@@ -557,8 +557,8 @@ i:nth-child(60) {
   box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.15);
   border-radius: 0 20px 20px 0;
   z-index: 12;
-  -webkit-animation: 600s seconds linear infinite;
-  animation: 600s seconds linear infinite;
+  -webkit-animation: 60s seconds linear infinite;
+  animation: 60s seconds linear infinite;
 }
 .minutes:after {
   content: "";
@@ -578,8 +578,8 @@ i:nth-child(60) {
   top: 50%;
   left: calc(50% - 30px);
   transform: rotate(0deg);
-  -webkit-animation: 60s seconds linear infinite;
-  animation: 60s seconds linear infinite;
+  -webkit-animation: 10s seconds linear infinite;
+  animation: 10s seconds linear infinite;
   background-color: #fe0806;
   transform-origin: 30px center;
   box-shadow: 0 0 16px 2px rgba(254, 8, 6, 0.2);
@@ -603,123 +603,16 @@ i:nth-child(60) {
   height: 6px;
   position: absolute;
   top: calc(50% - 3px);
-  left: calc(50% - 10px);
+  left: calc(50% - 14px);
   transform: rotate(15deg);
   background-color: var(--white);
   transform-origin: 30px center;
   border-radius: 0 20px 20px 0;
   z-index: 11;
-  -webkit-animation: 14400s seconds linear infinite;
-  animation: 14400s seconds linear infinite;
+  -webkit-animation: 34400s seconds linear infinite;
+  animation: 34400s seconds linear infinite;
 }
-.watch-lace {
-  width: 0;
-  height: 20px;
-  border-bottom: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-right: 8px solid #32322a;
-  position: absolute;
-  right: -98px;
-  top: calc(50% - 20px);
-  border-radius: 6px;
-  z-index: 30;
-  transform: scaleX(0.9) scaleY(1.1);
-}
-.watch-lace:after {
-  content: "";
-  display: block;
-  height: 40px;
-  width: 10px;
-  right: -16px;
-  top: -10px;
-  background-color: #dedede 0;
-  border-radius: 3px;
-  position: absolute;
-}
-.watch-lace:before {
-  content: "";
-  display: block;
-  height: 40px;
-  width: 4px;
-  background-color: #c3c4cb;
-  background-image: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.1));
-  z-index: 20;
-  position: absolute;
-  right: -17px;
-  border-radius: 4px;
-  top: -10px;
-}
-.watch-lace span {
-  display: block;
-  position: absolute;
-  background-image: linear-gradient(to left, #eae9e9, transparent);
-  height: 4px;
-  width: 20px;
-  top: -4px;
-  left: -10px;
-  transform: rotate(-45deg);
-}
-.watch-lace span.bottom {
-  top: 18px;
-  transform: rotate(45deg);
-  background-image: linear-gradient(to left, #eae9e9, transparent);
-  opacity: 0.7;
-}
-.watch-lace div {
-  height: 2px;
-  width: 7px;
-  background-color: #c4c4c4;
-  border: 1px solid #999891;
-  position: relative;
-  right: -7px;
-  z-index: 20;
-  top: 7px;
-}
-.watch-lace div:nth-child(2) {
-  top: -4px;
-}
-.watch-lace div:nth-child(3) {
-  top: 6px;
-}
-.watch-lace div:nth-child(4) {
-  top: -17px;
-  filter: brightness(110%);
-}
-.watch-lace div:nth-child(5) {
-  top: 4px;
-  filter: brightness(110%);
-}
-.watch-lace div:nth-child(6) {
-  top: -28px;
-  transform: rotate(-4deg);
-  filter: brightness(115%);
-}
-.watch-lace div:nth-child(6):before {
-  transform: rotate(-8deg);
-}
-.watch-lace div:nth-child(7) {
-  top: -1px;
-  transform: rotate(4deg);
-  filter: brightness(115%);
-}
-.watch-lace div:nth-child(7):after {
-  transform: rotate(8deg);
-}
-.watch-lace div:after,
-.watch-lace div:before {
-  content: "";
-  position: relative;
-  background-color: #b8b8bb;
-  height: 3px;
-  width: 10px;
-  display: block;
-  top: 0px;
-  left: -3px;
-  border-radius: 3px;
-}
-.watch-lace div:before {
-  top: -3px;
-}
+
 .watch-day {
   height: 80px;
   width: 80px;
@@ -750,5 +643,106 @@ i:nth-child(60) {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 460px) {
+  .watch-case {
+    height: 320px;
+    width: 320px;
+  }
+  .watch-center {
+    height: 310px;
+    width: 310px;
+  }
+
+  .minutes {
+    width: 152px; /* Reduced by 20% */
+    /* ... other styles */
+  }
+
+  .seconds {
+    width: 157.6px; /* Reduced by 20% */
+    /* ... other styles */
+  }
+
+  .hours {
+    width: 130px; /* Reduced by 20% */
+    /* ... other styles */
+  }
+  .watch-strap {
+    height: 384px;
+    width: 176px;
+  }
+  .watch-strap .strap-circle {
+    height: 327px;
+    width: 327px;
+  }
+  .watch-strap .strap-circle:after,
+  .watch-strap .strap-circle:before {
+    height: 80%;
+    width: 58px;
+  }
+  .watch-strap .strap-circle:after {
+    left: -2px;
+  }
+  .watch-strap .strap-circle:before {
+    right: -2px;
+  }
+  .watch-strap .strap {
+    height: 384px;
+    width: 176px;
+  }
+  .watch-strap-holder {
+    height: 120px;
+    width: 16px;
+    left: -16px;
+  }
+  .watch-strap-holder.left-bottom {
+    top: 265px;
+    left: -16px;
+  }
+  .watch-strap-holder.right-up {
+    left: 176px;
+  }
+  .watch-strap-holder.right-bottom {
+    top: 265px;
+    left: 176px;
+  }
+  .watch-strap-holder:before {
+    height: 120px;
+    width: 8px;
+    left: -4px;
+  }
+  .watch-strap-holder:after {
+    height: 120px;
+    width: 24px;
+    top: 5px;
+    left: -3px;
+  }
+  .reflection {
+    height: 13px;
+    width: 24px;
+    top: 40px;
+    left: 40px;
+  }
+  .reflection.bottom {
+    top: 269px;
+    left: 250px;
+  }
+  .watch-week {
+    margin-left: 20px;
+  }
+  .reflection.bottom:after {
+    height: 31px;
+    width: 34px;
+    left: -48px;
+    top: -12px;
+  }
+  .reflection:after {
+    height: 32px;
+    width: 24px;
+    left: -39px;
+    top: -11px;
   }
 }

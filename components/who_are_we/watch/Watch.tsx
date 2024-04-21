@@ -13,17 +13,6 @@ const Watch = () => {
           <div className="watch-strap-holder left-bottom"></div>
           <div className="watch-strap-holder right-up"></div>
           <div className="watch-strap-holder right-bottom"></div>
-          <div className="watch-lace">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <span className="top"></span>
-            <span className="bottom"></span>
-          </div>
         </div>
         <div className="watch-case">
           <div className="reflection"></div>
@@ -117,70 +106,7 @@ const Watch = () => {
                 <div>S</div>
               </ul>
             </div>
-            <div className="watch-day">
-              <div className="watch-points">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-            </div>
+            <div className="watch-day"></div>
           </div>
         </div>
       </div>

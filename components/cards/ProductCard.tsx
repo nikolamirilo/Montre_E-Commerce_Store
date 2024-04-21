@@ -89,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {isOutOfStock ? (
               <div
                 id="triangle"
-                className="w-[130px] h-[80px] bg-red-500 flex justify-start items-start rounded-lg">
+                className="w-[130px] h-[80px] bg-red-500 flex justify-start items-start">
                 <span className="h-2/3 w-2/3 top-1 flex items-center justify-center text-base text-white font-semibold relative -rotate-[31deg]">
                   Rasprodato
                 </span>
@@ -97,7 +97,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ) : (
               <div
                 id="triangle"
-                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start rounded-lg">
+                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start">
                 <span className="h-1/2 w-1/2 flex items-center justify-center text-xl text-white font-semibold relative left-1 top-[2px]">
                   {discount}%
                 </span>
