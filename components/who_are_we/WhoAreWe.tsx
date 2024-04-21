@@ -6,7 +6,7 @@ const WhoAreWe = () => {
       <div className="flex flex-col justify-between items-between px-4 lg:flex-row lg:justify-around lg:items-center w-full max-w-[1500px] min-h-[110vh] md:min-h-[70vh]">
         <div
           id="cloud"
-          className="bg-[#eceff1] p-4 rounded-3xl flex flex-col justify-start items-center gap-5 text-gray-900 w-full lg:w-1/3 h-full">
+          className="bg-[#eceff1] p-4 rounded-3xl flex flex-col justify-start items-center gap-5 text-gray-900 w-full mx-auto sm:max-w-md lg:max-w-[38rem] h-full">
           <h2 className="font-bold text-2xl lg:text-3xl relative lg:bottom-20">Ko smo mi?</h2>
           <p className="text-base lg:text-lg text-center relative lg:bottom-20 lg:w-10/12">
             Dobrodošli u Montre - vašu ekskluzivnu online prodavnicu gde otkrivamo svet luksuznih
