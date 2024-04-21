@@ -18,6 +18,12 @@ const Meta = () => {
             <noscript><img height="1" width="1" style={{ display: "none" }}
                 src="https://www.facebook.com/tr?id=1555045998743276&ev=PageView&noscript=1"
             /></noscript>
+            <script dangerouslySetInnerHTML={{
+                __html: `fbq('track', 'ViewContent', {
+                    value: 4.0,
+                    currency: RSD
+                });`
+            }} />
         </>
     )
 }
