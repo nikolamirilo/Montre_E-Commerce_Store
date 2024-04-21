@@ -224,7 +224,7 @@ export const menProductsPageSchema: WithContext<Product> = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "4000",
+    lowPrice: "5000",
     highPrice: "10000",
     priceCurrency: "RSD",
     offerCount: "6",
@@ -275,7 +275,7 @@ export const womenProductsPageSchema: WithContext<Product> = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "4000",
+    lowPrice: "5000",
     highPrice: "10000",
     priceCurrency: "RSD",
     offerCount: "6",
@@ -322,7 +322,7 @@ export const superDealsProductsPageSchema: WithContext<Product> = {
   offers: {
     "@type": "AggregateOffer",
     lowPrice: "4000",
-    highPrice: "10000",
+    highPrice: "8000",
     priceCurrency: "RSD",
     offerCount: "12",
   },
@@ -403,7 +403,7 @@ export const allProductsPageSchema: WithContext<Product> = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "4000",
+    lowPrice: "5000",
     highPrice: "10000",
     priceCurrency: "RSD",
     offerCount: "12",
