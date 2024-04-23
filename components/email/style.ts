@@ -23,7 +23,7 @@ export const headingCellStyle = {
   fontWeight: "bold",
 }
 export const containerStyle = {
-  width: "800px",
+  width: "1000px",
   background: "#0c0502",
   padding: "30px 20px",
   borderRadius: "10px",
