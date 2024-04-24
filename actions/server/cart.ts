@@ -7,6 +7,7 @@ import { Product } from "@/typescript/types"
 import moment from "moment"
 import { ObjectId } from "mongodb"
 import { getSingleProduct } from "./products"
+import { revalidateData } from "@/helpers/server"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
   try {
@@ -170,7 +171,7 @@ export async function orderCartItems(uid: string, customerInfo: object) {
       console.log(`Error: ${emailRes.statusText}`)
     }
 
-    revalidateTagCustom("orders")
+    revalidateData()
 
     return true
   } catch (error) {
