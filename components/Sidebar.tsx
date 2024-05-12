@@ -9,7 +9,13 @@ import { BsCart3, BsInfoCircle, BsQuestionDiamond, BsWatch } from "react-icons/b
 import { FaRegUser } from "react-icons/fa"
 import { IoHomeOutline } from "react-icons/io5"
 import { LuPlusSquare } from "react-icons/lu"
-import { MdKeyboardArrowDown, MdKeyboardArrowRight, MdOutlineLocalOffer } from "react-icons/md"
+import {
+  MdKeyboardArrowDown,
+  MdKeyboardArrowRight,
+  MdMiscellaneousServices,
+  MdOutlineAdminPanelSettings,
+  MdOutlineLocalOffer,
+} from "react-icons/md"
 import { PiDress } from "react-icons/pi"
 import { RiContactsLine, RiMenu2Line } from "react-icons/ri"
 import { TbDiscount2, TbPackages, TbTie } from "react-icons/tb"
@@ -17,8 +23,9 @@ import logo from "../public/MontreLogoTransparent.png"
 import Logo from "./helpers/Logo"
 
 const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const [isOfferOpen, setIsOfferOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
+  const [isOfferOpen, setIsOfferOpen] = useState<boolean>(false)
+  const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false)
   const variants = {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
@@ -26,8 +33,11 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   function handleSidebar() {
     setIsSidebarOpen(!isSidebarOpen)
   }
-  function handleMenu() {
+  function handleOfferMenu() {
     setIsOfferOpen(!isOfferOpen)
+  }
+  function handleAdminMenu() {
+    setIsAdminOpen(!isAdminOpen)
   }
   const { user } = useUser()
   return (
@@ -95,16 +105,16 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
             <Link
               onClick={handleSidebar}
               href="/"
-              className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+              className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
               <IoHomeOutline size={30} />
               <span>Početna</span>
             </Link>
           </div>
-          <div id="offer-section">
+          <div>
             <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <button
-                onClick={handleMenu}
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                onClick={handleOfferMenu}
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <BsWatch size={30} />
                 <span>Ponuda satova</span>
                 {isOfferOpen ? (
@@ -121,7 +131,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <MdOutlineLocalOffer size={30} />
                 <span>Svi</span>
               </Link>
@@ -133,7 +143,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/men"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <TbTie size={30} />
                 <span>Muški</span>
               </Link>
@@ -145,7 +155,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/categories/women"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <PiDress size={30} />
                 <span>Ženski</span>
               </Link>
@@ -157,33 +167,34 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/products/watches/offers/super-deals"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <TbDiscount2 size={30} />
                 <span>Akcije</span>
               </Link>
             </div>
-            {user ? (
-              <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
-                <Link
-                  onClick={handleSidebar}
-                  href="/cart"
-                  className="text-[15px] relative ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
-                  <span className="absolute text-xs text-white left-5 -bottom-1 px-1 rounded-full bg-amber-500">
-                    {cartItemsCount}
-                  </span>
-                  <BsCart3 size={30} />
-                  <span>Korpa</span>
-                </Link>
-              </div>
-            ) : null}
           </div>
+          {user ? (
+            <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <Link
+                onClick={handleSidebar}
+                href="/cart"
+                className="text-[14px] relative ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                <span className="absolute text-xs text-white left-5 -bottom-1 px-1 rounded-full bg-amber-500">
+                  {cartItemsCount}
+                </span>
+                <BsCart3 size={30} />
+                <span>Korpa</span>
+              </Link>
+            </div>
+          ) : null}
+
           <div className="my-4 bg-stone-50 h-[1px]"></div>
           <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
             <div className="flex justify-between w-full items-center">
               <Link
                 onClick={handleSidebar}
                 href="/about"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <BsInfoCircle size={30} />
                 <span>O Nama</span>
               </Link>
@@ -194,7 +205,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/contact"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <RiContactsLine size={30} />
                 <span>Kontaktirajte Nas</span>
               </Link>
@@ -205,7 +216,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/faq"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <BsQuestionDiamond size={30} />
                 <span>FAQ</span>
               </Link>
@@ -214,7 +225,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
           {user ? (
             <div className="p-1.5 mt-2 flex items-center justify-start rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
               <Link
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full"
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full"
                 onClick={handleSidebar}
                 href={`/users/${user.id}`}>
                 {user.imageUrl != "" ? (
@@ -238,7 +249,7 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
               <Link
                 onClick={handleSidebar}
                 href="/auth/log-in"
-                className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                 <AiOutlineLogin size={30} />
                 <span>Prijavi se</span>
               </Link>
@@ -249,21 +260,52 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
           {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
             <>
               <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+                <button
+                  onClick={handleAdminMenu}
+                  className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                  <MdOutlineAdminPanelSettings size={30} />
+                  <span>Admin</span>
+                  {isAdminOpen ? (
+                    <MdKeyboardArrowDown size={30} className="relative bottom-[1px]" />
+                  ) : (
+                    <MdKeyboardArrowRight size={30} className="relative bottom-[1px]" />
+                  )}
+                </button>
+              </div>
+              <div
+                className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                  !isAdminOpen && "hidden"
+                }`}>
                 <Link
                   onClick={handleSidebar}
                   href="/admin/create-product"
-                  className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                  className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                   <LuPlusSquare size={30} />
                   <span>Dodaj Novi Proizvod</span>
                 </Link>
               </div>
-              <div className="p-1.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white">
+              <div
+                className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                  !isAdminOpen && "hidden"
+                }`}>
                 <Link
                   onClick={handleSidebar}
                   href="/admin/orders"
-                  className="text-[15px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                  className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
                   <TbPackages size={30} />
                   <span>Sve Narudžbine</span>
+                </Link>
+              </div>
+              <div
+                className={`relative left-5 p-1.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-stone-50/30 text-white ${
+                  !isAdminOpen && "hidden"
+                }`}>
+                <Link
+                  onClick={handleSidebar}
+                  href="/admin/services"
+                  className="text-[14px] ml-4 text-gray-200 font-bold flex flex-row gap-3 justify-start items-center w-full">
+                  <MdMiscellaneousServices size={30} />
+                  <span>Servisi</span>
                 </Link>
               </div>
             </>

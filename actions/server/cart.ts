@@ -1,13 +1,12 @@
 "use server"
 import { APP_URL, SHIPPING_COST } from "@/constants"
 import { fetchData, generateRandomHex } from "@/helpers/client"
-import { revalidateTagCustom } from "@/helpers/server"
+import { revalidateData, revalidateTagCustom } from "@/helpers/server"
 import { storeDatabaseConnection } from "@/lib/mongodb/connections"
 import { Product } from "@/typescript/types"
 import moment from "moment"
 import { ObjectId } from "mongodb"
 import { getSingleProduct } from "./products"
-import { revalidateData } from "@/helpers/server"
 
 export async function addItemToCart(uid: string | undefined, newCartItem: string): Promise<string> {
   try {
@@ -170,9 +169,8 @@ export async function orderCartItems(uid: string, customerInfo: object) {
     if (!emailRes.ok) {
       console.log(`Error: ${emailRes.statusText}`)
     }
-
+    console.log("Order created successfully.")
     revalidateData()
-
     return true
   } catch (error) {
     console.log((error as Error).message)
@@ -204,6 +202,7 @@ export async function orderSingleItem(productId: string | undefined, customerInf
       if (!emailRes.ok) {
         console.log(`Error: ${emailRes.statusText}`)
       }
+      revalidateData()
       console.log("Order created successfully.")
       return true
     }
