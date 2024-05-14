@@ -35,9 +35,15 @@ const Sidebar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   }
   function handleOfferMenu() {
     setIsOfferOpen(!isOfferOpen)
+    if (!isOfferOpen) {
+      setIsAdminOpen(false)
+    }
   }
   function handleAdminMenu() {
     setIsAdminOpen(!isAdminOpen)
+    if (!isAdminOpen) {
+      setIsOfferOpen(false)
+    }
   }
   const { user } = useUser()
   return (

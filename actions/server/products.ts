@@ -144,8 +144,8 @@ export const updateProductDiscount = async (
     )
     return true
   } catch (error) {
-    console.log((error as Error).message)
-    throw new Error((error as Error).message)
+    console.error(error)
+    throw error
   }
 }
 
