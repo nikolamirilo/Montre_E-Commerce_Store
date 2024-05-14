@@ -14,10 +14,11 @@ export const dynamic = "force-static"
 const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type }) => {
   const products = await fetchData(`${APP_URL}/api/products`, {
     method: "POST",
-    cache: "force-cache",
+    cache: "no-store",
     body: JSON.stringify(query),
     tags: ["products"],
   })
+  console.log(products)
   return (
     <section className="flex flex-col justify-center items-center h-fit py-[6vh] lg:px-[5%] xl:px-[10%] gap-8 w-full">
       <div className="flex flex-col w-full justify-center items-center gap-4">

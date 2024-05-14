@@ -16,7 +16,7 @@ export const getAllProducts = async (query?: SearchQuery, limit?: number) => {
     if (query?.brand) {
       mongoQuery.brand = query?.brand
     }
-    if (query?.category) {
+    if (query?.category && query?.category != "all") {
       mongoQuery.category = query?.category
     }
     if (query?.isOnDiscount) {
@@ -114,6 +114,31 @@ export const updateProduct = async (body: Product) => {
           isRecommended: body.isRecommended,
           isOutOfStock: body.isOutOfStock,
           discountedPrice: body.discountedPrice,
+        },
+      }
+    )
+    return true
+  } catch (error) {
+    console.log((error as Error).message)
+    throw new Error((error as Error).message)
+  }
+}
+export const updateProductDiscount = async (
+  _id: string,
+  isOnDiscount: boolean,
+  discount: number,
+  discountedPrice: number
+) => {
+  try {
+    const db = await storeDatabaseConnection()
+    const objId = new ObjectId(_id)
+    await db.collection("products").updateOne(
+      { _id: objId },
+      {
+        $set: {
+          isOnDiscount: isOnDiscount,
+          discount: discount,
+          discountedPrice: discountedPrice,
         },
       }
     )
