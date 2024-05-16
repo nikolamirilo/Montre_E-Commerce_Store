@@ -1,5 +1,4 @@
 "use client"
-
 import { discountEtl } from "@/actions/server/etls"
 import { revalidateData } from "@/helpers/server"
 import { useState } from "react"
@@ -7,8 +6,8 @@ import { useState } from "react"
 const ETLS = () => {
   async function handleUpdateMultipleProducts(category: string, discount: number) {
     const res = await discountEtl(category, discount)
-    revalidateData()
     if (res == true) {
+      revalidateData()
       alert("Uspešno ažurirani proizvodi")
     } else {
       alert("Doslo je do greske")

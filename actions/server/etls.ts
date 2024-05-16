@@ -1,3 +1,4 @@
+"use server"
 import { getAllProducts, updateProductDiscount } from "./products"
 
 export async function discountEtl(category: string, discount: number) {

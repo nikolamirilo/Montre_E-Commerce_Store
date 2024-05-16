@@ -10,7 +10,6 @@ export const metadata: Metadata = {
     nocache: true,
   },
 }
-
 const Services = async () => {
   const user = await currentUser()
   if (user?.emailAddresses[0].emailAddress != "satovi.montre@gmail.com")
@@ -22,5 +21,4 @@ const Services = async () => {
     </div>
   )
 }
-
 export default Services
