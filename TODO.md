@@ -3,6 +3,7 @@
 ## Preparing for production
 
 - Error 500 from time to time - status => decrease occurence using code from: [https://github.com/vercel/vercel/discussions/11178] [https://stackoverflow.com/questions/76973164/intermittent-unhandled-promise-rejection-mongoserverselectionerror-connection]
+- Change to SQL database
 
 ## Refactoring
 

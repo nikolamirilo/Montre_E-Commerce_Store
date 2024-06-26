@@ -1,4 +1,4 @@
-import { revalidateTagCustom } from "@/helpers/server"
+import { revalidateData } from "@/helpers/server"
 
 export async function handleOrderProducts(
   id: string | undefined,
@@ -16,7 +16,7 @@ export async function handleOrderProducts(
     if (!orderRes.ok) {
       throw new Error(`Error: ${orderRes.statusText}`)
     }
-    revalidateTagCustom("users")
+    revalidateData()
     return true
   } catch (error) {
     console.log((error as Error).message)

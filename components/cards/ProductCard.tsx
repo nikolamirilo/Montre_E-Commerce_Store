@@ -63,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           confirmAction={handleDeleteItem}
         />
       ) : null}
-      <div className="bg-white shadow-xl rounded-lg w-[96vw] xs:w-80 h-fit sm:h-[28rem] relative lg:hover:scale-[1.02] transition-all duration-200 ease-in-out">
+      <div className="bg-white shadow-xl rounded-lg w-[96vw] xs:w-80 h-fit sm:h-[28rem] relative transition-all duration-200 ease-in-out">
         {user?.primaryEmailAddress?.emailAddress == "satovi.montre@gmail.com" ? (
           <div className="admin-buttons top-0 right-3 z-10 flex flex-row-reverse gap-2 absolute">
             <button
@@ -97,7 +97,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ) : (
               <div
                 id="triangle"
-                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start">
+                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start lg:hover:scale-[1.02]">
                 <span className="h-1/2 w-1/2 flex items-center justify-center text-xl text-white font-semibold relative left-1 top-[2px]">
                   {discount}%
                 </span>
@@ -142,9 +142,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className={`flex items-center justify-between  ${isOnDiscount == false && "mb-3"}`}>
             <div className="flex flex-col">
               <span
-                className={`text-lg md:text-xl text-gray-900 ${
-                  isOnDiscount == true && isOutOfStock == false ? "line-through" : "mt-3"
-                }`}>
+                className={`text-lg md:text-xl text-gray-900 ${isOnDiscount == true && isOutOfStock == false ? "line-through" : "mt-3"
+                  }`}>
                 {price!.toLocaleString().replace(",", ".")},00 RSD
               </span>
               {isOnDiscount == true && isOutOfStock == false ? (
@@ -158,15 +157,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <button
                 onClick={handleAddItemToCart}
                 disabled={progress == 0 ? false : true}
-                className={`${
-                  isOutOfStock == true ? "hidden" : "flex"
-                } text-white z-10 rounded-lg px-2 5 py-2 text-center flex-row gap-1 justify-center items-center ${
-                  progress == 100
+                className={`${isOutOfStock == true ? "hidden" : "flex"
+                  } text-white z-10 rounded-lg px-2 5 py-2 text-center flex-row gap-1 justify-center items-center ${progress == 100
                     ? "bg-green-600 hover:bg-green-700"
                     : progress == 75
-                    ? "bg-red-500 hover:bg-red-600"
-                    : "bg-amber-500 hover:bg-amber-600"
-                }`}>
+                      ? "bg-red-500 hover:bg-red-600"
+                      : "bg-amber-500 hover:bg-amber-600"
+                  }`}>
                 {progress == 50 ? (
                   <LuLoader2
                     className="animate-spin h-5 w-5 rounded-full"
@@ -181,17 +178,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 {progress == 50
                   ? "Dodavanje..."
                   : progress == 75
-                  ? "Već je dodato"
-                  : progress == 100
-                  ? "Dodato"
-                  : "Dodaj"}
+                    ? "Već je dodato"
+                    : progress == 100
+                      ? "Dodato"
+                      : "Dodaj"}
               </button>
             ) : (
               <Link
                 href={`/order/${productCode}`}
-                className={`text-white z-10 bg-amber-500 hover:bg-amber-600 rounded-lg 5 py-2 text-center flex-row gap-1 justify-center items-center px-2 ${
-                  isOutOfStock == true ? "hidden" : "flex"
-                }`}>
+                className={`text-white z-10 bg-amber-500 hover:bg-amber-600 rounded-lg 5 py-2 text-center flex-row gap-1 justify-center items-center px-2 ${isOutOfStock == true ? "hidden" : "flex"
+                  }`}>
                 <LuPackageCheck size={25} /> Naruči
               </Link>
             )}
