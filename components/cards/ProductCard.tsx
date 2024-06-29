@@ -97,7 +97,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ) : (
               <div
                 id="triangle"
-                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start lg:hover:scale-[1.02]">
+                className="w-[100px] h-[80px] bg-red-500 flex justify-start items-start lg:hover:scale-[1.02]" style={{ borderRadius: "0.5rem 0 0 0 " }}>
                 <span className="h-1/2 w-1/2 flex items-center justify-center text-xl text-white font-semibold relative left-1 top-[2px]">
                   {discount}%
                 </span>
