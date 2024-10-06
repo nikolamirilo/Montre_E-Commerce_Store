@@ -14,14 +14,9 @@ export const metadata: Metadata = {
 export const dynamic = "force-static"
 export const revalidate = 0
 
-async function getData(): Promise<string> {
+const ThankYou = async () => {
   const user = await currentUser()
   const full_name = user && user.firstName != null ? user.firstName : "Poštovani"
-  return full_name
-}
-
-const ThankYou = async () => {
-  const full_name = await getData()
   return (
     <div className="w-full h-fit">
       <Image
