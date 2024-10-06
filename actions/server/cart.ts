@@ -211,3 +211,37 @@ export async function orderSingleItem(productId: string | undefined, customerInf
     throw new Error((error as Error).message)
   }
 }
+export async function deleteSingleOrder(orderId: string) {
+  try {
+    const db = await storeDatabaseConnection()
+
+    // Check and delete the order from the anonymus-orders collection first
+    const anonResult = await db
+      .collection("anonymus-orders")
+      .deleteOne({ _id: new ObjectId(orderId) })
+
+    if (anonResult.deletedCount === 1) {
+      console.log("Order deleted from anonymus-orders.")
+      revalidateData()
+      return true
+    }
+
+    // If the order is not in anonymus-orders, check in the users collection
+    const userResult = await db.collection("users").updateOne(
+      { "orders._id": new ObjectId(orderId) }, // Check if the order ID exists in the orders array
+      { $pull: { orders: { _id: new ObjectId(orderId) } } } // Remove the order from orders array
+    )
+
+    if (userResult.modifiedCount === 1) {
+      console.log("Order deleted from user orders.")
+      revalidateData()
+      return true
+    }
+
+    console.log("No order found with the given ID.")
+    return false
+  } catch (error) {
+    console.log((error as Error).message)
+    throw new Error((error as Error).message)
+  }
+}
