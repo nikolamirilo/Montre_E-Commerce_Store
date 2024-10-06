@@ -95,7 +95,7 @@ const OrdersTable = ({ orders }: { orders: any }) => {
               Adresa
             </th>
             <th scope="col" className={secondaryCellStyle}>
-              Poslato?
+              Poslato
             </th>
           </tr>
         </thead>
@@ -118,8 +118,7 @@ const OrdersTable = ({ orders }: { orders: any }) => {
                       <td className={`${primaryCellStyle} relative`}>
                         <FaRegTrashAlt
                           size={20}
-                          color="red"
-                          className="absolute left-0 top-1 cursor-pointer"
+                          className="absolute left-1 top-2 cursor-pointer text-red-400 hover:text-red-500"
                           onClick={() => {
                             hanldeDeleteOrder(order._id)
                           }}
