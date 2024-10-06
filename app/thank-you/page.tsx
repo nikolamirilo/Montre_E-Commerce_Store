@@ -11,8 +11,17 @@ export const metadata: Metadata = {
   },
 }
 
-const ThankYou = async () => {
+export const dynamic = "force-static"
+export const revalidate = 0
+
+async function getData(): Promise<string> {
   const user = await currentUser()
+  const full_name = user && user.firstName != null ? user.firstName : "Poštovani"
+  return full_name
+}
+
+const ThankYou = async () => {
+  const full_name = await getData()
   return (
     <div className="w-full h-fit">
       <Image
@@ -35,8 +44,7 @@ const ThankYou = async () => {
               priority
             />
             <h1 className="text-4xl w-full md:w-9/12 text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500">
-              {`${user && user.firstName != null ? user.firstName : "Poštovani"}`}, hvala na
-              ukazanom poverenju!
+              {full_name}, hvala na ukazanom poverenju!
             </h1>
             <p className="text-lg w-full md:w-10/12 mx-auto text-center text-white">
               Vaša narudžbina je evidentirana i biće poslata u roku od 3 radna dana. Potvrda
