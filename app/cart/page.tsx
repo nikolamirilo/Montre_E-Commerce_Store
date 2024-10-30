@@ -46,7 +46,7 @@ const ShoppingCart = async () => {
                         category={product?.category}
                         productClass={product?.class}
                         price={product?.price}
-                        image={product?.images[0]}
+                        image={product?.images[0].url}
                         isOnDiscount={product?.isOnDiscount}
                         discountedPrice={product?.discountedPrice}
                         quantity={item.quantity}

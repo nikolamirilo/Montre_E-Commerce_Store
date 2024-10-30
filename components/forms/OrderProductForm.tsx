@@ -107,7 +107,7 @@ const OrderProductForm: React.FC<OrderProductFormProps> = ({
                           {product!.title}
                         </h2>
                         <Image
-                          src={product!.images[0]}
+                          src={product!.images[0].url}
                           fill
                           priority
                           className="object-cover object-center rounded-lg"
@@ -124,23 +124,23 @@ const OrderProductForm: React.FC<OrderProductFormProps> = ({
                       className={`flex flex-row flex-wrap gap-2 items-center justify-start px-10 w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white`}>
                       {cartItems
                         ? cartItems?.map((product: any, idx: number) => {
-                          return (
-                            <Suspense fallback="" key={idx}>
-                              <div className="relative h-64 w-10/12 sm:w-52 ">
-                                <h2 className="absolute bottom-0 right-0 text-center text-sm text-white bg-amber-500 z-10 w-full">
-                                  {product.quantity}x{product.title}
-                                </h2>
-                                <Image
-                                  src={product.images[0]}
-                                  fill
-                                  priority
-                                  className="object-cover object-center rounded-lg"
-                                  alt="Input Picture"
-                                />
-                              </div>
-                            </Suspense>
-                          )
-                        })
+                            return (
+                              <Suspense fallback="" key={idx}>
+                                <div className="relative h-64 w-10/12 sm:w-52 ">
+                                  <h2 className="absolute bottom-0 right-0 text-center text-sm text-white bg-amber-500 z-10 w-full">
+                                    {product.quantity}x{product.title}
+                                  </h2>
+                                  <Image
+                                    src={product.images[0].url}
+                                    fill
+                                    priority
+                                    className="object-cover object-center rounded-lg"
+                                    alt="Input Picture"
+                                  />
+                                </div>
+                              </Suspense>
+                            )
+                          })
                         : null}
                     </div>
                   </div>
@@ -168,8 +168,9 @@ const OrderProductForm: React.FC<OrderProductFormProps> = ({
                 type="submit"
                 id="submit-button"
                 disabled={progress == 0 ? false : true}
-                className={`uppercase w-full flex flex-row justify-center items-center py-2 px-4 gap-2 text-white rounded-md ${progress == 100 && "!bg-green-600"
-                  }`}>
+                className={`uppercase w-full flex flex-row justify-center items-center py-2 px-4 gap-2 text-white rounded-md ${
+                  progress == 100 && "!bg-green-600"
+                }`}>
                 {progress == 50 ? (
                   <LuLoader2
                     className="animate-spin h-5 w-5 rounded-full"

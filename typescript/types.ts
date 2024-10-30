@@ -15,7 +15,7 @@ export type Product = {
   description: string
   typ: string
   diameter: string
-  images: string[]
+  images: ProductImage[]
   price: number
   isOnDiscount: boolean
   discount: number | null
@@ -53,7 +53,6 @@ export type WindowWithDataLayer = Window & {
 export type OrderedProduct = Product
 
 export type SearchQuery = {
-  length?: string
   text?: string
   isOnDiscount?: boolean
   class?: string
@@ -84,7 +83,7 @@ export type FormInitialData = {
   description: string
   isPublic: boolean
   discount: string
-  images: string[]
+  images: ProductImage[]
   isOutOfStock: boolean
   isRecommended: boolean
 }
@@ -119,3 +118,8 @@ export type Option = {
   label: string
 }
 export type SortType = "ASC" | "DESC"
+
+export type ProductImage = {
+  url: string
+  order: number
+}

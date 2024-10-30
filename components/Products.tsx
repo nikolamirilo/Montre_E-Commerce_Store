@@ -55,7 +55,7 @@ const Products: React.FC<ProductsProps> = async ({ query, title, subtitle, type 
                   isOutOfStock={product?.isOutOfStock}
                   title={product?.title}
                   productClass={product?.class}
-                  image={product?.images[0]!}
+                  image={product?.images[0].url!}
                   price={product?.price}
                 />
               )

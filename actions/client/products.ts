@@ -1,9 +1,9 @@
 import { revalidateData } from "@/helpers/server"
-import { Product } from "@/typescript/types"
+import { Product, ProductImage } from "@/typescript/types"
 
 export async function uploadImagesToCloudinary(
   files: FileList | null | undefined,
-  images: string[]
+  images: ProductImage[]
 ) {
   const upload_preset = "products"
   const maxSizeMB = 3
@@ -70,7 +70,7 @@ export async function uploadImagesToCloudinary(
           continue
         }
         const res = await response.json()
-        images.push(res.url)
+        images.push({ order: i, url: res.url })
       } catch (error) {
         console.error(`Error uploading file ${file.name}: ${(error as Error).message}`)
       } finally {
@@ -80,7 +80,7 @@ export async function uploadImagesToCloudinary(
 }
 
 export async function handleProductChange(
-  images: string[],
+  images: ProductImage[],
   uploadData: Product,
   action: string,
   id?: string

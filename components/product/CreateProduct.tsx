@@ -1,7 +1,7 @@
 "use client"
 import { handleProductChange, uploadImagesToCloudinary } from "@/actions/client/products"
 import { generateStringCode } from "@/helpers/client"
-import { Product } from "@/typescript/types"
+import { Product, ProductImage } from "@/typescript/types"
 import React, { useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
 
@@ -10,7 +10,7 @@ const CreateProduct: React.FC = () => {
   const [progress, setProgress] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [displayTitle, setDisplayTitle] = useState<string>("")
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<ProductImage[]>([])
   const form = useRef<HTMLFormElement>(null)
   const titleInput = useRef<HTMLInputElement>(null)
   const descriptionInput = useRef<HTMLTextAreaElement>(null)

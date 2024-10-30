@@ -127,7 +127,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                       className="text-white bg-amber-500 hover:bg-amber-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex flex-row gap-2 justify-center items-center cursor-pointer">
                       Dodaj slike
                     </label>
-                    Broj dodatih slika: {displayImages.length}
+                    Broj dodatih slika: {displayImages?.length}
                   </div>
                   <input
                     className="hidden"
@@ -143,33 +143,32 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   />
                 </div>
                 <div
-                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${
-                    displayImages.length !== 0 ? "flex" : "hidden"
-                  }`}>
-                  {displayImages.length !== 0
-                    ? displayImages.map((image: string, idx: number) => {
-                        return (
-                          <div
-                            className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
-                            key={idx}>
-                            <button
-                              id="delete"
-                              className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
-                              onClick={(e) => {
-                                handleDeleteImage(e, idx)
-                              }}>
-                              <BsTrash3 size={25} />
-                            </button>
-                            <Image
-                              src={image}
-                              fill
-                              priority
-                              className="object-cover object-center"
-                              alt="Input Picture"
-                            />
-                          </div>
-                        )
-                      })
+                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${displayImages?.length !== 0 ? "flex" : "hidden"
+                    }`}>
+                  {displayImages?.length !== 0
+                    ? displayImages?.map((image: string, idx: number) => {
+                      return (
+                        <div
+                          className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
+                          key={idx}>
+                          <button
+                            id="delete"
+                            className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
+                            onClick={(e) => {
+                              handleDeleteImage(e, idx)
+                            }}>
+                            <BsTrash3 size={25} />
+                          </button>
+                          <Image
+                            src={image}
+                            fill
+                            priority
+                            className="object-cover object-center"
+                            alt="Input Picture"
+                          />
+                        </div>
+                      )
+                    })
                     : null}
                 </div>
               </div>
@@ -205,10 +204,10 @@ const ProductForm: React.FC<ProductFormProps> = ({
               {action === "create" && progress != 50
                 ? "Dodaj proizvod"
                 : action === "update" && progress != 50
-                ? "Sačuvaj izmene"
-                : progress == 50
-                ? "Učitava se..."
-                : ""}
+                  ? "Sačuvaj izmene"
+                  : progress == 50
+                    ? "Učitava se..."
+                    : ""}
             </button>
           </div>
         </form>

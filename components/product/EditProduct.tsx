@@ -2,7 +2,7 @@
 import { handleProductChange, uploadImagesToCloudinary } from "@/actions/client/products"
 import { generateStringCode } from "@/helpers/client"
 import { EditProductProps } from "@/typescript/interfaces"
-import { Product } from "@/typescript/types"
+import { Product, ProductImage } from "@/typescript/types"
 import React, { useEffect, useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
 
@@ -12,7 +12,7 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
   const [progress, setProgress] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [displayTitle, setDisplayTitle] = useState<string>("")
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<ProductImage[]>([])
   const form = useRef<HTMLFormElement>(null)
   const titleInput = useRef<HTMLInputElement>(null)
   const descriptionInput = useRef<HTMLTextAreaElement>(null)
@@ -118,6 +118,7 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
   useEffect(() => {
     if (initialData) {
       setId(initialData._id)
+      const initialImages = initialData.images.map((item) => item.url)
       titleInput.current!.value = initialData.title
       priceInput.current!.value = initialData.price
       classInput.current!.value = initialData.class
@@ -131,7 +132,7 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       isRecommendedInput.current!.checked = initialData.isRecommended
       isOutOfStockInput.current!.checked = initialData.isOutOfStock
       productCode = initialData.productCode
-      setDisplayImages(initialData.images)
+      setDisplayImages(initialImages)
       setImages(initialData.images)
     }
   }, [initialData])

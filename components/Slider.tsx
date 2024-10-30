@@ -1,11 +1,12 @@
 "use client"
+import { ProductImage } from "@/typescript/types"
 import Image from "next/image"
 import { useState } from "react"
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md"
 import { RiFullscreenFill } from "react-icons/ri"
 import ImageModal from "./modals/ImageModal"
 
-const Slider = ({ images }: { images: string[] }) => {
+const Slider = ({ images }: { images: ProductImage[] }) => {
   const [index, setIndex] = useState<number>(0)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   function handleNextSlide() {
@@ -27,7 +28,7 @@ const Slider = ({ images }: { images: string[] }) => {
       <div className="relative flex flex-col justify-center items-center">
         {isModalOpen ? (
           <ImageModal
-            image={images[index]}
+            image={images[index].url}
             closeModal={() => {
               setIsModalOpen(false)
             }}
@@ -44,7 +45,7 @@ const Slider = ({ images }: { images: string[] }) => {
                   setIsModalOpen(true)
                 }}>
                 <Image
-                  src={images[index]}
+                  src={images[index].url}
                   fill
                   className="object-cover object-center"
                   alt="Slider picture"
@@ -84,7 +85,7 @@ const Slider = ({ images }: { images: string[] }) => {
         </div>
         <div className="flex flex-row flex-wrap justify-start md:justify-center w-full items-center gap-2 mt-3">
           {images
-            ? images?.map((image: string, idx: number) => {
+            ? images?.map((image: ProductImage, idx: number) => {
                 return (
                   <div
                     key={idx}
@@ -95,7 +96,7 @@ const Slider = ({ images }: { images: string[] }) => {
                       setIndex(idx)
                     }}>
                     <Image
-                      src={image}
+                      src={image.url}
                       className="object-cover object-center"
                       loading="lazy"
                       alt="Product"

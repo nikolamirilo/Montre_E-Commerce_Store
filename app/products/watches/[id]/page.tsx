@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     body: JSON.stringify({ productCode: id }),
     tags: ["products"],
   })
-  const imageUrl: string = product?.images[0]
+  const imageUrl: string = product?.images[0].url
   return {
     title: product?.title,
     description: product?.description,
@@ -73,7 +73,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
       product.category,
       product.discountedPrice,
       product.description,
-      product.images[0],
+      product.images[0].url,
       product.productCode
     )
     const user = await currentUser()
@@ -84,7 +84,11 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
         />
-        <CldOgImage src={product?.images[0]} alt={product?.title} twitterTitle={product?.title} />
+        <CldOgImage
+          src={product?.images[0].url}
+          alt={product?.title}
+          twitterTitle={product?.title}
+        />
         <div className="flex flex-col justify-center lg:mt-[1.5%] items-center w-full xl:w-1/2 h-full md:w-full">
           <Slider images={product?.images} />
         </div>
