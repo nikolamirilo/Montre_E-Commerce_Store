@@ -1,13 +1,13 @@
 "use client"
 import { handleProductChange, uploadImagesToCloudinary } from "@/actions/client/products"
-import { generateStringCode } from "@/helpers/client"
+import { generateStringCode, reindexProductImageArray } from "@/helpers/client"
+import { revalidateData } from "@/helpers/server"
 import { EditProductProps } from "@/typescript/interfaces"
 import { Product, ProductImage } from "@/typescript/types"
 import React, { useEffect, useRef, useState } from "react"
 import ProductForm from "../forms/ProductForm"
 
 const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
-  const [displayImages, setDisplayImages] = useState<string[]>([])
   const [id, setId] = useState<string>("")
   const [progress, setProgress] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -33,37 +33,40 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
     const files = imagesInput?.current?.files
     if (files) {
       const newImages = await Promise.all(
-        Array.from(files).map((file) => {
-          return new Promise<string>((resolve) => {
+        Array.from(files).map((file, index) => {
+          return new Promise<{ url: string; order: number }>((resolve) => {
             const reader = new FileReader()
             reader.readAsDataURL(file)
             reader.onload = () => {
-              resolve(reader.result as string)
+              resolve({
+                url: reader.result as string,
+                order: index,
+              })
             }
           })
         })
       )
-      setDisplayImages((prevImages) => [...prevImages, ...newImages])
+
+      setImages((prevImages: any) => [
+        ...prevImages,
+        ...newImages.map((image, idx) => ({
+          ...image,
+          order: prevImages.length + idx,
+        })),
+      ])
     }
   }
 
-  function handleDeleteImage(e: any, index: number) {
-    e.preventDefault()
-    setDisplayImages((prevImages) => {
-      const newImages = [...prevImages]
-      newImages.splice(index, 1)
-      return newImages
-    })
+  function handleDeleteImage(index: number) {
     setImages((prevImages) => {
       const newImages = [...prevImages]
       newImages.splice(index, 1)
-      return newImages
+      const newArray = reindexProductImageArray(newImages)
+      return newArray
     })
   }
-
   function resetForm() {
     form.current!.reset()
-    setDisplayImages([])
     setImages([])
     setProgress(100)
     setIsOpen(true)
@@ -88,6 +91,10 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       productCode = generateStringCode(titleInput.current!.value)
       setDisplayTitle(titleInput.current!.value)
       // Prepare upload data
+      const filteredImages: ProductImage[] = images.filter(
+        (image: ProductImage) => !image.url.includes("data:image/")
+      )
+      const reindexedImages = reindexProductImageArray(filteredImages)
       const uploadData: Product = {
         title: titleInput.current!.value,
         price,
@@ -104,21 +111,30 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
         discount,
         discountedPrice,
         isOnDiscount: discount > 0,
-        images,
+        images: reindexedImages,
       }
       // Send POST request to create new product or update existing one and reset form
       await handleProductChange(images, uploadData, "update", id)
+      revalidateData()
       resetForm()
     } catch (error) {
       console.log(error)
     }
+  }
+  function handleChangeOrderOfImages(images: ProductImage[], mainIndex: number) {
+    setImages((prevImages) => {
+      const newImages = [...prevImages]
+      const temp = newImages[0]
+      newImages[0] = newImages[mainIndex]
+      newImages[mainIndex] = temp
+      return reindexProductImageArray(newImages)
+    })
   }
 
   //Set initial Values in case I want to edit product
   useEffect(() => {
     if (initialData) {
       setId(initialData._id)
-      const initialImages = initialData.images.map((item) => item.url)
       titleInput.current!.value = initialData.title
       priceInput.current!.value = initialData.price
       classInput.current!.value = initialData.class
@@ -132,7 +148,6 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       isRecommendedInput.current!.checked = initialData.isRecommended
       isOutOfStockInput.current!.checked = initialData.isOutOfStock
       productCode = initialData.productCode
-      setDisplayImages(initialImages)
       setImages(initialData.images)
     }
   }, [initialData])
@@ -157,9 +172,10 @@ const EditProduct: React.FC<EditProductProps> = ({ initialData }) => {
       isRecommendedInput={isRecommendedInput}
       isOutOfStockInput={isOutOfStockInput}
       handleFormSubmit={handleFormSubmit}
-      displayImages={displayImages}
+      displayImages={images}
       handleDeleteImage={handleDeleteImage}
       handleInputImageChange={handleInputImageChange}
+      handleChangeOrderOfImages={handleChangeOrderOfImages}
       progress={progress}
     />
   )

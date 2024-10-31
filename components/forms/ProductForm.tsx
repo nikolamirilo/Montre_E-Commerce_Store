@@ -1,6 +1,7 @@
 "use client"
 import { brandOptions, categoryOptions, classOptions, typOptions } from "@/constants"
 import { ProductFormProps } from "@/typescript/interfaces"
+import { ProductImage } from "@/typescript/types"
 import Image from "next/image"
 import React from "react"
 import { BsTrash3 } from "react-icons/bs"
@@ -35,7 +36,9 @@ const ProductForm: React.FC<ProductFormProps> = ({
   handleDeleteImage,
   handleInputImageChange,
   progress,
+  handleChangeOrderOfImages,
 }) => {
+  console.log(displayImages)
   return (
     <div className="flex relative justify-center items-center h-fit w-full">
       {isOpen ? (
@@ -143,32 +146,43 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   />
                 </div>
                 <div
-                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${displayImages?.length !== 0 ? "flex" : "hidden"
-                    }`}>
+                  className={`relative flex-row flex-wrap gap-1 items-center justify-center bg-center bg-cover w-full min-h-[10rem] h-fit py-6 md:border md:border-gray-300 rounded-lg bg-white  ${
+                    displayImages?.length !== 0 ? "flex" : "hidden"
+                  }`}>
                   {displayImages?.length !== 0
-                    ? displayImages?.map((image: string, idx: number) => {
-                      return (
-                        <div
-                          className="relative w-full h-52 md:w-1/2 xl:w-[30%] cursor-pointer"
-                          key={idx}>
-                          <button
-                            id="delete"
-                            className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
-                            onClick={(e) => {
-                              handleDeleteImage(e, idx)
-                            }}>
-                            <BsTrash3 size={25} />
-                          </button>
-                          <Image
-                            src={image}
-                            fill
-                            priority
-                            className="object-cover object-center"
-                            alt="Input Picture"
-                          />
-                        </div>
-                      )
-                    })
+                    ? displayImages
+                        ?.sort((a: ProductImage, b: ProductImage) => a.order - b.order)
+                        .map((image: ProductImage, idx: number) => {
+                          return (
+                            <div
+                              className="relative w-full h-52 2xl:h-72 md:w-1/2 xl:w-[30%] cursor-pointer"
+                              key={idx}>
+                              <button
+                                id="delete"
+                                className="absolute top-0 right-0 p-1 rounded-full bg-red-500 text-white z-10"
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  handleDeleteImage(idx)
+                                }}>
+                                <BsTrash3 size={25} />
+                              </button>
+
+                              <Image
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  handleChangeOrderOfImages(displayImages, image.order)
+                                }}
+                                src={image.url}
+                                fill
+                                priority
+                                className={`object-cover object-center rounded-xl ${
+                                  image.order == 0 && "border-4 border-amber-600"
+                                }`}
+                                alt="Input Picture"
+                              />
+                            </div>
+                          )
+                        })
                     : null}
                 </div>
               </div>
@@ -204,10 +218,10 @@ const ProductForm: React.FC<ProductFormProps> = ({
               {action === "create" && progress != 50
                 ? "Dodaj proizvod"
                 : action === "update" && progress != 50
-                  ? "Sačuvaj izmene"
-                  : progress == 50
-                    ? "Učitava se..."
-                    : ""}
+                ? "Sačuvaj izmene"
+                : progress == 50
+                ? "Učitava se..."
+                : ""}
             </button>
           </div>
         </form>

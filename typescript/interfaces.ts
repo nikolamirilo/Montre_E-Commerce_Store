@@ -7,7 +7,7 @@ import {
   RefObject,
   SetStateAction,
 } from "react"
-import { CustomerInfo, FormInitialData, Option, Product, SearchQuery } from "./types"
+import { CustomerInfo, FormInitialData, Option, Product, ProductImage, SearchQuery } from "./types"
 
 export interface CartItemProps {
   type?: string
@@ -73,10 +73,11 @@ export interface ProductFormProps {
   isRecommendedInput: RefObject<HTMLInputElement>
   isOutOfStockInput: RefObject<HTMLInputElement>
   handleFormSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>
-  displayImages: string[]
-  handleDeleteImage: (e: any, idx: number) => void
+  displayImages: ProductImage[]
+  handleDeleteImage: (idx: number) => void
   handleInputImageChange: ChangeEventHandler<HTMLInputElement>
   progress: number
+  handleChangeOrderOfImages: (images: ProductImage[], mainIndex: number) => void
 }
 
 export interface EditProductProps {

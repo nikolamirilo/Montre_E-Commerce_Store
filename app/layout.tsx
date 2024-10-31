@@ -7,7 +7,7 @@ import { mulish } from "@/fonts"
 import { ClerkProvider } from "@clerk/nextjs"
 import { Cloudinary } from "@cloudinary/url-gen"
 import { GoogleTagManager } from "@next/third-parties/google"
-import { Analytics } from "@vercel/analytics/react"
+// import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { Suspense } from "react"
@@ -57,7 +57,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <body className={`${mulish.className} bg-stone-100 relative dark:bg-stone-100`}>
           <SpeedInsights />
           <GoogleTagManager gtmId="GTM-K9DMSZJG" />
-          <Analytics />
+          {/* <Analytics /> */}
           <Meta />
           <Menu />
           <div id="parent">{props.children}</div>

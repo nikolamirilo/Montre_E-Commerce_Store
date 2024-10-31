@@ -1,4 +1,4 @@
-import { FetchOptions } from "@/typescript/types"
+import { FetchOptions, ProductImage } from "@/typescript/types"
 
 export function scrollToTop() {
   window.scrollTo({
@@ -10,6 +10,13 @@ export function scrollToTop() {
 export function generateStringCode(name: string) {
   const hyphenatedName = name.toLowerCase().replace(/\s+/g, "-")
   return hyphenatedName
+}
+
+export function reindexProductImageArray(images: ProductImage[]) {
+  return images.map((image, index) => ({
+    ...image,
+    order: index, // Assign new order based on index
+  }))
 }
 
 export function generateRandomHex(length: number) {

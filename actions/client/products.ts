@@ -69,8 +69,9 @@ export async function uploadImagesToCloudinary(
           console.log(response)
           continue
         }
+
         const res = await response.json()
-        images.push({ order: i, url: res.url })
+        images.push({ order: images.length + i - files.length, url: res.url })
       } catch (error) {
         console.error(`Error uploading file ${file.name}: ${(error as Error).message}`)
       } finally {

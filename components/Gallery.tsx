@@ -44,7 +44,7 @@ const Gallery = () => {
           </p>
         </div>
         <Swiper
-          className="w-full h-72 md:w-2/3 lg:w-1/2 md:h-[60vh]"
+          className="w-full h-72 md:w-2/3 2xl:w-[60%] 2xl:h-[80vh] md:h-[60vh] lg:h-[70vh]"
           spaceBetween={30}
           centeredSlides={true}
           zoom={true}
