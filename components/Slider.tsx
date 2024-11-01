@@ -40,7 +40,7 @@ const Slider = ({ images }: { images: ProductImage[] }) => {
           <div className="relative overflow-hidden rounded-lg w-fit">
             <div className="duration-700 ease-in-out h-fit w-fit" data-carousel-item>
               <div
-                className="relative h-[40vh] w-[90vw] md:w-[35vw] md:h-[65vh] cursor-pointer"
+                className="relative h-[40vh] w-[90vw] md:w-[45vw] 2xl:w-[40vw] md:h-[65vh] cursor-pointer"
                 onClick={() => {
                   setIsModalOpen(true)
                 }}>
@@ -83,7 +83,7 @@ const Slider = ({ images }: { images: ProductImage[] }) => {
             </span>
           </button>
         </div>
-        <div className="flex flex-row flex-wrap justify-start md:justify-center w-full items-center gap-2 mt-3">
+        <div className="flex flex-row flex-wrap max-w-[90vw] md:max-w-[45vw] 2xl:max-w-[40vw] justify-start w-full items-center gap-2 mt-3">
           {images
             ? images?.map((image: ProductImage, idx: number) => {
                 return (
