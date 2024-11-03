@@ -1,9 +1,14 @@
-import { openSans } from "@/fonts"
-import Image from "next/image"
-import React, { Suspense } from "react"
-import Navigation from "./Navigation"
+"use client";
+import { openSans } from "@/fonts";
+import { revalidateData } from "@/helpers/server";
+import Image from "next/image";
+import React, { Suspense, useEffect } from "react";
+import Navigation from "./Navigation";
 
 const Hero: React.FC = () => {
+  useEffect(() => {
+    revalidateData()
+  }, [])
   return (
     <section
       className="relative -top-[4vh] lg:-top-[10vh] lg:min-h-screen h-fit w-full lg:shadow-2xl lg:shadow-black/40 border-black"
