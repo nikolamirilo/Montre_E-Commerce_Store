@@ -1,5 +1,6 @@
 import Gallery from "@/components/Gallery"
 import Products from "@/components/Products"
+import Overlay from "@/components/helpers/Overlay"
 import Hero from "@/components/hero/Hero"
 import { KEYWORDS, homePage } from "@/constants"
 import { homePageSchema } from "@/schemas"
@@ -54,7 +55,7 @@ export default async function Home() {
           type="recommendations"
         />
       </Suspense>
-      {/* <Overlay emoji="☀️" /> */}
+      <Overlay emoji="❄️" />
       <Suspense fallback="">
         <Gallery />
       </Suspense>
